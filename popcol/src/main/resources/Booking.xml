@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bookingns">
+	<resultMap id="bookingResult" type="booking">
+		<result property="bid" column="bid" />
+		<result property="cid" column="cid" />
+		<result property="lid" column="lid" />
+		<result property="tid" column="tid" />
+		<result property="mid" column="mid" />
+		<result property="rtid" column="rtid" />
+		<result property="ticketnumber" column="ticketnumber" />
+		<result property="pid" column="pid" />
+		<result property="bseat" column="bseat" />
+		<result property="bdate" column="bdate" />
+		<result property="bdel" column="bdel" />
+	</resultMap>
+	
+</mapper>
