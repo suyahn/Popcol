@@ -21,18 +21,18 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="booking.xml" />
-		<mapper resource="customer.xml" />
-		<mapper resource="event.xml" />
-		<mapper resource="faq.xml" />
-		<mapper resource="location.xml" />
-		<mapper resource="movie.xml" />
-		<mapper resource="notice.xml" />
-		<mapper resource="price.xml" />
-		<mapper resource="qna.xml" />
-		<mapper resource="review.xml" />
-		<mapper resource="runningtimetable.xml" />
-		<mapper resource="theater.xml" />
+		<mapper resource="Booking.xml" />
+		<mapper resource="Customer.xml" />
+		<mapper resource="Event.xml" />
+		<mapper resource="Faq.xml" />
+		<mapper resource="Location.xml" />
+		<mapper resource="Movie.xml" />
+		<mapper resource="Notice.xml" />
+		<mapper resource="Price.xml" />
+		<mapper resource="Qna.xml" />
+		<mapper resource="Review.xml" />
+		<mapper resource="Runningtimetable.xml" />
+		<mapper resource="Theater.xml" />
 	</mappers>
 	
 </configuration>
