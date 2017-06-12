@@ -6,13 +6,33 @@
 	<properties resource="jdbc.properties" />
 	
 	<typeAliases>
-		<typeAlias alias="dept" type="myBatis2.model.Dept" />
-		<typeAlias alias="emp" type="myBatis2.model.Emp" />
+		<typeAlias alias="booking" type="popcol.model.Booking" />
+		<typeAlias alias="customer" type="popcol.model.Customer" />
+		<typeAlias alias="event" type="popcol.model.Event" />
+		<typeAlias alias="faq" type="popcol.model.Faq" />
+		<typeAlias alias="location" type="popcol.model.Location" />
+		<typeAlias alias="movie" type="popcol.model.Movie" />
+		<typeAlias alias="notice" type="popcol.model.Notice" />
+		<typeAlias alias="price" type="popcol.model.Price" />
+		<typeAlias alias="qna" type="popcol.model.Qna" />
+		<typeAlias alias="review" type="popcol.model.Review" />
+		<typeAlias alias="runningtimetable" type="popcol.model.RunningtimeTable" />
+		<typeAlias alias="theater" type="popcol.model.Theater" />
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="Dept.xml" />
-		<mapper resource="Emp.xml" />
+		<mapper resource="booking.xml" />
+		<mapper resource="customer.xml" />
+		<mapper resource="event.xml" />
+		<mapper resource="faq.xml" />
+		<mapper resource="location.xml" />
+		<mapper resource="movie.xml" />
+		<mapper resource="notice.xml" />
+		<mapper resource="price.xml" />
+		<mapper resource="qna.xml" />
+		<mapper resource="review.xml" />
+		<mapper resource="runningtimetable.xml" />
+		<mapper resource="theater.xml" />
 	</mappers>
 	
 </configuration>
