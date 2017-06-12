@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="moviens">
+	<resultMap type="movieResult" id="movie">
+		<result property="mid" column="mid" />
+		<result property="mtitle" column="mtitle" />
+		<result property="moriginaltitle" column="moriginaltitle" />
+		<result property="mdirector" column="mdirector" />
+		<result property="mactor" column="mactor" />
+		<result property="mcontent" column="mcontent" />
+		<result property="mreleaseDate" column="mreleaseDate" />
+		<result property="mrunningTime" column="mrunningTime" />
+		<result property="murlPreview" column="murlPreview" />
+		<result property="murlPoster" column="murlPoster" />
+		<result property="mgrade" column="mgrade" />
+		<result property="mnation" column="mnation" />
+	</resultMap>
+</mapper>
