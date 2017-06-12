@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="eventns">
+	<resultMap id="eventResult" type="event">
+		<result property="eid" column="eid" />
+		<result property="esubject" column="esubject" />
+		<result property="econtent" column="econtent" />
+		<result property="epicture" column="epicture" />
+		<result property="eclosingdate" column="eclosingdate" />
+		<result property="estartingdate" column="estartingdate" />
+		<result property="edel" column="edel" />
+	</resultMap>
+	
+</mapper>
