@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="faqns">
+	<resultMap id="faqResult" type="faq">
+		<result property="fid" column="fid" />
+		<result property="fquestion" column="fquestion" />
+		<result property="fanswer" column="fanswer" />
+		<result property="fdel" column="fdel" />
+	</resultMap>
+	
+</mapper>
