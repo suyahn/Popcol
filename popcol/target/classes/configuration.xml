@@ -31,7 +31,7 @@
 		<mapper resource="Price.xml" />
 		<mapper resource="Qna.xml" />
 		<mapper resource="Review.xml" />
-		<mapper resource="Runningtimetable.xml" />
+		<mapper resource="RunningtimeTable.xml" />
 		<mapper resource="Theater.xml" />
 	</mappers>
 	
