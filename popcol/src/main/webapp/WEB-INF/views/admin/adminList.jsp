@@ -33,8 +33,8 @@
 				<c:forEach var="movie" items="${adminList}">
 					<tr>
 						<td>${no}</td>
-						<td><a href="movieList.do?mtitle=${movie.mtitle}"
-							class="btn btn-info">${movie.mtitle}</a></td>
+						<td><a href="adminView.do?mid=${movie.mid}&pageNum=${pp.currentPage}"
+								class="btn btn-default">${movie.mtitle}</a></td>
 						<td>${movie.moriginaltitle }</td>
 						<td>${movie.mdirector }</td>
 						<td>${movie.mnation }</td>

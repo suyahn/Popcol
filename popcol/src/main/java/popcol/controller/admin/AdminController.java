@@ -109,5 +109,14 @@ public class AdminController {
 		return "adminInsert";
 
 	}
-
+	@RequestMapping("adminView") //관리자 영화 상세 보기
+	public String adminView(int mid,Model model, String pageNum){
+		Movie movie = ms.adminSelect(mid);
+		
+		model.addAttribute("movie", movie);
+		model.addAttribute("pageNum", pageNum);
+		return "adminView";
+		
+	}
+	
 }

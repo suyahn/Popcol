@@ -10,5 +10,7 @@ public interface MovieDao {
 	List<Movie> adminList(int startRow, int endRow);
 	int getTotal();
 	int adminInsert(Movie movie);
+	Movie adminSelect(int mid);
+	
 	
 }

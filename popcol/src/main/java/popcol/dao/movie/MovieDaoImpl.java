@@ -49,4 +49,10 @@ public class MovieDaoImpl implements MovieDao {
 		return sst.insert("moviens.adminInsert", movie);
 	}
 
+	@Override
+	public Movie adminSelect(int mid) {
+		
+		return sst.selectOne("moviens.adminSelect", mid);
+	}
+
 }

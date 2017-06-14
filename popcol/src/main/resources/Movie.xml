@@ -17,9 +17,9 @@
 		<result property="mnation" column="mnation" />
 		<result property="mdel" column="mdel" />
 	</resultMap>
-	
+
 	<!-- 규랑 -->
-	
+
 	<!-- 페이지 처리 -->
 	<select id="getTotal" resultType="int">
 		select count(*) from movie
@@ -28,7 +28,7 @@
 	<!-- 관리자 영화 리스트 -->
 	<select id="adminList" resultType="movie" parameterType="hashMap">
 		select *
-		from (select rownum rn, a.* from (select mtitle, moriginaltitle,
+		from (select rownum rn, a.* from (select mid,mtitle, moriginaltitle,
 		mdirector, mnation from movie where mdel != 'y' order by mid desc )a)
 		where rn between #{startRow} and #{endRow}
 	</select>
@@ -42,14 +42,19 @@
 		#{mcontent},#{mreleaseDate},#{mrunningTime},#{murlPreview},
 		#{murlPoster},#{mgrade},#{mnation},'n')
 	</insert>
-	
-	
+	<!-- 상세보기 -->
+	<select id="adminSelect" resultType="movie" parameterType="int">
+		select * from
+		movie where mid=#{mid}
+
+	</select>
+
 	<!-- 수연 -->
-	
+
 	<select id="list" resultMap="movieResult">
 		select * from movie where mdel = 'n'
 	</select>
-	
+
 	<select id="movieChart" parameterType="int" resultType="movie">
 		<![CDATA[
 		select * 
@@ -68,9 +73,10 @@
 			where m.mid = #{mid}
 		]]>
 	</select>
-	
+
 	<!-- 혜진 -->
 	<select id="bookingMovieList" resultMap="movieResult">
-		select * from movie where mdel='n' order by mtitle
+		select * from movie
+		where mdel='n' order by mtitle
 	</select>
 </mapper>

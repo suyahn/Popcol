@@ -150,6 +150,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/adminInsert.jsp" />
 	</definition>
+	
+	<definition name="adminView" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/adminView.jsp" />
+	</definition>
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">
 		<put-attribute name="body"
