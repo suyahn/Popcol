@@ -16,4 +16,6 @@ public interface CustomerDao {
 
 	String findCustomerId(Customer customer);
 
+	Customer findCustomerPassword(Customer customer);
+
 }

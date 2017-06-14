@@ -41,7 +41,7 @@
 				<br>
 				<br>
 				
-				<button onclick="history.go(-1)" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">돌아가기</button>
+				<button onclick="location.href='findForm.do'" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">돌아가기</button>
 				<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
 			</c:if>
        </div>

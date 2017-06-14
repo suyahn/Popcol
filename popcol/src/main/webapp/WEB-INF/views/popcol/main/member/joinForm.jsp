@@ -219,7 +219,7 @@
 					</th>
 					<td>						
 						<div class="form-group">
-							<br><input type="date" class="form-control" name="cbirthdaystring" id="birthday" required="required" placeholder="생일">
+							<br><input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" class="form-control" placeholder="생년월일" required="required" name="cbirthdaystring" maxlength="8">
 						</div>
 					</td>
 				</tr>

@@ -41,4 +41,9 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		return cd.findCustomerId(customer);
 	}
+
+	public Customer findCustomerPassword(Customer customer) {
+		
+		return cd.findCustomerPassword(customer);
+	}
 }

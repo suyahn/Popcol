@@ -38,7 +38,7 @@
 						<tr>
 							<td>
 								<div class="form-group">
-									<input type="date" class="form-control" placeholder="" required="required" name="cbirthdaystring" maxlength="8">
+									<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" class="form-control" placeholder="생년월일" required="required" name="cbirthdaystring" maxlength="8">
 								</div>
 							</td>
 						</tr>
@@ -101,7 +101,7 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<input type="email" class="form-control" name="cemail" required="required" placeholder="이메일" pattern="(010)-\d{3,4}-\d{4}">
+								<input type="email" class="form-control" name="cemail" required="required" placeholder="이메일">
 							</div>
 						</td>
 					</tr>

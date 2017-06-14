@@ -16,4 +16,6 @@ public interface CustomerService {
 
 	String findCustomerId(Customer customer);
 
+	Customer findCustomerPassword(Customer customer);
+
 }

@@ -158,8 +158,26 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("findPassword")
-	public String findPassword() {
+	public String findPassword(Customer customer, Model model) {
+		Customer checkCustomer = cs.findCustomerPassword(customer);
+		int result = 0;
+		
+		if(checkCustomer != null) {
+			result = 1;
+			model.addAttribute("customer", checkCustomer);
+		} else {
+			result = 0;
+		}
+		
+		model.addAttribute("result", result);
 		
 		return "findPassword";
+	}
+	
+	@RequestMapping("findPassword_changePassword")
+	public String findPassword_changePassword(Customer customer, Model model) {
+		
+		
+		return "findPassword_changePassword";
 	}
 }
