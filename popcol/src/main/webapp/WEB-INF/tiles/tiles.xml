@@ -123,6 +123,7 @@
 		<put-attribute name="footer" value="/WEB-INF/views/admin/footer.jsp" />
 	</definition>
 
+	<!-- 영화 관리 -->
 	<definition name="adminList" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/adminList.jsp" />
 	</definition>
@@ -132,11 +133,18 @@
 			value="/WEB-INF/views/admin/adminInsertForm.jsp" />
 	</definition>
 	
-	<definition name="adminLoginForm" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/admin/adminLoginForm.jsp" />
+	<definition name="adminInsert" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/adminInsert.jsp" />
 	</definition>
-	
+	<!-- 관리자 로그인 -->
+	<definition name="adminLoginForm" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/adminLoginForm.jsp" />
+	</definition>
+
 	<definition name="adminLogin" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/admin/adminLogin.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/adminLogin.jsp" />
 	</definition>
 </tiles-definitions>

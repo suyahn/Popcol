@@ -20,21 +20,22 @@ public class MovieDaoImpl implements MovieDao {
 		// TODO Auto-generated method stub
 		List<Movie> movies = sst.selectList("moviens.list");
 		List<Movie> movieChart = new ArrayList<Movie>();
-		
-		for(Movie movie : movies) {
+
+		for (Movie movie : movies) {
 			movieChart.add((Movie) sst.selectOne("moviens.movieChart", movie.getMid()));
 		}
-		
+
 		return movieChart;
 	}
-	
+
+	/* 규랑 */
 	@Override
 	public List<Movie> adminList(int startRow, int endRow) {
 		HashMap<String, Integer> hm = new HashMap<String, Integer>();
 		hm.put("startRow", startRow);
 		hm.put("endRow", endRow);
 
-		return sst.selectList("moviens.adminList",hm);
+		return sst.selectList("moviens.adminList", hm);
 	}
 
 	@Override
@@ -43,8 +44,9 @@ public class MovieDaoImpl implements MovieDao {
 	}
 
 	@Override
-	public Movie select(int mid) {
-		System.out.println("daoImpl");
-		return sst.selectOne("moviens.select", mid);
+	public int adminInsert(Movie movie) {
+
+		return sst.insert("moviens.adminInsert", movie);
 	}
+
 }

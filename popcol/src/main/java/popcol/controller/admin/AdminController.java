@@ -31,6 +31,7 @@ public class AdminController {
 	 * @Autowired private TheaterService ts;
 	 */
 
+	/* 로그인 */
 	@RequestMapping("adminLoginForm")
 	public String adminLoginForm() {
 
@@ -66,7 +67,6 @@ public class AdminController {
 		return "redirect:adminLoginForm.do";
 	}
 
-	
 	@RequestMapping("adminList") // 관리자 페이지의 무비리스트
 	public String adminList(String pageNum, Model model) {
 		final int ROW_PER_PAGE = 10;
@@ -92,14 +92,21 @@ public class AdminController {
 		return "adminList";
 	}
 
-	@RequestMapping("adminInsertForm") // 관리자 페이지의 영화 입력
-	public String adminInsert(int mid,String pageNum, Model model) {
-		Movie movie = ms.select(mid);
-		
-		model.addAttribute("movie", movie);
+	@RequestMapping("adminInsertForm") // 관리자 영화 입력 페이지
+	public String adminInsert(String pageNum, Model model) {
 		model.addAttribute("pageNum", pageNum);
-		System.out.println("asd");
+
 		return "adminInsertForm";
+
+	}
+
+	@RequestMapping("adminInsert") // 관리자 영화 입력
+	public String adminInsert(Model model, Movie movie, String pageNum) {
+		int result = ms.adminInsert(movie);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		return "adminInsert";
 
 	}
 

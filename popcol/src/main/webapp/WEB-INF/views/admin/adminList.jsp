@@ -24,7 +24,10 @@
 					<td colspan="5">데이터가 없습니다</td>
 				</tr>
 			</c:if>
-
+			<%
+				String id = (String) session.getAttribute("id");
+				if (id != null) { /* 아이디가 있을때 */
+			%>
 			<c:if test="${not empty adminList }">
 				<c:set var="no" value="${no }"></c:set>
 				<c:forEach var="movie" items="${adminList}">
@@ -39,6 +42,16 @@
 					</tr>
 				</c:forEach>
 			</c:if>
+
+			<%
+				} else {
+			%>
+			<script type="text/javascript">
+				location.href = "adminLoginForm.do"
+			</script>
+			<%
+				}
+			%>
 		</table>
 		<ul class="pagination">
 			<c:if test="${pp.startPage > pp.PAGE_PER_BLOCK }">

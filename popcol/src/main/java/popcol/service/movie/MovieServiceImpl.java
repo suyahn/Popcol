@@ -17,7 +17,7 @@ public class MovieServiceImpl implements MovieService {
 	public List<Movie> movieChart() {
 		return md.movieChart();
 	}
-	
+	/*규랑*/
 	@Override
 	public List<Movie> adminList(int startRow, int endRow) {
 		return md.adminList(startRow,endRow);
@@ -27,10 +27,11 @@ public class MovieServiceImpl implements MovieService {
 	public int getTotal() {
 		return md.getTotal();
 	}
-	
 	@Override
-	public Movie select(int mid) {	
-		return md.select(mid);
+	public int adminInsert(Movie movie) {
+		
+		return md.adminInsert(movie);
 	}
+	
 
 }

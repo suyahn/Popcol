@@ -42,11 +42,6 @@
 		#{mcontent},#{mreleaseDate},#{mrunningTime},#{murlPreview},
 		#{murlPoster},#{mgrade},#{mnation},'n')
 	</insert>
-	<select id="select" parameterType="int" resultType="movie">
-		select * from movie where mid=#{mid}
-	</select>
-	
-	
 	
 	
 	<!-- 수연 -->
