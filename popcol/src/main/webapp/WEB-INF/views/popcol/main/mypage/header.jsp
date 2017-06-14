@@ -108,8 +108,8 @@
 							예매<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
 							<li><a href="reservation.do">빠른 예매</a></li>
+							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
 						</ul>
 					</li>
 					

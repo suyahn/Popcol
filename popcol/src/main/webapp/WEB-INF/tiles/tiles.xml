@@ -92,11 +92,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
 	</definition>
 	
-	<definition name="mypage" template="/WEB-INF/views/popcol/main/mypage/mypage.jsp">
-		<put-attribute name="menu" value="/WEB-INF/views/popcol/main/mypage/menu.jsp" />
-		<put-attribute name="body" value="" />
-    </definition>
-	
     
     
     

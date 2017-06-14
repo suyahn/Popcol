@@ -10,7 +10,7 @@
 <body>
 <div class="container" align="center">
      <ul id="myTab" class="nav nav-tabs" role="tablist">
-       <li role="presentation" class="active"><a href="#id" id="id-tab" role="tab" data-toggle="tab" aria-controls="id" aria-expanded="true">아아디 찾기</a></li>
+       <li role="presentation" class="active"><a href="#id" id="id-tab" role="tab" data-toggle="tab" aria-controls="id" aria-expanded="true">아이디 찾기</a></li>
        <li role="presentation"><a href="#password" id="password-tab" role="tab" data-toggle="tab" aria-controls="password" aria-expanded="false">비밀번호 찾기</a></li>
      </ul>
      <div id="myTabContent" class="tab-content">
