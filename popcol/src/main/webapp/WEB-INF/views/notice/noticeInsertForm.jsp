@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<style type="text/css">
+	div { margin-top: 50px; }
+</style>
 <script type="text/javascript">
 	function chk() {
 		if(confirm("글을 등록하시겠습니까?") == false) {
@@ -21,17 +24,17 @@
 		<form action="noticeInsert.do" method="post" onsubmit="return chk()">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			
-			<table class="table table-bordered">
+			<table class="table table-bordered"  style="width: 60%">
 				<tr>
 					<th>제목</th>
 					<td>
-						<input type="text" name="nsubject" required="required" autofocus="autofocus">
+						<textarea rows="3" cols="70" name="nsubject" required="required" autofocus="autofocus"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea rows="5" cols="30" name="ncontent" required="required"></textarea>
+						<textarea rows="10" cols="70" name="ncontent" required="required"></textarea>
 					</td>
 				</tr>
 				<tr>
