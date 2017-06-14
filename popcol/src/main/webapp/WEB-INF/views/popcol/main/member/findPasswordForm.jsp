@@ -10,11 +10,11 @@
 <body>
 <div class="container" align="center">
      <ul id="myTab" class="nav nav-tabs" role="tablist">
-       <li role="presentation" class="active"><a href="#id" id="id-tab" role="tab" data-toggle="tab" aria-controls="id" aria-expanded="true">아아디 찾기</a></li>
-       <li role="presentation"><a href="#password" id="password-tab" role="tab" data-toggle="tab" aria-controls="password" aria-expanded="false">비밀번호 찾기</a></li>
+       <li role="presentation"><a href="#id" id="id-tab" role="tab" data-toggle="tab" aria-controls="id" aria-expanded="true">아아디 찾기</a></li>
+       <li role="presentation" class="active"><a href="#password" id="password-tab" role="tab" data-toggle="tab" aria-controls="password" aria-expanded="false">비밀번호 찾기</a></li>
      </ul>
      <div id="myTabContent" class="tab-content">
-       <div role="tabpanel" class="tab-pane fade active in" id="id" aria-labelledby="id-tab">
+       <div role="tabpanel" class="tab-pane fade" id="id" aria-labelledby="id-tab">
        
 	       	<br>
 	       	<br>
@@ -61,7 +61,7 @@
 				</table>
 			</form>
        </div>
-       <div role="tabpanel" class="tab-pane fade" id="password" aria-labelledby="password-tab">
+       <div role="tabpanel" class="tab-pane fade active in" id="password" aria-labelledby="password-tab">
        
 	       	<br>
 	       	<br>

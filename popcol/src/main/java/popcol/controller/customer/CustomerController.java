@@ -134,8 +134,58 @@ public class CustomerController {
 	// 아이디, 패스워드 찾기
 	
 	@RequestMapping("findForm")
-	public String findIdPasswordForm() {
+	public String findForm() {
 		
 		return "findForm";
+	}
+	
+	@RequestMapping("findId")
+	public String findId(Customer customer, String cbirthdaystring, Model model) {
+		customer.setCbirthday(Date.valueOf(cbirthdaystring));
+		String customerId = cs.findCustomerId(customer);
+		int result = 0;
+		
+		if(customerId != null) {
+			result = 1;
+			model.addAttribute("customerId", customerId);
+		} else {
+			result = 0;
+		}
+		
+		model.addAttribute("result", result);
+		
+		return "findId";
+	}
+	
+	@RequestMapping("findPasswordForm")
+	public String findPasswordForm() {
+		
+		return "findPasswordForm";
+	}
+	
+	@RequestMapping("findPassword")
+	public String findPassword(Customer customer, Model model) {
+		Customer checkCustomer = cs.findCustomerPassword(customer);
+		int result = 0;
+		
+		if(checkCustomer != null) {
+			result = 1;
+			model.addAttribute("customer", checkCustomer);
+		} else {
+			result = 0;
+		}
+		
+		model.addAttribute("result", result);
+		
+		return "findPassword";
+	}
+	
+	@RequestMapping("findPassword_changePassword")
+	public String findPassword_changePassword(Customer customer, Model model) {
+		int result = cs.updateFindPassword(customer);
+		
+		model.addAttribute("result", result);
+				
+		return "findPassword_changePassword";
 	}
 }

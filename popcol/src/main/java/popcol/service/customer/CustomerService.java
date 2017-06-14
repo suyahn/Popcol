@@ -14,4 +14,10 @@ public interface CustomerService {
 
 	int insertCustomer(Customer customer);
 
+	String findCustomerId(Customer customer);
+
+	Customer findCustomerPassword(Customer customer);
+
+	int updateFindPassword(Customer customer);
+
 }
