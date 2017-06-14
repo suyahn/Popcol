@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
+<%@ include file="../popcol/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-<style type="text/css">
-	div { margin-top: 50px; }
-</style>
 <script type="text/javascript">
 	function chk() {
 		if(confirm("글을 등록하시겠습니까?") == false) {

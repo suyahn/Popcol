@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="customerns">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<resultMap id="customerResult"    type="customer">
+		<result property="cid" column="cid" />
+		<result property="cname"  column="cname" />
+		<result property="cpassword"	  column="cpassword" />
+		<result property="cemail"	  column="cemail" />		
+		<result property="cphone"	  column="cphone" />		
+		<result property="cpoint"	  column="cpoint" />		
+		<result property="cdel"	  column="cdel" />		
+		<result property="creg_date"	  column="creg_date" />
+		<result property="cbirthday"	  column="cbirthday" />
+	</resultMap>
+	
+	<select id="loginCheck" parameterType="customer" resultType="string">
+		select cpassword from customer where cid = #{cid}
+	</select>
+	
+	<select id="getSessionInfo" parameterType="string" resultType="customer">
+		select * from customer where cid = #{id}
+	</select>
+	
+	<select id="joinCheck" parameterType="customer" resultType="customer">
+		select * from customer where cname = #{cname} and cphone = #{cphone} and cbirthday like to_date(#{cbirthday}, 'rr/mm/dd')
+	</select>
+	
+	<select id="idDupCheck" parameterType="string" resultType="customer">
+		select * from customer where cid = #{cid}
+	</select>
+	
+	
+	<insert id="insertCustomer" parameterType="customer">
+		insert into customer values (#{cid}, #{cname}, #{cpassword}, #{cemail}, #{cphone}, 2000, 'n', sysdate, #{cbirthday})
+	</insert>
+	
+</mapper>

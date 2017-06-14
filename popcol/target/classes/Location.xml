@@ -9,5 +9,11 @@
 		<result property="lphone" column="lphone" />
 		<result property="lat" column="lat" />
 		<result property="lon" column="lon" />
+		<result property="mid" column="mid"/>
 	</resultMap>
+	
+	<!-- 혜진 -->
+	<select id="bookingLocationList" parameterType="int" resultMap="locationResult">
+		select l.lid, lname, rt.mid from location l, runningtimetable rt where rt.lid = l.lid and rt.mid = #{mid}
+	</select>
 </mapper>

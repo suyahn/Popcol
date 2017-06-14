@@ -8,6 +8,7 @@ public class Location {
 	private String lphone;
 	private int lat;// 위도
 	private int lon;// 경도
+	private int mid;
 
 	public int getLid() {
 		return lid;
@@ -55,6 +56,14 @@ public class Location {
 
 	public void setLon(int lon) {
 		this.lon = lon;
+	}
+
+	public int getMid() {
+		return mid;
+	}
+
+	public void setMid(int mid) {
+		this.mid = mid;
 	}
 
 }

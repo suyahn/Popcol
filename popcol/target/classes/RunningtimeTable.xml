@@ -11,4 +11,7 @@
 		<result property="rtdate" column="rtdate" />
 	</resultMap>
 	
+	<select id="bookingRTList" parameterType="int" resultMap="runningtimetableResult">
+		select rt.rtid, rt.rtdate from location l, runningtimetable rt where rt.lid = l.lid and rt.mid = #{mid} and rt.lid = #{lid}
+	</select>
 </mapper>

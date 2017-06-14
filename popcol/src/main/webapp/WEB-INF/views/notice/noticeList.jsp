@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
+<%@ include file="../popcol/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +41,7 @@
 					<tr>
 						<td>${ no1 }</td>
 						<td>
-							<a href="noticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }" class="btn btn-link">${ notice.nsubject }</a>
+							<button onclick="location.href='noticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }'" class="btn btn-link">${ notice.nsubject }</button>
 						</td>
 						<td>${ notice.ndate }</td>
 					</tr>
@@ -52,8 +52,7 @@
 		
 		<!-- 아이디가 마스터면 -->
 		<div align="left">
-			<button type="button" class="btn btn-primary" onclick="location.href='noticeInsertForm.do?pageNum=${ pageNum }'"
-					style="border-color: #EBCDD5; background-color: #EBCDD5;">글 작성</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='noticeInsertForm.do?pageNum=${ pageNum }'">글 작성</button>
 			
 			<div align="center">
 				<nav aria-label="Page navigation">

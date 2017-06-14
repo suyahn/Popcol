@@ -15,8 +15,22 @@ public class MovieServiceImpl implements MovieService {
 	
 	@Override
 	public List<Movie> movieChart() {
-		// TODO Auto-generated method stub
 		return md.movieChart();
+	}
+	
+	@Override
+	public List<Movie> adminList(int startRow, int endRow) {
+		return md.adminList(startRow,endRow);
+	}
+	
+	@Override
+	public int getTotal() {
+		return md.getTotal();
+	}
+	
+	@Override
+	public Movie select(int mid) {	
+		return md.select(mid);
 	}
 
 }

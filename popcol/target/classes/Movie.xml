@@ -18,6 +18,39 @@
 		<result property="mdel" column="mdel" />
 	</resultMap>
 	
+	<!-- 규랑 -->
+	
+	<!-- 페이지 처리 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from movie
+		where mdel != 'y'
+	</select>
+	<!-- 관리자 영화 리스트 -->
+	<select id="adminList" resultType="movie" parameterType="hashMap">
+		select *
+		from (select rownum rn, a.* from (select mtitle, moriginaltitle,
+		mdirector, mnation from movie where mdel != 'y' order by mid desc )a)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	<!-- 관리자 영화 입력 -->
+	<insert id="adminInsert" parameterType="movie">
+		<selectKey keyProperty="mid" resultType="Integer" order="BEFORE">
+			SELECT NVL(MAX(mid),0) + 1 FROM movie
+		</selectKey>
+		insert into movie values
+		(#{mid},#{mtitle},#{moriginaltitle},#{mdirector},#{mactor},
+		#{mcontent},#{mreleaseDate},#{mrunningTime},#{murlPreview},
+		#{murlPoster},#{mgrade},#{mnation},'n')
+	</insert>
+	<select id="select" parameterType="int" resultType="movie">
+		select * from movie where mid=#{mid}
+	</select>
+	
+	
+	
+	
+	<!-- 수연 -->
+	
 	<select id="list" resultMap="movieResult">
 		select * from movie where mdel = 'n'
 	</select>
@@ -39,5 +72,10 @@
 						) a, movie m 
 			where m.mid = #{mid}
 		]]>
+	</select>
+	
+	<!-- 혜진 -->
+	<select id="bookingMovieList" resultMap="movieResult">
+		select * from movie where mdel='n' order by mtitle
 	</select>
 </mapper>

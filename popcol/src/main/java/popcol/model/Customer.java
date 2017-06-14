@@ -9,7 +9,7 @@ public class Customer {
 	private String cemail;
 	private String cphone;
 	private int cpoint;
-	private String cde;
+	private String cdel;
 	private Date creg_date;
 	private Date cbirthday;
 
@@ -61,12 +61,12 @@ public class Customer {
 		this.cpoint = cpoint;
 	}
 
-	public String getCde() {
-		return cde;
+	public String getCdel() {
+		return cdel;
 	}
 
-	public void setCde(String cde) {
-		this.cde = cde;
+	public void setCdel(String cdel) {
+		this.cdel = cdel;
 	}
 
 	public Date getCreg_date() {

@@ -45,14 +45,14 @@ public class NoticeController {
 		model.addAttribute("search", notice.getSearch());
 		model.addAttribute("keyword", notice.getKeyword());
 		
-		return "notice/noticeList";
+		return "noticeList";
 	}
 	
 	@RequestMapping("noticeInsertForm")
 	public String noticeInsertForm(String pageNum, Model model) {
 		model.addAttribute("pageNum", pageNum);
 		
-		return "notice/noticeInsertForm";
+		return "noticeInsertForm";
 	}
 	
 	@RequestMapping("noticeInsert")
@@ -65,6 +65,6 @@ public class NoticeController {
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("nid", notice.getNid());
 		
-		return "notice/noticeInsert";
+		return "noticeInsert";
 	}
 }

@@ -20,6 +20,6 @@ public class MovieController {
 		List<Movie> movieList = ms.movieChart();
 		
 		model.addAttribute("movieList", movieList);
-		return "movie/movieChart";
+		return "movieChart";
 	}
 }

@@ -1,6 +1,7 @@
 package popcol.dao.movie;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -25,5 +26,25 @@ public class MovieDaoImpl implements MovieDao {
 		}
 		
 		return movieChart;
+	}
+	
+	@Override
+	public List<Movie> adminList(int startRow, int endRow) {
+		HashMap<String, Integer> hm = new HashMap<String, Integer>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+
+		return sst.selectList("moviens.adminList",hm);
+	}
+
+	@Override
+	public int getTotal() {
+		return sst.selectOne("moviens.getTotal");
+	}
+
+	@Override
+	public Movie select(int mid) {
+		System.out.println("daoImpl");
+		return sst.selectOne("moviens.select", mid);
 	}
 }
