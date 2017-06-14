@@ -11,26 +11,30 @@
 	<div class="container">
 		<h1>무비 차트</h1>
 		<div class="row">
+			<c:set var="rank" value="1" />
 			<c:forEach var="movie" items="${ movieList }">
 		  		<div class="col-md-3 col-md-3">
-		   			<div class="thumbnail">
+		   			<div class="thumbnail" align="center">
+		   				<h3 align="center" style="border: 2px solid black; width: 197px; background-color: ">No.${ rank }</h3>
 		   				<a href="movieDetail.do?mid=${ movie.mid }">
-		      				<img src="poster/${ movie.murlPoster }.jpg" alt="${ movie.mtitle }" style="border: 3px solid black; width: 197px; height: 272px;">
+		      				<img src="poster/${ movie.murlPoster }.jpg" alt="${ movie.mtitle }" style="border: 2px solid black; width: 197px; height: 272px;">
 		      			</a>
 		      			<div class="caption">
 		        			<p>
-		        				<font size="4">${ movie.mtitle }</font>
+		        				<font size="5" style="font-weight: bold;">${ movie.mtitle }</font>
 		        				<img alt="${ movie.mgrade }" src="icon/${ movie.mgrade }.png" width="20" height="20">
 		        			</p>
-		        			<p>${ movie.moriginaltitle }<p>
+		        			<p><font style="font-style: italic;">${ movie.moriginaltitle }</font><p>
 		        			<p>예매율 ${ movie.bookingRate }%</p>
+		        			<p><font style="font-weight: bold;">좋아요</font> ~ 개 <font style="font-weight: bold;">싫어요</font> ~ 개
 		        			<p>${ movie.mreleaseDate } 개봉</p>
 		        			<p>
-		        				<a href="#" class="btn btn-danger" role="button">예매하기</a>
+		        				<button type="button" onclick="location.href='reservation.do'" class="btn btn-danger">예매하기</button>
 		        			</p>
 		      			</div>
 		    		</div>
 		  		</div>
+		  		<c:set var="rank" value="${ rank + 1 }" />
 	  		</c:forEach>
 		</div>
 	</div>

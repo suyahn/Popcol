@@ -87,11 +87,15 @@
     
     
     
+    <!-- ####################### -->
     <!-- 수연 -->
+    
+    <!-- 영화 -->
     <definition name="movieChart" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/movie/movieChart.jsp" />
     </definition>
     
+    <!-- 공지사항 -->
     <definition name="noticeList" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/notice/noticeList.jsp" />
     </definition>
@@ -102,6 +106,10 @@
     
     <definition name="noticeInsert" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/notice/noticeInsert.jsp" />
+    </definition>
+    
+    <definition name="noticeView" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeView.jsp" />
     </definition>
     
     

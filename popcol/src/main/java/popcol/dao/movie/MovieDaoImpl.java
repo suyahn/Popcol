@@ -1,6 +1,8 @@
 package popcol.dao.movie;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,6 +26,21 @@ public class MovieDaoImpl implements MovieDao {
 		for(Movie movie : movies) {
 			movieChart.add((Movie) sst.selectOne("moviens.movieChart", movie.getMid()));
 		}
+		
+		/*예매율 bookingRate가 큰 순으로 정렬*/
+		Collections.sort(movieChart, new Comparator<Movie>() {
+			@Override
+			public int compare(Movie o1, Movie o2) {
+				if(o1.getBookingRate() > o2.getBookingRate()) {
+					return 1;
+				} else if(o1.getBookingRate() < o2.getBookingRate()) {
+					return -1;
+				} else {
+					return 0;
+				}
+			}
+		});
+		Collections.reverse(movieChart);
 		
 		return movieChart;
 	}

@@ -32,4 +32,10 @@ public class NoticeServiceImpl implements NoticeService {
 	public int getMaxNum() {
 		return nd.getMaxNum();
 	}
+
+	@Override
+	public Notice select(int nid) {
+		return nd.select(nid);
+	}
+
 }
