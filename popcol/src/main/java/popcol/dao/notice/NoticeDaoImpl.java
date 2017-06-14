@@ -32,4 +32,9 @@ public class NoticeDaoImpl implements NoticeDao {
 	public int getMaxNum() {
 		return sst.selectOne("noticens.getMaxNum");
 	}
+
+	@Override
+	public Notice select(int nid) {
+		return sst.selectOne("noticens.select", nid);
+	}
 }

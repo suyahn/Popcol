@@ -83,7 +83,7 @@
 					 </li>
 					
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a href="noticeList.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							고객센터<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">

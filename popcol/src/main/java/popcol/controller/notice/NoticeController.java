@@ -67,4 +67,14 @@ public class NoticeController {
 		
 		return "noticeInsert";
 	}
+	
+	@RequestMapping("noticeView")
+	public String noticeView(int nid, String pageNum, Model model) {
+		Notice notice = ns.select(nid);
+		
+		model.addAttribute("notice", notice);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "noticeView";
+	}
 }
