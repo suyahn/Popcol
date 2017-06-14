@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>메인</title>
+<title>Admin</title>
 <script type="text/javascript">
 	$(function() {
 		$('ul.nav li.dropdown').hover(
@@ -35,19 +35,19 @@
 				<c:if test="${empty id }">
 					<li>
 						<button class="btn btn-info btn-sm"
-							onclick="location.href='loginForm.do'"
+							onclick="location.href='adminLoginForm.do'"
 							style="display: inline; border-color: navy; background-color: navy;">
 							로그인</button>
 					</li>
 				</c:if>
 
 				<c:if test="${not empty id }">
-					<li>${customer.cname }님 환영합니다.
+					<li>${customer.cname }님환영합니다.
 						<button onclick="location.href='mypage.do'"
 							class="btn btn-info btn-sm"
 							style="display: inline; border-color: navy; background-color: navy;">
 							마이페이지</button>
-						<button onclick="location.href='logout.do'"
+						<button onclick="location.href='adminLogout.do'"
 							class="btn btn-info btn-sm"
 							style="display: inline; border-color: navy; background-color: navy;">
 							로그아웃</button>
@@ -62,11 +62,11 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="dropdown"><a href="movieChart.do"
+					<%-- <li class="dropdown"><a href="adminList.do"
 						class="dropdown-toggle" data-toggle="dropdown" role="button"
-						aria-haspopup="true" aria-expanded="false">영화 관리<span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu">
+						aria-haspopup="true" aria-expanded="false">영화 관리<span
+							class="caret"></span>
+					</a> <ul class="dropdown-menu">
 							<li><a href="movieChart.do">무비 차트</a></li>
 							<li><a href="${ path }/gatheringCalendar/index.jsp">현재
 									상영작</a></li>
@@ -82,8 +82,9 @@
 						<ul class="dropdown-menu">
 							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
 							<li><a href="reservation.do">빠른 예매</a></li>
-						</ul></li>
-
+						</ul></li> --%>
+					<li class=""><a href="adminList.do">영화관리</a></li>
+					<li class=""><a href="adminList.do">극장관리</a></li>
 					<li class=""><a href="adminList.do">상영시간표</a></li>
 					<li class=""><a href="adminList.do">회원관리</a></li>
 

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<form action="login.do" method="post">
+		<form action="adminLogin.do" method="post">
 			<table>
 				<tr>
 					<th colspan="2"><br><input type="text" name="cid" required="required" autofocus="autofocus" placeholder="ID" class="form-control"></th>
