@@ -33,9 +33,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		return result;
 	}
 
-	public Customer getSessionInfo(String id) {
+	public String getCustomerName(String id) {
 		
-		return sst.selectOne("customerns.getSessionInfo", id);
+		return sst.selectOne("customerns.getCustomerName", id);
 	}
 
 	public Customer joinCheck(Customer customer) {

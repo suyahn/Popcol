@@ -6,7 +6,7 @@ public interface CustomerService {
 
 	int loginCheck(Customer customer);
 
-	Customer getSessionInfo(String id);
+	String getCustomerName(String id);
 
 	Customer joinCheck(Customer customer);
 

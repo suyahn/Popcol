@@ -50,7 +50,11 @@ public class CustomerController {
 		session = request.getSession();
 
 		if (result > 0) {
-			session.setAttribute("id", customer.getCid());
+			String id = customer.getCid();
+			String name = cs.getCustomerName(id);
+			
+			session.setAttribute("id", id);
+			session.setAttribute("name", name);
 		}
 
 		if (result <= 0) {

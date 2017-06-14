@@ -39,7 +39,7 @@
 			
 			<c:if test="${not empty id }">
 				<li>
-					${customer.cname }님 환영합니다.
+					${name }님 환영합니다.
 					<button onclick="location.href='mypage.do'" class="btn btn-info btn-sm" style="display: inline; border-color: navy; background-color: navy;">
 						마이페이지
 					</button>

@@ -15,10 +15,10 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		return cd.loginCheck(customer);
 	}
-	
-	public Customer getSessionInfo(String id) {
+
+	public String getCustomerName(String id) {
 		
-		return cd.getSessionInfo(id);
+		return cd.getCustomerName(id);
 	}
 
 	public Customer joinCheck(Customer customer) {
