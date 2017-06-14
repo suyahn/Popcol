@@ -9,6 +9,9 @@
 		<put-attribute name="footer" value="/WEB-INF/views/popcol/main/footer.jsp" />
 	</definition>
 	
+	<!-- 도은 -->
+	
+	<!-- 메인 -->
 	<definition name="home" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/home.jsp" />
 	</definition>
@@ -71,6 +74,15 @@
 	<definition name="idDupCheck" extends="empty">
           <put-attribute name="body" value="/WEB-INF/views/popcol/main/member/idDupCheck.jsp" />
     </definition>
+    
+    <!-- 마이페이지 -->
+	<definition name="mypage_Main" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
+	</definition>
+    
+    
+    
+    
     
     
     

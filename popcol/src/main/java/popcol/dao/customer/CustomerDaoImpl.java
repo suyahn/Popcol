@@ -1,5 +1,7 @@
 package popcol.dao.customer;
 
+import java.sql.Date;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,9 +35,14 @@ public class CustomerDaoImpl implements CustomerDao {
 		return result;
 	}
 
-	public String getCustomerName(String id) {
+	public String getCustomerName(String cid) {
 		
-		return sst.selectOne("customerns.getCustomerName", id);
+		return sst.selectOne("customerns.getCustomerName", cid);
+	}
+
+	public String getCustomerBirthday(String cid) {
+		
+		return sst.selectOne("customerns.getCustomerBirthday", cid);
 	}
 
 	public Customer joinCheck(Customer customer) {

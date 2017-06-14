@@ -24,6 +24,10 @@
 		select cname from customer where cid = #{cid}
 	</select>
 	
+	<select id="getCustomerBirthday" parameterType="string" resultType="string" >
+		select to_char(cbirthday, 'mm/dd') from customer where cid = #{cid}
+	</select>
+	
 	<select id="joinCheck" parameterType="customer" resultType="customer">
 		select * from customer where cname = #{cname} and cphone = #{cphone} and cbirthday like to_date(#{cbirthday}, 'rr/mm/dd')
 	</select>

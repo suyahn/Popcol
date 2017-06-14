@@ -38,15 +38,50 @@
 			</c:if>
 			
 			<c:if test="${not empty id }">
-				<li>
-					${name }님 환영합니다.
-					<button onclick="location.href='mypage.do'" class="btn btn-info btn-sm" style="display: inline; border-color: navy; background-color: navy;">
-						마이페이지
-					</button>
-					<button onclick="location.href='logout.do'" class="btn btn-info btn-sm" style="display: inline; border-color: navy; background-color: navy;">
-						로그아웃
-					</button>
-				</li>
+				<c:if test="${not empty birthday }">
+					<li>
+						<img alt="fireworks" src="${ path }/images/fireworks${random}.gif" width="50px" style="margin-top: -10px; margin-bottom: -10px;">
+						<font color="navy">${name }님~</font>
+						<font color="red">생</font>
+						<font color="orange">일</font>
+						<font color="yellow">을 </font>
+						<font color="green">축</font>
+						<font color="blue">하</font>
+						<font color="navy">합</font>
+						<font color="violet">니</font>
+						<font color="red">다. </font>
+						<font color="red">쿠</font>
+						<font color="orange">폰</font>
+						<font color="yellow">함</font>
+						<font color="green">을 </font>
+						<font color="blue">확</font>
+						<font color="navy">인</font>
+						<font color="violet">해</font>
+						<font color="red">주</font>
+						<font color="orange">세</font>
+						<font color="yellow">요~</font>
+						<img alt="fireworks" src="${ path }/images/fireworks${random}.gif" width="50px" style="margin-top: -10px; margin-bottom: -10px;">
+						
+						<button onclick="location.href='mypage_Main.do'" class="btn btn-info btn-sm" style="display: inline; border-color: navy; background-color: navy;">
+							마이페이지
+						</button>
+						<button onclick="location.href='logout.do'" class="btn btn-info btn-sm" style="display: inline; border-color: navy; background-color: navy;">
+							로그아웃
+						</button>
+					</li>
+				</c:if>
+				
+				<c:if test="${empty birthday }">
+					<li>
+						${name }님 환영합니다.
+						<button onclick="location.href='mypage_Main.do'" class="btn btn-info btn-sm" style="display: inline; border-color: navy; background-color: navy;">
+							마이페이지
+						</button>
+						<button onclick="location.href='logout.do'" class="btn btn-info btn-sm" style="display: inline; border-color: navy; background-color: navy;">
+							로그아웃
+						</button>
+					</li>
+				</c:if>
 			</c:if>
 			</ul>
 		</div>

@@ -1,5 +1,7 @@
 package popcol.service.customer;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +18,14 @@ public class CustomerServiceImpl implements CustomerService{
 		return cd.loginCheck(customer);
 	}
 
-	public String getCustomerName(String id) {
+	public String getCustomerName(String cid) {
 		
-		return cd.getCustomerName(id);
+		return cd.getCustomerName(cid);
+	}
+	
+	public String getCustomerBirthday(String cid) {
+		
+		return cd.getCustomerBirthday(cid);
 	}
 
 	public Customer joinCheck(Customer customer) {
