@@ -20,14 +20,7 @@ public class CustomerController {
 
 	@RequestMapping("home")
 	public String home(Model model, HttpSession session) {
-		String id = (String) session.getAttribute("id");
-		if (id != null) {
-			Customer customer = cs.getSessionInfo(id);
-
-			model.addAttribute("id", id);
-			model.addAttribute("customer", customer);
-		}
-
+		
 		return "home";
 	}
 

@@ -24,10 +24,6 @@
 		select cname from customer where cid = #{cid}
 	</select>
 	
-	<select id="getSessionInfo" parameterType="string" resultType="customer">
-		select * from customer where cid = #{id}
-	</select>
-	
 	<select id="joinCheck" parameterType="customer" resultType="customer">
 		select * from customer where cname = #{cname} and cphone = #{cphone} and cbirthday like to_date(#{cbirthday}, 'rr/mm/dd')
 	</select>
