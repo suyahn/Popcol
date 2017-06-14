@@ -147,6 +147,7 @@ public class CustomerController {
 		
 		if(customerId != null) {
 			result = 1;
+			model.addAttribute("customerId", customerId);
 		} else {
 			result = 0;
 		}
