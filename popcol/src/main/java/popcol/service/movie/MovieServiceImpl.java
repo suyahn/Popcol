@@ -37,6 +37,11 @@ public class MovieServiceImpl implements MovieService {
 		
 		return md.adminSelect(mid);
 	}
+	@Override
+	public int adminUpdate(Movie movie) {
+		
+		return md.adminUpdate(movie);
+	}
 	
 
 }

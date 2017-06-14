@@ -11,5 +11,6 @@ public interface MovieService {
 	int getTotal();
 	int adminInsert(Movie movie);
 	Movie adminSelect(int mid);
+	int adminUpdate(Movie movie);
 	
 }

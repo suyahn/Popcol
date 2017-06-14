@@ -66,9 +66,9 @@
 			</tr>
 		</table>
 		<a href="adminList.do?pageNum=${pageNum}" class="btn btn-info">목록</a>
-		<a href="adminUpdateForm.do?num=${board.num}&pageNum=${pageNum}"
-			class="btn btn-info">수정</a> <a
-			href="adminDeleteForm.do?num=${board.num}&pageNum=${pageNum}"
+		<a href="adminUpdateForm.do?mid=${movie.mid}&pageNum=${pageNum}"
+			class="btn btn-info">수정</a> 
+		<a href="adminDeleteForm.do?mid=${movie.mid}&pageNum=${pageNum}"
 			class="btn btn-info">삭제</a>
 		<!-- <div id="list"></div> -->
 	</div>

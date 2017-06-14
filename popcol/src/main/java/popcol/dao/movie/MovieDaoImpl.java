@@ -17,7 +17,6 @@ public class MovieDaoImpl implements MovieDao {
 
 	@Override
 	public List<Movie> movieChart() {
-		// TODO Auto-generated method stub
 		List<Movie> movies = sst.selectList("moviens.list");
 		List<Movie> movieChart = new ArrayList<Movie>();
 
@@ -51,8 +50,14 @@ public class MovieDaoImpl implements MovieDao {
 
 	@Override
 	public Movie adminSelect(int mid) {
-		
+
 		return sst.selectOne("moviens.adminSelect", mid);
+	}
+
+	@Override
+	public int adminUpdate(Movie movie) {
+
+		return sst.update("moviens.adminUpdate", movie);
 	}
 
 }

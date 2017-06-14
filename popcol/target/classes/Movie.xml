@@ -46,8 +46,16 @@
 	<select id="adminSelect" resultType="movie" parameterType="int">
 		select * from
 		movie where mid=#{mid}
-
 	</select>
+	<update id="adminUpdate" parameterType="movie">
+		update movie set
+		mtitle=#{mtitle},moriginaltitle=#{moriginaltitle},
+		mdirector=#{mdirector},mactor=#{mactor},mcontent=#{mcontent},
+		mreleaseDate=#{mreleaseDate},mrunningTime=#{mrunningTime},
+		murlPreview=#{murlPreview},murlPoster=#{murlPoster},mgrade=#{mgrade},
+		mnation=#{mnation}
+		where mid=#{mid}
+	</update>
 
 	<!-- 수연 -->
 

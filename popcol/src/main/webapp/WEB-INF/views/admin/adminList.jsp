@@ -33,8 +33,9 @@
 				<c:forEach var="movie" items="${adminList}">
 					<tr>
 						<td>${no}</td>
-						<td><a href="adminView.do?mid=${movie.mid}&pageNum=${pp.currentPage}"
-								class="btn btn-default">${movie.mtitle}</a></td>
+						<td><a
+							href="adminView.do?mid=${movie.mid}&pageNum=${pp.currentPage}"
+							class="btn btn-default">${movie.mtitle}</a></td>
 						<td>${movie.moriginaltitle }</td>
 						<td>${movie.mdirector }</td>
 						<td>${movie.mnation }</td>
@@ -53,6 +54,11 @@
 				}
 			%>
 		</table>
+		<div align="left">
+			<button type="button" class="btn btn-primary"
+				onclick="location.href='adminInsertForm.do?pageNum=${ pageNum }'">
+				영화입력</button>
+		</div>
 		<ul class="pagination">
 			<c:if test="${pp.startPage > pp.PAGE_PER_BLOCK }">
 				<li><a href="adminList.do?pageNum=${pp.startPage - 1}">이전</a></li>
@@ -65,7 +71,7 @@
 				<li><a href="adminList.do?pageNum=${pp.endPage + 1}">다음</a></li>
 			</c:if>
 		</ul>
-		<a href="adminInsertForm.do" class="btn btn-info">영화입력</a>
 	</div>
+
 </body>
 </html>

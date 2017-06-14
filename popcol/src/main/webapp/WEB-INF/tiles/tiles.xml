@@ -55,23 +55,27 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/member/findForm.jsp" />
 	</definition>
-	
+
 	<definition name="findId" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findId.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/member/findId.jsp" />
 	</definition>
-	
+
 	<definition name="findPasswordForm" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findPasswordForm.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/member/findPasswordForm.jsp" />
 	</definition>
-	
+
 	<definition name="findPassword" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findPassword.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/member/findPassword.jsp" />
 	</definition>
-	
+
 	<definition name="findPassword_changePassword" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findPassword_changePassword.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/member/findPassword_changePassword.jsp" />
 	</definition>
-	
+
 	<definition name="empty" template="/WEB-INF/views/popcol/main/empty.jsp">
 		<put-attribute name="body" value="" />
 	</definition>
@@ -145,15 +149,24 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/adminInsertForm.jsp" />
 	</definition>
-	
+
 	<definition name="adminInsert" extends="admin">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/adminInsert.jsp" />
 	</definition>
-	
+
 	<definition name="adminView" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/adminView.jsp" />
+	</definition>
+	
+	<definition name="adminUpdateForm" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminView.jsp" />
+			value="/WEB-INF/views/admin/adminUpdateForm.jsp" />
+	</definition>
+	
+	<definition name="adminUpdate" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/adminUpdate.jsp" />
 	</definition>
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">

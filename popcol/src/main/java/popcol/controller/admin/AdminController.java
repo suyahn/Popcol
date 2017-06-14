@@ -103,20 +103,41 @@ public class AdminController {
 	@RequestMapping("adminInsert") // 관리자 영화 입력
 	public String adminInsert(Model model, Movie movie, String pageNum) {
 		int result = ms.adminInsert(movie);
-		
+
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 		return "adminInsert";
 
 	}
-	@RequestMapping("adminView") //관리자 영화 상세 보기
-	public String adminView(int mid,Model model, String pageNum){
+
+	@RequestMapping("adminView") // 관리자 영화 상세 보기
+	public String adminView(int mid, Model model, String pageNum) {
+		Movie movie = ms.adminSelect(mid);
+
+		model.addAttribute("movie", movie);
+		model.addAttribute("pageNum", pageNum);
+		return "adminView";
+
+	}
+
+	@RequestMapping("adminUpdateForm")
+	public String adminUpdateForm(int mid, Model model, String pageNum) {
 		Movie movie = ms.adminSelect(mid);
 		
 		model.addAttribute("movie", movie);
 		model.addAttribute("pageNum", pageNum);
-		return "adminView";
-		
+		return "adminUpdateForm";
+
 	}
 	
+	@RequestMapping("adminUpdate") // 관리자 영화 입력
+	public String adminUpdate(Model model, Movie movie, String pageNum) {
+		int result = ms.adminUpdate(movie);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		return "adminUpdate";
+
+	}
+
 }
