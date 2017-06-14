@@ -30,4 +30,9 @@ public class BookingDaoImpl implements BookingDao{
 		date.put("lid", lid);
 		return sst.selectList("runningtimetablens.bookingRTList", date);
 	}
+	public List<RunningtimeTable> timeList(int mid, int lid, int rtid) {
+		HashMap<String,Integer> time=new HashMap<String,Integer>();
+		time.put("mid",mid); time.put("lid", lid); time.put("rtid", rtid);
+		return sst.selectList("runningtimetablens.bookingRttList",time);
+	}
 }

@@ -12,7 +12,7 @@
 		<c:forEach var="location" items="${locationList}">
 		<!-- items의 locationList는 컨트롤의 리퀘스트 맵핑의 locationList와 연결 -->
 			<tr>
-				<td onclick="locationSelect(${location.mid}, ${location.lid})" style="cursor: pointer;">${location.lname}</td>
+				<td id="location_${location.lid}" class="locationlid" onclick="locationSelect(${location.mid}, ${location.lid})" style="cursor: pointer;">${location.lname}</td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -21,6 +21,34 @@
 			$('#date').html(data);
 		});
 	}
+	function dateSelect(mid,lid,rtid){
+		var sendData ='mid='+mid + '&lid='+lid +'&rtid='+rtid;
+		$.post("movietime.do",sendData,function(data){
+			$('#time').html(data);
+		});
+	}
+	$(function () {
+		$('.moviemid').click(function(){
+			$('.moviemid').css("background-color","white");
+			var idd = $(this).attr('id');
+			$('#'+idd).css("background-color","lightgray");
+		})	;
+		$('.locationlid').click(function(){
+			$('.locationlid').css("background-color","white");
+			var idd = $(this).attr('id');
+			$('#'+idd).css("background-color","lightgray");
+		})	;
+		$('.datertid').click(function(){
+			$('.datertid').css("background-color","white");
+			var idd = $(this).attr('id');
+			$('#'+idd).css("background-color","lightgray");
+		})	;
+		$('.timertid').click(function(){
+			$('.timertid').css("background-color","white");
+			var idd = $(this).attr('id');
+			$('#'+idd).css("background-color","lightgray");
+		})	;
+	});
 </script>
 </head>
 <body>
@@ -38,14 +66,14 @@
 					<table class="table table-hover">
 						<c:forEach var="movie" items="${movieList}">
 							<tr>
-								<td onclick="movieSelect(${movie.mid})" style="cursor: pointer;">${movie.mtitle}</td>
+								<td onclick="movieSelect(${movie.mid})" style="cursor: pointer;" id="movie_${movie.mid}" class="moviemid">${movie.mtitle}</td>
 							</tr>
 						</c:forEach>
 					</table>
 				</td>
 				<td id="location" style="width: 30%;"></td>
 				<td id="date" style="width: 10%;"></td>
-				<td style="width: 30%;">ASDFASFSERERSDFASDFA</td>
+				<td id="time" style="width: 30%;"></td>
 			</tr>
 		</table>
 	</div>
