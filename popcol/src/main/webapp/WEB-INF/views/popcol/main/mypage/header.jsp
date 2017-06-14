@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../header.jsp"%>
+<%@ include file="../../header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +40,7 @@
 			<c:if test="${not empty id }">
 				<c:if test="${not empty birthday }">
 					<li>
-						<img alt="fireworks" src="${ path }/images/fireworks${random}.gif" width="70px" style="margin-top: -10px; margin-bottom: -10px;">
+						<img alt="fireworks" src="${ path }/images/fireworks${random}.gif" width="50px" style="margin-top: -10px; margin-bottom: -10px;">
 						<font color="navy">${name }님~</font>
 						<font color="red">생</font>
 						<font color="orange">일</font>
@@ -60,7 +60,7 @@
 						<font color="red">주</font>
 						<font color="orange">세</font>
 						<font color="yellow">요~</font>
-						<img alt="fireworks" src="${ path }/images/fireworks${random}.gif" width="70px" style="margin-top: -10px; margin-bottom: -10px;">
+						<img alt="fireworks" src="${ path }/images/fireworks${random}.gif" width="50px" style="margin-top: -10px; margin-bottom: -10px;">
 						
 						<button onclick="location.href='mypage_Main.do'" class="btn btn-info btn-sm" style="display: inline; border-color: navy; background-color: navy;">
 							마이페이지
@@ -108,8 +108,8 @@
 							예매<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
 							<li><a href="reservation.do">빠른 예매</a></li>
+							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
 						</ul>
 					</li>
 					

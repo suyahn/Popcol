@@ -87,27 +87,30 @@
 	</definition>
 
 	<definition name="idDupCheck" extends="empty">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/idDupCheck.jsp" />
-	</definition>
-
-
-
-
-
+          <put-attribute name="body" value="/WEB-INF/views/popcol/main/member/idDupCheck.jsp" />
+    </definition>
+    
+    <!-- 마이페이지 -->
+	<!-- <definition name="mypage" template="/WEB-INF/views/popcol/main/mypage/layout.jsp">
+		<put-attribute name="title" value="PopCol" />
+		<put-attribute name="header" value="/WEB-INF/views/popcol/main/mypage/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/popcol/main/mypage/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/popcol/main/mypage/footer.jsp" />
+    </definition>
+    
+	<definition name="mypage_Main" extends="mypage">
+          <put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
+    </definition> -->
 	
 
-	<!-- 마이페이지 -->
 	<definition name="mypage_Main" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
 	</definition>
-
-
-
-
-
-
+	
+    
+    
+    
 
 
 	<!-- ####################### -->
@@ -115,29 +118,24 @@
 
 	<!-- 영화 -->
 	<definition name="movieChart" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/movie/movieChart.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/movie/movieChart.jsp" />
 	</definition>
 
 	<!-- 공지사항 -->
 	<definition name="noticeList" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/notice/noticeList.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeList.jsp" />
 	</definition>
 
 	<definition name="noticeInsertForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/notice/noticeInsertForm.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeInsertForm.jsp" />
 	</definition>
 
 	<definition name="noticeInsert" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/notice/noticeInsert.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeInsert.jsp" />
 	</definition>
 
 	<definition name="noticeView" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/notice/noticeView.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeView.jsp" />
 	</definition>
 
 
