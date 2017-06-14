@@ -54,4 +54,17 @@ public class NoticeController {
 		
 		return "notice/noticeInsertForm";
 	}
+	
+	@RequestMapping("noticeInsert")
+	public String noticeInsert(Notice notice, String pageNum, Model model) {
+		int number = ns.getMaxNum();
+		notice.setNid(number);
+		int result = ns.insert(notice);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("nid", notice.getNid());
+		
+		return "notice/noticeInsert";
+	}
 }

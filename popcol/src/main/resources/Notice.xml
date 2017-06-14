@@ -15,9 +15,8 @@
 	<select id="list" parameterType="notice" resultMap="noticeResult">
 		select * from (
 			select a.*, rownum rn from (
-				select * from notice 
+				select * from notice
 				<where>
-					ndel = 'n'
 					<if test="keyword != null and search != 'subcon'">
 						${search} like '%' || #{keyword} || '%'
 					</if>
@@ -43,4 +42,12 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="getMaxNum" resultType="int">
+		select nvl(max(nid), 0) + 1 from notice 
+	</select>
+	
+	<insert id="insert" parameterType="notice">
+		insert into notice values (#{nid}, #{nsubject}, #{ncontent}, sysdate, 'n')
+	</insert>
 </mapper>

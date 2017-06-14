@@ -7,4 +7,6 @@ import popcol.model.Notice;
 public interface NoticeDao {
 	int getTotal(Notice notice);
 	List<Notice> list(Notice notice);
+	int insert(Notice notice);
+	int getMaxNum();
 }

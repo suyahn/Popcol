@@ -41,7 +41,7 @@
 					<tr>
 						<td>${ no1 }</td>
 						<td>
-							<a href="noticeView.do?num=${ notice.nid }&pageNum=${ pageNum }" class="btn btn-link">${ notice.nsubject }</a>
+							<a href="noticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }" class="btn btn-link">${ notice.nsubject }</a>
 						</td>
 						<td>${ notice.ndate }</td>
 					</tr>

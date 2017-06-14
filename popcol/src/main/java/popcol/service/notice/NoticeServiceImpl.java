@@ -22,4 +22,14 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<Notice> list(Notice notice) {
 		return nd.list(notice);
 	}
+
+	@Override
+	public int insert(Notice notice) {
+		return nd.insert(notice);
+	}
+
+	@Override
+	public int getMaxNum() {
+		return nd.getMaxNum();
+	}
 }
