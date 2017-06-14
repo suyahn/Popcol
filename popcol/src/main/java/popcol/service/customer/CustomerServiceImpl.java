@@ -36,4 +36,9 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		return cd.insertCustomer(customer);
 	}
+
+	public String findCustomerId(Customer customer) {
+		
+		return cd.findCustomerId(customer);
+	}
 }

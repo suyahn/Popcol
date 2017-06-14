@@ -52,4 +52,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		return sst.insert("customerns.insertCustomer", customer);
 	}
+
+	public String findCustomerId(Customer customer) {
+		
+		return sst.selectOne("customerns.findCustomerId", customer);
+	}
 }

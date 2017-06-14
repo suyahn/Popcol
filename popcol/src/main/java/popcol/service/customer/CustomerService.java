@@ -14,4 +14,6 @@ public interface CustomerService {
 
 	int insertCustomer(Customer customer);
 
+	String findCustomerId(Customer customer);
+
 }

@@ -28,7 +28,7 @@
 				
 				<tr>
 					<td align="center">
-						<br><button type="button" class="btn btn-link" onclick="location.href='findIdPasswordForm.do'">Forgot?</button>
+						<br><button type="button" class="btn btn-link" onclick="location.href='findForm.do'">Forgot?</button>
 					</td>
 					
 					<td align="center">

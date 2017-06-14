@@ -14,4 +14,6 @@ public interface CustomerDao {
 
 	int insertCustomer(Customer customer);
 
+	String findCustomerId(Customer customer);
+
 }

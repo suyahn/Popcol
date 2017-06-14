@@ -15,44 +15,102 @@
      </ul>
      <div id="myTabContent" class="tab-content">
        <div role="tabpanel" class="tab-pane fade active in" id="id" aria-labelledby="id-tab">
-       	<br><br>
-        <form action="${ path }/member/findId.do" method="post">
+       
+       	<br>
+       	<br>
+       	
+       	<h4 class="text-primary">아이디 찾기</h4>
+		<h6 class="text-primary">아이디가 기억나지 않으세요? 가입 시 사용하신 개인정보로 아이디를 찾으실 수 있습니다.</h6>
+		
+		<br>
+		<br>
+		
+        <form action="findId.do" method="post">
 			<table>
-				<tr>
-					<td>
-						<input type="email" name="email" required="required" placeholder="Email" autofocus="autofocus" class="form-control">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<br>
-						<button type="submit" class="btn btn-info">Confirm</button>
-						<button type="button" class="btn btn-default" onclick="location.href='loginForm.jsp'">Login</button>
-					</td>
+					<tr>
+						<td>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="이름" required="required" name="cname" size="30">
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<div class="form-group">
+								<input type="date" class="form-control" placeholder="" required="required" name="cbirthdaystring" maxlength="8">
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<div class="form-group">
+								<input type="tel" class="form-control" name="cphone" required="required" placeholder="전화번호" pattern="(010)-\d{3,4}-\d{4}">
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" align="center">
+							<br>
+							<button type="submit" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">확인</button>
+							<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
+						</td>
 				</tr>
 			</table>
 		</form>
        </div>
        <div role="tabpanel" class="tab-pane fade" id="password" aria-labelledby="password-tab">
-      	<br><br>
-         <form action="${ path }/member/findPassword.do" method="post">
+       
+       	<br>
+       	<br>
+       	
+       	<h4 class="text-primary">비밀번호 찾기</h4>
+		<h6 class="text-primary">비밀번호가 기억나지 않으세요? 간단한 인증을 통해 비밀번호를 재설정하실 수 있습니다. </h6>
+		
+		<br>
+		<br>
+		
+         <form action="findPassword.do" method="post">
 			<table>
 				<tr>
 					<td>
-						<input type="text" name="id" required="required" placeholder="ID" class="form-control">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="아이디" required="required" name="cid" size="30">
+						</div>
 					</td>
 				</tr>
+				
 				<tr>
 					<td>
-						<br>
-						<input type="email" name="email" required="required" placeholder="Email" class="form-control">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="이름" required="required" name="cname" size="">
+						</div>
 					</td>
 				</tr>
+				
+				<tr>
+					<td>
+						<div class="form-group">
+							<input type="tel" class="form-control" name="cphone" required="required" placeholder="전화번호" pattern="(010)-\d{3,4}-\d{4}">
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<div class="form-group">
+							<input type="email" class="form-control" name="cemail" required="required" placeholder="이메일" pattern="(010)-\d{3,4}-\d{4}">
+						</div>
+					</td>
+				</tr>
+				
 				<tr>
 					<td colspan="2" align="center">
 						<br>
-						<button type="submit" class="btn btn-info">Send</button>
-						<button type="button" class="btn btn-default" onclick="location.href='loginForm.jsp'">Login</button>
+						<button type="submit" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">확인</button>
+						<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
 					</td>
 				</tr>
 			</table>

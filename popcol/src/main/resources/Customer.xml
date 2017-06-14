@@ -32,6 +32,10 @@
 		select * from customer where cid = #{cid}
 	</select>
 	
+	<select id="findCustomerId" parameterType="customer" resultType="String">
+		select cid from customer where cname = #{cname} and cphone = #{cphone} and cbirthday like to_date(#{cbirthday}, 'rr/mm/dd')
+	</select>
+	
 	
 	<insert id="insertCustomer" parameterType="customer">
 		insert into customer values (#{cid}, #{cname}, #{cpassword}, #{cemail}, #{cphone}, 2000, 'n', sysdate, #{cbirthday})
