@@ -16,12 +16,12 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<h2><font color="#EBCDD5">공지사항 작성</font></h2>
+		<h1 align="left">공지사항 작성</h1>
 		
 		<form action="noticeInsert.do" method="post" onsubmit="return chk()">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			
-			<table class="table table-bordered"  style="width: 60%">
+			<table class="table"  style="width: 60%">
 				<tr>
 					<th>제목</th>
 					<td>
@@ -36,8 +36,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" class="btn btn-primary" value="완료"
-							style="border-color: #EBCDD5; background-color: #EBCDD5;">
+						<input type="submit" class="btn btn-primary" value="완료">
 						<button type="button" class="btn btn-default" onclick="location.href='noticeList.do?pageNum=${ pageNum }'">이전</button>
 					</td>
 				</tr>

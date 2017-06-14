@@ -20,8 +20,12 @@
 		select cpassword from customer where cid = #{cid}
 	</select>
 	
-	<select id="getSessionInfo" parameterType="string" resultType="customer">
-		select * from customer where cid = #{id}
+	<select id="getCustomerName" parameterType="string" resultType="string">
+		select cname from customer where cid = #{cid}
+	</select>
+	
+	<select id="getCustomerBirthday" parameterType="string" resultType="string" >
+		select to_char(cbirthday, 'mm/dd') from customer where cid = #{cid}
 	</select>
 	
 	<select id="joinCheck" parameterType="customer" resultType="customer">

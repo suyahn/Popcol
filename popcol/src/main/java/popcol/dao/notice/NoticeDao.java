@@ -9,4 +9,5 @@ public interface NoticeDao {
 	List<Notice> list(Notice notice);
 	int insert(Notice notice);
 	int getMaxNum();
+	Notice select(int nid);
 }

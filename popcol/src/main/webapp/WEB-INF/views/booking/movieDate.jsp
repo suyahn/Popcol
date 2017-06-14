@@ -12,7 +12,9 @@
 		<c:forEach var="date" items="${dateList}">
 		<!-- items의 locationList는 컨트롤의 리퀘스트 맵핑의 locationList와 연결 -->
 			<tr>
-				<td>${date.rtdate}</td>
+				<td id="date_${date.rtid}" class="datertid" onclick="dateSelect(${date.mid}, ${date.lid},${date.rtid})" style="cursor: pointer;">
+					<fmt:formatDate value="${date.rtdate}" pattern="MM월 dd일"/>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

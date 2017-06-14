@@ -11,6 +11,11 @@
 			value="/WEB-INF/views/popcol/main/footer.jsp" />
 	</definition>
 
+
+	<!-- 도은 -->
+
+	<!-- 메인 -->
+
 	<definition name="home" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/home.jsp" />
@@ -76,6 +81,7 @@
 			value="/WEB-INF/views/popcol/main/member/findPassword_changePassword.jsp" />
 	</definition>
 
+
 	<definition name="empty" template="/WEB-INF/views/popcol/main/empty.jsp">
 		<put-attribute name="body" value="" />
 	</definition>
@@ -88,12 +94,32 @@
 
 
 
+
+	
+
+	<!-- 마이페이지 -->
+	<definition name="mypage_Main" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
+	</definition>
+
+
+
+
+
+
+
+
+	<!-- ####################### -->
 	<!-- 수연 -->
+
+	<!-- 영화 -->
 	<definition name="movieChart" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/movie/movieChart.jsp" />
 	</definition>
 
+	<!-- 공지사항 -->
 	<definition name="noticeList" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/notice/noticeList.jsp" />
@@ -109,28 +135,28 @@
 			value="/WEB-INF/views/notice/noticeInsert.jsp" />
 	</definition>
 
+	<definition name="noticeView" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/notice/noticeView.jsp" />
+	</definition>
+
 
 
 
 	<!-- 혜진 -->
+
 	<definition name="reserve" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/booking/reserve.jsp" />
 	</definition>
-
 	<definition name="movielocation" extends="empty">
-		<put-attribute name="body"
-			value="/WEB-INF/views/booking/movielocation.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/booking/movielocation.jsp" />
 	</definition>
-
 	<definition name="movieDate" extends="empty">
-		<put-attribute name="body"
-			value="/WEB-INF/views/booking/movieDate.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/booking/movieDate.jsp" />
 	</definition>
-
-
-
-
-
+	<definition name="movieTime" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/booking/movieTime.jsp" />
+	</definition>
 
 	<!-- 규랑 -->
 	<definition name="admin" template="/WEB-INF/views/admin/layout.jsp">

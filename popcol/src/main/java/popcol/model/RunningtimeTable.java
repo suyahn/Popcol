@@ -9,6 +9,14 @@ public class RunningtimeTable {
 	private int tid;
 	private int mid;
 	private Date rtdate;
+	private String rttime;
+	
+	public String getRttime() {
+		return rttime;
+	}
+	public void setRttime(String rttime) {
+		this.rttime = rttime;
+	}
 	public int getRtid() {
 		return rtid;
 	}
@@ -45,5 +53,4 @@ public class RunningtimeTable {
 	public void setRtdate(Date rtdate) {
 		this.rtdate = rtdate;
 	}
-
 }

@@ -1,12 +1,16 @@
 package popcol.service.customer;
 
+import java.sql.Date;
+
 import popcol.model.Customer;
 
 public interface CustomerService {
 
 	int loginCheck(Customer customer);
 
-	Customer getSessionInfo(String id);
+	String getCustomerName(String cid);
+
+	String getCustomerBirthday(String cid);
 
 	Customer joinCheck(Customer customer);
 

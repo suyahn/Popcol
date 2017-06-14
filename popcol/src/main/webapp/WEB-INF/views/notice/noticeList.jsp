@@ -51,7 +51,7 @@
 		</table>
 		
 		<!-- 아이디가 마스터면 -->
-		<div align="left">
+		<div align="right">
 			<button type="button" class="btn btn-primary" onclick="location.href='noticeInsertForm.do?pageNum=${ pageNum }'">글 작성</button>
 			
 			<div align="center">

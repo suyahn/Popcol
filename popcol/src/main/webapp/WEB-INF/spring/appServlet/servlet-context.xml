@@ -32,6 +32,13 @@
 	
 	<context:component-scan base-package="popcol" />
 	
+	<!-- <beans:bean id="lc" class="popcol.controller.customer.LoginCheck" />
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/movieChart.do" />
+			<beans:ref bean="lc" />
+		</interceptor>
+	</interceptors> -->
 	
 </beans:beans>

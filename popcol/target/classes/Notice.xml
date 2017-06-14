@@ -47,6 +47,10 @@
 		select nvl(max(nid), 0) + 1 from notice 
 	</select>
 	
+	<select id="select" parameterType="int" resultType="notice">
+		select * from notice where nid = #{nid}
+	</select>
+	
 	<insert id="insert" parameterType="notice">
 		insert into notice values (#{nid}, #{nsubject}, #{ncontent}, sysdate, 'n')
 	</insert>
