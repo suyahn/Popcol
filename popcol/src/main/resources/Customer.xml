@@ -45,4 +45,9 @@
 		insert into customer values (#{cid}, #{cname}, #{cpassword}, #{cemail}, #{cphone}, 2000, 'n', sysdate, #{cbirthday})
 	</insert>
 	
+	
+	<update id="updateFindPassword" parameterType="customer">
+		update customer set cpassword = #{cpassword} where cid = #{cid}
+	</update>
+	
 </mapper>

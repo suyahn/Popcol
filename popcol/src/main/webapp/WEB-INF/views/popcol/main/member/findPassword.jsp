@@ -9,14 +9,14 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
-		$('#password').blur(function() {
-			var password1 = $('#password').val();
+		$('#password1').blur(function() {
+			var password1 = $('#password1').val();
 			var password2 = $('#password2').val();
 			
 			var reg_pw = /^.*(?=.{4,20})(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@!#$*()_&]).*$/;
 			if(!reg_pw.test(password1)) { 
 				$('#passwordCheck').html('<span class="err">4~12자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>');
-				$('#password').focus();
+				$('#password1').focus();
 				
 				return false;
 			}
@@ -38,7 +38,7 @@
 		});
 		
 		$('#password2').blur(function() {
-			var password1 = $('#password').val();
+			var password1 = $('#password1').val();
 			var password2 = $('#password2').val();
 			
 			if (password1 == "") {
@@ -127,16 +127,19 @@
 				
 				<br>
 				
-				<h6 class="text-primary" style="color: red;">비밀번호는 4 ~ 20자리의 영문 대 소문자, 숫자, 특수문자를 사용해주세요.</h6>
-
-				<br>
-				
 				<form action="findPassword_changePassword.do" method="post">
+					<input type="hidden" name="cid" value="${customer.cid }">
 					<table>
+						<tr>
+							<td>
+								<h6 class="text-primary" style="color: red;">비밀번호는 4 ~ 20자리의 영문 대 소문자, 숫자, 특수문자를 사용해주세요.</h6>
+							</td>
+						</tr>
+					
 						<tr>
 							<td>						
 								<div class="form-group">
-									<input type="password" class="form-control" name="cpassword" id="password" required="required" placeholder="새 비밀번호">
+									<br><input type="password" class="form-control" name="cpassword" id="password1" required="required" placeholder="새 비밀번호">
 								</div>
 							</td>
 						</tr>	
@@ -156,7 +159,7 @@
 						</tr>
 						
 						<tr>
-							<td colspan="2" align="center">
+							<td>
 								<br>
 								<button type="submit" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">비밀번호 변경</button>
 								<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
@@ -178,7 +181,7 @@
 				<br>
 				<br>
 				
-				<button onclick="location.href='findForm.do'" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">돌아가기</button>
+				<button onclick="location.href='findPasswordForm.do'" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">돌아가기</button>
 				<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
 			</c:if>
        </div>

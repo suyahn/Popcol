@@ -18,4 +18,6 @@ public interface CustomerDao {
 
 	Customer findCustomerPassword(Customer customer);
 
+	int updateFindPassword(Customer customer);
+
 }

@@ -157,6 +157,12 @@ public class CustomerController {
 		return "findId";
 	}
 	
+	@RequestMapping("findPasswordForm")
+	public String findPasswordForm() {
+		
+		return "findPasswordForm";
+	}
+	
 	@RequestMapping("findPassword")
 	public String findPassword(Customer customer, Model model) {
 		Customer checkCustomer = cs.findCustomerPassword(customer);
@@ -176,8 +182,10 @@ public class CustomerController {
 	
 	@RequestMapping("findPassword_changePassword")
 	public String findPassword_changePassword(Customer customer, Model model) {
+		int result = cs.updateFindPassword(customer);
 		
-		
+		model.addAttribute("result", result);
+				
 		return "findPassword_changePassword";
 	}
 }

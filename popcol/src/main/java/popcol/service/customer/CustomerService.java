@@ -18,4 +18,6 @@ public interface CustomerService {
 
 	Customer findCustomerPassword(Customer customer);
 
+	int updateFindPassword(Customer customer);
+
 }

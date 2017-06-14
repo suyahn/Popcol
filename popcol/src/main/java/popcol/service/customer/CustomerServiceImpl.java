@@ -15,7 +15,6 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		return cd.loginCheck(customer);
 	}
-
 	
 	public Customer getSessionInfo(String id) {
 		
@@ -45,5 +44,10 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer findCustomerPassword(Customer customer) {
 		
 		return cd.findCustomerPassword(customer);
+	}
+
+	public int updateFindPassword(Customer customer) {
+		
+		return cd.updateFindPassword(customer);
 	}
 }

@@ -31,7 +31,7 @@
 				<br>
 				<br>
 				
-				<button type="button" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;" onclick="location.href='home.do'">메인</button>
+				<button type="button" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;" onclick="location.href='findPasswordForm.do'">비밀번호 찾기</button>
 				<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
 			</c:if>
 			

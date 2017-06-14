@@ -62,4 +62,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		return sst.selectOne("customerns.findCustomerPassword", customer);
 	}
+
+	public int updateFindPassword(Customer customer) {
+		
+		return sst.update("customerns.updateFindPassword", customer);
+	}
 }

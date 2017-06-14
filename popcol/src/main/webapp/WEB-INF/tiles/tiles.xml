@@ -49,8 +49,16 @@
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findId.jsp" />
 	</definition>
 	
+	<definition name="findPasswordForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findPasswordForm.jsp" />
+	</definition>
+	
 	<definition name="findPassword" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findPassword.jsp" />
+	</definition>
+	
+	<definition name="findPassword_changePassword" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findPassword_changePassword.jsp" />
 	</definition>
 	
 	
