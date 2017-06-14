@@ -1,5 +1,9 @@
 package popcol.service.movie;
 
-public interface MovieService {
+import java.util.List;
 
+import popcol.model.Movie;
+
+public interface MovieService {
+	List<Movie> movieChart();
 }

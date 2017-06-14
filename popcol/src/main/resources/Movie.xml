@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="moviens">
-	<resultMap type="movieResult" id="movie">
+	<resultMap type="movie" id="movieResult">
 		<result property="mid" column="mid" />
 		<result property="mtitle" column="mtitle" />
 		<result property="moriginaltitle" column="moriginaltitle" />
@@ -15,5 +15,29 @@
 		<result property="murlPoster" column="murlPoster" />
 		<result property="mgrade" column="mgrade" />
 		<result property="mnation" column="mnation" />
+		<result property="mdel" column="mdel" />
 	</resultMap>
+	
+	<select id="list" resultMap="movieResult">
+		select * from movie where mdel = 'n'
+	</select>
+	
+	<select id="movieChart" parameterType="int" resultType="movie">
+		<![CDATA[
+		select * 
+			from (select theMovie / total * 100 as bookingrate 
+						from (select count(*) theMovie 
+									from booking b, movie m, runningtimetable r
+									where b.rtid = r.rtid and b.mid = m.mid and m.mdel != 'y' 
+										and r.rtdate < to_char(sysdate, 'yyyymmdd') and m.mid = #{mid}
+								) cr,
+								(select count(*) total 
+									from booking b, movie m, runningtimetable r 
+									where b.rtid = r.rtid and b.mid = m.mid and m.mdel != 'y' 
+									and r.rtdate < to_char(sysdate, 'yyyymmdd')
+								) tot
+						) a, movie m 
+			where m.mid = #{mid}
+		]]>
+	</select>
 </mapper>

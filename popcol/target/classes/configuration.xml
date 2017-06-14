@@ -6,33 +6,33 @@
 	<properties resource="jdbc.properties" />
 	
 	<typeAliases>
-		<typeAlias alias="booking" type="popcol.model.Booking" />
+		<!-- <typeAlias alias="booking" type="popcol.model.Booking" />
 		<typeAlias alias="customer" type="popcol.model.Customer" />
-		<typeAlias alias="event" type="popcol.model.Event" />
+		<typeAlias alias="event" type="popcol.model.Event" /> -->
 		<typeAlias alias="faq" type="popcol.model.Faq" />
-		<typeAlias alias="location" type="popcol.model.Location" />
-		<typeAlias alias="movie" type="popcol.model.Movie" />
+		<!-- <typeAlias alias="location" type="popcol.model.Location" /> -->
+		<typeAlias alias="movie" type="popcol.model.Movie"/>
 		<typeAlias alias="notice" type="popcol.model.Notice" />
-		<typeAlias alias="price" type="popcol.model.Price" />
+		<!--   <typeAlias alias="price" type="popcol.model.Price" /> -->
 		<typeAlias alias="qna" type="popcol.model.Qna" />
-		<typeAlias alias="review" type="popcol.model.Review" />
+		<!--   <typeAlias alias="review" type="popcol.model.Review" />
 		<typeAlias alias="runningtimetable" type="popcol.model.RunningtimeTable" />
-		<typeAlias alias="theater" type="popcol.model.Theater" />
+		<typeAlias alias="theater" type="popcol.model.Theater" /> -->
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="Booking.xml" />
+		<!-- <mapper resource="Booking.xml" />
 		<mapper resource="Customer.xml" />
-		<mapper resource="Event.xml" />
+		<mapper resource="Event.xml" /> -->
 		<mapper resource="Faq.xml" />
-		<mapper resource="Location.xml" />
+		<!-- <mapper resource="Location.xml" /> -->
 		<mapper resource="Movie.xml" />
 		<mapper resource="Notice.xml" />
-		<mapper resource="Price.xml" />
+		<!-- <mapper resource="Price.xml" /> -->
 		<mapper resource="Qna.xml" />
-		<mapper resource="Review.xml" />
+		<!-- <mapper resource="Review.xml" />
 		<mapper resource="RunningtimeTable.xml" />
-		<mapper resource="Theater.xml" />
+		<mapper resource="Theater.xml" /> -->
 	</mappers>
 	
 </configuration>

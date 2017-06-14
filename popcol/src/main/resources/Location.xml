@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="locationns">
-	<resultMap type="locationResult" id="location">
+	<resultMap type="location" id="locationResult">
 		<result property="lid" column="lid" />
 		<result property="lname" column="lname" />
 		<result property="laddress" column="laddress" />

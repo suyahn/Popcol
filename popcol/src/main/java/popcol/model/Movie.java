@@ -16,6 +16,8 @@ public class Movie {
 	private String murlPoster;
 	private String mgrade;//상영등급
 	private String mnation;// 만든 나라
+	private String mdel;
+	private double bookingRate; //예매율
 
 	public int getMid() {
 		return mid;
@@ -113,4 +115,19 @@ public class Movie {
 		this.mnation = mnation;
 	}
 
+	public double getBookingRate() {
+		return bookingRate;
+	}
+
+	public void setBookingRate(double bookingRate) {
+		this.bookingRate = bookingRate;
+	}
+
+	public String getMdel() {
+		return mdel;
+	}
+
+	public void setMdel(String mdel) {
+		this.mdel = mdel;
+	}
 }

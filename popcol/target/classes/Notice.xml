@@ -8,6 +8,39 @@
 		<result property="ncontent" column="ncontent" />
 		<result property="ndate" column="ndate" />
 		<result property="ndel" column="ndel" />
+		<result property="startRow" column="startRow"/>
+		<result property="endRow" column="endRow"/>
 	</resultMap>
 	
+	<select id="list" parameterType="notice" resultMap="noticeResult">
+		select * from (
+			select a.*, rownum rn from (
+				select * from notice 
+				<where>
+					ndel = 'n'
+					<if test="keyword != null and search != 'subcon'">
+						${search} like '%' || #{keyword} || '%'
+					</if>
+					<if test="keyword != null and search == 'subcon'">
+						nsubject like '%' || #{keyword} || '%' or
+						ncontent like '%' || #{keyword} || '%'
+					</if>
+					<!-- ndel이 'n'인것만 where 조건하고 싶은데 그건 어디다가...?? -->
+				</where>
+				order by ndate desc) a ) 
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getTotal" parameterType="notice" resultType="int">
+		select count(*) from notice
+		<where>
+			<if test="keyword != null and search != 'subcon'">
+				${search} like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != null and search == 'subcon'">
+				nsubject like '%' || #{keyword} || '%' or
+				ncontent like '%' || #{keyword} || '%'
+			</if>
+		</where>
+	</select>
 </mapper>
