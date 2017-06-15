@@ -8,6 +8,50 @@
 <title>Insert title here</title>
 </head>
 <body>
-라라
+	<div class="container">
+		<div>
+			<h4><a href="mypage_reservation.do">나의 예매 내역</a></h4>
+			
+			<table class="table ">
+				<tr>
+					<td>예매번호</td>
+					<td>포스터</td>
+					<td>영화제목<br>관람극장 극장명<br>관람일시 날짜, 시간</td>
+					<td>좌석, 인원수, 가격</td>
+				</tr>
+			</table>
+		</div>
+		
+		<hr>
+		
+		<div>
+			<h4><a href="mypage_myPoint.do">나의 포인트 내역</a></h4>
+			
+			<table class="table ">
+				<tr>
+					<td>예매번호</td>
+					<td>포스터</td>
+					<td>영화제목<br>관람극장 극장명<br>관람일시 날짜, 시간</td>
+					<td>좌석, 인원수, 가격</td>
+				</tr>
+			</table>
+		</div>
+		
+		<hr>
+		
+		<div>
+			<h4><a href="mypage_myQna.do">나의 문의 내역</a></h4>
+			
+			<table class="table ">
+				<tr>
+					<td>예매번호</td>
+					<td>포스터</td>
+					<td>영화제목<br>관람극장 극장명<br>관람일시 날짜, 시간</td>
+					<td>좌석, 인원수, 가격</td>
+				</tr>
+			</table>
+		</div>
+	
+	</div>
 </body>
 </html>
