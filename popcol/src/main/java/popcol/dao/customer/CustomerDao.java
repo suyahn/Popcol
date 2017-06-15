@@ -1,12 +1,14 @@
 package popcol.dao.customer;
 
-import java.sql.Date;
-
 import popcol.model.Customer;
 
 public interface CustomerDao {
 
+	void updateForbityhday();
+
 	int loginCheck(Customer customer);
+
+	Customer getSessionCustomerInfo(String cid);
 
 	String getCustomerName(String cid);
 

@@ -12,6 +12,7 @@ public class Customer {
 	private String cdel;
 	private Date creg_date;
 	private Date cbirthday;
+	private String ccheckbd;
 
 	public String getCid() {
 		return cid;
@@ -83,5 +84,13 @@ public class Customer {
 
 	public void setCbirthday(Date cbirthday) {
 		this.cbirthday = cbirthday;
+	}
+
+	public String getCcheckbd() {
+		return ccheckbd;
+	}
+
+	public void setCcheckbd(String ccheckbd) {
+		this.ccheckbd = ccheckbd;
 	}
 }

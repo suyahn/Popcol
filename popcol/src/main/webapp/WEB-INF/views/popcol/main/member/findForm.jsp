@@ -54,7 +54,7 @@
 						<tr>
 							<td colspan="2" align="center">
 								<br>
-								<button type="submit" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">확인</button>
+								<button type="submit" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">확인</button>
 								<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
 							</td>
 					</tr>
@@ -109,7 +109,7 @@
 					<tr>
 						<td colspan="2" align="center">
 							<br>
-							<button type="submit" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">확인</button>
+							<button type="submit" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">확인</button>
 							<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
 						</td>
 					</tr>

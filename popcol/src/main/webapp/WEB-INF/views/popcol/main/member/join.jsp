@@ -16,8 +16,8 @@
 			<br>
 			<br>
 			
-			<button onclick="location.href='loginForm.do'" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">로그인</button>
-			<button onclick="location.href='home.do'" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">메인페이지</button>
+			<button onclick="location.href='loginForm.do'" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">로그인</button>
+			<button onclick="location.href='home.do'" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">메인페이지</button>
 		</div>
 	</c:if>
 	

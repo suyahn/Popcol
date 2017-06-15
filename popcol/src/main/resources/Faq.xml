@@ -29,7 +29,7 @@
 						fdel = 'n'
 					</if>
 				</where>
-				) a ) 
+				order by fid desc) a ) 
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
@@ -50,4 +50,24 @@
 			</if>
 		</where>
 	</select>
+	
+    <select id="getMaxNum" resultType="int">
+        select nvl(max(fid), 0) + 1 from faq 
+    </select>
+    
+    <select id="select" parameterType="int" resultType="faq">
+        select * from faq where fid = #{fid}
+    </select>
+    
+    <insert id="insert" parameterType="faq">
+        insert into faq values (#{fid}, #{fquestion}, #{fanswer}, 'n')
+    </insert>
+    
+    <update id="update" parameterType="faq">
+		update faq set fquestion = #{fquestion}, fanswer = #{fanswer} where fid = #{fid}
+	</update>
+	
+	<update id="delete">
+		update faq set fdel = 'y' where fid = #{fid}
+	</update>
 </mapper>

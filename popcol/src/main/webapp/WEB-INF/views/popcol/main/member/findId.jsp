@@ -31,7 +31,7 @@
 				<br>
 				<br>
 				
-				<button type="button" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;" onclick="location.href='findPasswordForm.do'">비밀번호 찾기</button>
+				<button type="button" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;" onclick="location.href='findPasswordForm.do'">비밀번호 찾기</button>
 				<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
 			</c:if>
 			
@@ -41,7 +41,7 @@
 				<br>
 				<br>
 				
-				<button onclick="location.href='findForm.do'" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">돌아가기</button>
+				<button onclick="location.href='findForm.do'" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">돌아가기</button>
 				<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
 			</c:if>
        </div>
@@ -94,7 +94,7 @@
 					<tr>
 						<td colspan="2" align="center">
 							<br>
-							<button type="submit" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">확인</button>
+							<button type="submit" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">확인</button>
 							<button type="button" class="btn btn-default btn-sm" onclick="location.href='loginForm.do'">로그인</button>
 						</td>
 					</tr>

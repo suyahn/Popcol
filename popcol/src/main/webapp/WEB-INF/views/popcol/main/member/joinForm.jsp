@@ -228,7 +228,7 @@
 					<th colspan="2">		
 						<br>				
 						<div class="form-group" style="display: inline;">
-							<input type="submit" class="btn btn-info btn-sm" value="회원가입" style="border-color: navy; background-color: navy;">
+							<input type="submit" class="btn btn-info btn-sm" value="회원가입" style="border-color: #cd1726; background-color: #cd1726;">
 							<input type="button" onclick="location.href='home.do'" class="btn btn-default btn-sm" value="취소" >
 						</div>
 					</th>

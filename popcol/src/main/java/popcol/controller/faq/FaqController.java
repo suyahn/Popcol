@@ -47,4 +47,65 @@ public class FaqController {
 		
 		return "faqList";
 	}
+    
+    @RequestMapping("faqInsertForm")
+    public String faqInsertForm(String pageNum, Model model) {
+        model.addAttribute("pageNum", pageNum);
+        
+        return "faqInsertForm";
+    }
+    
+    @RequestMapping("faqInsert")
+    public String faqInsert(Faq faq, String pageNum, Model model) {
+        int number = fs.getMaxNum();
+        faq.setFid(number);
+        int result = fs.insert(faq);
+        
+        model.addAttribute("result", result);
+        model.addAttribute("pageNum", pageNum);
+        model.addAttribute("fid", faq.getFid());
+        
+        return "faqInsert";
+    }
+
+    @RequestMapping("faqView")
+    public String faqView(int fid, String pageNum, Model model) {
+        Faq faq = fs.select(fid);
+        
+        model.addAttribute("faq", faq);
+        model.addAttribute("pageNum", pageNum);
+        
+        return "faqView";
+    }
+    
+    @RequestMapping("faqUpdateForm")
+	public String faqUpdateForm(int fid, String pageNum, Model model) {
+		Faq faq = fs.select(fid);
+		
+		model.addAttribute("faq", faq);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "faqUpdateForm";
+	}
+	
+	@RequestMapping("faqUpdate")
+	public String faqUpdate(Faq faq, String pageNum, Model model) {
+		int result = fs.update(faq);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("fid", faq.getFid());
+		
+		return "faqUpdate";
+	}
+	
+	@RequestMapping("faqDelete")
+	public String faqDelete(int fid, String pageNum, Model model) {
+		int result = fs.delete(fid);
+		
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("result", result);
+		
+		return "faqDelete";
+	}
 }

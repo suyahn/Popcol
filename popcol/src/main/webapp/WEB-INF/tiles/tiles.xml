@@ -3,7 +3,7 @@
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="mainLayout" template="/WEB-INF/views/popcol/main/layout.jsp">
-		<put-attribute name="title" value="PopCol" />
+		<put-attribute name="title" value="Popcorn&amp;Cola" />
 		<put-attribute name="header"
 			value="/WEB-INF/views/popcol/main/header.jsp" />
 		<put-attribute name="body" value="" />
@@ -108,6 +108,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
 	</definition>
 	
+	<definition name="receivePoint" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/receivePoint.jsp" />
+	</definition>
+	
+	<definition name="mypage_Home" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Home.jsp" />
+	</definition>
+	
     
     
     
@@ -153,6 +161,30 @@
     <!-- faq 자주하는 질문 -->
     <definition name="faqList" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqList.jsp" />
+    </definition>
+    
+    <definition name="faqInsertForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqInsertForm.jsp" />
+    </definition>
+    
+    <definition name="faqInsert" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqInsert.jsp" />
+    </definition>
+    
+    <definition name="faqView" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqView.jsp" />
+    </definition>
+    
+    <definition name="faqUpdateForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqUpdateForm.jsp" />
+    </definition>
+    
+    <definition name="faqUpdate" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqUpdate.jsp" />
+    </definition>
+    
+    <definition name="faqDelete" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqDelete.jsp" />
     </definition>
     
     
