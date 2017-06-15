@@ -136,14 +136,30 @@
 
 	<definition name="noticeView" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/notice/noticeView.jsp" />
-	</definition>
-
-
-
-
-	<!-- 혜진 -->
-
-	<definition name="reserve" extends="mainLayout">
+    </definition>
+    
+    <definition name="noticeUpdateForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeUpdateForm.jsp" />
+    </definition>
+    
+    <definition name="noticeUpdate" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeUpdate.jsp" />
+    </definition>
+    
+    <definition name="noticeDelete" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeDelete.jsp" />
+    </definition>
+    
+    <!-- faq 자주하는 질문 -->
+    <definition name="faqList" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqList.jsp" />
+    </definition>
+    
+    
+    
+    
+    <!-- 혜진 -->
+    <definition name="reserve" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/booking/reserve.jsp" />
 	</definition>
 	<definition name="movielocation" extends="empty">
