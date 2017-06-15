@@ -108,13 +108,13 @@
 							예매<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
 							<li><a href="reservation.do">빠른 예매</a></li>
+							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
 						</ul>
 					</li>
 					
 					 <li class="">
-					 	<a href="adminList.do">이벤트</a>
+					 	<a href="evnetList.do">이벤트</a>
 					 </li>
 					
 					<li class="dropdown">
@@ -123,8 +123,8 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="noticeList.do">공지사항</a></li>
-							<li><a href="${ path }/gatheringCalendar/index.jsp">FAQ</a></li>
-							<li><a href="${ path }/gatheringCalendar/index.jsp">QnA</a></li>
+							<li><a href="faqList.do">자주하는 질문</a></li>
+							<li><a href="qnaList.do">1:1 문의</a></li>
 						</ul>
 					</li>
 					

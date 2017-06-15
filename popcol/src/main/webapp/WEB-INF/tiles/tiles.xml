@@ -150,6 +150,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/notice/noticeDelete.jsp" />
     </definition>
     
+    <!-- faq 자주하는 질문 -->
+    <definition name="faqList" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqList.jsp" />
+    </definition>
+    
     
     
     
