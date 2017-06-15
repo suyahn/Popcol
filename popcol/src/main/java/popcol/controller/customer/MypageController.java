@@ -40,6 +40,8 @@ public class MypageController {
 			id = (String) session.getAttribute("id");
 			int result = ms.updateForBirthdayPoint(id);
 			
+			session.setAttribute("checkPoint", "y");
+			
 			model.addAttribute("result", result);
 		}
 		
