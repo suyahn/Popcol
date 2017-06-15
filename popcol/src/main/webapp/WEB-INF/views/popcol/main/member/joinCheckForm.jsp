@@ -42,7 +42,12 @@
 				</tr>
 				
 				<tr>
-					<td><input type="submit" value="가입여부확인" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;"></td>
+					<td>
+						<div class="form-group">
+							<input type="submit" value="가입여부확인" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">
+							<input type="button" onclick="location.href='home.do'" class="btn btn-default btn-sm" value="취소" >
+						</div>
+					</td>
 				</tr>
 			</table>
 		</form>

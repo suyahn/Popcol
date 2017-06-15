@@ -26,5 +26,8 @@ public class BookingServiceImpl implements BookingService {
 	public List<RunningtimeTable> dateList(int mid, int lid) {
 		return bd.dateList(mid,lid);
 	}
+	public List<RunningtimeTable> timeList(int mid, int lid, int rtid) {
+		return bd.timeList(mid,lid,rtid);
+	}
 
 }
