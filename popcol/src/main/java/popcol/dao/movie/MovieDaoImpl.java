@@ -74,7 +74,7 @@ public class MovieDaoImpl implements MovieDao {
 
 	@Override
 	public int adminUpdate(Movie movie) {
-
+		
 		return sst.update("moviens.adminUpdate", movie);
 	}
 

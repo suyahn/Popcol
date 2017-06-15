@@ -41,13 +41,13 @@
 			<tr>
 				<td>줄거리</td>
 				<td><pre>
-						<textarea rows="5" cols="30" name="content" required="required" style="text-align: left;">${movie.mcontent}
+						<textarea rows="5" cols="30" name="mcontent" required="required">${movie.mcontent}
 						</textarea>
 					</pre></td>
 			</tr>
 			<tr>
 				<td>개봉일</td>
-				<td><input type="date" name="mactor" required="required"
+				<td><input type="date" name="mreleaseDate" required="required"
 					value="${movie.mreleaseDate}"></td>
 			</tr>
 			<tr>

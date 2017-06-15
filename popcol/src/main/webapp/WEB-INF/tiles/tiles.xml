@@ -187,30 +187,30 @@
 
 	<definition name="adminInsertForm" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminInsertForm.jsp" />
+			value="/WEB-INF/views/admin/movie/adminInsertForm.jsp" />
 	</definition>
 
 	<definition name="adminInsert" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminInsert.jsp" />
+			value="/WEB-INF/views/admin/movie/adminInsert.jsp" />
 	</definition>
 
 	<definition name="adminView" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/admin/adminView.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/movie/adminView.jsp" />
 	</definition>
 	
 	<definition name="adminUpdateForm" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminUpdateForm.jsp" />
+			value="/WEB-INF/views/admin/movie/adminUpdateForm.jsp" />
 	</definition>
 	
 	<definition name="adminUpdate" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminUpdate.jsp" />
+			value="/WEB-INF/views/admin/movie/adminUpdate.jsp" />
 	</definition>
 	<definition name="adminDelete" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminDelete.jsp" />
+			value="/WEB-INF/views/admin/movie/adminDelete.jsp" />
 	</definition>
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">
