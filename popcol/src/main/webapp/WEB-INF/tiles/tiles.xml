@@ -192,6 +192,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/adminUpdate.jsp" />
 	</definition>
+	<definition name="adminDelete" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/adminDelete.jsp" />
+	</definition>
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">
 		<put-attribute name="body"

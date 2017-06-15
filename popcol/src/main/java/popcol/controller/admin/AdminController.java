@@ -133,10 +133,19 @@ public class AdminController {
 	@RequestMapping("adminUpdate") // 관리자 영화 입력
 	public String adminUpdate(Model model, Movie movie, String pageNum) {
 		int result = ms.adminUpdate(movie);
-
+		
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 		return "adminUpdate";
+
+	}
+	@RequestMapping("adminDelete") // 관리자 영화 삭제
+	public String adminDelete(int mid, Model model, String pageNum) {
+		int result = ms.adminDelete(mid);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		return "adminDelete";
 
 	}
 

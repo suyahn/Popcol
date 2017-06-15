@@ -25,10 +25,7 @@ public class MovieDaoImpl implements MovieDao {
 		for (Movie movie : movies) {
 			movieChart.add((Movie) sst.selectOne("moviens.movieChart", movie.getMid()));
 		}
-<<<<<<< HEAD
 
-=======
-		
 		/*예매율 bookingRate가 큰 순으로 정렬*/
 		Collections.sort(movieChart, new Comparator<Movie>() {
 			@Override
@@ -44,7 +41,7 @@ public class MovieDaoImpl implements MovieDao {
 		});
 		Collections.reverse(movieChart);
 		
->>>>>>> dfb3e6c74ee8abf5ddd866ae975d41354edb30e8
+
 		return movieChart;
 	}
 
@@ -79,6 +76,12 @@ public class MovieDaoImpl implements MovieDao {
 	public int adminUpdate(Movie movie) {
 
 		return sst.update("moviens.adminUpdate", movie);
+	}
+
+	@Override
+	public int adminDelete(int mid) {
+		
+		return sst.update("moviens.adminDelete",mid);
 	}
 
 }
