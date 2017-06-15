@@ -182,7 +182,7 @@
 
 	<!-- 영화 관리 -->
 	<definition name="adminList" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/admin/adminList.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/movie/adminList.jsp" />
 	</definition>
 
 	<definition name="adminInsertForm" extends="admin">
