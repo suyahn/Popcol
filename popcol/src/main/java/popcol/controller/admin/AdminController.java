@@ -152,6 +152,7 @@ public class AdminController {
 	}
 	
 	/*관리자 영화관 관리*/
+	
 	@RequestMapping("adminLocationList") // 관리자 영화관리스트
 	public String adminLocationList(Model model) {
 		List<Location> locationList = ls.adminLocationList();
