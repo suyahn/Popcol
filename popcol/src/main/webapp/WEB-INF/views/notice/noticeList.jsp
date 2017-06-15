@@ -6,10 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<style type="text/css">
+	 .red-active { color: black; text-decoration: none;}
+ 	.red-active:hover { color: #CD1726; text-decoration: underline; font-weight: bold;}
+</style>
 </head>
 <body>
 	<div class="container" align="center" style="width: 70%">
-		<h1 align="left"><a href='noticeList.do'>공지사항</a></h1>
+		<h1 align="left"><a href='noticeList.do' class="red-active">공지사항</a></h1>
 		<div align="right">
 			<form action="noticeList.do">
 				<input type="hidden" name="pageNum" value="1">
@@ -41,7 +45,8 @@
 					<tr>
 						<td>${ no1 }</td>
 						<td>
-							<button onclick="location.href='noticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }'" class="btn btn-link">${ notice.nsubject }</button>
+							<button onclick="location.href='noticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }'" 
+								class="btn btn-link red-active">${ notice.nsubject }</button>
 						</td>
 						<td>${ notice.ndate }</td>
 					</tr>
@@ -52,7 +57,8 @@
 		
 		<!-- 아이디가 마스터면 -->
 		<div align="right">
-			<button type="button" class="btn btn-primary" onclick="location.href='noticeInsertForm.do?pageNum=${ pageNum }'">글 작성</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='noticeInsertForm.do?pageNum=${ pageNum }'"
+				style="border-color: #CD1726; background-color: #CD1726;">글 작성</button>
 			
 			<div align="center">
 				<nav aria-label="Page navigation">

@@ -31,7 +31,8 @@
             class="btn btn-default">수정</button>
         <button type="button" onclick="deleteChk(${ faq.fid }, ${ pageNum })"
             class="btn btn-default">삭제</button>
-        <button type="button" onclick="location.href='faqList.do?pageNum=${ pageNum }'" class="btn btn-primary">목록</button>
+        <button type="button" onclick="location.href='faqList.do?pageNum=${ pageNum }'" class="btn btn-primary"
+        	style="border-color: #CD1726; background-color: #CD1726;">목록</button>
     </div>
 </body>
 </html>

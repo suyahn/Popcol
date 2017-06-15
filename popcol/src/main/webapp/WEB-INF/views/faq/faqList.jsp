@@ -6,10 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<style type="text/css">
+	 .red-active { color: black; text-decoration: none;}
+ 	.red-active:hover { color: #CD1726; text-decoration: underline; font-weight: bold;}
+</style>
 </head>
 <body>
 	<div class="container" align="center" style="width: 70%">
-		<h1 align="left"><a href='faqList.do'>자주하는 질문</a></h1>
+		<h1 align="left"><a href='faqList.do' class="red-active">자주하는 질문</a></h1>
 		<div align="right">
 			<form action="faqList.do">
 				<input type="hidden" name="pageNum" value="1">
@@ -40,7 +44,8 @@
 					<tr>
 						<td>${ no1 }</td>
 						<td>
-							<button onclick="location.href='faqView.do?fid=${ faq.fid }&pageNum=${ pageNum }'" class="btn btn-link">${ faq.fquestion }</button>
+							<button onclick="location.href='faqView.do?fid=${ faq.fid }&pageNum=${ pageNum }'" 
+								class="btn btn-link red-active">${ faq.fquestion }</button>
 						</td>
 					</tr>
 					<c:set var="no1" value="${ no1 - 1 }"></c:set>
@@ -50,7 +55,8 @@
 		
 		<!-- 아이디가 마스터면 -->
 		<div align="right">
-			<button type="button" class="btn btn-primary" onclick="location.href='faqInsertForm.do?pageNum=${ pageNum }'">글 작성</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='faqInsertForm.do?pageNum=${ pageNum }'"
+				style="border-color: #CD1726; background-color: #CD1726;">글 작성</button>
 			
 			<div align="center">
 				<nav aria-label="Page navigation">
