@@ -40,6 +40,7 @@ public class MovieDaoImpl implements MovieDao {
 			}
 		});
 		Collections.reverse(movieChart);
+		
 		return movieChart;
 	}
 
