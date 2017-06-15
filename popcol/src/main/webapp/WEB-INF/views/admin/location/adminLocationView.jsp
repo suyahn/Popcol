@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../popcol/header.jsp"%>
+<%@ include file="../../popcol/header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -68,7 +68,7 @@
 		<a href="adminList.do?pageNum=${pageNum}" class="btn btn-info">목록</a>
 		<a href="adminUpdateForm.do?mid=${movie.mid}&pageNum=${pageNum}"
 			class="btn btn-info">수정</a> 
-		<a href="adminDeleteForm.do?mid=${movie.mid}&pageNum=${pageNum}"
+		<a href="adminDelete.do?mid=${movie.mid}&pageNum=${pageNum}"
 			class="btn btn-info">삭제</a>
 		<!-- <div id="list"></div> -->
 	</div>

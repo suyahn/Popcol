@@ -29,7 +29,7 @@
 						fdel = 'n'
 					</if>
 				</where>
-				) a ) 
+				order by fid desc) a ) 
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
@@ -63,4 +63,11 @@
         insert into faq values (#{fid}, #{fquestion}, #{fanswer}, 'n')
     </insert>
     
+    <update id="update" parameterType="faq">
+		update faq set fquestion = #{fquestion}, fanswer = #{fanswer} where fid = #{fid}
+	</update>
+	
+	<update id="delete">
+		update faq set fdel = 'y' where fid = #{fid}
+	</update>
 </mapper>

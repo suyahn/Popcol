@@ -37,4 +37,14 @@ public class FaqDaoImpl implements FaqDao {
     public Faq select(int fid) {
         return sst.selectOne("faqns.select", fid);
     }
+
+	@Override
+	public int update(Faq faq) {
+		return sst.update("faqns.update", faq);
+	}
+
+	@Override
+	public int delete(int fid) {
+		return sst.update("faqns.delete", fid);
+	}
 }

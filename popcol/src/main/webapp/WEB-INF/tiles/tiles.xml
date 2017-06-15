@@ -132,6 +132,10 @@
 	<definition name="movieChart" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/movie/movieChart.jsp" />
 	</definition>
+	
+	<definition name="movieDetail" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/movie/movieDetail.jsp" />
+	</definition>
 
 	<!-- 공지사항 -->
 	<definition name="noticeList" extends="mainLayout">
@@ -179,6 +183,18 @@
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqView.jsp" />
     </definition>
     
+    <definition name="faqUpdateForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqUpdateForm.jsp" />
+    </definition>
+    
+    <definition name="faqUpdate" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqUpdate.jsp" />
+    </definition>
+    
+    <definition name="faqDelete" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqDelete.jsp" />
+    </definition>
+    
     
     
     
@@ -206,32 +222,41 @@
 
 	<!-- 영화 관리 -->
 	<definition name="adminList" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/admin/adminList.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/movie/adminList.jsp" />
 	</definition>
 
 	<definition name="adminInsertForm" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminInsertForm.jsp" />
+			value="/WEB-INF/views/admin/movie/adminInsertForm.jsp" />
 	</definition>
 
 	<definition name="adminInsert" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminInsert.jsp" />
+			value="/WEB-INF/views/admin/movie/adminInsert.jsp" />
 	</definition>
 
 	<definition name="adminView" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/admin/adminView.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/movie/adminView.jsp" />
 	</definition>
 	
 	<definition name="adminUpdateForm" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminUpdateForm.jsp" />
+			value="/WEB-INF/views/admin/movie/adminUpdateForm.jsp" />
 	</definition>
 	
 	<definition name="adminUpdate" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/adminUpdate.jsp" />
+			value="/WEB-INF/views/admin/movie/adminUpdate.jsp" />
 	</definition>
+	<definition name="adminDelete" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/movie/adminDelete.jsp" />
+	</definition>
+	<!-- 영화관 관리 -->
+	<definition name="adminLocationList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/location/adminLocationList.jsp" />
+	</definition>
+	
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">
 		<put-attribute name="body"

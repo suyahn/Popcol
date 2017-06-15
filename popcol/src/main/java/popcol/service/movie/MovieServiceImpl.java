@@ -17,6 +17,10 @@ public class MovieServiceImpl implements MovieService {
 	public List<Movie> movieChart() {
 		return md.movieChart();
 	}
+	@Override
+	public Movie movieDetail(int mid) {
+		return md.movieDetail(mid);
+	}
 	/*규랑*/
 	@Override
 	public List<Movie> adminList(int startRow, int endRow) {
@@ -41,6 +45,11 @@ public class MovieServiceImpl implements MovieService {
 	public int adminUpdate(Movie movie) {
 		
 		return md.adminUpdate(movie);
+	}
+	@Override
+	public int adminDelete(int mid) {
+		
+		return md.adminDelete(mid);
 	}
 	
 

@@ -42,21 +42,27 @@
 		#{mcontent},#{mreleaseDate},#{mrunningTime},#{murlPreview},
 		#{murlPoster},#{mgrade},#{mnation},'n')
 	</insert>
-	<!-- 상세보기 -->
+	<!-- 관리자 영화 상세보기 -->
 	<select id="adminSelect" resultType="movie" parameterType="int">
 		select * from
 		movie where mid=#{mid}
 	</select>
+	<!-- 관리자 영화 수정-->
 	<update id="adminUpdate" parameterType="movie">
 		update movie set
-		mtitle=#{mtitle},moriginaltitle=#{moriginaltitle},
-		mdirector=#{mdirector},mactor=#{mactor},mcontent=#{mcontent},
-		mreleaseDate=#{mreleaseDate},mrunningTime=#{mrunningTime},
-		murlPreview=#{murlPreview},murlPoster=#{murlPoster},mgrade=#{mgrade},
-		mnation=#{mnation}
+			mtitle=#{mtitle},moriginaltitle=#{moriginaltitle},
+			mdirector=#{mdirector},mactor=#{mactor},mcontent=#{mcontent},
+			mreleaseDate=#{mreleaseDate},mrunningTime=#{mrunningTime},
+			murlPreview=#{murlPreview},murlPoster=#{murlPoster},mgrade=#{mgrade},
+			mnation=#{mnation}
 		where mid=#{mid}
 	</update>
-
+			
+	<update id="adminDelete" parameterType="int">
+		update movie set mdel ='y' where mid =#{mid}
+		
+	</update>
+	
 	<!-- 수연 -->
 
 	<select id="list" resultMap="movieResult">
