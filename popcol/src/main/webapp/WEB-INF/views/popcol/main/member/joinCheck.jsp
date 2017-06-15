@@ -16,7 +16,7 @@
 			<br>
 			<br>
 			
-			<button onclick="location.href='findIdPasswordForm.do'" class="btn btn-info btn-sm"  style="border-color: navy; background-color: navy;">
+			<button onclick="location.href='findIdPasswordForm.do'" class="btn btn-info btn-sm"  style="border-color: #cd1726; background-color: #cd1726;">
 				아이디/패스워드 찾기
 			</button>
 		</div>

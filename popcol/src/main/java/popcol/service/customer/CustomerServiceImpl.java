@@ -1,7 +1,5 @@
 package popcol.service.customer;
 
-import java.sql.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +10,20 @@ import popcol.model.Customer;
 public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	private CustomerDao cd;
+
+	public void updateForbirthday() {
+		
+		cd.updateForbityhday();
+	}
 	
 	public int loginCheck(Customer customer) {
 		
 		return cd.loginCheck(customer);
+	}
+
+	public Customer getSessionCustomerInfo(String cid) {
+		
+		return cd.getSessionCustomerInfo(cid);
 	}
 
 	public String getCustomerName(String cid) {

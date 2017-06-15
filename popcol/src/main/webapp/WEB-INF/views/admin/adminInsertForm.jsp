@@ -10,7 +10,7 @@
 <body>
 	<div class="container" align="center">
 		<h2 class="text-primary">영화 입력</h2>
-		<form action="insert.do" method="post">
+		<form action="adminInsert.do" method="post">
 			<input type="hidden" name="pageNum" value="${pageNum}">
 			<table class="table table-striped">
 				<tr>

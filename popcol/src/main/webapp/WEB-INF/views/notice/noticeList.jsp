@@ -8,7 +8,7 @@
 <title></title>
 </head>
 <body>
-	<div class="container" align="center">
+	<div class="container" align="center" style="width: 70%">
 		<h1 align="left"><a href='noticeList.do'>공지사항</a></h1>
 		<div align="right">
 			<form action="noticeList.do">
@@ -32,7 +32,7 @@
 			</tr>
 			<c:if test="${ empty list }">
 				<tr>
-					<th colspan="3" style="text-align: center;">공지사항이 없습니다.</th>
+					<th colspan="3" style="text-align: center;">데이터가 없습니다.</th>
 				</tr>
 			</c:if>
 			<c:if test="${ not empty list }">

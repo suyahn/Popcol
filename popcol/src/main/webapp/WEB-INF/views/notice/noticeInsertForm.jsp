@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <script type="text/javascript">
-	function chk() {
+	function insertChk() {
 		if(confirm("글을 등록하시겠습니까?") == false) {
 			return false;
 		}
@@ -16,22 +16,22 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<h1 align="left">공지사항 작성</h1>
+		<h1>공지사항 작성</h1>
 		
-		<form action="noticeInsert.do" method="post" onsubmit="return chk()">
+		<form action="noticeInsert.do" method="post" onsubmit="return insertChk()">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			
 			<table class="table"  style="width: 60%">
 				<tr>
 					<th>제목</th>
 					<td>
-						<textarea rows="3" cols="70" name="nsubject" required="required" autofocus="autofocus"></textarea>
+						<textarea rows="3" cols="70" name="nsubject" required="required" autofocus="autofocus" maxlength="33" style="resize:none;"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea rows="10" cols="70" name="ncontent" required="required"></textarea>
+						<textarea rows="10" cols="70" name="ncontent" required="required" maxlength="165" style="resize:none;"></textarea>
 					</td>
 				</tr>
 				<tr>

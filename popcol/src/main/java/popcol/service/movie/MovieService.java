@@ -6,7 +6,11 @@ import popcol.model.Movie;
 
 public interface MovieService {
 	List<Movie> movieChart();
+	/*규랑*/
 	List<Movie> adminList(int startRow, int endRow);
 	int getTotal();
-	Movie select(int mid);
+	int adminInsert(Movie movie);
+	Movie adminSelect(int mid);
+	int adminUpdate(Movie movie);
+	
 }

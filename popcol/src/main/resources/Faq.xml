@@ -7,6 +7,60 @@
 		<result property="fquestion" column="fquestion" />
 		<result property="fanswer" column="fanswer" />
 		<result property="fdel" column="fdel" />
+		<result property="startRow" column="startRow"/>
+		<result property="endRow" column="endRow"/>
 	</resultMap>
 	
+	<select id="list" parameterType="faq" resultMap="faqResult">
+		select * from (
+			select a.*, rownum rn from (
+				select * from faq
+				<where>
+					<if test="keyword != null and search != 'queanw'">
+						${search} like '%' || #{keyword} || '%'
+						and fdel = 'n' 
+					</if>
+					<if test="keyword != null and search == 'queanw'">
+						(fquestion like '%' || #{keyword} || '%'
+						or fanswer like '%' || #{keyword} || '%')
+						and fdel = 'n'
+					</if>
+					<if test="keyword == null">
+						fdel = 'n'
+					</if>
+				</where>
+				) a ) 
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getTotal" parameterType="faq" resultType="int">
+		select count(*) from faq
+		<where>
+			<if test="keyword != null and search != 'queanw'">
+				${search} like '%' || #{keyword} || '%'
+				and fdel = 'n' 
+			</if>
+			<if test="keyword != null and search == 'queanw'">
+				(fquestion like '%' || #{keyword} || '%'
+				or fanswer like '%' || #{keyword} || '%')
+				and fdel = 'n'
+			</if>
+			<if test="keyword == null">
+				fdel = 'n'
+			</if>
+		</where>
+	</select>
+	
+    <select id="getMaxNum" resultType="int">
+        select nvl(max(fid), 0) + 1 from faq 
+    </select>
+    
+    <select id="select" parameterType="int" resultType="faq">
+        select * from faq where fid = #{fid}
+    </select>
+    
+    <insert id="insert" parameterType="faq">
+        insert into faq values (#{fid}, #{fquestion}, #{fanswer}, 'n')
+    </insert>
+    
 </mapper>
