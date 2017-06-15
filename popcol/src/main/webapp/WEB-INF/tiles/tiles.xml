@@ -171,6 +171,18 @@
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqView.jsp" />
     </definition>
     
+    <definition name="faqUpdateForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqUpdateForm.jsp" />
+    </definition>
+    
+    <definition name="faqUpdate" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqUpdate.jsp" />
+    </definition>
+    
+    <definition name="faqDelete" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqDelete.jsp" />
+    </definition>
+    
     
     
     

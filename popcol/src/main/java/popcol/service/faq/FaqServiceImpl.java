@@ -36,4 +36,14 @@ public class FaqServiceImpl implements FaqService {
     public Faq select(int fid) {
         return fd.select(fid);
     }
+
+	@Override
+	public int update(Faq faq) {
+		return fd.update(faq);
+	}
+
+	@Override
+	public int delete(int fid) {
+		return fd.delete(fid);
+	}
 }
