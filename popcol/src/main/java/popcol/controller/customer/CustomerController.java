@@ -21,7 +21,15 @@ public class CustomerController {
 
 	@RequestMapping("home")
 	public String home(Model model, HttpSession session) {
-
+		
+		// 1월 1일에는 생일체크를 초기화해서 'n'으로 바꿔 생일에 포인트를 받을 수 있게 한다.
+		SimpleDateFormat df = new SimpleDateFormat("MM/dd");
+		String today = df.format(new java.util.Date());
+		
+		if (today.equals("01/01")) {
+			cs.updateForbirthday();
+		}
+		 
 		return "home";
 	}
 
@@ -45,20 +53,24 @@ public class CustomerController {
 
 		if (result > 0) {
 			String id = customer.getCid();
-			String name = cs.getCustomerName(id);
+			Customer sessionCustomer = cs.getSessionCustomerInfo(id);
+			String name = sessionCustomer.getCname();
 
 			session.setAttribute("id", id);
 			session.setAttribute("name", name);
 
 			// 생일인지 확인하기
-			String birthday = cs.getCustomerBirthday(id);
+			Date birthday = sessionCustomer.getCbirthday();
 			SimpleDateFormat df = new SimpleDateFormat("MM/dd");
 			String today = df.format(new java.util.Date());
+			String birthdayString = df.format(birthday);
 
-			if (birthday.equals(today)) {
+			if (birthdayString.equals(today)) {
 				int random = (int) ((double) Math.random() * 8 + 1);
 				session.setAttribute("birthday", 1);	
-				session.setAttribute("random", random);
+				session.setAttribute("random", random); // 폭죽사진 랜덤으로
+				session.setAttribute("checkPoint", sessionCustomer.getCcheckbd());
+				System.out.println( sessionCustomer.getCcheckbd());
 			}
 
 		} else if (result <= 0) {

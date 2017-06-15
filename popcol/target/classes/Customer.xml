@@ -14,10 +14,15 @@
 		<result property="cdel"	  column="cdel" />		
 		<result property="creg_date"	  column="creg_date" />
 		<result property="cbirthday"	  column="cbirthday" />
+		<result property="ccheckbd"	  column="ccheckbd" />
 	</resultMap>
 	
 	<select id="loginCheck" parameterType="customer" resultType="string">
 		select cpassword from customer where cid = #{cid}
+	</select>
+	
+	<select id="getSessionCustomerInfo" parameterType="string" resultType="customer">
+		select * from customer where cid = #{cid}
 	</select>
 	
 	<select id="getCustomerName" parameterType="string" resultType="string">
@@ -46,12 +51,20 @@
 	
 	
 	<insert id="insertCustomer" parameterType="customer">
-		insert into customer values (#{cid}, #{cname}, #{cpassword}, #{cemail}, #{cphone}, 2000, 'n', sysdate, #{cbirthday})
+		insert into customer values (#{cid}, #{cname}, #{cpassword}, #{cemail}, #{cphone}, 2000, 'n', sysdate, #{cbirthday}, 'n')
 	</insert>
 	
 	
+	<update id="updateForbityhday">
+		update customer set ccheckbd = 'n'
+	</update>
+	
 	<update id="updateFindPassword" parameterType="customer">
 		update customer set cpassword = #{cpassword} where cid = #{cid}
+	</update>
+	
+	<update id="updateForBirthdayPoint" parameterType="string">
+		update customer set cpoint = cpoint + 10000, ccheckbd = 'y' where cid = #{cid}
 	</update>
 	
 </mapper>
