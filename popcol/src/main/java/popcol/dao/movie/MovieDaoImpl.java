@@ -43,6 +43,11 @@ public class MovieDaoImpl implements MovieDao {
 		
 		return movieChart;
 	}
+	
+	@Override
+	public Movie movieDetail(int mid) {
+		return sst.selectOne("moviens.movieChart", mid);
+	}
 
 	/* 규랑 */
 	@Override

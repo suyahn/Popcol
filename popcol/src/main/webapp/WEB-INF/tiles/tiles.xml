@@ -128,6 +128,10 @@
 	<definition name="movieChart" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/movie/movieChart.jsp" />
 	</definition>
+	
+	<definition name="movieDetail" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/movie/movieDetail.jsp" />
+	</definition>
 
 	<!-- 공지사항 -->
 	<definition name="noticeList" extends="mainLayout">

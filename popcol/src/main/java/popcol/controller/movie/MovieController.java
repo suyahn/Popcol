@@ -22,4 +22,12 @@ public class MovieController {
 		model.addAttribute("movieList", movieList);
 		return "movieChart";
 	}
+	
+	@RequestMapping("movieDetail")
+	public String movieDetail(int mid, Model model) {
+		Movie movie = ms.movieDetail(mid);
+		
+		model.addAttribute("movie", movie);
+		return "movieDetail";
+	}
 }
