@@ -47,11 +47,7 @@ a {
 			$('.active').attr('class', className);
 
 			// 클린된 li 클래스에 active 넣어주기
-			$('#' + id + "_li").attr('class', 'active ' + className );
-			$('.nav>li.active>a').css('background-color', '#cd1726 !important');
-			$('.nav>li.active>a').css('color', 'white !important');
-			$('.nav>li>a:hover').css('background-color', '#fdeaeb !important');
-			$('.nav>li>a:hover').css('color', '#fcba2e !important');
+			$('#' + id + "_li").attr('class', 'active ' + className);
 		});
 		
 
