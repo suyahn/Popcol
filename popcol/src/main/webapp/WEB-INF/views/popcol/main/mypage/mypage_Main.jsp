@@ -90,7 +90,7 @@ a {
 			</div>
 			
 			<!-- sidebar area start -->
-			<div class="col-sm-3 col-sm-pull-9 ">
+			<div class="col-sm-3 col-sm-pull-9">
 				<div class="text-xs-center text-sm-left">			
 					<ul class="nav nav-stacked menu">
 						<li class="active mypage" id="mypage_Home_li"><a href="#" class="mypage" id="mypage_Home">My PopCol Home</a></li>
