@@ -22,19 +22,4 @@ public class FaqServiceImpl implements FaqService {
 	public List<Faq> list(Faq faq) {
 		return fd.list(faq);
 	}
-
-	@Override
-	public int getMaxNum() {
-		return fd.getMaxNum();
-	}
-
-	@Override
-	public int insert(Faq faq) {
-		return fd.insert(faq);
-	}
-
-	@Override
-	public Faq select(int fid) {
-		return fd.select(fid);
-	}
 }

@@ -26,7 +26,7 @@
 		</div>
 		<table class="table table-hover">
 			<tr>
-				<th width="20%">번호</th>
+				<th width="10%">번호</th>
 				<th>질문</th>
 			</tr>
 			<c:if test="${ empty list }">
