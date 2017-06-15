@@ -47,4 +47,10 @@ public class MypageController {
 		
 		return "receivePoint";
 	}
+	
+	@RequestMapping("mypage_Home") 
+	public String mypage_Home() {
+		
+		return "mypage_Home";
+	}
 }
