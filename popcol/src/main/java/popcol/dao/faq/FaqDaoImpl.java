@@ -22,4 +22,19 @@ public class FaqDaoImpl implements FaqDao {
 	public List<Faq> list(Faq faq) {
 		return sst.selectList("faqns.list", faq);
 	}
+
+    @Override
+    public int getMaxNum() {
+        return sst.selectOne("faqns.getMaxNum");
+    }
+
+    @Override
+    public int insert(Faq faq) {
+        return sst.insert("faqns.insert", faq);
+    }
+
+    @Override
+    public Faq select(int fid) {
+        return sst.selectOne("faqns.select", fid);
+    }
 }

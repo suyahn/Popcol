@@ -159,6 +159,18 @@
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqList.jsp" />
     </definition>
     
+    <definition name="faqInsertForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqInsertForm.jsp" />
+    </definition>
+    
+    <definition name="faqInsert" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqInsert.jsp" />
+    </definition>
+    
+    <definition name="faqView" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/faq/faqView.jsp" />
+    </definition>
+    
     
     
     
