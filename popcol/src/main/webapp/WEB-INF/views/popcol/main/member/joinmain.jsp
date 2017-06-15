@@ -15,7 +15,7 @@
 		<br>
 		<br>
 		
-		<button onclick="location.href='joinCheckForm.do'" class="btn btn-info btn-lg" style="border-color: navy; background-color: navy;">
+		<button onclick="location.href='joinCheckForm.do'" class="btn btn-info btn-lg" style="border-color: #cd1726; background-color: #cd1726;">
 			회원가입여부확인
 		</button>
 	</div>

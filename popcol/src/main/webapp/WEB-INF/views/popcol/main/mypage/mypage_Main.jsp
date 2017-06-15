@@ -9,14 +9,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-/* 	.nav>li.active>a,
-	.nav>li.active:hover>a,
-.nav>li:hover>a,
-.nav>li:focus>a {
-   background-color: navy;
-} */
 .nav>li.active>a {
-background-color: navy;}
+	background-color: #cd1726 !important;
+	color: white !important;
+}
+
+a {
+	color: #cd1726 !important;
+}
+
+.nav>li>a:hover {
+	background-color: #fdeaeb !important;
+	color : #fcba2e !important;
+}
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -33,21 +38,20 @@ background-color: navy;}
 			}); 
 		});
 		
-		
-		$('.mypage_href').click(function() {
-			var id = $('.mypage').attr('id');
-			$('.view').load(id + '.do');
+		$('a', '.mypage').click(function() {
+			var id = $(this).attr('id');
+			$('#view').load(id + '.do');
 			
-			var cname = $('.active').attr('id');
-			$('.active').attr('class', cname);
-			
-			var cname2 = $(this).attr('class');
-			$('.' + cname2).attr('class', 'active ' + cname2 );
-			$('.nav>li.active>a').css('background-color', 'navy');
-			/* $('.nav>li.active:hover>a').css('background-color', 'navy');
-			$('.nav>li:hover>a').css('background-color', 'navy');
-			$('.nav>li:focus>a').css('background-color', 'navy'); */
+			// 기존 active되어있던 li 클래스에서 active 빼주기
+			var className = $(this).attr('class');
+			$('.active').attr('class', className);
+
+			// 클린된 li 클래스에 active 넣어주기
+			$('#' + id + "_li").attr('class', 'active ' + className);
 		});
+		
+
+		$('#view').load('mypage_Home.do');
 	});
 </script>
 </head>
@@ -73,7 +77,7 @@ background-color: navy;}
 				<h4>
 					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 					생일축하 포인트가 지급되었습니다. 옆의 버튼을 눌러주세요.
-					<button id="receivePoint" class="btn btn-info btn-sm">생일축하 포인트 받기</button>
+					<button id="receivePoint" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">생일축하 포인트 받기</button>
 				</h4>
 			</c:if>
 		</div>
@@ -81,28 +85,21 @@ background-color: navy;}
 
 	 <div class="container-fluid " align="center" style="width: 80%; margin-bottom: 50px !important; margin: auto;">
 			
-			<div class="col-sm-9 col-sm-push-3 contentAreaStyle view">
-				CONTENT AREA
+			<div class="col-sm-9 col-sm-push-3 contentAreaStyle" id="view">
+			
 			</div>
 			
 			<!-- sidebar area start -->
-			<div class="col-sm-3 col-sm-pull-9 sidebarStyle">
-				<div class="text-xs-center text-sm-left ">			
-					<ul class="nav nav-stacked">
-						<li class="mypage_li" id="one"><a href="#" class="mypage_href" id="mypage_Home">My PopCol Home</a></li>
-						<li class="two"><a href="#" id="dd" class="two">나의 예매내역</a></li>
-						<li class="two"><a href="#" id="dd" class="two">내가 본 영화</a></li>
-						<li class="two"><a href="#" id="dd" class="two">나의 포인트 내역</a></li>
-						<li class="two"><a href="#" id="dd" class="two">회원 정보 수정</a></li>
-						<li class="two"><a href="#" id="dd" class="two">회원 탈퇴</a></li>
-						<li class="two"><a href="#" id="dd" class="two">나의 문의 내역</a></li>
-						
-						<li><a href="#"><span class="glyphicon glyphicon-envelope"></span>  Message</a>
-						<ul class="nav nav-pills nav-stacked dropdown" style="margin-left: 15px;">
-						<li class="active one" id="one"><a href="#"><span class="glyphicon glyphicon-off"></span>  1</a></li>
-						<li class="two"><a href="#" id="dd" class="two"><span class="glyphicon glyphicon-user"></span>  2</a></li>
-						</ul>
-						</li>
+			<div class="col-sm-3 col-sm-pull-9 ">
+				<div class="text-xs-center text-sm-left">			
+					<ul class="nav nav-stacked menu">
+						<li class="active mypage" id="mypage_Home_li"><a href="#" class="mypage" id="mypage_Home">My PopCol Home</a></li>
+						<li class="mypage" id="mypage_reservation_li"><a href="#" class="mypage" id="mypage_reservation">나의 예매내역</a></li>
+						<li class="mypage" id="mypage_seeMovie_li"><a href="#" class="mypage" id="mypage_seeMovie">내가 본 영화</a></li>
+						<li class="mypage" id="mypage_myPoint_li"><a href="#" class="mypage" id="mypage_myPoint">나의 포인트 내역</a></li>
+						<li class="mypage" id="mypage_myInfoModify_li"><a href="#" class="mypage" id="mypage_myInfoModify">회원 정보 수정</a></li>
+						<li class="mypage" id="mypage_byePopcol_li"><a href="#" class="mypage" id="mypage_byePopcol">회원 탈퇴</a></li>
+						<li class="mypage" id="mypage_myQna_li"><a href="#" class="mypage" id="mypage_myQna">나의 문의 내역</a></li>
 					</ul>
 				</div>
 			</div>

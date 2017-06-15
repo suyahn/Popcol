@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>	
-	popcol~
+	<font color="white" style="text-align: right;"></font>
 </body>
 </html>

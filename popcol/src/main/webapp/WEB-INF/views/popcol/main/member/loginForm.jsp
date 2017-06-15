@@ -22,7 +22,7 @@
 				
 				<tr>
 					<td colspan="2" align="center">
-						<br><button type="submit" class="btn btn-info btn-sm" style="border-color: navy; background-color: navy;">로그인</button>
+						<br><button type="submit" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">로그인</button>
 					</td>
 				</tr>
 				
