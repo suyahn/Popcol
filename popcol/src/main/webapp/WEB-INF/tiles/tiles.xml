@@ -112,6 +112,18 @@
 		<put-attribute name="body" value="/WEB-INF/views/notice/noticeView.jsp" />
     </definition>
     
+    <definition name="noticeUpdateForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeUpdateForm.jsp" />
+    </definition>
+    
+    <definition name="noticeUpdate" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeUpdate.jsp" />
+    </definition>
+    
+    <definition name="noticeDelete" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeDelete.jsp" />
+    </definition>
+    
     
     
     

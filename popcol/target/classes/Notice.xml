@@ -54,4 +54,12 @@
 	<insert id="insert" parameterType="notice">
 		insert into notice values (#{nid}, #{nsubject}, #{ncontent}, sysdate, 'n')
 	</insert>
+	
+	<update id="update" parameterType="notice">
+		update notice set nsubject = #{nsubject}, ncontent = #{ncontent} where nid = #{nid}
+	</update>
+	
+	<update id="delete">
+		update notice set ndel = 'y' where nid = #{nid}
+	</update>
 </mapper>

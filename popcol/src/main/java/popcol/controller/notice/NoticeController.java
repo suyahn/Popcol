@@ -77,4 +77,35 @@ public class NoticeController {
 		
 		return "noticeView";
 	}
+	
+	@RequestMapping("noticeUpdateForm")
+	public String noticeUpdateForm(int nid, String pageNum, Model model) {
+		Notice notice = ns.select(nid);
+		
+		model.addAttribute("notice", notice);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "noticeUpdateForm";
+	}
+	
+	@RequestMapping("noticeUpdate")
+	public String noticeUpdate(Notice notice, String pageNum, Model model) {
+		int result = ns.update(notice);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("nid", notice.getNid());
+		
+		return "noticeUpdate";
+	}
+	
+	@RequestMapping("noticeDelete")
+	public String noticeDelete(int nid, String pageNum, Model model) {
+		int result = ns.delete(nid);
+		
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("result", result);
+		
+		return "noticeDelete";
+	}
 }

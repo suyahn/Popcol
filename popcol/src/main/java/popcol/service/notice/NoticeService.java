@@ -10,4 +10,6 @@ public interface NoticeService {
 	int insert(Notice notice);
 	int getMaxNum();
 	Notice select(int nid);
+	int update(Notice notice);
+	int delete(int nid);
 }
