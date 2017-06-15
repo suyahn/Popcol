@@ -68,7 +68,9 @@ public class CustomerController {
 			if (birthdayString.equals(today)) {
 				int random = (int) ((double) Math.random() * 8 + 1);
 				session.setAttribute("birthday", 1);	
-				session.setAttribute("random", random);
+				session.setAttribute("random", random); // 폭죽사진 랜덤으로
+				session.setAttribute("checkPoint", sessionCustomer.getCcheckbd());
+				System.out.println( sessionCustomer.getCcheckbd());
 			}
 
 		} else if (result <= 0) {

@@ -63,4 +63,8 @@
 		update customer set cpassword = #{cpassword} where cid = #{cid}
 	</update>
 	
+	<update id="updateForBirthdayPoint" parameterType="string">
+		update customer set cpoint += 10000, ccheckbd = 'y' where cid = #{cid}
+	</update>
+	
 </mapper>

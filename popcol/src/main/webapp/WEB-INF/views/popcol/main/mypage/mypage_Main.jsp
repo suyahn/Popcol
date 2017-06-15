@@ -20,8 +20,24 @@ background-color: navy;}
 </style>
 <script type="text/javascript">
 	$(function() {
-		$('#dd').click(function() {
-			$('.chi').load('loginForm.do');
+		// 생일축하 포인트 받기
+		$('#receivePoint').click(function() {
+			
+			$.post('receivePoint.do', function(result) {
+				if(result == 1) {
+					alert("생일축하 10000 포인트 지급 완료~ 즐거운 하루되세요.");
+					
+				} else if(result == 0) {
+					alert("다시 시도해주세요.");
+				}
+			}); 
+		});
+		
+		
+		$('.mypage_href').click(function() {
+			var id = $('.mypage').attr('id');
+			$('.view').load(id + '.do');
+			
 			var cname = $('.active').attr('id');
 			$('.active').attr('class', cname);
 			
@@ -36,17 +52,36 @@ background-color: navy;}
 </script>
 </head>
 <body>
-	<div style="float: center; width: 85%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; margin: auto;background-image: URL(http://2.bp.blogspot.com/--5yqttOEAsw/Urr9mw2ptsI/AAAAAAAADME/uR7L1d-5y50/s1600/howways-logo2-94x94.png); ">
-		<div style="width: 100%; height: 150px; border: 1px solid;">
-			<h2 class="text-primary" style="margin: 10px;">${customer.cname }님<font size="2px">(${customer.cid })</font></h2>
-			<hr>
-			<h4 class="text-primary" style="margin: 10px;">고객님께서 현재 보유하신 포인트는 ${customer.cpoint }점입니다.</h4>
+	<div style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; margin: auto; background-image: URL(${path}/images/ticket.png); ">
+		<div style="width: 100%; height: 303px;">
+			<br>
+			<br>
+			<br>
+			<h2 class="" style="margin: 10px;">
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				${customer.cname }님
+				<font size="2px">(${customer.cid })</font>
+			</h2>
+			<br>
+			<h4 class="" style="margin: 10px;">
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+				고객님께서 현재 보유하신 포인트는 ${customer.cpoint }점입니다.
+			</h4>
+			
+			<c:if test="${checkPoint == 'n' }">
+				<br>
+				<h4>
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					생일축하 포인트가 지급되었습니다. 옆의 버튼을 눌러주세요.
+					<button id="receivePoint" class="btn btn-info btn-sm">생일축하 포인트 받기</button>
+				</h4>
+			</c:if>
 		</div>
 	</div>
 
-	 <div class="container-fluid " align="center" >
+	 <div class="container-fluid " align="center" style="width: 80%; margin-bottom: 50px !important; margin: auto;">
 			
-			<div class="col-sm-9 col-sm-push-3 contentAreaStyle chi">
+			<div class="col-sm-9 col-sm-push-3 contentAreaStyle view">
 				CONTENT AREA
 			</div>
 			
@@ -54,9 +89,14 @@ background-color: navy;}
 			<div class="col-sm-3 col-sm-pull-9 sidebarStyle">
 				<div class="text-xs-center text-sm-left ">			
 					<ul class="nav nav-stacked">
-						<li class="active one" id="one"><a href="#"><span class="glyphicon glyphicon-off"></span>  Overview</a></li>
-						<li class="two"><a href="#" id="dd" class="two"><span class="glyphicon glyphicon-user"></span>  Profile</a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-lock"></span>  Access</a></li>
+						<li class="mypage_li" id="one"><a href="#" class="mypage_href" id="mypage_Home">My PopCol Home</a></li>
+						<li class="two"><a href="#" id="dd" class="two">나의 예매내역</a></li>
+						<li class="two"><a href="#" id="dd" class="two">내가 본 영화</a></li>
+						<li class="two"><a href="#" id="dd" class="two">나의 포인트 내역</a></li>
+						<li class="two"><a href="#" id="dd" class="two">회원 정보 수정</a></li>
+						<li class="two"><a href="#" id="dd" class="two">회원 탈퇴</a></li>
+						<li class="two"><a href="#" id="dd" class="two">나의 문의 내역</a></li>
+						
 						<li><a href="#"><span class="glyphicon glyphicon-envelope"></span>  Message</a>
 						<ul class="nav nav-pills nav-stacked dropdown" style="margin-left: 15px;">
 						<li class="active one" id="one"><a href="#"><span class="glyphicon glyphicon-off"></span>  1</a></li>

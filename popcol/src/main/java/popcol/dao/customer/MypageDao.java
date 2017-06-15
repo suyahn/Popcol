@@ -6,4 +6,6 @@ public interface MypageDao {
 
 	Customer getSessionCustomerInfo(String cid);
 
+	int updateForBirthdayPoint(String cid);
+
 }

@@ -3,7 +3,7 @@
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="mainLayout" template="/WEB-INF/views/popcol/main/layout.jsp">
-		<put-attribute name="title" value="PopCol" />
+		<put-attribute name="title" value="Popcorn&amp;Cola" />
 		<put-attribute name="header"
 			value="/WEB-INF/views/popcol/main/header.jsp" />
 		<put-attribute name="body" value="" />
@@ -106,6 +106,10 @@
 
 	<definition name="mypage_Main" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
+	</definition>
+	
+	<definition name="receivePoint" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/receivePoint.jsp" />
 	</definition>
 	
     

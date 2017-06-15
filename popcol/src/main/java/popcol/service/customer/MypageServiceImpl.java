@@ -15,4 +15,9 @@ public class MypageServiceImpl implements MypageService{
 		
 		return md.getSessionCustomerInfo(cid);
 	}
+
+	public int updateForBirthdayPoint(String cid) {
+		
+		return md.updateForBirthdayPoint(cid);
+	}
 }

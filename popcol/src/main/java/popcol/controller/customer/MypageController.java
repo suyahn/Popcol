@@ -30,4 +30,19 @@ public class MypageController {
 		
 		return "mypage_Main";
 	}
+	
+	@RequestMapping("receivePoint")
+	public String receivePoint(Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = null;
+		
+		if(session.getAttribute("id") != null) {
+			id = (String) session.getAttribute("id");
+			int result = ms.updateForBirthdayPoint(id);
+			
+			model.addAttribute("result", result);
+		}
+		
+		return "receivePoint";
+	}
 }

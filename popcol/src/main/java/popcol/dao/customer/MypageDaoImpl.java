@@ -15,4 +15,9 @@ public class MypageDaoImpl implements MypageDao {
 		
 		return sst.selectOne("customerns.getSessionCustomerInfo", cid);
 	}
+
+	public int updateForBirthdayPoint(String cid) {
+	
+		return sst.update("customerns.updateForBirthdayPoint", cid);
+	}
 }
