@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import popcol.service.PagingPgm;
 import popcol.service.customer.CustomerService;
 import popcol.model.Customer;
+import popcol.model.Location;
 import popcol.model.Movie;
 import popcol.service.location.LocationService;
 import popcol.service.movie.MovieService;
@@ -20,9 +21,9 @@ import popcol.service.theater.TheaterService;
 
 @Controller
 public class AdminController {
-	/*
-	 * @Autowired private LocationService ls;
-	 */
+
+	@Autowired
+	private LocationService ls;
 	@Autowired
 	private CustomerService cs;
 	@Autowired
@@ -66,7 +67,7 @@ public class AdminController {
 
 		return "redirect:adminLoginForm.do";
 	}
-
+	/*관리자 영화 관리*/
 	@RequestMapping("adminList") // 관리자 페이지의 무비리스트
 	public String adminList(String pageNum, Model model) {
 		final int ROW_PER_PAGE = 10;
@@ -123,26 +124,94 @@ public class AdminController {
 	@RequestMapping("adminUpdateForm")
 	public String adminUpdateForm(int mid, Model model, String pageNum) {
 		Movie movie = ms.adminSelect(mid);
-		
+
 		model.addAttribute("movie", movie);
 		model.addAttribute("pageNum", pageNum);
 		return "adminUpdateForm";
 
 	}
-	
-	@RequestMapping("adminUpdate") // 관리자 영화 입력
+
+	@RequestMapping("adminUpdate") // 관리자 영화 수정
 	public String adminUpdate(Model model, Movie movie, String pageNum) {
 		int result = ms.adminUpdate(movie);
-		
+
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 		return "adminUpdate";
 
 	}
+
 	@RequestMapping("adminDelete") // 관리자 영화 삭제
 	public String adminDelete(int mid, Model model, String pageNum) {
 		int result = ms.adminDelete(mid);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		return "adminDelete";
+
+	}
+	
+	/*관리자 영화관 관리*/
+	@RequestMapping("adminLocationList") // 관리자 영화관리스트
+	public String adminLocationList(Model model) {
+		List<Location> locationList = ls.adminLocationList();
+		model.addAttribute("locationList", locationList);
 		
+		return "adminLocationList";
+	}
+
+	@RequestMapping("adminLocationInsertForm") // 관리자 영화관 입력 페이지
+	public String adminLocationInsertForm(String pageNum, Model model) {
+		model.addAttribute("pageNum", pageNum);
+
+		return "adminInsertForm";
+
+	}
+
+	@RequestMapping("adminLocationInsert") // 관리자 영화관 입력
+	public String adminLocationInsert(Model model, Movie movie, String pageNum) {
+		int result = ms.adminInsert(movie);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		return "adminInsert";
+
+	}
+
+	@RequestMapping("adminLocationView") // 관리자 영화관 상세 보기
+	public String adminLocationView(int mid, Model model, String pageNum) {
+		Movie movie = ms.adminSelect(mid);
+
+		model.addAttribute("movie", movie);
+		model.addAttribute("pageNum", pageNum);
+		return "adminView";
+
+	}
+
+	@RequestMapping("adminLocationUpdateForm")// 관리자 영화수정 폼
+	public String adminLocationUpdateForm(int mid, Model model, String pageNum) {
+		Movie movie = ms.adminSelect(mid);
+
+		model.addAttribute("movie", movie);
+		model.addAttribute("pageNum", pageNum);
+		return "adminUpdateForm";
+
+	}
+
+	@RequestMapping("adminLocationUpdate") // 관리자 영화관수정 
+	public String adminLocationUpdate(Model model, Movie movie, String pageNum) {
+		int result = ms.adminUpdate(movie);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		return "adminUpdate";
+
+	}
+
+	@RequestMapping("adminLocationDelete") // 관리자 영화관 삭제
+	public String adminLocationDelete(int mid, Model model, String pageNum) {
+		int result = ms.adminDelete(mid);
+
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 		return "adminDelete";

@@ -11,6 +11,10 @@
 		<result property="lon" column="lon" />
 		<result property="mid" column="mid"/>
 	</resultMap>
+	<!-- 규랑 -->
+	<select id="adminLocationList" resultType="location">
+		select lname, laddress,lphone from location 
+	</select>
 	
 	<!-- 혜진 -->
 	<select id="bookingLocationList" parameterType="int" resultMap="locationResult">

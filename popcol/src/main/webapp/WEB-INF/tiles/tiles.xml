@@ -212,6 +212,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/movie/adminDelete.jsp" />
 	</definition>
+	<!-- 영화관 관리 -->
+	<definition name="adminLocationList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/location/adminLocationList.jsp" />
+	</definition>
+	
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">
 		<put-attribute name="body"
