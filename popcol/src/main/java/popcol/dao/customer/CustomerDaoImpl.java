@@ -1,7 +1,5 @@
 package popcol.dao.customer;
 
-import java.sql.Date;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,6 +10,11 @@ import popcol.model.Customer;
 public class CustomerDaoImpl implements CustomerDao {
 	@Autowired
 	private SqlSessionTemplate sst;
+
+	public void updateForbityhday() {
+		
+		sst.update("customerns.updateForbityhday");
+	}
 
 	public int loginCheck(Customer customer) {
 		int result = 0;
@@ -33,6 +36,12 @@ public class CustomerDaoImpl implements CustomerDao {
 		}
 
 		return result;
+	}
+
+	
+	public Customer getSessionCustomerInfo(String cid) {
+		
+		return sst.selectOne("customerns.getSessionCustomerInfo", cid);
 	}
 
 	public String getCustomerName(String cid) {

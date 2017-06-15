@@ -92,7 +92,7 @@
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="dropdown">
+					<li class="dropdown" style="margin-right: 100px; margin-left: 150px;">
 						<a href="movieChart.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							영화<span class="caret"></span>
 						</a>
@@ -103,28 +103,28 @@
 						</ul>
 					</li>
 					
-					<li class="dropdown">
+					<li class="dropdown" style="margin-right: 100px; margin-left: 100px;">
 						<a href="reservation.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							예매<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
 							<li><a href="reservation.do">빠른 예매</a></li>
+							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
 						</ul>
 					</li>
 					
 					 <li class="">
-					 	<a href="adminList.do">이벤트</a>
+					 	<a href="eventList.do" style="margin-right: 100px; margin-left: 100px;">이벤트</a>
 					 </li>
 					
-					<li class="dropdown">
+					<li class="dropdown" style="margin-right: 150px; margin-left: 100px;">
 						<a href="noticeList.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							고객센터<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="noticeList.do">공지사항</a></li>
-							<li><a href="${ path }/gatheringCalendar/index.jsp">FAQ</a></li>
-							<li><a href="${ path }/gatheringCalendar/index.jsp">QnA</a></li>
+							<li><a href="faqList.do">자주하는 질문</a></li>
+							<li><a href="qnaList.do">1:1 문의</a></li>
 						</ul>
 					</li>
 					
