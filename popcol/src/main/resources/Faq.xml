@@ -50,4 +50,17 @@
 			</if>
 		</where>
 	</select>
+	
+    <select id="getMaxNum" resultType="int">
+        select nvl(max(fid), 0) + 1 from faq 
+    </select>
+    
+    <select id="select" parameterType="int" resultType="faq">
+        select * from faq where fid = #{fid}
+    </select>
+    
+    <insert id="insert" parameterType="faq">
+        insert into faq values (#{fid}, #{fquestion}, #{fanswer}, 'n')
+    </insert>
+    
 </mapper>
