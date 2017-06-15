@@ -26,13 +26,13 @@
 				<tr>
 					<th>제목</th>
 					<td>
-						<textarea rows="3" cols="70" name="nsubject" required="required" autofocus="autofocus" maxlength="33">${ notice.nsubject }</textarea>
+						<textarea rows="3" cols="70" name="nsubject" required="required" autofocus="autofocus" maxlength="33" style="resize:none;">${ notice.nsubject }</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea rows="10" cols="70" name="ncontent" required="required" maxlength="165">${ notice.ncontent }</textarea>
+						<textarea rows="10" cols="70" name="ncontent" required="required" maxlength="165" style="resize:none;">${ notice.ncontent }</textarea>
 					</td>
 				</tr>
 				<tr>

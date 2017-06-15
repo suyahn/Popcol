@@ -19,15 +19,19 @@
 				<where>
 					<if test="keyword != null and search != 'subcon'">
 						${search} like '%' || #{keyword} || '%'
+						and ndel = 'n' 
 					</if>
 					<if test="keyword != null and search == 'subcon'">
-						nsubject like '%' || #{keyword} || '%' or
-						ncontent like '%' || #{keyword} || '%'
+						(nsubject like '%' || #{keyword} || '%'
+						or ncontent like '%' || #{keyword} || '%')
+						and ndel = 'n'
 					</if>
-					<!-- ndel이 'n'인것만 where 조건하고 싶은데 그건 어디다가...?? -->
+					<if test="keyword == null">
+						ndel = 'n'
+					</if>
 				</where>
 				order by ndate desc) a ) 
-		where rn between #{startRow} and #{endRow}
+		where rn between #{startRow} and #{endRow} 
 	</select>
 	
 	<select id="getTotal" parameterType="notice" resultType="int">
@@ -35,10 +39,15 @@
 		<where>
 			<if test="keyword != null and search != 'subcon'">
 				${search} like '%' || #{keyword} || '%'
+				and ndel = 'n' 
 			</if>
 			<if test="keyword != null and search == 'subcon'">
-				nsubject like '%' || #{keyword} || '%' or
-				ncontent like '%' || #{keyword} || '%'
+				(nsubject like '%' || #{keyword} || '%'
+				or ncontent like '%' || #{keyword} || '%')
+				and ndel = 'n'
+			</if>
+			<if test="keyword == null">
+				ndel = 'n'
 			</if>
 		</where>
 	</select>

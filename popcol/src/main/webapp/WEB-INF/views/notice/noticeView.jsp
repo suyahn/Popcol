@@ -16,7 +16,7 @@
 </script>
 </head>
 <body>
-	<div class="container" align="center">
+	<div class="container" align="center" style="width: 70%">
 		<h1 align="left">공지사항</h1>
 		<table class="table table-bordered">
 			<tr style="background-color: #F0F0F0; font-weight: bold;">
@@ -24,7 +24,7 @@
 				<td width="30%">${ notice.ndate }</td>
 			</tr>
 			<tr>
-				<td colspan="2"><pre>${ notice.ncontent }</pre></td>
+				<td colspan="2"><pre style="white-space: pre-wrap; height: 300px;">${ notice.ncontent }</pre></td>
 			</tr>
 		</table>
 		<!-- 마스터면! 수정 삭제 버튼 보이게 -->
