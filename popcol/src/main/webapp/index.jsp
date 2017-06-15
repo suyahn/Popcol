@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		location.href = "home.do";
+		location.href = "mypage_myInfoModifyForm.do";
 	</script>
 </body>
 </html>

@@ -112,8 +112,12 @@
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/receivePoint.jsp" />
 	</definition>
 	
-	<definition name="mypage_Home" extends="empty">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Home.jsp" />
+	<definition name="mypage_Modifyintro" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Modifyintro.jsp" />
+	</definition>
+	
+	<definition name="mypage_myInfoModifyForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModifyForm.jsp" />
 	</definition>
 	
     
