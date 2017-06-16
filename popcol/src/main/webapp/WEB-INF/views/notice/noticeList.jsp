@@ -13,7 +13,8 @@
 </head>
 <body>
 	<div class="container" align="center" style="width: 70%">
-		<h1 align="left"><a href='noticeList.do' class="red-active">공지사항</a></h1>
+		<h1 align="left" style="font-weight: bold;"><a href='noticeList.do' class="red-active">공지사항</a></h1>
+		<hr>
 		<div align="right">
 			<form action="noticeList.do">
 				<input type="hidden" name="pageNum" value="1">

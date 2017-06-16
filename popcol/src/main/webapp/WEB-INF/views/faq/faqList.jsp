@@ -13,7 +13,8 @@
 </head>
 <body>
 	<div class="container" align="center" style="width: 70%">
-		<h1 align="left"><a href='faqList.do' class="red-active">자주하는 질문</a></h1>
+		<h1 align="left" style="font-weight: bold;"><a href='faqList.do' class="red-active">자주하는 질문</a></h1>
+		<hr>
 		<div align="right">
 			<form action="faqList.do">
 				<input type="hidden" name="pageNum" value="1">

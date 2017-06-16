@@ -8,8 +8,9 @@
 <title></title>
 </head>
 <body>
-	<div class="container">
-		<h1>무비 차트</h1>
+	<div class="container" style="width: 80%;">
+		<h1 style="font-weight: bold;">무비 차트</h1>
+		<hr>
 		<div class="row">
 			<c:set var="rank" value="1" />
 			<c:forEach var="movie" items="${ movieList }">
@@ -25,8 +26,8 @@
 		        				<img alt="${ movie.mgrade }" src="icon/${ movie.mgrade }.png" width="20" height="20">
 		        			</p>
 		        			<p><font style="font-style: italic;">${ movie.moriginaltitle }</font><p>
-		        			<p>예매율 ${ movie.bookingRate }%</p>
-		        			<p><font style="font-weight: bold;">좋아요</font> ~ 개 <font style="font-weight: bold;">싫어요</font> ~ 개
+		        			<p>예매율 <font style="font-weight: bold;">${ movie.bookingRate }%</font></p>
+		        			<p><font style="font-weight: bold;">좋아요</font> ~ 개 <font style="font-weight: bold;">싫어요</font> ~ 개</p>
 		        			<p>${ movie.mreleaseDate } 개봉</p>
 		        			<p>
 		        				<button type="button" onclick="location.href='reservation.do'" class="btn btn-primary"
