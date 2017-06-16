@@ -32,12 +32,36 @@
 	
 	<context:component-scan base-package="popcol" />
 	
-	<!-- <beans:bean id="lc" class="popcol.controller.customer.LoginCheck" />
+	<!-- <beans:bean id="lc1" class="popcol.controller.customer.LoginCheck" /> -->
+	<!-- <beans:bean id="lc2" class="popcol.controller.customer.LoginCheck2" /> -->
 	
-	<interceptors>
+	<!-- <interceptors>
 		<interceptor>
-			<mapping path="/movieChart.do" />
-			<beans:ref bean="lc" />
+			<mapping path="/loginForm.do"/>
+		
+			<mapping path="/mypage_Main.do" />
+			<mapping path="/mypage_Home.do" />
+			<mapping path="/mypage_reservation.do" />
+			<mapping path="/mypage_seeMovie.do" />
+			<mapping path="/mypage_myPoint.do"/>
+			<mapping path="/mypage_myInfoModify.do" />
+			<mapping path="/mypage_byePopcol.do" />
+			<mapping path="/mypage_myQna.do"/>
+			<beans:ref bean="lc1" />
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/loginForm.do"/>
+		
+			<mapping path="/mypage_Main.do" />
+			<mapping path="/mypage_Home.do" />
+			<mapping path="/mypage_reservation.do" />
+			<mapping path="/mypage_seeMovie.do" />
+			<mapping path="/mypage_myPoint.do"/>
+			<mapping path="/mypage_myInfoModify.do" />
+			<mapping path="/mypage_byePopcol.do" />
+			<mapping path="/mypage_myQna.do"/>
+			<beans:ref bean="lc2" />
 		</interceptor>
 	</interceptors> -->
 	
