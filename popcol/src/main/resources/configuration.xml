@@ -18,6 +18,7 @@
 		<!-- <typeAlias alias="review" type="popcol.model.Review" /> -->
 		<typeAlias alias="runningtimetable" type="popcol.model.RunningtimeTable" />
 		<typeAlias alias="theater" type="popcol.model.Theater" />
+		<typeAlias alias="theater" type="popcol.model.MypageBooking" />
 	</typeAliases>
 	
 	<mappers>
@@ -33,6 +34,7 @@
 		<!-- <mapper resource="Review.xml" /> -->
 		<mapper resource="RunningtimeTable.xml" />
 		<mapper resource="Theater.xml" />
+		<mapper resource="MypageBooking.xml" />
 	</mappers>
 	
 </configuration>

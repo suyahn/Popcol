@@ -82,40 +82,60 @@ hr {
 					<h4 align="left"><a href="mypage_reservation.do">나의 예매 내역</a></h4>
 					
 					<table class="table ">
+						<c:forEach var="booking" items="${myBookingList }">
 						<tr>
-							<td>예매번호</td>
-							<td>포스터</td>
-							<td>영화제목<br>관람극장 극장명<br>관람일시 날짜, 시간</td>
-							<td>좌석, 인원수, 가격</td>
+							<td>예매번호<br><br><br><br>${booking.ticketnumber }</td>
+							
+							<c:forEach var="movie" items="${bookingMovieList }">
+								<c:if test="${booking.mid == movie.mid }">
+								<td><img alt="${movie.mtitle }" src="${path }/poster/${movie.mtitle}"></td>
+								<td>
+									${movie.mtitle }(${movie.moriginaltitle })<br><br><br>
+									
+									<c:forEach var="location" items="${bookingLocationList }">
+										<c:if test="${booking.lid == location.lid }">
+											${location.lname }
+										</c:if>
+									</c:forEach>
+									<c:forEach var="theater" items="${bookingTheaterList }">
+										<c:if test="${booking.tid == theater.tid }">
+											${theater.tname }<br>
+										</c:if>
+									</c:forEach>
+									
+									<c:forEach var="date" items="${bookingTheDateList }">
+										<c:if test="${movie.mtitle ==  date.mtitle}">
+											${date.theDate }&nbsp;&nbsp;&nbsp;${date.theTime }
+										</c:if>
+									</c:forEach>
+								</td>
+								</c:if>
+							</c:forEach>
+							
+							<c:forEach var="booking2" items="${myBookingList }">
+								<c:set var="sum1" value="0"/>
+								<c:if test="${booking.ticketnumber == booking2.ticketnumber}">
+									${sum1 = sum1 + 1 }
+								</c:if>
+							</c:forEach>
+							
+							<c:forEach var="price" items="${bookingPriceList }">
+								<c:set var="sum2" value="0"/>
+								<c:if test="${booking.pid == price.pid}">
+									${sum2 = sum2 + price.price }
+								</c:if>
+							</c:forEach>
+								
+							<td>
+								<c:forEach var="booking3" items="${myBookingList }">
+									<c:if test="${booking.ticketnumber == booking3.ticketnumber}">
+										${booking3.bseat }&nbsp;
+									</c:if>
+								</c:forEach>
+								<br><br><br><br>${sum1 }명, ${sum2 }원
+							</td>
 						</tr>
-					</table>
-				</div>
-				
-				<hr>
-				
-				<div style="margin-bottom: 50px;">
-					<h4 align="left"><a href="mypage_myPoint.do">나의 포인트 내역</a></h4>
-					
-					<table class="table ">
-						<tr>
-							<td>날짜</td>
-							<td>포인트 사용내역</td>
-							<td>포인트 내역 (+7000, -2000 이렇게)</td>
-						</tr>
-					</table>
-				</div>
-				
-				<hr>
-				
-				<div style="margin-bottom: 50px;">
-					<h4 align="left"><a href="mypage_myQna.do">나의 문의 내역</a></h4>
-					
-					<table class="table ">
-						<tr>
-							<td>작성날짜</td>
-							<td>[답변상태]</td>
-							<td>질문제목(하이퍼링크는 고민해보고)</td>
-						</tr>
+						</c:forEach>
 					</table>
 				</div>
 			</div>
@@ -125,8 +145,8 @@ hr {
 			<div class="col-sm-3 col-sm-pull-9">
 				<div class="text-xs-center text-sm-left">			
 					<ul class="nav nav-stacked menu">
-						<li class="active" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
-						<li class="" id=""><a href="mypage_reservation.do" class="" id="">나의 예매내역</a></li>
+						<li class="" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
+						<li class="active" id=""><a href="mypage_reservation.do" class="" id="">나의 예매내역</a></li>
 						<li class="" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
 						<li class="" id=""><a href="mypage_myPoint.do" class="" id="">나의 포인트 내역</a></li>
 						<li class="" id=""><a href="mypage_Modifyintro.do" class="" id="">회원 정보 수정</a></li>

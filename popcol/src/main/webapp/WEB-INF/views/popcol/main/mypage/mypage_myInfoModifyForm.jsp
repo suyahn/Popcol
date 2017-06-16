@@ -244,11 +244,11 @@ hr {
 			<div class="col-sm-3 col-sm-pull-9">
 				<div class="text-xs-center text-sm-left">			
 					<ul class="nav nav-stacked menu">
-						<li class="active" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
+						<li class="" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
 						<li class="" id=""><a href="mypage_reservation.do" class="" id="">나의 예매내역</a></li>
 						<li class="" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
 						<li class="" id=""><a href="mypage_myPoint.do" class="" id="">나의 포인트 내역</a></li>
-						<li class="" id=""><a href="mypage_Modifyintro.do" class="" id="">회원 정보 수정</a></li>
+						<li class="active" id=""><a href="mypage_Modifyintro.do" class="" id="">회원 정보 수정</a></li>
 						<li class="" id=""><a href="mypage_byePopcolForm.do" class="" id="">회원 탈퇴</a></li>
 						<li class="" id=""><a href="mypage_myQna.do" class="" id="">나의 문의 내역</a></li>
 					</ul>

@@ -1,5 +1,12 @@
 package popcol.controller.customer;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,7 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import popcol.model.Booking;
 import popcol.model.Customer;
+import popcol.model.Location;
+import popcol.model.Movie;
+import popcol.model.Price;
+import popcol.model.RunningtimeTable;
+import popcol.model.Theater;
 import popcol.service.customer.MypageService;
 
 @Controller
@@ -46,8 +59,62 @@ public class MypageController {
 	
 	// 예매내역 보기
 	@RequestMapping("mypage_reservation")
-	public String mypage_reservation() {
+	public String mypage_reservation(Model model, HttpSession session, HttpServletRequest request) throws ParseException {
 		// 1개월 간의 예매내역만 출력
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		// 1개월 전 날짜 구하기
+		SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd");
+		String today = df.format(new java.util.Date());
+	    
+	    Calendar c = Calendar.getInstance();
+	    c.setTime(df.parse(today));
+	    c.add(Calendar.MONTH, -1);
+	    String oneMonthAgo = df.format(c.getTime());  
+	    
+	   List<Booking> myBookingList = new ArrayList<Booking>();
+	   myBookingList = ms.selectMyBookingList(id, oneMonthAgo);
+	   
+	   List<Movie> bookingMovieList = new ArrayList<Movie>();
+	   List<Location> bookingLocationList = new ArrayList<Location>();
+	   List<Theater> bookingTheaterList =new ArrayList<Theater>();
+	   List<RunningtimeTable> bookingrttList = new ArrayList<RunningtimeTable>();
+	   List<HashMap<String, String>> bookingTheDateList = new ArrayList<HashMap<String,String>>();
+	   List<Price> bookingPriceList = new ArrayList<Price>();
+	   
+	   for (Booking booking : myBookingList) {
+		   Movie movie = ms.selectBookingMovie(booking.getMid());
+		   Location location = ms.selectBookingLocation(booking.getLid());
+		   Theater theater = ms.selectBookingTheater(booking.getTid());
+		   RunningtimeTable rtt = ms.selectBookingRunningtimeTable(booking.getRtid());
+		   Price price = ms.selectBookingPrice(booking.getPid());
+		   
+		   SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd일");
+		   SimpleDateFormat time = new SimpleDateFormat("HH시 mm분");
+		   String theDate = date.format(rtt.getRtdate());
+		   String theTime = time.format(rtt.getRtdate());
+		   HashMap<String, String> hs = new HashMap<String, String>();
+		   hs.put("theDate", theDate);
+		   hs.put("theTime", theTime);
+		   hs.put("mtitle", movie.getMtitle());
+		   
+		   bookingMovieList.add(movie);
+		   bookingLocationList.add(location);
+		   bookingTheaterList.add(theater);
+		   bookingrttList.add(rtt);
+		   bookingPriceList.add(price);
+		   
+		   bookingTheDateList.add(hs);
+	   }
+	   
+	   model.addAttribute("myBookingList", myBookingList);
+	   model.addAttribute("bookingMovieList", bookingMovieList);
+	   model.addAttribute("bookingLocationList", bookingLocationList);
+	   model.addAttribute("bookingTheaterList", bookingTheaterList);
+	   model.addAttribute("bookingTheDateList", bookingTheDateList);
+	   model.addAttribute("bookingPriceList", bookingPriceList);
+	   model.addAttribute("theDate", oneMonthAgo);
 		
 		return "mypage_reservation";
 	}
