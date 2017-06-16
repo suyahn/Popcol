@@ -120,6 +120,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModifyForm.jsp" />
 	</definition>
 	
+	<definition name="mypage_myInfoModify" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModify.jsp" />
+	</definition>
+	
     
     
     

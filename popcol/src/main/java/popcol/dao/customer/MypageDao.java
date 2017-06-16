@@ -8,4 +8,6 @@ public interface MypageDao {
 
 	int updateForBirthdayPoint(String cid);
 
+	int updateCustomerInfo(Customer customer);
+
 }

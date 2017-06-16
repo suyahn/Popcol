@@ -37,8 +37,6 @@
 	
 	<!-- <interceptors>
 		<interceptor>
-			<mapping path="/loginForm.do"/>
-		
 			<mapping path="/mypage_Main.do" />
 			<mapping path="/mypage_Home.do" />
 			<mapping path="/mypage_reservation.do" />

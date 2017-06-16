@@ -63,7 +63,6 @@ public class MypageController {
 
 	@RequestMapping("mypage_myInfoModifyForm")
 	public String mypage_myInfoModifyForm(Model model, HttpSession session, HttpServletRequest request) {
-		System.out.println("오니?");
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		Customer customer = ms.getSessionCustomerInfo(id);
@@ -71,5 +70,14 @@ public class MypageController {
 		model.addAttribute("customer", customer);
 
 		return "mypage_myInfoModifyForm";
+	}
+	
+	@RequestMapping("mypage_myInfoModify")
+	public String mypage_myInfoModify(Customer customer, Model model) {
+		int result = ms.updateCustomerInfo(customer);
+		
+		model.addAttribute("result", result);
+		
+		return "mypage_myInfoModify";
 	}
 }

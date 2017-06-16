@@ -153,7 +153,7 @@
 				
 				<tr>
 					<th>
-							<label for="password">비밀번호</label>
+						<label for="password">비밀번호</label>
 					</th>
 					<td>						
 						<div class="form-group">
@@ -182,7 +182,7 @@
 				
 				<tr>
 					<th>
-							<label for="name">이름</label>
+						<br><label for="name">이름</label>
 					</th>
 					<td>						
 						<div class="form-group">

@@ -3,6 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ include file="../../header.jsp" %>
 <%@ include file="verticaltab.jsp" %>
+<%@ include file="../member/memberCheck.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,6 +131,7 @@ hr {
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 			<div class="container" align="center" style="width: 600px;">
 				<h2 class="text-primary">회원 정보 수정</h2>
+				<h6 class="text-primary">이외의 정보를 수정하고 싶으신 경우에는 1:1 문의로 문의주세요.</h6>
 				
 				<br>
 				<br>
@@ -143,17 +145,18 @@ hr {
 							<td>						
 								<div class="form-group">
 									${customer.cid }
+									<input type="hidden" value="${customer.cid }" name="cid">
 								</div>
 							</td>
 						</tr>
 						
 						<tr>
 							<th>
-									<label for="password">비밀번호</label>
+								<label for="password">비밀번호</label>
 							</th>
 							<td>						
 								<div class="form-group">
-									<br><input type="password" class="form-control" name="cpassword" id="password" required="required" placeholder="비밀번호 (4 ~ 20자리의 영문 대 소문자, 숫자, 특수문자)">
+									<br><input type="password" class="form-control" name="cpassword" id="password" required="required" placeholder="비밀번호 (4 ~ 20자리의 영문 대 소문자, 숫자, 특수문자)" size="50">
 								</div>
 							</td>
 						</tr>	
@@ -178,7 +181,7 @@ hr {
 						
 						<tr>
 							<th>
-									<label for="name">이름</label>
+								<br><label for="name">이름</label>
 							</th>
 							<td>							
 								<div class="form-group">
