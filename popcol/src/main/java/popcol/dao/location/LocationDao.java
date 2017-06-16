@@ -8,4 +8,8 @@ public interface LocationDao {
 
 	List<Location> adminLocationList();
 
+	Location adminLocationSelect(int lid);
+
+	
+
 }

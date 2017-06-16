@@ -9,7 +9,9 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<h2 class="text-primary">영화 리스트</h2>
+		<h2>
+			<img src="location/logo.png" width="250" height="70"> 영화 리스트
+		</h2>
 		<table class="table table-hover">
 			<tr>
 				<th>No</th>
@@ -55,7 +57,8 @@
 			%>
 		</table>
 		<div align="left">
-			<button type="button" class="btn btn-primary"
+			<button type="button" class="btn btn-info btn-sm"
+				style="display: inline; border-color: navy; background-color: navy;"
 				onclick="location.href='adminInsertForm.do?pageNum=${ pageNum }'">
 				영화입력</button>
 		</div>
@@ -64,7 +67,7 @@
 				<li><a href="adminList.do?pageNum=${pp.startPage - 1}">이전</a></li>
 			</c:if>
 			<c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">
-				<li <c:if test="${pp.currentPage==i}">class="active"</c:if>><a
+				<li <c:if test="${pp.currentPage==i}">class="active" </c:if>><a
 					href="adminList.do?pageNum=${i}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${pp.endPage < pp.totPage}">
