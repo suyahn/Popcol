@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import popcol.model.Customer;
 import popcol.service.customer.CustomerService;
 
-public class LoginCheck implements HandlerInterceptor {
+public class LoginCheck2 implements HandlerInterceptor {
 	@Autowired
 	CustomerService cs = null;
 
@@ -29,13 +29,11 @@ public class LoginCheck implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 		HttpSession session;
 
-		System.out.println("랄라");
-		
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
 
-		if (id == null) {
-			response.sendRedirect("loginForm.do");
+		if (id != null) {
+			response.sendRedirect("home.do");
 
 			return false;
 		}

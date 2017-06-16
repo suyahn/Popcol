@@ -8,4 +8,8 @@ public interface MypageService {
 
 	int updateForBirthdayPoint(String cid);
 
+	int updateCustomerInfo(Customer customer);
+
+	int deleteCutomerInfo(String cid);
+
 }

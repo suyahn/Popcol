@@ -3,7 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ include file="../../header.jsp" %>
 <%@ include file="verticaltab.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -77,48 +77,29 @@ hr {
 	 <div class="container-fluid " align="center" style="width: 80%; margin-bottom: 50px !important; margin: auto;">
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
-			<div class="container" style="width: 800px;">
-				<div style="margin-bottom: 50px;">
-					<h4 align="left"><a href="mypage_reservation.do">나의 예매 내역</a></h4>
+				<c:if test="${result > 0 }">
+					<div class="container" align="center" style="width: 600px;">
+					<h2 class="text-primary" align="left">회원 정보 수정</h2>
 					
-					<table class="table ">
-						<tr>
-							<td>예매번호</td>
-							<td>포스터</td>
-							<td>영화제목<br>관람극장 극장명<br>관람일시 날짜, 시간</td>
-							<td>좌석, 인원수, 가격</td>
-						</tr>
-					</table>
-				</div>
-				
-				<hr>
-				
-				<div style="margin-bottom: 50px;">
-					<h4 align="left"><a href="mypage_myPoint.do">나의 포인트 내역</a></h4>
+					<hr>
 					
-					<table class="table ">
-						<tr>
-							<td>날짜</td>
-							<td>포인트 사용내역</td>
-							<td>포인트 내역 (+7000, -2000 이렇게)</td>
-						</tr>
-					</table>
-				</div>
-				
-				<hr>
-				
-				<div style="margin-bottom: 50px;">
-					<h4 align="left"><a href="mypage_myQna.do">나의 문의 내역</a></h4>
+					<h6 class="text-primary">회원 정보 수정이 완료되었습니다.</h6>
 					
-					<table class="table ">
-						<tr>
-							<td>작성날짜</td>
-							<td>[답변상태]</td>
-							<td>질문제목(하이퍼링크는 고민해보고)</td>
-						</tr>
-					</table>
-				</div>
-			</div>
+					<br>
+					<br>
+					
+					<button onclick="location.href='mypage_Main.do'" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">마이페이지</button>
+					<button onclick="location.href='home.do'" class="btn btn-default btn-sm">메인</button>
+					
+					</div>
+				</c:if>
+				
+				<c:if test="${result <= 0 }">
+					<script type="text/javascript">
+						alert("회원 정보 수정을 다시 시도해주세요.");
+						history.go(-1);
+					</script>
+				</c:if>
 			</div>
 			
 			<!-- sidebar area start -->

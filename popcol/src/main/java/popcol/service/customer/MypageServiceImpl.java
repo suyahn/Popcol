@@ -20,4 +20,14 @@ public class MypageServiceImpl implements MypageService{
 		
 		return md.updateForBirthdayPoint(cid);
 	}
+
+	public int updateCustomerInfo(Customer customer) {
+		
+		return md.updateCustomerInfo(customer);
+	}
+
+	public int deleteCutomerInfo(String cid) {
+		
+		return md.deleteCustomerInfo(cid);
+	}
 }
