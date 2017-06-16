@@ -124,10 +124,16 @@
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModify.jsp" />
 	</definition>
 	
-    
-    
-    
-
+	<definition name="mypage_byePopcolForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_byePopcolForm.jsp" />
+	</definition>
+	
+	<definition name="mypage_byePopcol" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_byePopcol.jsp" />
+	</definition>
+	
+	
+	
 
 	<!-- ####################### -->
 	<!-- 수연 -->

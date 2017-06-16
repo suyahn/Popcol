@@ -25,4 +25,9 @@ public class MypageServiceImpl implements MypageService{
 		
 		return md.updateCustomerInfo(customer);
 	}
+
+	public int deleteCutomerInfo(String cid) {
+		
+		return md.deleteCustomerInfo(cid);
+	}
 }

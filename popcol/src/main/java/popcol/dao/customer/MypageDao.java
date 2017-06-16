@@ -10,4 +10,6 @@ public interface MypageDao {
 
 	int updateCustomerInfo(Customer customer);
 
+	int deleteCustomerInfo(String cid);
+
 }

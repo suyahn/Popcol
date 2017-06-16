@@ -130,8 +130,11 @@ hr {
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 			<div class="container" align="center" style="width: 600px;">
-				<h2 class="text-primary">회원 정보 수정</h2>
-				<h6 class="text-primary">이외의 정보를 수정하고 싶으신 경우에는 1:1 문의로 문의주세요.</h6>
+				<h2 class="text-primary" align="left">회원 정보 수정</h2>
+				
+				<hr>
+				
+				<h6 class="text-primary">개명으로 인한 이름 수정은 1:1 문의로 문의주세요.</h6>
 				
 				<br>
 				<br>
@@ -143,7 +146,7 @@ hr {
 								<label for="id">아이디</label>
 							</th>
 							<td>						
-								<div class="form-group">
+								<div class="form-group" style="text-align: left;">
 									${customer.cid }
 									<input type="hidden" value="${customer.cid }" name="cid">
 								</div>
@@ -184,7 +187,7 @@ hr {
 								<br><label for="name">이름</label>
 							</th>
 							<td>							
-								<div class="form-group">
+								<div class="form-group" style="text-align: left;">
 									${customer.cname }
 								</div>
 							</td>
@@ -217,7 +220,7 @@ hr {
 								<label for="birthday">생일</label>
 							</th>
 							<td>						
-								<div class="form-group">
+								<div class="form-group" style="text-align: left;">
 									${customer.cbirthday }
 								</div>
 							</td>

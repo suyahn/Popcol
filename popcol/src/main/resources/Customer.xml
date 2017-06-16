@@ -18,7 +18,7 @@
 	</resultMap>
 	
 	<select id="loginCheck" parameterType="customer" resultType="string">
-		select cpassword from customer where cid = #{cid}
+		select cpassword from customer where cid = #{cid} and cdel = 'n'
 	</select>
 	
 	<select id="getSessionCustomerInfo" parameterType="string" resultType="customer">
@@ -69,6 +69,10 @@
 	
 	<update id="updateCustomerInfo" parameterType="customer">
 		update customer set cpassword = #{cpassword}, cemail = #{cemail}, cphone = #{cphone} where cid = #{cid}
+	</update>
+	
+	<update id="deleteCustomerInfo" parameterType="string">
+		update customer set cdel = 'y' where cid = #{cid}
 	</update>
 	
 </mapper>

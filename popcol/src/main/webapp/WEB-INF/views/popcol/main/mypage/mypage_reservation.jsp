@@ -3,7 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ include file="../../header.jsp" %>
 <%@ include file="verticaltab.jsp" %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,14 +44,6 @@ hr {
 			}); 
 		});
 	});
-	
-	function ChkPassword() {
-		if (frm.chkPassword.value != frm.password.value) {
-			alert("비밀번호가 틀렸습니다.");
-			
-			return false;
-		}
-	}
 </script>
 </head>
 <body>
@@ -85,49 +77,47 @@ hr {
 	 <div class="container-fluid " align="center" style="width: 80%; margin-bottom: 50px !important; margin: auto;">
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
-			<div class="container" align="center" style="width: 600px;">
-				<h2 class="text-primary" align="left">회원 정보 수정</h2>
+			<div class="container" style="width: 800px;">
+				<div style="margin-bottom: 50px;">
+					<h4 align="left"><a href="mypage_reservation.do">나의 예매 내역</a></h4>
+					
+					<table class="table ">
+						<tr>
+							<td>예매번호</td>
+							<td>포스터</td>
+							<td>영화제목<br>관람극장 극장명<br>관람일시 날짜, 시간</td>
+							<td>좌석, 인원수, 가격</td>
+						</tr>
+					</table>
+				</div>
 				
 				<hr>
 				
-				<h4 class="text-primary">회원정보를 수정하시려면 비밀번호를 입력하셔야 합니다.</h4>
-				<h6 class="text-primary">회원님의 개인정보 보호를 위한 본인 확인 절차이오니, </h6>
-				<h6 class="text-primary">Popcorn&amp;Cola 회원 로그인 시 사용하시는 비밀번호를 입력해주세요.</h6>
-				
-				<br>
-				<br>
-				
-				<form action="mypage_myInfoModifyForm.do" onsubmit="return ChkPassword()" name="frm">
-				<input type="hidden" value="${customer.cpassword }" id="chkPassword">
-					<table>
-						
+				<div style="margin-bottom: 50px;">
+					<h4 align="left"><a href="mypage_myPoint.do">나의 포인트 내역</a></h4>
+					
+					<table class="table ">
 						<tr>
-							<td>						
-								<div class="form-group">
-									<br><input type="password" class="form-control" name="cpassword" id="password" required="required" placeholder="비밀번호" size="40">
-								</div>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>						
-								<div class="form-group" id="passwordCheck"></div>
-							</td>
-						</tr>
-						
-						<tr>
-							<th>		
-								<br>	
-								<div align="center">		 
-								<div class="form-group" style="display: inline;">
-									<input type="submit" class="btn btn-info btn-sm" value="확인" style="border-color: #cd1726; background-color: #cd1726;">
-									<input type="button" onclick="location.href='mypage_Main.do'" class="btn btn-default btn-sm" value="취소" >
-								</div>
-								</div>	
-							</th>
+							<td>날짜</td>
+							<td>포인트 사용내역</td>
+							<td>포인트 내역 (+7000, -2000 이렇게)</td>
 						</tr>
 					</table>
-				</form>
+				</div>
+				
+				<hr>
+				
+				<div style="margin-bottom: 50px;">
+					<h4 align="left"><a href="mypage_myQna.do">나의 문의 내역</a></h4>
+					
+					<table class="table ">
+						<tr>
+							<td>작성날짜</td>
+							<td>[답변상태]</td>
+							<td>질문제목(하이퍼링크는 고민해보고)</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 			</div>
 			

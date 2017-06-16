@@ -86,25 +86,31 @@ hr {
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 			<div class="container" align="center" style="width: 600px;">
-				<h2 class="text-primary" align="left">회원 정보 수정</h2>
+				<h2 class="text-primary" align="left">회원 탈퇴</h2>
 				
 				<hr>
 				
-				<h4 class="text-primary">회원정보를 수정하시려면 비밀번호를 입력하셔야 합니다.</h4>
-				<h6 class="text-primary">회원님의 개인정보 보호를 위한 본인 확인 절차이오니, </h6>
-				<h6 class="text-primary">Popcorn&amp;Cola 회원 로그인 시 사용하시는 비밀번호를 입력해주세요.</h6>
+				<h4 class="text-primary">비밀번호 확인</h4>
+				<h6 class="text-primary">회원님의 개인정보 보호를 위한 절차이오니, Popcorn&amp;Cola 로그인 시 사용하는 비밀번호를 입력해 주세요. </h6>
 				
 				<br>
 				<br>
 				
-				<form action="mypage_myInfoModifyForm.do" onsubmit="return ChkPassword()" name="frm">
+				<form action="mypage_byePopcol.do" onsubmit="return ChkPassword()" name="frm">
 				<input type="hidden" value="${customer.cpassword }" id="chkPassword">
 					<table>
+						<tr>
+							<td>						
+								<div class="form-group">
+									<br><font size="5px">${customer.cname }</font>님(${customer.cid })
+								</div>
+							</td>
+						</tr>
 						
 						<tr>
 							<td>						
 								<div class="form-group">
-									<br><input type="password" class="form-control" name="cpassword" id="password" required="required" placeholder="비밀번호" size="40">
+									<input type="password" class="form-control" name="cpassword" id="password" required="required" placeholder="비밀번호" size="40">
 								</div>
 							</td>
 						</tr>
@@ -118,12 +124,12 @@ hr {
 						<tr>
 							<th>		
 								<br>	
-								<div align="center">		 
+								<div align="center">			 
 								<div class="form-group" style="display: inline;">
 									<input type="submit" class="btn btn-info btn-sm" value="확인" style="border-color: #cd1726; background-color: #cd1726;">
-									<input type="button" onclick="location.href='mypage_Main.do'" class="btn btn-default btn-sm" value="취소" >
+									<input type="button" onclick="location.href='home.do'" class="btn btn-default btn-sm" value="메인" >
 								</div>
-								</div>	
+								</div>
 							</th>
 						</tr>
 					</table>

@@ -25,4 +25,9 @@ public class MypageDaoImpl implements MypageDao {
 		
 		return sst.update("customerns.updateCustomerInfo", customer);
 	}
+
+	public int deleteCustomerInfo(String cid) {
+		
+		return sst.update("customerns.deleteCustomerInfo", cid);
+	}
 }

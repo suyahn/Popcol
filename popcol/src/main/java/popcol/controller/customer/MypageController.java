@@ -43,13 +43,16 @@ public class MypageController {
 
 		return "receivePoint";
 	}
-
-	@RequestMapping("mypage_Home")
-	public String mypage_Home() {
-
-		return "mypage_Home";
+	
+	// 예매내역 보기
+	@RequestMapping("mypage_reservation")
+	public String mypage_reservation() {
+		// 1개월 간의 예매내역만 출력
+		
+		return "mypage_reservation";
 	}
 	
+	// 회원 정보 수정
 	@RequestMapping("mypage_Modifyintro")
 	public String mypage_Modifyintro(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
@@ -61,6 +64,8 @@ public class MypageController {
 		return "mypage_Modifyintro";
 	}
 
+	
+	// 회원 탈퇴
 	@RequestMapping("mypage_myInfoModifyForm")
 	public String mypage_myInfoModifyForm(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
@@ -79,5 +84,31 @@ public class MypageController {
 		model.addAttribute("result", result);
 		
 		return "mypage_myInfoModify";
+	}
+	
+	@RequestMapping("mypage_byePopcolForm")
+	public String mypage_byePopcolForm(Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		Customer customer = ms.getSessionCustomerInfo(id);
+		
+		model.addAttribute("customer", customer);
+		
+		return "mypage_byePopcolForm";
+	}
+	
+	@RequestMapping("mypage_byePopcol")
+	public String mypage_byePopcol(Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		int result = ms.deleteCutomerInfo(id);
+		
+		if (result > 0) {
+			session.invalidate();
+		}
+		
+		model.addAttribute("result", result);
+		
+		return "mypage_byePopcol";
 	}
 }

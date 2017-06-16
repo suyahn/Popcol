@@ -79,7 +79,7 @@ hr {
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 				<c:if test="${result > 0 }">
 					<div class="container" align="center" style="width: 600px;">
-					<h2 class="text-primary">회원 정보 수정</h2>
+					<h2 class="text-primary" align="left">회원 정보 수정</h2>
 					
 					<hr>
 					

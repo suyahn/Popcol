@@ -10,4 +10,6 @@ public interface MypageService {
 
 	int updateCustomerInfo(Customer customer);
 
+	int deleteCutomerInfo(String cid);
+
 }
