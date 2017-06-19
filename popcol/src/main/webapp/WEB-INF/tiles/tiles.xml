@@ -113,17 +113,19 @@
 	</definition>
 
 
-	
+
 	<!-- 예매 내역 확인 -->
 	<definition name="mypage_reservation" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reservation.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_reservation.jsp" />
 	</definition>
-	
+
 	<!-- 예매 내역 취소 -->
 	<definition name="cancelBooking" extends="empty">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/cancelBooking.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/cancelBooking.jsp" />
 	</definition>
-	
+
 	<!-- 회원 정보 수정 -->
 
 	<definition name="mypage_Modifyintro" extends="mainLayout">
@@ -256,10 +258,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/movieTime.jsp" />
 	</definition>
-		<definition name="seatSelect" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/booking/seatSelect.jsp" />
+	<definition name="seatSelect" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/booking/seatSelect.jsp" />
 	</definition>
-	
+
 	<!-- 규랑 -->
 	<definition name="admin" template="/WEB-INF/views/admin/layout.jsp">
 		<put-attribute name="title" value="PopCol" />
@@ -335,6 +338,18 @@
 	<definition name="adminLocationDelete" extends="admin">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/location/adminLocationDelete.jsp" />
+	</definition>
+
+	<!-- 고객관리 -->
+	
+	<definition name="adminCustomerList" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/customer/adminCustomerList.jsp" />
+	</definition>
+	
+	<definition name="adminCustomerView" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/customer/adminCustomerView.jsp" />
 	</definition>
 
 	<!-- 관리자 로그인 -->

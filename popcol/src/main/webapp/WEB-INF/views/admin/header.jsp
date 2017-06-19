@@ -86,7 +86,7 @@
 					<li class=""><a href="adminList.do">영화관리</a></li>
 					<li class=""><a href="adminLocationList.do">극장관리</a></li>
 					<li class=""><a href=".do">상영시간표</a></li>
-					<li class=""><a href=".do">회원관리</a></li>
+					<li class=""><a href="adminCustomerList.do">회원관리</a></li>
 
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
