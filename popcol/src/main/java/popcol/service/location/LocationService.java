@@ -10,6 +10,12 @@ public interface LocationService {
 
 	Location adminLocationSelect(int lid);
 
+	int adminLocationUpdate(Location location);
+
+	int adminLocationDelete(int lid);
+
+	int adminLocationInsert(Location location);
+
 	
 
 }

@@ -6,51 +6,49 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin View</title>
-<!-- <script type="text/javascript">
-	$(function() {
-		$('#list').load('adminLocationList.do?');
-	});
-</script> -->
 </head>
 <body>
 	<div class="container" align="center">
 		<h2>
-			<img src="location/logo.png" width="250" height="70"> 영화관
+			<img src="location/logo.png" width="250" height="70"> 고객 정보
 		</h2>
 		<table class="table table-bordered">
 			<tr>
 				<td>아이디</td>
-				<td>${ location.lid }</td>
+				<td>${ customer.cid }</td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td>${location.lname}</td>
+				<td>${customer.cname}</td>
 			</tr>
 			<tr>
-				<td>주소</td>
-				<td>${location.laddress}</td>
+				<td>이메일</td>
+				<td>${customer.cemail}</td>
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td>${location.lphone}</td>
+				<td>${customer.cphone}</td>
 			</tr>
 			<tr>
-				<td>위도</td>
-				<td>${location.lat}</td>
+				<td>포인트</td>
+				<td>${customer.cpoint}</td>
 			</tr>
 			<tr>
-				<td>경도</td>
-				<td>${location.lon}</td>
+				<td>회원가입일</td>
+				<td>${customer.creg_date}</td>
+			</tr>
+			<tr>
+				<td>생년월일</td>
+				<td>${customer.cbirth_date}</td>
 			</tr>
 		</table>
-		<a href="adminLocationList.do?" class="btn btn-info"
+		<a href="adminCustomerList.do?" class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">목록</a>
-		<a href="adminLocationUpdateForm.do?lid=${location.lid}"
+		<a href="adminCustomerUpdateForm.do?cid=${customer.cid}"
 			class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">수정</a>
-		<a href="adminLocationDelete.do?lid=${location.lid}" class="btn btn-info"
+		<a href="adminCustomerDelete.do?cid=${customer.cid}" class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">삭제</a>
-		<!-- <div id="list"></div> -->
 	</div>
 </body>
 </html>
