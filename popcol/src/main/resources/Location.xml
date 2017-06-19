@@ -21,8 +21,4 @@
 		select l.lid, lname, rt.mid from location l, runningtimetable rt where rt.lid = l.lid and rt.mid = #{mid}
 	</select>
 	
-	<!-- 도은 -->
-	<select id="selectBookingLocation" parameterType="int" resultType="location">
-		select * from location where lid = #{lid}
-	</select>
 </mapper>

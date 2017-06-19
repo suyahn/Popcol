@@ -16,10 +16,5 @@
 		<result property="bdel" column="bdel" />
 	</resultMap>
 	
-	<!-- 도은 -->
-	<!-- 마이 페이지 1개월 간 예매 내역 받아오기 -->
-	<select id="selectMyBookingList" parameterType="hashmap" resultMap="bookingResult">
-		select * from booking where cid = #{cid} and bdate >= #{oneMonthAgo} order by bdate desc
-	</select>
 	
 </mapper>

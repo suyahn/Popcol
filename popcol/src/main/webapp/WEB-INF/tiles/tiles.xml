@@ -117,6 +117,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reservation.jsp" />
 	</definition>
 	
+	<!-- 예매 내역 취소 -->
+	<definition name="cancelBooking" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/cancelBooking.jsp" />
+	</definition>
+	
 	<!-- 회원 정보 수정 -->
 	<definition name="mypage_Modifyintro" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Modifyintro.jsp" />

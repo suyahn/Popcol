@@ -19,6 +19,7 @@ import popcol.model.Booking;
 import popcol.model.Customer;
 import popcol.model.Location;
 import popcol.model.Movie;
+import popcol.model.MypageBooking;
 import popcol.model.Price;
 import popcol.model.RunningtimeTable;
 import popcol.model.Theater;
@@ -67,57 +68,48 @@ public class MypageController {
 		// 1개월 전 날짜 구하기
 		SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd");
 		String today = df.format(new java.util.Date());
-	    
+		
 	    Calendar c = Calendar.getInstance();
 	    c.setTime(df.parse(today));
 	    c.add(Calendar.MONTH, -1);
 	    String oneMonthAgo = df.format(c.getTime());  
 	    
-	   List<Booking> myBookingList = new ArrayList<Booking>();
+	   List<MypageBooking> myBookingList = new ArrayList<MypageBooking>();
 	   myBookingList = ms.selectMyBookingList(id, oneMonthAgo);
 	   
-	   List<Movie> bookingMovieList = new ArrayList<Movie>();
-	   List<Location> bookingLocationList = new ArrayList<Location>();
-	   List<Theater> bookingTheaterList =new ArrayList<Theater>();
-	   List<RunningtimeTable> bookingrttList = new ArrayList<RunningtimeTable>();
-	   List<HashMap<String, String>> bookingTheDateList = new ArrayList<HashMap<String,String>>();
-	   List<Price> bookingPriceList = new ArrayList<Price>();
-	   
-	   for (Booking booking : myBookingList) {
-		   Movie movie = ms.selectBookingMovie(booking.getMid());
-		   Location location = ms.selectBookingLocation(booking.getLid());
-		   Theater theater = ms.selectBookingTheater(booking.getTid());
-		   RunningtimeTable rtt = ms.selectBookingRunningtimeTable(booking.getRtid());
-		   Price price = ms.selectBookingPrice(booking.getPid());
+	   SimpleDateFormat df2 = new SimpleDateFormat("yyyy년 MM월 dd일");
+	   SimpleDateFormat df3 = new SimpleDateFormat("HH시 mm분");
+
+	   for(MypageBooking mb : myBookingList) {
+		   String theDate = df2.format(mb.getRtdate());
+		   String theTime = df3.format(mb.getRtdate());
 		   
-		   SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd일");
-		   SimpleDateFormat time = new SimpleDateFormat("HH시 mm분");
-		   String theDate = date.format(rtt.getRtdate());
-		   String theTime = time.format(rtt.getRtdate());
-		   HashMap<String, String> hs = new HashMap<String, String>();
-		   hs.put("theDate", theDate);
-		   hs.put("theTime", theTime);
-		   hs.put("mtitle", movie.getMtitle());
-		   
-		   bookingMovieList.add(movie);
-		   bookingLocationList.add(location);
-		   bookingTheaterList.add(theater);
-		   bookingrttList.add(rtt);
-		   bookingPriceList.add(price);
-		   
-		   bookingTheDateList.add(hs);
+		   mb.setTheDate(theDate);
+		   mb.setTheTime(theTime);
 	   }
 	   
+	   List<MypageBooking> MyPriceSeatList = new ArrayList<MypageBooking>();
+	   MyPriceSeatList = ms.selectMyPriceSeatList(id, oneMonthAgo);
+	  
 	   model.addAttribute("myBookingList", myBookingList);
-	   model.addAttribute("bookingMovieList", bookingMovieList);
-	   model.addAttribute("bookingLocationList", bookingLocationList);
-	   model.addAttribute("bookingTheaterList", bookingTheaterList);
-	   model.addAttribute("bookingTheDateList", bookingTheDateList);
-	   model.addAttribute("bookingPriceList", bookingPriceList);
-	   model.addAttribute("theDate", oneMonthAgo);
-		
-		return "mypage_reservation";
+	   model.addAttribute("MyPriceSeatList", MyPriceSeatList);
+	   model.addAttribute("today", today);
+	   
+	   return "mypage_reservation";
 	}
+	
+	// 영화 예매 취소
+	@RequestMapping("cancelBooking")
+	public String cancelBooking(String ticketnumber, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		int result = ms.deleteBooking(ticketnumber, id);
+		model.addAttribute("result", result);
+		
+		return "cancelBooking";
+	}
+	
+	// 내가 본 영화 보기
 	
 	// 회원 정보 수정
 	@RequestMapping("mypage_Modifyintro")

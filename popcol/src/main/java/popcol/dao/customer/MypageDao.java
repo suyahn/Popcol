@@ -6,6 +6,7 @@ import popcol.model.Booking;
 import popcol.model.Customer;
 import popcol.model.Location;
 import popcol.model.Movie;
+import popcol.model.MypageBooking;
 import popcol.model.Price;
 import popcol.model.RunningtimeTable;
 import popcol.model.Theater;
@@ -20,16 +21,10 @@ public interface MypageDao {
 
 	int deleteCustomerInfo(String cid);
 
-	List<Booking> selectMyBookingList(String cid, String oneMonthAgo);
+	List<MypageBooking> selectMyBookingList(String cid, String oneMonthAgo);
 
-	Movie selectBookingMovie(int mid);
+	List<MypageBooking> selectMyPriceSeatList(String cid, String oneMonthAgo);
 
-	Location selectBookingLocation(int lid);
-
-	Theater selectBookingTheater(int tid);
-
-	RunningtimeTable selectBookingRunningtimeTable(int rtid);
-
-	Price selectBookingPrice(int pid);
+	int deleteBooking(String ticketnumber, String cid);
 
 }

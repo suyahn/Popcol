@@ -10,9 +10,4 @@
 		<result property="human" column="human" />
 	</resultMap>
 	
-	<!-- 도은 -->
-	<select id="selectBookingPrice" parameterType="int" resultType="price">
-		select * from price where pid = #{pid}
-	</select>
-	
 </mapper>

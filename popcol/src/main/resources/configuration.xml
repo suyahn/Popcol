@@ -18,7 +18,7 @@
 		<!-- <typeAlias alias="review" type="popcol.model.Review" /> -->
 		<typeAlias alias="runningtimetable" type="popcol.model.RunningtimeTable" />
 		<typeAlias alias="theater" type="popcol.model.Theater" />
-		<typeAlias alias="theater" type="popcol.model.MypageBooking" />
+		<typeAlias alias="mypagebooking" type="popcol.model.MypageBooking" />
 	</typeAliases>
 	
 	<mappers>

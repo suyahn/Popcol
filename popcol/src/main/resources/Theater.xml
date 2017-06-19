@@ -8,9 +8,4 @@
 		<result property="lid" column="lid" />
 		<result property="tseat" column="tseat" />
 	</resultMap>
-	
-	<!-- 도은 -->
-	<select id="selectBookingTheater" parameterType="int" resultType="theater">
-		select * from theater where tid = #{tid}
-	</select>
 </mapper>

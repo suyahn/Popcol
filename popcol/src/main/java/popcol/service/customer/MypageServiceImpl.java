@@ -10,6 +10,7 @@ import popcol.model.Booking;
 import popcol.model.Customer;
 import popcol.model.Location;
 import popcol.model.Movie;
+import popcol.model.MypageBooking;
 import popcol.model.Price;
 import popcol.model.RunningtimeTable;
 import popcol.model.Theater;
@@ -39,33 +40,18 @@ public class MypageServiceImpl implements MypageService{
 		return md.deleteCustomerInfo(cid);
 	}
 
-	public List<Booking> selectMyBookingList(String cid, String oneMonthAgo) {
+	public List<MypageBooking> selectMyBookingList(String cid, String oneMonthAgo) {
 		
 		return md.selectMyBookingList(cid, oneMonthAgo);
 	}
 
-	public Movie selectBookingMovie(int mid) {
+	public List<MypageBooking> selectMyPriceSeatList(String cid, String oneMonthAgo) {
 		
-		return md.selectBookingMovie(mid);
+		return md.selectMyPriceSeatList(cid, oneMonthAgo);
 	}
 
-	public Location selectBookingLocation(int lid) {
+	public int deleteBooking(String ticketnumber, String cid) {
 		
-		return md.selectBookingLocation(lid);
-	}
-
-	public Theater selectBookingTheater(int tid) {
-		
-		return md.selectBookingTheater(tid);
-	}
-
-	public RunningtimeTable selectBookingRunningtimeTable(int rtid) {
-		
-		return md.selectBookingRunningtimeTable(rtid);
-	}
-
-	public Price selectBookingPrice(int pid) {
-		
-		return md.selectBookingPrice(pid);
+		return md.deleteBooking(ticketnumber, cid);
 	}
 }

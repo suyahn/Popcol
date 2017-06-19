@@ -14,6 +14,7 @@ public class MypageBooking {
 	private int price;
 	private String bseat;
 	private String ticketnumber;
+	private String human;
 
 	public String getMtitle() {
 		return mtitle;
@@ -101,5 +102,13 @@ public class MypageBooking {
 
 	public void setTicketnumber(String ticketnumber) {
 		this.ticketnumber = ticketnumber;
+	}
+
+	public String getHuman() {
+		return human;
+	}
+
+	public void setHuman(String human) {
+		this.human = human;
 	}
 }

@@ -11,6 +11,7 @@ import popcol.model.Booking;
 import popcol.model.Customer;
 import popcol.model.Location;
 import popcol.model.Movie;
+import popcol.model.MypageBooking;
 import popcol.model.Price;
 import popcol.model.RunningtimeTable;
 import popcol.model.Theater;
@@ -40,36 +41,28 @@ public class MypageDaoImpl implements MypageDao {
 		return sst.update("customerns.deleteCustomerInfo", cid);
 	}
 
-	public List<Booking> selectMyBookingList(String cid, String oneMonthAgo) {
+	public List<MypageBooking> selectMyBookingList(String cid, String oneMonthAgo) {
 		HashMap<String, String> hs = new HashMap<String, String>();
 		hs.put("cid", cid);
 		hs.put("oneMonthAgo", oneMonthAgo);
 		
-		return sst.selectList("bookingns.selectMyBookingList", hs);
+		return sst.selectList("mypagebookingns.selectMyBookingList", hs);
 	}
 
-	public Movie selectBookingMovie(int mid) {
+	public List<MypageBooking> selectMyPriceSeatList(String cid, String oneMonthAgo) {
+		HashMap<String, String> hs = new HashMap<String, String>();
+		hs.put("cid", cid);
+		hs.put("oneMonthAgo", oneMonthAgo);
 		
-		return sst.selectOne("moviens.selectBookingMovie", mid);
+		return sst.selectList("mypagebookingns.selectMyPriceSeatList", hs);
 	}
 
-	public Location selectBookingLocation(int lid) {
+	public int deleteBooking(String ticketnumber, String cid) {
+		HashMap<String, String> hs = new HashMap<String, String>();
+		hs.put("cid", cid);
+		hs.put("ticketnumber", ticketnumber);
+		sst.update("mypagebookingns.deleteBookingPoint", hs);
 		
-		return sst.selectOne("locationns.selectBookingLocation", lid);
-	}
-
-	public Theater selectBookingTheater(int tid) {
-		
-		return sst.selectOne("theaterns.selectBookingTheater", tid);
-	}
-
-	public RunningtimeTable selectBookingRunningtimeTable(int rtid) {
-		
-		return sst.selectOne("runningtimetablens.selectBookingRunningtimeTable", rtid);
-	}
-	
-	public Price selectBookingPrice(int pid) {
-	
-		return sst.selectOne("pricens.selectBookingPrice", pid);
+		return sst.delete("mypagebookingns.deleteBooking", ticketnumber);
 	}
 }
