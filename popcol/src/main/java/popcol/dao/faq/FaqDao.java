@@ -10,4 +10,6 @@ public interface FaqDao {
     int getMaxNum();
     int insert(Faq faq);
     Faq select(int fid);
+	int update(Faq faq);
+	int delete(int fid);
 }

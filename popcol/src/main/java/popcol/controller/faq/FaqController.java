@@ -77,4 +77,35 @@ public class FaqController {
         
         return "faqView";
     }
+    
+    @RequestMapping("faqUpdateForm")
+	public String faqUpdateForm(int fid, String pageNum, Model model) {
+		Faq faq = fs.select(fid);
+		
+		model.addAttribute("faq", faq);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "faqUpdateForm";
+	}
+	
+	@RequestMapping("faqUpdate")
+	public String faqUpdate(Faq faq, String pageNum, Model model) {
+		int result = fs.update(faq);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("fid", faq.getFid());
+		
+		return "faqUpdate";
+	}
+	
+	@RequestMapping("faqDelete")
+	public String faqDelete(int fid, String pageNum, Model model) {
+		int result = fs.delete(fid);
+		
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("result", result);
+		
+		return "faqDelete";
+	}
 }

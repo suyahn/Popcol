@@ -15,7 +15,7 @@ import popcol.service.customer.CustomerService;
 public class LoginCheck implements HandlerInterceptor {
 	@Autowired
 	CustomerService cs = null;
-	
+
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
 
@@ -27,8 +27,18 @@ public class LoginCheck implements HandlerInterceptor {
 	}
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
+		HttpSession session;
 
+		System.out.println("랄라");
 		
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+
+		if (id == null) {
+			response.sendRedirect("loginForm.do");
+
+			return false;
+		}
 
 		return true;
 	}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mypagebookingns">
+	<resultMap id="mypagebookingResult" type="mypagebooking">
+		<result property="mtitle" column="mtitle" />
+		<result property="moriginaltitle" column="moriginaltitle" />
+		<result property="murlposter" column="murlposter" />
+		<result property="lname" column="lname" />
+		<result property="tname" column="tname" />
+		<result property="rtdate" column="rtdate" />
+		<result property="theDate" column="theDate" />
+		<result property="theTime" column="theTime" />
+		<result property="price" column="price" />
+		<result property="bseat" column="bseat" />
+		<result property="ticketnumber" column="ticketnumber" />
+		<result property="human" column="human" />
+	</resultMap>
+	
+	<!-- 도은 -->
+	<!-- 마이 페이지 1개월 간 예매 내역 받아오기 -->
+	<select id="selectMyBookingList" parameterType="hashmap" resultMap="mypagebookingResult">
+		select 
+		ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate
+		from booking b, movie m, location l, theater t, runningtimetable rt, price p
+		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
+		group by ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate, bdate
+		order by b.bdate
+	</select>
+	
+	<select id="selectMyPriceSeatList" parameterType="hashmap" resultMap="mypagebookingResult">
+		select
+		ticketnumber, price, human, bseat
+		from booking b, price p
+		where b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
+		order by b.bdate
+	</select>
+	
+	<!-- 예매 취소 -->
+	<delete id="deleteBooking" parameterType="string">
+		delete from booking where ticketnumber = #{ticketnumber}
+	</delete>
+	
+	<!-- 예매 시 받은 포인트 수거 -->
+	<update id="deleteBookingPoint" parameterType="hashmap">
+		update customer set cpoint = cpoint - (select sum(price)*0.05 from booking b, price p where b.pid = p.pid and ticketnumber = #{ticketnumber}) 
+		where cid = #{cid}
+	</update>
+	
+</mapper>
