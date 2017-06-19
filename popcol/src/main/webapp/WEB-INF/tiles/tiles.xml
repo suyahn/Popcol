@@ -113,6 +113,19 @@
 	</definition>
 
 
+	
+	<!-- 예매 내역 확인 -->
+	<definition name="mypage_reservation" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reservation.jsp" />
+	</definition>
+	
+	<!-- 예매 내역 취소 -->
+	<definition name="cancelBooking" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/cancelBooking.jsp" />
+	</definition>
+	
+	<!-- 회원 정보 수정 -->
+
 	<definition name="mypage_Modifyintro" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/mypage/mypage_Modifyintro.jsp" />
@@ -127,6 +140,8 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModify.jsp" />
 	</definition>
+
+	<!-- 회원 탈퇴 -->
 
 	<definition name="mypage_byePopcolForm" extends="mainLayout">
 		<put-attribute name="body"
@@ -241,7 +256,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/movieTime.jsp" />
 	</definition>
-
+		<definition name="seatSelect" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/booking/seatSelect.jsp" />
+	</definition>
+	
 	<!-- 규랑 -->
 	<definition name="admin" template="/WEB-INF/views/admin/layout.jsp">
 		<put-attribute name="title" value="PopCol" />
