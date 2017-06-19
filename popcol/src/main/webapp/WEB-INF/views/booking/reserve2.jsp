@@ -15,18 +15,6 @@
 			$('#location').html(data);
 		});
 	}
-	function locationSelect(mid,lid){
-		var sendData ='mid='+mid + '&lid='+lid;
-		$.post("moviedate.do",sendData,function(data){
-			$('#date').html(data);
-		});
-	}
-	function dateSelect(mid,lid,rtid){
-		var sendData ='mid='+mid + '&lid='+lid +'&rtid='+rtid;
-		$.post("movietime.do",sendData,function(data){
-			$('#time').html(data);
-		});
-	}
 	$(function () {
 		$('.moviemid').click(function(){
 			$('.moviemid').css("background-color","white");
@@ -40,7 +28,7 @@
 </head>
 <body>
 	<div class="container">
-		<h2 style="color: #cd1726" align="center">빠른 영화 예매</h2>
+		<h2 style="color:#cd1726" align="center" >빠른 영화 예매</h2>
 		<table class="table table-bordered" style="width: 100%;">
 			<tr>
 				<th>영화</th>
@@ -51,12 +39,12 @@
 			<tr>
 				<td style="width: 30%;">
 					<table class="table table-hover">
-						<c:forEach var="movie" items="${movieList}">
+						<c:if test="${mid}" var="${location}">
 							<tr>
 								<td onclick="movieSelect(${movie.mid})" style="cursor: pointer;"
 									id="movie_${movie.mid}" class="moviemid">${movie.mtitle}</td>
 							</tr>
-						</c:forEach>
+						</c:if>
 					</table>
 				</td>
 				<td id="location" style="width: 30%;"></td>
@@ -64,13 +52,12 @@
 				<td id="time" style="width: 30%;"></td>
 			</tr>
 			<tr>
-				<th id="seat" colspan="4" align="right">
-					<button onclick='location.href="seatSelect.do?rtid=${rtid}"' class="btn btn-info btn-sm" style="float: right; border-color:
-					#cd1726; background-color: #cd1726;">확인</button>
+				<th id="seat" colspan="4" align="right" ><input type="submit"
+					value="확인" class="btn btn-info btn-sm"
+					style="float: right; border-color: #cd1726; background-color: #cd1726;" >
 				</th>
 			</tr>
 		</table>
 	</div>
-
 </body>
 </html>
