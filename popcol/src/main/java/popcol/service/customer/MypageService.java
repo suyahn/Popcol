@@ -17,8 +17,10 @@ public interface MypageService {
 
 	int updateForBirthdayPoint(String cid);
 
-	int updateCustomerInfo(Customer customer);
+	List<MypageBooking> selectMyBookingListMain(String cid, String oneMonthAgo);
 
+	int updateCustomerInfo(Customer customer);
+	
 	int deleteCutomerInfo(String cid);
 
 	List<MypageBooking> selectMyBookingList(String cid, String oneMonthAgo);
@@ -26,5 +28,4 @@ public interface MypageService {
 	List<MypageBooking> selectMyPriceSeatList(String cid, String oneMonthAgo);
 
 	int deleteBooking(String ticketnumber, String cid);
-
 }
