@@ -237,13 +237,42 @@
 
 	<definition name="faqDelete" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqDelete.jsp" />
-	</definition>
-
-
-
-
-	<!-- 혜진 -->
-	<definition name="reserve" extends="mainLayout">
+ </definition>
+    
+    <!-- qna 1:1 문의 -->
+    <definition name="qnaList" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaList.jsp" />
+    </definition>
+    
+    <definition name="qnaInsertForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaInsertForm.jsp" />
+    </definition>
+    
+    <definition name="qnaInsert" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaInsert.jsp" />
+    </definition>
+    
+    <definition name="qnaView" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaView.jsp" />
+    </definition>
+    
+    <definition name="qnaUpdateForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaUpdateForm.jsp" />
+    </definition>
+    
+    <definition name="qnaUpdate" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaUpdate.jsp" />
+    </definition>
+    
+    <definition name="qnaDelete" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaDelete.jsp" />
+    </definition>
+    
+    
+    
+    
+    <!-- 혜진 -->
+    <definition name="reserve" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/booking/reserve.jsp" />
 	</definition>
 	<definition name="movielocation" extends="empty">
