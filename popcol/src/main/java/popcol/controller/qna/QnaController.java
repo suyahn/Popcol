@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Qna;
 import popcol.service.PagingPgm;
+import popcol.service.customer.CustomerService;
 import popcol.service.qna.QnaService;
 
 @Controller
 public class QnaController {
 	@Autowired
 	private QnaService qs;
+	@Autowired
+	private CustomerService cs;
 	
 	@RequestMapping("qnaList")
 	public String qnaList(String pageNum, Qna qna, Model model) {
@@ -49,7 +52,68 @@ public class QnaController {
 	}
 	
 	@RequestMapping("qnaInsertForm")
-	public String qnaInsertForm(HttpSession session) {
+	public String qnaInsertForm(String pageNum, HttpSession session, Model model) {
+		String cid = (String) session.getAttribute("id");
+		String cname = cs.getCustomerName(cid);
+		
+		model.addAttribute("cid", cid);
+		model.addAttribute("cname", cname);
+		model.addAttribute("pageNum", pageNum);
+		
 		return "qnaInsertForm";
+	}
+	
+	@RequestMapping("qnaInsert")
+	public String qnaInsert(Qna qna, String pageNum, Model model) {
+		int number = qs.getMaxNum();
+		qna.setQid(number);
+		int result = qs.insert(qna);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("qid", qna.getQid());
+		
+		return "qnaInsert";
+	}
+	
+	@RequestMapping("qnaView")
+	public String qnaView(int qid, String pageNum, Model model) {
+		Qna qna = qs.select(qid);
+		
+		model.addAttribute("qna", qna);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "qnaView";
+	}
+	
+	@RequestMapping("qnaUpdateForm")
+	public String qnaUpdateForm(int qid, String pageNum, Model model) {
+		Qna qna = qs.select(qid);
+		
+		model.addAttribute("qna", qna);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "qnaUpdateForm";
+	}
+	
+	@RequestMapping("qnaUpdate")
+	public String noticeUpdate(Qna qna, String pageNum, Model model) {
+		int result = qs.update(qna);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("qid", qna.getQid());
+		
+		return "qnaUpdate";
+	}
+	
+	@RequestMapping("qnaDelete")
+	public String qnaDelete(int qid, String pageNum, Model model) {
+		int result = qs.delete(qid);
+		
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("result", result);
+		
+		return "qnaDelete";
 	}
 }

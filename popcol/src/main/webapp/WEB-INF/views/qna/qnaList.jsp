@@ -33,17 +33,20 @@
 					<tr>
 						<td>${ no1 }</td>
 						<td>
-							<!-- id가 master여도 view로 갈 수 있음 -->
-							<c:if test="${ id == qna.cid }">
+							<c:if test="${ id == qna.cid or id == 'master'}">
 								<a href="qnaView.do?qid=${ qna.qid }&pageNum=${ pageNum }" 
 								class="red-active">${ qna.qsubject }</a>
 							</c:if>
-							<c:if test="${ id != qna.cid }">
-								<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>${ qna.qsubject }
+							<c:if test="${ id != qna.cid and id != 'master'}">
+								<span class="glyphicon glyphicon-lock" aria-hidden="true" style="color: gray;" title="글 작성자만 볼 수 있습니다."></span>
+								${ qna.qsubject }
 							</c:if>
 						</td>
-						<td>${ qna.cid }</td>
-						<td>${ qna.qdate }</td>
+						<td>${ qna.cname }</td>
+						<td width="20%">
+							<fmt:parseDate value="${ qna.qdate }" var="qdate" pattern="yyyy-MM-dd"/>
+							<fmt:formatDate value="${ qdate }" pattern="yyyy.MM.dd"/>
+						</td>
 					</tr>
 					<c:set var="no1" value="${ no1 - 1 }"></c:set>
 				</c:forEach>

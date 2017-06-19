@@ -10,6 +10,7 @@
 		<result property="qdate" column="qdate" />
 		<result property="cid" column="cid" />
 		<result property="qdel" column="qdel" />
+		<result property="cname" column="cname" />
 		<result property="startRow" column="startRow"/>
 		<result property="endRow" column="endRow"/>
 	</resultMap>
@@ -17,8 +18,8 @@
 	<select id="list" parameterType="qna" resultMap="qnaResult">
 		select * from (
 			select a.*, rownum rn from (
-				select * from qna
-				where qdel = 'n'
+				select q.*, c.cname from qna q, customer c
+				where qdel = 'n' and q.cid = c.cid
 				order by qdate desc) a ) 
 		where rn between #{startRow} and #{endRow} 
 	</select>
@@ -27,4 +28,23 @@
 		select count(*) from qna where qdel = 'n'
 	</select>
 	
+	<select id="getMaxNum" resultType="int">
+		select nvl(max(qid), 0) + 1 from qna 
+	</select>
+	
+	<select id="select" parameterType="int" resultType="qna">
+		select q.*, c.cname from qna q, customer c where qid = #{qid} and q.cid = c.cid
+	</select>
+	
+	<insert id="insert" parameterType="qna">
+		insert into qna values (#{qid}, '질문입니다.', #{qcontent}, null, sysdate, #{cid}, 'n')
+	</insert>
+	
+	<update id="update" parameterType="qna">
+		update qna set qcontent = #{qcontent} where qid = #{qid}
+	</update>
+	
+	<update id="delete" parameterType="int">
+		update qna set qdel = 'y' where qid = #{qid}
+	</update>
 </mapper>

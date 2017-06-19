@@ -8,6 +8,7 @@ public class Qna {
 	private String qdate;
 	private String cid;
 	private String qdel;
+	private String cname;
 	
 	/*페이징처리*/
 	private int startRow;
@@ -54,6 +55,12 @@ public class Qna {
 	}
 	public void setQdel(String qdel) {
 		this.qdel = qdel;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
 	
 	/*페이징처리*/

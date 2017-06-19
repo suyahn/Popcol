@@ -49,7 +49,7 @@
 							<button onclick="location.href='noticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }'" 
 								class="btn btn-link red-active">${ notice.nsubject }</button>
 						</td>
-						<td>${ notice.ndate }</td>
+						<td><fmt:formatDate value="${ notice.ndate }" pattern="yyyy.MM.dd"/></td>
 					</tr>
 					<c:set var="no1" value="${ no1 - 1 }"></c:set>
 				</c:forEach>

@@ -237,6 +237,26 @@
 		<put-attribute name="body" value="/WEB-INF/views/qna/qnaInsertForm.jsp" />
     </definition>
     
+    <definition name="qnaInsert" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaInsert.jsp" />
+    </definition>
+    
+    <definition name="qnaView" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaView.jsp" />
+    </definition>
+    
+    <definition name="qnaUpdateForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaUpdateForm.jsp" />
+    </definition>
+    
+    <definition name="qnaUpdate" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaUpdate.jsp" />
+    </definition>
+    
+    <definition name="qnaDelete" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaDelete.jsp" />
+    </definition>
+    
     
     
     

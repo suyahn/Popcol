@@ -22,7 +22,7 @@
 		<table class="table table-bordered">
 			<tr style="background-color: #F0F0F0; font-weight: bold;">
 				<td>${ notice.nsubject }</td>
-				<td width="30%">${ notice.ndate }</td>
+				<td width="30%"><fmt:formatDate value="${ notice.ndate }" pattern="yyyy.MM.dd"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><pre style="white-space: pre-wrap; height: 300px;">${ notice.ncontent }</pre></td>
