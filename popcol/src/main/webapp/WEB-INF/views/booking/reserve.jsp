@@ -30,30 +30,17 @@
 	$(function () {
 		$('.moviemid').click(function(){
 			$('.moviemid').css("background-color","white");
+			$('.moviemid').css("color","black");
 			var idd = $(this).attr('id');
-			$('#'+idd).css("background-color","lightgray");
-		})	;
-		$('.locationlid').click(function(){
-			$('.locationlid').css("background-color","white");
-			var idd = $(this).attr('id');
-			$('#'+idd).css("background-color","lightgray");
-		})	;
-		$('.datertid').click(function(){
-			$('.datertid').css("background-color","white");
-			var idd = $(this).attr('id');
-			$('#'+idd).css("background-color","lightgray");
-		})	;
-		$('.timertid').click(function(){
-			$('.timertid').css("background-color","white");
-			var idd = $(this).attr('id');
-			$('#'+idd).css("background-color","lightgray");
+			$('#'+idd).css("background-color","black");
+			$('#'+idd).css("color","white");
 		})	;
 	});
 </script>
 </head>
 <body>
 	<div class="container">
-		<h2 style="color: red" align="center">빠른 영화 예매</h2>
+		<h2 style="color: #cd1726" align="center">빠른 영화 예매</h2>
 		<table class="table table-bordered" style="width: 100%;">
 			<tr>
 				<th>영화</th>
@@ -66,7 +53,8 @@
 					<table class="table table-hover">
 						<c:forEach var="movie" items="${movieList}">
 							<tr>
-								<td onclick="movieSelect(${movie.mid})" style="cursor: pointer;" id="movie_${movie.mid}" class="moviemid">${movie.mtitle}</td>
+								<td onclick="movieSelect(${movie.mid})" style="cursor: pointer;"
+									id="movie_${movie.mid}" class="moviemid">${movie.mtitle}</td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -75,7 +63,14 @@
 				<td id="date" style="width: 10%;"></td>
 				<td id="time" style="width: 30%;"></td>
 			</tr>
+			<tr>
+				<th id="seat" colspan="4" align="right">
+					<button onclick='location.href="seatSelect.do?rtid=${rtid}"' class="btn btn-info btn-sm" style="float: right; border-color:
+					#cd1726; background-color: #cd1726;">확인</button>
+				</th>
+			</tr>
 		</table>
 	</div>
+
 </body>
 </html>

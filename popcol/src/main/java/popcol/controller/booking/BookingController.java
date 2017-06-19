@@ -1,6 +1,5 @@
 package popcol.controller.booking;
 
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,7 +39,13 @@ public class BookingController {
 	@RequestMapping("movietime")
 	public String movietime(Model model, int mid, int lid, int rtid) {
 		List<RunningtimeTable> timeList = bs.timeList(mid, lid, rtid);
-			model.addAttribute("timeList", timeList);
+		model.addAttribute("timeList", timeList);
 		return "movieTime";
+	}
+
+	@RequestMapping("seatSelect")
+	public String seatSelect() {
+
+		return "seatSelect";
 	}
 }

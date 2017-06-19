@@ -20,4 +20,5 @@
 		parameterType="hashMap"> select to_char(rtdate,'HH24:MM')rttime,rtid from
 		runningtimetable where rtdate = (select rtdate from runningtimetable
 		where rtid = #{rtid}) </select>
+	
 </mapper>

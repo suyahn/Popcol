@@ -6,13 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	$(function(){
+		$('.timertid').click(function(){
+			$('.timertid').css("background-color","white");
+			$('.timertid').css("color","black");
+			var idd = $(this).attr('id');
+			$('#'+idd).css("background-color","black");
+			$('#'+idd).css("color","white");
+		})	;
+	});
+
+</script>
 </head>
 <body>
 <table class="table table-hover">
 		<c:forEach var="time" items="${timeList}">
 		<!-- items의 locationList는 컨트롤의 리퀘스트 맵핑의 locationList와 연결 -->
 			<tr>
-				<td id="time_${time.rtid}" class="timertid" style="cursor: pointer;">${time.rttime }</td>
+				<td id="time_${time.rtid}" class="timertid" onclick="timeSelect(${time.mid},${time.lid},${time.rtdate },${time.rtid} )" style="cursor: pointer;">${time.rttime }</td>
 			</tr>
 		</c:forEach>
 	</table>

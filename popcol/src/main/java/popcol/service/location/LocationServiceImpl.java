@@ -17,5 +17,11 @@ public class LocationServiceImpl implements LocationService{
 		
 		return ld.adminLocationList();
 	}
+	@Override
+	public Location adminLocationSelect(int lid) {
+		
+		return ld.adminLocationSelect(lid);
+	}
+	
 
 }

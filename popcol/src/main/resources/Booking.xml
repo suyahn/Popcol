@@ -16,4 +16,5 @@
 		<result property="bdel" column="bdel" />
 	</resultMap>
 	
+	
 </mapper>

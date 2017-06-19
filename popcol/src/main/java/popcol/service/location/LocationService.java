@@ -8,4 +8,8 @@ public interface LocationService {
 
 	List<Location> adminLocationList();
 
+	Location adminLocationSelect(int lid);
+
+	
+
 }

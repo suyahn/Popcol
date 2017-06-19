@@ -3,6 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ include file="../../header.jsp" %>
 <%@ include file="verticaltab.jsp" %>
+<%@ include file="../member/memberCheck.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,7 +130,11 @@ hr {
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 			<div class="container" align="center" style="width: 600px;">
-				<h2 class="text-primary">회원 정보 수정</h2>
+				<h2 class="text-primary" align="left">회원 정보 수정</h2>
+				
+				<hr>
+				
+				<h6 class="text-primary">개명으로 인한 이름 수정은 1:1 문의로 문의주세요.</h6>
 				
 				<br>
 				<br>
@@ -141,19 +146,20 @@ hr {
 								<label for="id">아이디</label>
 							</th>
 							<td>						
-								<div class="form-group">
+								<div class="form-group" style="text-align: left;">
 									${customer.cid }
+									<input type="hidden" value="${customer.cid }" name="cid">
 								</div>
 							</td>
 						</tr>
 						
 						<tr>
 							<th>
-									<label for="password">비밀번호</label>
+								<label for="password">비밀번호</label>
 							</th>
 							<td>						
 								<div class="form-group">
-									<br><input type="password" class="form-control" name="cpassword" id="password" required="required" placeholder="비밀번호 (4 ~ 20자리의 영문 대 소문자, 숫자, 특수문자)">
+									<br><input type="password" class="form-control" name="cpassword" id="password" required="required" placeholder="비밀번호 (4 ~ 20자리의 영문 대 소문자, 숫자, 특수문자)" size="50">
 								</div>
 							</td>
 						</tr>	
@@ -178,10 +184,10 @@ hr {
 						
 						<tr>
 							<th>
-									<label for="name">이름</label>
+								<br><label for="name">이름</label>
 							</th>
 							<td>							
-								<div class="form-group">
+								<div class="form-group" style="text-align: left;">
 									${customer.cname }
 								</div>
 							</td>
@@ -214,7 +220,7 @@ hr {
 								<label for="birthday">생일</label>
 							</th>
 							<td>						
-								<div class="form-group">
+								<div class="form-group" style="text-align: left;">
 									${customer.cbirthday }
 								</div>
 							</td>
@@ -238,11 +244,11 @@ hr {
 			<div class="col-sm-3 col-sm-pull-9">
 				<div class="text-xs-center text-sm-left">			
 					<ul class="nav nav-stacked menu">
-						<li class="active" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
+						<li class="" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
 						<li class="" id=""><a href="mypage_reservation.do" class="" id="">나의 예매내역</a></li>
 						<li class="" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
 						<li class="" id=""><a href="mypage_myPoint.do" class="" id="">나의 포인트 내역</a></li>
-						<li class="" id=""><a href="mypage_Modifyintro.do" class="" id="">회원 정보 수정</a></li>
+						<li class="active" id=""><a href="mypage_Modifyintro.do" class="" id="">회원 정보 수정</a></li>
 						<li class="" id=""><a href="mypage_byePopcolForm.do" class="" id="">회원 탈퇴</a></li>
 						<li class="" id=""><a href="mypage_myQna.do" class="" id="">나의 문의 내역</a></li>
 					</ul>

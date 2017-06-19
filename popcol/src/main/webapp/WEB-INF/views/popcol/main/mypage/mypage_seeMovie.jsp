@@ -78,72 +78,16 @@ hr {
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 			<div class="container" style="width: 800px;">
-				<div style="margin-bottom: 50px;"> 
+				<div style="margin-bottom: 50px;">
 					<h4 align="left"><a href="mypage_reservation.do">나의 예매 내역</a></h4>
 					
 					<table class="table ">
-						<c:forEach var="booking" items="${myBookingList }">
-							<tr>
-								<td>예매번호<br><br><br><br><font style="font-weight: bold;">${booking.ticketnumber }</font></td>
-							
-								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlposter}.jpg" width="80px">
-							
-								<td>
-									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br>
-									${booking.lname }&nbsp;${booking.tname }<br>
-									${booking.theDate }&nbsp;(${booking.theDay })&nbsp;${booking.theTime }
-								</td>
-							
-							<c:set var="countA" value="0" />
-							<c:set var="countY" value="0" />
-							<c:set var="countS" value="0" />
-							<c:set var="sum" value="0" />
-							
-							<c:forEach var="ps" items="${MyPriceSeatList }">
-								<c:if test="${booking.ticketnumber == ps.ticketnumber }">
-									<c:set var="sum" value="${sum + ps.price }" />
-									
-									<c:if test="${ps.human == 'adult' }">
-										<c:set var="countA" value="${countA + 1 }" />
-									</c:if>
-									
-									<c:if test="${ps.human == 'youth' }">
-										<c:set var="countY" value="${countY + 1 }" />
-									</c:if>
-									
-									<c:if test="${ps.human == 'special' }">
-										<c:set var="countS" value="${countS + 1 }" />
-									</c:if>
-								</c:if>
-							</c:forEach>
-							
-							
-								<td>
-									<br>
-									<c:forEach var="ps" items="${MyPriceSeatList }">
-										<c:if test="${booking.ticketnumber == ps.ticketnumber }">
-											${ps.bseat }&nbsp;
-										</c:if>
-									</c:forEach>
-									
-									<br><br>
-									
-									<c:if test="${countA > 0 }">
-										어른${countA }&nbsp;
-									</c:if>
-									
-									<c:if test="${countY > 0 }">
-										어린이${countY }&nbsp;
-									</c:if>
-									
-									<c:if test="${countS > 0 }">
-										우대${countS }&nbsp;
-									</c:if>
-									
-									<br>${sum }원
-								</td>
-							</tr>
-						</c:forEach>
+						<tr>
+							<td>예매번호</td>
+							<td>포스터</td>
+							<td>영화제목<br>관람극장 극장명<br>관람일시 날짜, 시간</td>
+							<td>좌석, 인원수, 가격</td>
+						</tr>
 					</table>
 				</div>
 				
@@ -181,9 +125,9 @@ hr {
 			<div class="col-sm-3 col-sm-pull-9">
 				<div class="text-xs-center text-sm-left">			
 					<ul class="nav nav-stacked menu">
-						<li class="active" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
+						<li class="" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
 						<li class="" id=""><a href="mypage_reservation.do" class="" id="">나의 예매내역</a></li>
-						<li class="" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
+						<li class="active" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
 						<li class="" id=""><a href="mypage_myPoint.do" class="" id="">나의 포인트 내역</a></li>
 						<li class="" id=""><a href="mypage_Modifyintro.do" class="" id="">회원 정보 수정</a></li>
 						<li class="" id=""><a href="mypage_byePopcolForm.do" class="" id="">회원 탈퇴</a></li>
