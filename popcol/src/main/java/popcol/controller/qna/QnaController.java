@@ -77,11 +77,13 @@ public class QnaController {
 	}
 	
 	@RequestMapping("qnaView")
-	public String qnaView(int qid, String pageNum, Model model) {
+	public String qnaView(int qid, String pageNum, HttpSession session, Model model) {
 		Qna qna = qs.select(qid);
+		String id = (String) session.getAttribute("id");
 		
 		model.addAttribute("qna", qna);
 		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("id", id);
 		
 		return "qnaView";
 	}

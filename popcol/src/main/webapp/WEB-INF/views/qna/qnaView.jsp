@@ -39,6 +39,26 @@
 			class="btn btn-default">삭제</button>
 		<button type="button" onclick="location.href='qnaList.do?pageNum=${ pageNum }'" class="btn btn-primary"
 			style="border-color: #CD1726; background-color: #CD1726;">목록</button>
+			
+		<!-- 마스터면 답변쓰기! -->
+		<c:if test="${ id == 'master' }">
+			<div align="center" width="300px">
+				<form name="frm" id="frm">
+					<input type="hidden" name="qid" value="${qna.qid}">
+					<table style="border-spacing: 5px; border-collapse: separate;">
+						<tr>
+							<th>답변</th>
+							<td>
+								<textarea rows="3" cols="50" name="qreplycontent" required="required" style="resize:none;" maxlength="165"></textarea>
+							</td>
+						</tr>
+					</table>
+					<input type="button" value="확인" id="repInsert" class="btn btn-default"
+						style="border-color: #ffdede; background-color: #ffdede;"> 
+				</form>
+			</div>
+		</c:if>
+		
 	</div>
 </body>
 </html>
