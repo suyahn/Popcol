@@ -23,6 +23,13 @@
 		location where lid=#{lid}
 	</select>
 
+	<update id="adminLocationUpdate" parameterType="int">
+		update location
+		set lname=#{lname}, laddress=#{laddress},
+		lphone=#{lphone},lat=#{lat},lon=#{lon}
+		where lid = #{lid}
+	</update>
+
 	<!-- 혜진 -->
 	<select id="bookingLocationList" parameterType="int" resultMap="locationResult">
 		select l.lid, lname, rt.mid from location l, runningtimetable rt where

@@ -199,7 +199,7 @@ public class AdminController {
 	}
 
 
-	/*@RequestMapping("adminLocationUpdate") // 관리자 영화관수정
+	@RequestMapping("adminLocationUpdate") // 관리자 영화관수정
 	public String adminLocationUpdate(Model model,Location location) {
 		int result = ls.adminLocationUpdate(location);
 
@@ -209,7 +209,7 @@ public class AdminController {
 
 	}
 
-	@RequestMapping("adminLocationDelete") // 관리자 영화관 삭제
+	/*@RequestMapping("adminLocationDelete") // 관리자 영화관 삭제
 	public String adminLocationDelete(int lid, Model model) {
 		int result = ls.adminLocationDelete(lid);
 

@@ -9,19 +9,26 @@ import popcol.dao.location.LocationDao;
 import popcol.model.Location;
 
 @Service
-public class LocationServiceImpl implements LocationService{
+public class LocationServiceImpl implements LocationService {
 	@Autowired
 	private LocationDao ld;
+
 	@Override
 	public List<Location> adminLocationList() {
-		
+
 		return ld.adminLocationList();
 	}
+
 	@Override
 	public Location adminLocationSelect(int lid) {
-		
+
 		return ld.adminLocationSelect(lid);
 	}
-	
+
+	@Override
+	public int adminLocationUpdate(Location location) {
+
+		return ld.adminLocationUpdate(location);
+	}
 
 }

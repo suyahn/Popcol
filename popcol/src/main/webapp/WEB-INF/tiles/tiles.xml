@@ -295,6 +295,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/location/adminLocationUpdateForm.jsp" />
 	</definition>
+	
+	<definition name="adminLocationUpdate" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/location/adminLocationUpdate.jsp" />
+	</definition>
 
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">
