@@ -195,6 +195,15 @@
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqDelete.jsp" />
     </definition>
     
+    <!-- qna 1:1 문의 -->
+    <definition name="qnaList" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaList.jsp" />
+    </definition>
+    
+    <definition name="qnaInsertForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaInsertForm.jsp" />
+    </definition>
+    
     
     
     

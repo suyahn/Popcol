@@ -7,9 +7,24 @@
 		<result property="qsubject" column="qsubject" />
 		<result property="qcontent" column="qcontent" />
 		<result property="qreplycontent" column="qreplycontent" />
-		<result property="qreplydate" column="qreplydate" />
+		<result property="qdate" column="qdate" />
 		<result property="cid" column="cid" />
 		<result property="qdel" column="qdel" />
+		<result property="startRow" column="startRow"/>
+		<result property="endRow" column="endRow"/>
 	</resultMap>
+	
+	<select id="list" parameterType="qna" resultMap="qnaResult">
+		select * from (
+			select a.*, rownum rn from (
+				select * from qna
+				where qdel = 'n'
+				order by qdate desc) a ) 
+		where rn between #{startRow} and #{endRow} 
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from qna where qdel = 'n'
+	</select>
 	
 </mapper>
