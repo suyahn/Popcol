@@ -27,7 +27,8 @@
 					</a>
 					<div class="media-body">
 						<p>
-							<font size="5" style="font-weight: bold;">${ location.lname } </font>
+							<font size="5" style="font-weight: bold;">${ location.lname }
+							</font>
 						</p>
 						<br> <br>
 						<p class="text-left">
@@ -43,6 +44,13 @@
 				</div>
 				<c:set var="num" value="${num+1 }"></c:set>
 			</c:forEach>
+			<br><br>
+			<div align="right">
+				<button type="button" class="btn btn-info btn-sm"
+					style="display: inline; border-color: navy; background-color: navy;"
+					onclick="location.href='adminLocationInsertForm.do'">
+					영화관 입력</button>
+			</div>
 			<%
 				} else {
 			%>

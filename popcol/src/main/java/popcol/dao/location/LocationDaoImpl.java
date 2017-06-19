@@ -31,4 +31,16 @@ public class LocationDaoImpl implements LocationDao {
 		return sst.update("locationns.adminLocationUpdate", location);
 	}
 
+	@Override
+	public int adminLocationDelete(int lid) {
+
+		return sst.delete("locationns.adminLocationDelete", lid);
+	}
+
+	@Override
+	public int adminLocationInsert(Location location) {
+		
+		return sst.insert("locationns.adminLocationInsert", location);
+	}
+
 }

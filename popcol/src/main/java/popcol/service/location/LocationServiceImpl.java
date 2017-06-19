@@ -31,4 +31,16 @@ public class LocationServiceImpl implements LocationService {
 		return ld.adminLocationUpdate(location);
 	}
 
+	@Override
+	public int adminLocationDelete(int lid) {
+		
+		return ld.adminLocationDelete(lid);
+	}
+
+	@Override
+	public int adminLocationInsert(Location location) {
+		
+		return ld.adminLocationInsert(location);
+	}
+
 }

@@ -112,28 +112,33 @@
 			value="/WEB-INF/views/popcol/main/mypage/receivePoint.jsp" />
 	</definition>
 
-	
+
 	<definition name="mypage_Modifyintro" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Modifyintro.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_Modifyintro.jsp" />
 	</definition>
-	
+
 	<definition name="mypage_myInfoModifyForm" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModifyForm.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModifyForm.jsp" />
 	</definition>
-	
+
 	<definition name="mypage_myInfoModify" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModify.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModify.jsp" />
 	</definition>
-	
+
 	<definition name="mypage_byePopcolForm" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_byePopcolForm.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_byePopcolForm.jsp" />
 	</definition>
-	
+
 	<definition name="mypage_byePopcol" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_byePopcol.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_byePopcol.jsp" />
 	</definition>
-	
-	
+
+
 
 
 	<!-- ####################### -->
@@ -144,9 +149,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/movie/movieChart.jsp" />
 	</definition>
-	
+
 	<definition name="movieDetail" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/movie/movieDetail.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/movieDetail.jsp" />
 	</definition>
 
 	<!-- 공지사항 -->
@@ -295,10 +301,22 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/location/adminLocationUpdateForm.jsp" />
 	</definition>
-	
+
 	<definition name="adminLocationUpdate" extends="admin">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/location/adminLocationUpdate.jsp" />
+	</definition>
+	<definition name="adminLocationInsertForm" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/location/adminLocationInsertForm.jsp" />
+	</definition>
+	<definition name="adminLocationInsert" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/location/adminLocationInsert.jsp" />
+	</definition>
+	<definition name="adminLocationDelete" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/location/adminLocationDelete.jsp" />
 	</definition>
 
 	<!-- 관리자 로그인 -->

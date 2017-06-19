@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../../popcol/header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="../../popcol/header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,14 +10,14 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("영화가 입력되었습니다");
-			location.href = "adminList.do"
+			alert("영화관이 추가되었습니다");
+			location.href = "adminLocationList.do"
 		</script>
 	</c:if>
-	
+
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("회원가입 실패! 다시 시도해주세요.");
+			alert("다시 입력해주세요");
 			history.go(-1);
 		</script>
 	</c:if>

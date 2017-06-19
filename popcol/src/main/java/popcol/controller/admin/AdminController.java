@@ -170,11 +170,11 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminLocationInsert") // 관리자 영화관 입력
-	public String adminLocationInsert(Model model, Movie movie) {
-		int result = ms.adminInsert(movie);
+	public String adminLocationInsert(Model model, Location location) {
+		int result = ls.adminLocationInsert(location);
 
 		model.addAttribute("result", result);
-	
+
 		return "adminLocationInsert";
 
 	}
@@ -183,7 +183,7 @@ public class AdminController {
 	public String adminLocationView(int lid, Model model) {
 		Location location = ls.adminLocationSelect(lid);
 		model.addAttribute("location", location);
-		
+
 		return "adminLocationView";
 
 	}
@@ -193,14 +193,13 @@ public class AdminController {
 		Location location = ls.adminLocationSelect(lid);
 
 		model.addAttribute("location", location);
-		
+
 		return "adminLocationUpdateForm";
 
 	}
 
-
 	@RequestMapping("adminLocationUpdate") // 관리자 영화관수정
-	public String adminLocationUpdate(Model model,Location location) {
+	public String adminLocationUpdate(Model model, Location location) {
 		int result = ls.adminLocationUpdate(location);
 
 		model.addAttribute("result", result);
@@ -209,14 +208,14 @@ public class AdminController {
 
 	}
 
-	/*@RequestMapping("adminLocationDelete") // 관리자 영화관 삭제
+	@RequestMapping("adminLocationDelete") // 관리자 영화관 삭제
 	public String adminLocationDelete(int lid, Model model) {
 		int result = ls.adminLocationDelete(lid);
-
-		model.addAttribute("result", result);
 		
+		model.addAttribute("result", result);
+
 		return "adminLocationDelete";
 
-	}*/
+	}
 
 }

@@ -48,7 +48,7 @@
 		<a href="adminLocationUpdateForm.do?lid=${location.lid}"
 			class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">수정</a>
-		<a href="adminDelete.do?lid=${location.lid}" class="btn btn-info"
+		<a href="adminLocationDelete.do?lid=${location.lid}" class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">삭제</a>
 		<!-- <div id="list"></div> -->
 	</div>
