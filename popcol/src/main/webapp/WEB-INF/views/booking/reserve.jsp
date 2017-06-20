@@ -27,6 +27,12 @@
 			$('#time').html(data);
 		});
 	}
+	function seatSelect(mid,lid,rtid){
+		var sendData ='mid='+mid + '&lid='+lid +'&rtid='+rtid;
+		$.post("seatSelect.do",sendData,function(data){
+			$('#seat').html(data);
+		});
+	}
 	$(function () {
 		$('.moviemid').click(function(){
 			$('.moviemid').css("background-color","white");
@@ -62,12 +68,6 @@
 				<td id="location" style="width: 30%;"></td>
 				<td id="date" style="width: 10%;"></td>
 				<td id="time" style="width: 30%;"></td>
-			</tr>
-			<tr>
-				<th id="seat" colspan="4" align="right">
-					<button onclick='location.href="seatSelect.do?rtid=${rtid}"' class="btn btn-info btn-sm" style="float: right; border-color:
-					#cd1726; background-color: #cd1726;">확인</button>
-				</th>
 			</tr>
 		</table>
 	</div>
