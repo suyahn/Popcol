@@ -12,7 +12,7 @@ import popcol.model.Location;
 public class LocationDaoImpl implements LocationDao {
 	@Autowired
 	private SqlSessionTemplate sst;
-	
+
 	@Override
 	public List<Location> adminLocationList() {
 
@@ -21,9 +21,26 @@ public class LocationDaoImpl implements LocationDao {
 
 	@Override
 	public Location adminLocationSelect(int lid) {
-		
+
 		return sst.selectOne("locationns.adminLocationSelect", lid);
 	}
 
-	
+	@Override
+	public int adminLocationUpdate(Location location) {
+
+		return sst.update("locationns.adminLocationUpdate", location);
+	}
+
+	@Override
+	public int adminLocationDelete(int lid) {
+
+		return sst.delete("locationns.adminLocationDelete", lid);
+	}
+
+	@Override
+	public int adminLocationInsert(Location location) {
+		
+		return sst.insert("locationns.adminLocationInsert", location);
+	}
+
 }

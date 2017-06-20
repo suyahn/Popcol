@@ -31,12 +31,75 @@ public class MypageController {
 	MypageService ms;
 
 	@RequestMapping("mypage_Main")
-	public String mypage_Main(Model model, HttpSession session, HttpServletRequest request) {
+	public String mypage_Main(Model model, HttpSession session, HttpServletRequest request) throws ParseException {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		Customer customer = ms.getSessionCustomerInfo(id);
 
 		model.addAttribute("customer", customer);
+		
+		
+		// 예매 내역 2~3건
+		// 1개월 간의 예매내역만 출력
+		// 1개월 전 날짜 구하기
+		SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd");
+		String today = df.format(new java.util.Date());
+		
+	    Calendar c = Calendar.getInstance();
+	    c.setTime(df.parse(today));
+	    c.add(Calendar.MONTH, -1);
+	    String oneMonthAgo = df.format(c.getTime());  
+	    
+	   List<MypageBooking> myBookingList = new ArrayList<MypageBooking>();
+	   myBookingList = ms.selectMyBookingListMain(id, oneMonthAgo);
+	   
+	   SimpleDateFormat df2 = new SimpleDateFormat("yyyy년 MM월 dd일");
+	   SimpleDateFormat df3 = new SimpleDateFormat("HH시 mm분");
+
+	   for(MypageBooking mb : myBookingList) {
+		   String theDate = df2.format(mb.getRtdate());
+		   String theTime = df3.format(mb.getRtdate());
+		   
+			c.setTime(mb.getRtdate());
+			int dayNum = c.get(Calendar.DAY_OF_WEEK);
+			String theDay = "";
+
+			switch (dayNum) {
+			case 1:
+				theDay = "일";
+				break;
+			case 2:
+				theDay = "월";
+				break;
+			case 3:
+				theDay = "화";
+				break;
+			case 4:
+				theDay = "수";
+				break;
+			case 5:
+				theDay = "목";
+				break;
+			case 6:
+				theDay = "금";
+				break;
+			case 7:
+				theDay = "토";
+				break;
+
+			}
+
+			mb.setTheDate(theDate);
+			mb.setTheTime(theTime);
+			mb.setTheDay(theDay);
+	   }
+	   
+	   List<MypageBooking> MyPriceSeatList = new ArrayList<MypageBooking>();
+	   MyPriceSeatList = ms.selectMyPriceSeatList(id, oneMonthAgo);
+	  
+	   model.addAttribute("myBookingList", myBookingList);
+	   model.addAttribute("MyPriceSeatList", MyPriceSeatList);
+			   
 
 		return "mypage_Main";
 	}
@@ -69,6 +132,10 @@ public class MypageController {
 		SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd");
 		String today = df.format(new java.util.Date());
 		
+
+		SimpleDateFormat df6 = new SimpleDateFormat("yyyy-MM-dd");
+		String today6 = df6.format(new java.util.Date());
+		
 	    Calendar c = Calendar.getInstance();
 	    c.setTime(df.parse(today));
 	    c.add(Calendar.MONTH, -1);
@@ -84,8 +151,38 @@ public class MypageController {
 		   String theDate = df2.format(mb.getRtdate());
 		   String theTime = df3.format(mb.getRtdate());
 		   
-		   mb.setTheDate(theDate);
-		   mb.setTheTime(theTime);
+			c.setTime(mb.getRtdate());
+			int dayNum = c.get(Calendar.DAY_OF_WEEK);
+			String theDay = "";
+
+			switch (dayNum) {
+			case 1:
+				theDay = "일";
+				break;
+			case 2:
+				theDay = "월";
+				break;
+			case 3:
+				theDay = "화";
+				break;
+			case 4:
+				theDay = "수";
+				break;
+			case 5:
+				theDay = "목";
+				break;
+			case 6:
+				theDay = "금";
+				break;
+			case 7:
+				theDay = "토";
+				break;
+
+			}
+
+			mb.setTheDate(theDate);
+			mb.setTheTime(theTime);
+			mb.setTheDay(theDay);
 	   }
 	   
 	   List<MypageBooking> MyPriceSeatList = new ArrayList<MypageBooking>();
@@ -93,7 +190,7 @@ public class MypageController {
 	  
 	   model.addAttribute("myBookingList", myBookingList);
 	   model.addAttribute("MyPriceSeatList", MyPriceSeatList);
-	   model.addAttribute("today", today);
+	   model.addAttribute("today", today6);
 	   
 	   return "mypage_reservation";
 	}

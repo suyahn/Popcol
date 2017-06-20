@@ -17,6 +17,8 @@ public interface MypageDao {
 
 	int updateForBirthdayPoint(String cid);
 
+	List<MypageBooking> selectMyBookingListMain(String cid, String oneMonthAgo);
+
 	int updateCustomerInfo(Customer customer);
 
 	int deleteCustomerInfo(String cid);

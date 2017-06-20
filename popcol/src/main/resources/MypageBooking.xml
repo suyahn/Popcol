@@ -11,6 +11,7 @@
 		<result property="rtdate" column="rtdate" />
 		<result property="theDate" column="theDate" />
 		<result property="theTime" column="theTime" />
+		<result property="theDay" column="theDay" />
 		<result property="price" column="price" />
 		<result property="bseat" column="bseat" />
 		<result property="ticketnumber" column="ticketnumber" />
@@ -18,6 +19,16 @@
 	</resultMap>
 	
 	<!-- 도은 -->
+	<!-- 메인에서~ -->
+	<select id="selectMyBookingListMain" parameterType="hashmap" resultMap="mypagebookingResult">
+		select * from (select 
+		ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate
+		from booking b, movie m, location l, theater t, runningtimetable rt, price p
+		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
+		group by ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate, bdate
+		order by b.bdate desc) where rownum between 1 and 3
+	</select>
+	
 	<!-- 마이 페이지 1개월 간 예매 내역 받아오기 -->
 	<select id="selectMyBookingList" parameterType="hashmap" resultMap="mypagebookingResult">
 		select 
@@ -25,7 +36,7 @@
 		from booking b, movie m, location l, theater t, runningtimetable rt, price p
 		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
 		group by ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate, bdate
-		order by b.bdate
+		order by b.bdate desc
 	</select>
 	
 	<select id="selectMyPriceSeatList" parameterType="hashmap" resultMap="mypagebookingResult">
@@ -33,7 +44,7 @@
 		ticketnumber, price, human, bseat
 		from booking b, price p
 		where b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
-		order by b.bdate
+		order by b.bdate desc
 	</select>
 	
 	<!-- 예매 취소 -->

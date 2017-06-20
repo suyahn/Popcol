@@ -30,6 +30,11 @@ public class MypageServiceImpl implements MypageService{
 		return md.updateForBirthdayPoint(cid);
 	}
 
+	public List<MypageBooking> selectMyBookingListMain(String cid, String oneMonthAgo) {
+		
+		return md.selectMyBookingListMain(cid, oneMonthAgo);
+	}
+
 	public int updateCustomerInfo(Customer customer) {
 		
 		return md.updateCustomerInfo(customer);

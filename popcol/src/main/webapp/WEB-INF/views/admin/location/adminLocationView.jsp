@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- <%@ include file="../../popcol/header.jsp"%> --%>
+<%@ include file="../../popcol/header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -48,7 +48,7 @@
 		<a href="adminLocationUpdateForm.do?lid=${location.lid}"
 			class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">수정</a>
-		<a href="adminDelete.do?lid=${location.lid}" class="btn btn-info"
+		<a href="adminLocationDelete.do?lid=${location.lid}" class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">삭제</a>
 		<!-- <div id="list"></div> -->
 	</div>

@@ -5,9 +5,14 @@ public class Qna {
 	private String qsubject;
 	private String qcontent;
 	private String qreplycontent;
-	private String qreplydate;
+	private String qdate;
 	private String cid;
 	private String qdel;
+	private String cname;
+	
+	/*페이징처리*/
+	private int startRow;
+	private int endRow;
 	
 	public int getQid() {
 		return qid;
@@ -33,11 +38,11 @@ public class Qna {
 	public void setQreplycontent(String qreplycontent) {
 		this.qreplycontent = qreplycontent;
 	}
-	public String getQreplydate() {
-		return qreplydate;
+	public String getQdate() {
+		return qdate;
 	}
-	public void setQreplydate(String qreplydate) {
-		this.qreplydate = qreplydate;
+	public void setQdate(String qdate) {
+		this.qdate = qdate;
 	}
 	public String getCid() {
 		return cid;
@@ -51,6 +56,25 @@ public class Qna {
 	public void setQdel(String qdel) {
 		this.qdel = qdel;
 	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
 	
+	/*페이징처리*/
+	public int getStartRow() {
+		return startRow;
+	}
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
+	public int getEndRow() {
+		return endRow;
+	}
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
+	}
 	
 }

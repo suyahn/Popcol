@@ -17,7 +17,8 @@
 </head>
 <body>
     <div class="container" align="center" style="width: 70%">
-        <h1 align="left">자주하는 질문</h1>
+        <h1 align="left" style="font-weight: bold;">자주하는 질문</h1>
+        <hr>
         <table class="table table-bordered">
             <tr style="background-color: #F0F0F0; font-weight: bold;">
                 <td>${ faq.fquestion }</td>

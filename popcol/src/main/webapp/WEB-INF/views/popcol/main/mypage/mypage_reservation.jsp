@@ -98,16 +98,10 @@ hr {
 					<table class="table ">
 						<c:forEach var="booking" items="${myBookingList }">
 							<tr>
-								<td>예매번호<br><br><br><br><font style="font-weight: bold;">${booking.ticketnumber }</font></td>
+								<td colspan="3"><font style="font-weight: bold;">예매번호&nbsp;&nbsp;${booking.ticketnumber }</font></td>
+							</tr>
 							
-								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlposter}.jpg" width="80px">
-							
-								<td>
-									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br>
-									${booking.lname }&nbsp;${booking.tname }<br>
-									${booking.theDate }&nbsp;${booking.theTime }
-								</td>
-							
+							<!-- 영화 가격과 관람인원구하기 -->
 							<c:set var="countA" value="0" />
 							<c:set var="countY" value="0" />
 							<c:set var="countS" value="0" />
@@ -130,43 +124,51 @@ hr {
 									</c:if>
 								</c:if>
 							</c:forEach>
-							
+						
+							<tr>
+								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlposter}.jpg" width="120px"></td>
 							
 								<td>
-									<br>
-									<c:forEach var="ps" items="${MyPriceSeatList }">
-										<c:if test="${booking.ticketnumber == ps.ticketnumber }">
-											${ps.bseat }&nbsp;
+									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br>
+									<font size="2px">관람극장&nbsp;&nbsp;${booking.lname }<br>
+									관람일시&nbsp;&nbsp;<font color="#cd1726">${booking.theDate }&nbsp;(${booking.theDay })&nbsp;${booking.theTime }</font><br>
+									상&nbsp;영&nbsp;관&nbsp;&nbsp;&nbsp;${booking.tname }<br>
+									관람인원&nbsp;
+										<c:if test="${countA > 0 }">
+											어른${countA }&nbsp;
 										</c:if>
-									</c:forEach>
-									
-									<br><br>
-									
-									<c:if test="${countA > 0 }">
-										어른${countA }&nbsp;
+										
+										<c:if test="${countY > 0 }">
+											어린이${countY }&nbsp;
+										</c:if>
+										
+										<c:if test="${countS > 0 }">
+											우대${countS }&nbsp;
+										</c:if>
+										<br>
+										
+									관람좌석&nbsp;
+										<c:forEach var="ps" items="${MyPriceSeatList }">
+											<c:if test="${booking.ticketnumber == ps.ticketnumber }">
+												${ps.bseat }&nbsp;
+											</c:if>
+										</c:forEach>
+										<br>
+									티켓가격&nbsp;&nbsp;${sum }</font>
+								</td>
+								
+								<td>
+									<br><br><br><br><br><br><br>
+									<c:if test="${booking.rtdate >= today }">
+									<button id="${booking.ticketnumber }" class="btn btn-info btn-sm cancel" style="border-color: #cd1726; background-color: #cd1726; float: right;">
+									<%-- 예매번호&nbsp;${booking.ticketnumber }&nbsp; --%>예매취소
+									</button>
 									</c:if>
-									
-									<c:if test="${countY > 0 }">
-										어린이${countY }&nbsp;
+									<c:if test="${booking.rtdate < today }">
+									<h6 style="color: #cd1726;" align="right">상영이 지난 영화입니다.</h6>
 									</c:if>
-									
-									<c:if test="${countS > 0 }">
-										우대${countS }&nbsp;
-									</c:if>
-									
-									<br>${sum }원
 								</td>
 							</tr>
-							
-							<c:if test="${booking.rtdate <= today }">
-								<tr>
-									<td colspan="4">
-										<button id="${booking.ticketnumber }" class="btn btn-info btn-sm cancel" style="border-color: #cd1726; background-color: #cd1726; float: right;">
-										<%-- 예매번호&nbsp;${booking.ticketnumber }&nbsp; --%>예매취소
-										</button>
-									</td>
-								</tr>
-							</c:if>
 						</c:forEach>
 					</table>
 				</div>

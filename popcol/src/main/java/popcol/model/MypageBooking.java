@@ -11,6 +11,7 @@ public class MypageBooking {
 	private Date rtdate;
 	private String theDate;
 	private String theTime;
+	private String theDay;
 	private int price;
 	private String bseat;
 	private String ticketnumber;
@@ -78,6 +79,14 @@ public class MypageBooking {
 
 	public void setTheTime(String theTime) {
 		this.theTime = theTime;
+	}
+
+	public String getTheDay() {
+		return theDay;
+	}
+
+	public void setTheDay(String theDay) {
+		this.theDay = theDay;
 	}
 
 	public int getPrice() {

@@ -1,5 +1,7 @@
 package popcol.dao.customer;
 
+import java.util.List;
+
 import popcol.model.Customer;
 
 public interface CustomerDao {
@@ -25,5 +27,13 @@ public interface CustomerDao {
 	Customer findCustomerPassword(Customer customer);
 
 	int updateFindPassword(Customer customer);
+	
+	/*규랑*/
+	
+	int getTotal();
+
+	List<Customer> adminCustomerList(int startRow, int endRow);
+
+	Customer adminCustomerSelect(String cid);
 
 }

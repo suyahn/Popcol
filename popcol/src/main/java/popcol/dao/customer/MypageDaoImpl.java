@@ -31,6 +31,14 @@ public class MypageDaoImpl implements MypageDao {
 		return sst.update("customerns.updateForBirthdayPoint", cid);
 	}
 
+	public List<MypageBooking> selectMyBookingListMain(String cid, String oneMonthAgo) {
+		HashMap<String, String> hs = new HashMap<String, String>();
+		hs.put("cid", cid);
+		hs.put("oneMonthAgo", oneMonthAgo);
+		
+		return sst.selectList("mypagebookingns.selectMyBookingListMain", hs);
+	}
+
 	public int updateCustomerInfo(Customer customer) {
 		
 		return sst.update("customerns.updateCustomerInfo", customer);

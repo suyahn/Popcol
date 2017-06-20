@@ -1,5 +1,7 @@
 package popcol.service.customer;
 
+import java.util.List;
+
 import popcol.model.Customer;
 
 public interface CustomerService {
@@ -25,5 +27,12 @@ public interface CustomerService {
 	Customer findCustomerPassword(Customer customer);
 
 	int updateFindPassword(Customer customer);
+	
+	/*규랑*/
+	int getTotal();
+
+	List<Customer> adminCustomerList(int startRow, int endRow);
+
+	Customer adminCustomerSelect(String cid);
 
 }
