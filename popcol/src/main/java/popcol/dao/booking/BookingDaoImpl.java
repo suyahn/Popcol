@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import popcol.model.Booking;
 import popcol.model.Location;
 import popcol.model.Movie;
+import popcol.model.Price;
 import popcol.model.RunningtimeTable;
 
 @Repository
@@ -37,5 +38,11 @@ public class BookingDaoImpl implements BookingDao{
 	}
 	public RunningtimeTable selectRt(int rtid) {
 		return sst.selectOne("runningtimetablens.bookingrtList",rtid);
+	}
+	public List<Booking> seatrtList(int rtid) {
+		return sst.selectList("bookingns.bookingRtSList",rtid);
+	}
+	public List<Price> pricestList() {
+		return sst.selectList("pricens.priceList");
 	}
 }
