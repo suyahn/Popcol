@@ -8,14 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${ result > 0 }">
+	<c:if test="${ result > 0 && masterid == 'master'}">
 		<script type="text/javascript">
-			location.href = "adminList.do"
+			alert("관리자님 환영합니다");
+			location.href = "adminList.do";
 		</script>
 	</c:if>
 
-	<c:if test="${ result <= 0 }">
+	<c:if test="${masterid != 'master'}">
 		<script type="text/javascript">
+			alert("관리자가 아닙니다");
 			history.go(-1);
 		</script>
 	</c:if>

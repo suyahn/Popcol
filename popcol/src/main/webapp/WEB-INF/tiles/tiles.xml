@@ -125,15 +125,17 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/mypage/cancelBooking.jsp" />
 	</definition>
-	
+
 	<!-- 내가 본 영화 -->
 	<definition name="mypage_seeMovie" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_seeMovie.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_seeMovie.jsp" />
 	</definition>
 	<definition name="mypage_Review" extends="empty">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Review.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_Review.jsp" />
 	</definition>
-	
+
 	<!-- 회원 정보 수정 -->
 
 	<definition name="mypage_Modifyintro" extends="mainLayout">
@@ -245,46 +247,48 @@
 
 	<definition name="faqDelete" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqDelete.jsp" />
- </definition>
-    
-    <!-- qna 1:1 문의 -->
-    <definition name="qnaList" extends="mainLayout">
+	</definition>
+
+	<!-- qna 1:1 문의 -->
+	<definition name="qnaList" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/qna/qnaList.jsp" />
-    </definition>
-    
-    <definition name="qnaInsertForm" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/qna/qnaInsertForm.jsp" />
-    </definition>
-    
-    <definition name="qnaInsert" extends="mainLayout">
+	</definition>
+
+	<definition name="qnaInsertForm" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/qna/qnaInsertForm.jsp" />
+	</definition>
+
+	<definition name="qnaInsert" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/qna/qnaInsert.jsp" />
-    </definition>
-    
-    <definition name="qnaView" extends="mainLayout">
+	</definition>
+
+	<definition name="qnaView" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/qna/qnaView.jsp" />
-    </definition>
-    
-    <definition name="qnaUpdateForm" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/qna/qnaUpdateForm.jsp" />
-    </definition>
-    
-    <definition name="qnaUpdate" extends="mainLayout">
+	</definition>
+
+	<definition name="qnaUpdateForm" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/qna/qnaUpdateForm.jsp" />
+	</definition>
+
+	<definition name="qnaUpdate" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/qna/qnaUpdate.jsp" />
-    </definition>
-    
-    <definition name="qnaDelete" extends="mainLayout">
+	</definition>
+
+	<definition name="qnaDelete" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/qna/qnaDelete.jsp" />
-    </definition>
-    
-    <definition name="qnaReply" extends="empty">
+	</definition>
+
+	<definition name="qnaReply" extends="empty">
 		<put-attribute name="body" value="/WEB-INF/views/qna/qnaReply.jsp" />
-    </definition>
-    
-    
-    
-    
-    <!-- 혜진 -->
-    <definition name="reserve" extends="mainLayout">
+	</definition>
+
+
+
+
+	<!-- 혜진 -->
+	<definition name="reserve" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/booking/reserve.jsp" />
 	</definition>
 	<definition name="movielocation" extends="empty">
@@ -382,17 +386,63 @@
 	</definition>
 
 	<!-- 고객관리 -->
-	
+
 	<definition name="adminCustomerList" extends="admin">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/customer/adminCustomerList.jsp" />
 	</definition>
-	
+
 	<definition name="adminCustomerView" extends="admin">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/customer/adminCustomerView.jsp" />
 	</definition>
 
+	<definition name="adminCustomerUpdateForm" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/customer/adminCustomerUpdateForm.jsp" />
+	</definition>
+
+	<definition name="adminCustomerUpdate" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/customer/adminCustomerUpdate.jsp" />
+	</definition>
+	
+	<!-- 관리자 notice -->
+	
+	<definition name="adminNoticeList" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/notice/noticeList.jsp" />
+	</definition>
+
+	<!-- <definition name="adminInsertForm" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/movie/adminInsertForm.jsp" />
+	</definition>
+
+	<definition name="adminInsert" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/movie/adminInsert.jsp" />
+	</definition>
+
+	<definition name="adminView" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/movie/adminView.jsp" />
+	</definition>
+
+	<definition name="adminUpdateForm" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/movie/adminUpdateForm.jsp" />
+	</definition>
+
+	<definition name="adminUpdate" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/movie/adminUpdate.jsp" />
+	</definition>
+	<definition name="adminDelete" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/movie/adminDelete.jsp" />
+	</definition>
+ -->
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">
 		<put-attribute name="body"

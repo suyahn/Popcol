@@ -44,10 +44,12 @@
 		</table>
 		<a href="adminCustomerList.do?" class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">목록</a>
-		<a href="adminCustomerUpdateForm.do?cid=${customer.cid}"
+		<a
+			href="adminCustomerUpdateForm.do?cid=${customer.cid}&pageNum=${pageNum}"
 			class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">수정</a>
-		<a href="adminCustomerDelete.do?cid=${customer.cid}" class="btn btn-info"
+		<a href="adminCustomerDelete.do?cid=${customer.cid}&pageNum=${pageNum}"
+			class="btn btn-info"
 			style="display: inline; border-color: navy; background-color: navy;">삭제</a>
 	</div>
 </body>
