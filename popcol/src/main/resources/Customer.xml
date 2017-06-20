@@ -4,75 +4,113 @@
 <mapper namespace="customerns">
 
 	<!-- Use type aliases to avoid typing the full classname every time. -->
-	<resultMap id="customerResult"    type="customer">
+	<resultMap id="customerResult" type="customer">
 		<result property="cid" column="cid" />
-		<result property="cname"  column="cname" />
-		<result property="cpassword"	  column="cpassword" />
-		<result property="cemail"	  column="cemail" />		
-		<result property="cphone"	  column="cphone" />		
-		<result property="cpoint"	  column="cpoint" />		
-		<result property="cdel"	  column="cdel" />		
-		<result property="creg_date"	  column="creg_date" />
-		<result property="cbirthday"	  column="cbirthday" />
-		<result property="ccheckbd"	  column="ccheckbd" />
+		<result property="cname" column="cname" />
+		<result property="cpassword" column="cpassword" />
+		<result property="cemail" column="cemail" />
+		<result property="cphone" column="cphone" />
+		<result property="cpoint" column="cpoint" />
+		<result property="cdel" column="cdel" />
+		<result property="creg_date" column="creg_date" />
+		<result property="cbirthday" column="cbirthday" />
+		<result property="ccheckbd" column="ccheckbd" />
 	</resultMap>
-	
+
 	<select id="loginCheck" parameterType="customer" resultType="string">
 		select cpassword from customer where cid = #{cid} and cdel = 'n'
 	</select>
-	
-	<select id="getSessionCustomerInfo" parameterType="string" resultType="customer">
+
+	<select id="getSessionCustomerInfo" parameterType="string"
+		resultType="customer">
 		select * from customer where cid = #{cid}
 	</select>
-	
+
 	<select id="getCustomerName" parameterType="string" resultType="string">
 		select cname from customer where cid = #{cid}
 	</select>
-	
-	<select id="getCustomerBirthday" parameterType="string" resultType="string" >
-		select to_char(cbirthday, 'mm/dd') from customer where cid = #{cid}
+
+	<select id="getCustomerBirthday" parameterType="string"
+		resultType="string">
+		select to_char(cbirthday, 'mm/dd') from customer
+		where cid =
+		#{cid}
 	</select>
-	
+
 	<select id="joinCheck" parameterType="customer" resultType="customer">
-		select * from customer where cname = #{cname} and cphone = #{cphone} and cbirthday like to_date(#{cbirthday}, 'rr/mm/dd')
+		select * from customer where cname = #{cname} and cphone = #{cphone}
+		and cbirthday like to_date(#{cbirthday}, 'rr/mm/dd')
 	</select>
-	
+
 	<select id="idDupCheck" parameterType="string" resultType="customer">
 		select * from customer where cid = #{cid}
 	</select>
-	
+
 	<select id="findCustomerId" parameterType="customer" resultType="String">
-		select cid from customer where cname = #{cname} and cphone = #{cphone} and cbirthday like to_date(#{cbirthday}, 'rr/mm/dd')
+		select cid from customer where cname = #{cname} and cphone = #{cphone}
+		and cbirthday like to_date(#{cbirthday}, 'rr/mm/dd')
 	</select>
-	
-	<select id="findCustomerPassword" parameterType="customer" resultType="customer">
-		select cid from customer where cid = #{cid} and cname = #{cname} and cphone = #{cphone} and cemail = #{cemail}
+
+	<select id="findCustomerPassword" parameterType="customer"
+		resultType="customer">
+		select cid from customer where cid = #{cid} and cname =
+		#{cname} and cphone = #{cphone} and cemail = #{cemail}
 	</select>
-	
-	
+
+
 	<insert id="insertCustomer" parameterType="customer">
-		insert into customer values (#{cid}, #{cname}, #{cpassword}, #{cemail}, #{cphone}, 2000, 'n', sysdate, #{cbirthday}, 'n')
+		insert into customer
+		values (#{cid}, #{cname}, #{cpassword}, #{cemail}, #{cphone}, 2000,
+		'n', sysdate, #{cbirthday}, 'n')
 	</insert>
-	
-	
+
+
 	<update id="updateForbityhday">
 		update customer set ccheckbd = 'n'
 	</update>
-	
+
 	<update id="updateFindPassword" parameterType="customer">
-		update customer set cpassword = #{cpassword} where cid = #{cid}
+		update customer
+		set cpassword = #{cpassword} where cid = #{cid}
 	</update>
-	
+
 	<update id="updateForBirthdayPoint" parameterType="string">
-		update customer set cpoint = cpoint + 10000, ccheckbd = 'y' where cid = #{cid}
+		update
+		customer set cpoint = cpoint + 10000, ccheckbd = 'y' where cid =
+		#{cid}
 	</update>
-	
+
 	<update id="updateCustomerInfo" parameterType="customer">
-		update customer set cpassword = #{cpassword}, cemail = #{cemail}, cphone = #{cphone} where cid = #{cid}
+		update customer
+		set cpassword = #{cpassword}, cemail = #{cemail}, cphone = #{cphone}
+		where cid = #{cid}
 	</update>
-	
+
 	<update id="deleteCustomerInfo" parameterType="string">
-		update customer set cdel = 'y' where cid = #{cid}
+		update customer
+		set cdel = 'y' where cid = #{cid}
 	</update>
-	
+
+	<!-- 규랑 -->
+	<!-- 페이지 처리 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from customer
+		where cdel != 'y' and cid != 'master'
+	</select>
+	<!-- 관리자페이지 고객리스트 -->
+	<select id="adminCustomerList" resultType="customer"
+		parameterType="hashMap">
+		select * from(select rownum rn, a.* from
+		(select cid,
+		cname, cphone from customer
+		where cdel !='y' and cid != 'master' order by creg_date desc)a)
+		where
+		rn between #{startRow} and #{endRow}
+	</select>
+	<select id="adminCustomerSelect" parameterType="string" resultType="customer">
+		select * from
+		customer where cid =#{cid}
+	</select>
+
+
 </mapper>

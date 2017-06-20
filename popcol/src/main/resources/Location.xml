@@ -23,6 +23,25 @@
 		location where lid=#{lid}
 	</select>
 
+	<update id="adminLocationUpdate" parameterType="int">
+		update location
+		set lname=#{lname}, laddress=#{laddress},
+		lphone=#{lphone},lat=#{lat},lon=#{lon}
+		where lid = #{lid}
+	</update>
+	<delete id="adminLocationDelete">
+		delete location where lid=#{lid}
+
+	</delete>
+	<insert id="adminLocationInsert" parameterType="location">
+		<selectKey keyProperty="lid" resultType="Integer" order="BEFORE">
+			select nvl(max(lid),0) + 1 from location
+		</selectKey>
+		insert into location values
+		(#{lid},#{lname},#{laddress},#{lphone},#{lat},#{lon})
+
+	</insert>
+
 	<!-- 혜진 -->
 	<select id="bookingLocationList" parameterType="int" resultMap="locationResult">
 		select l.lid, lname, rt.mid from location l, runningtimetable rt where

@@ -170,11 +170,11 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminLocationInsert") // 관리자 영화관 입력
-	public String adminLocationInsert(Model model, Movie movie) {
-		int result = ms.adminInsert(movie);
+	public String adminLocationInsert(Model model, Location location) {
+		int result = ls.adminLocationInsert(location);
 
 		model.addAttribute("result", result);
-	
+
 		return "adminLocationInsert";
 
 	}
@@ -183,7 +183,7 @@ public class AdminController {
 	public String adminLocationView(int lid, Model model) {
 		Location location = ls.adminLocationSelect(lid);
 		model.addAttribute("location", location);
-		
+
 		return "adminLocationView";
 
 	}
@@ -193,14 +193,13 @@ public class AdminController {
 		Location location = ls.adminLocationSelect(lid);
 
 		model.addAttribute("location", location);
-		
+
 		return "adminLocationUpdateForm";
 
 	}
 
-
-	/*@RequestMapping("adminLocationUpdate") // 관리자 영화관수정
-	public String adminLocationUpdate(Model model,Location location) {
+	@RequestMapping("adminLocationUpdate") // 관리자 영화관수정
+	public String adminLocationUpdate(Model model, Location location) {
 		int result = ls.adminLocationUpdate(location);
 
 		model.addAttribute("result", result);
@@ -214,9 +213,49 @@ public class AdminController {
 		int result = ls.adminLocationDelete(lid);
 
 		model.addAttribute("result", result);
-		
+
 		return "adminLocationDelete";
 
-	}*/
+	}
+
+	/* 고객관리 */
+
+	@RequestMapping("adminCustomerList") // 관리자 고객 리스트
+	public String adminCustomerList(String pageNum, Model model) {
+		final int ROW_PER_PAGE = 10;
+		if (pageNum == null || pageNum.equals("")) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int total = cs.getTotal();
+		/* int total = bs.getTotal(board); // 검색 */
+		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
+		int endRow = startRow + ROW_PER_PAGE - 1;
+		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
+		/*
+		 * board.setStartRow(startRow); board.setEndRow(endRow);
+		 */
+		List<Customer> adminCustomerList = cs.adminCustomerList(startRow, endRow);
+		int no = total - startRow + 1;
+
+		/* List<Movie> adminList = ms.adminList(); */
+		model.addAttribute("adminCustomerList", adminCustomerList);
+		model.addAttribute("no", no);
+		model.addAttribute("pp", pp);
+		return "adminCustomerList";
+
+	}
+
+	/* 고객정보 상세보기 */
+	@RequestMapping("adminCustomerView")
+	public String adminCustomerView(Model model, String cid, String pageNum ) {
+		Customer customer = cs.adminCustomerSelect(cid);
+		System.out.println("asd");
+		model.addAttribute("customer", customer);
+		model.addAttribute("pageNum",pageNum);
+		
+		return "adminCustomerView";
+
+	}
 
 }

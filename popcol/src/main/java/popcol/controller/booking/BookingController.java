@@ -44,8 +44,9 @@ public class BookingController {
 	}
 
 	@RequestMapping("seatSelect")
-	public String seatSelect() {
-
+	public String seatSelect(Model model, int rtid) {
+		RunningtimeTable rt =bs.selectRt(rtid);
+		model.addAttribute("rt", rt);
 		return "seatSelect";
 	}
 }
