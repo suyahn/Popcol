@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import popcol.model.Customer;
+import popcol.model.Movie;
 import popcol.model.MypageBooking;
 import popcol.model.Review;
 
@@ -82,5 +83,30 @@ public class MypageDaoImpl implements MypageDao {
 	public Review selectReview(Review review) {
 		
 		return sst.selectOne("reviewns.selectReview", review);
+	}
+
+	public int deleteReview(Review review) {
+		
+		return sst.update("reviewns.deleteReview", review);
+	}
+
+	public int insertReview(Review review) {
+		
+		return sst.insert("reviewns.insertReview", review);
+	}
+
+	public Review selectReviewForUpdate(Review review) {
+		
+		return sst.selectOne("reviewns.selectReviewForUpdate", review);
+	}
+
+	public int updateReview(Review review) {
+		
+		return sst.update("reviewns.updateReview", review);
+	}
+
+	public Movie selectMovieForReview(int mid) {
+		
+		return sst.selectOne("moviens.selectMovieForReview", mid);
 	}
 }

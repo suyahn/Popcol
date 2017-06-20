@@ -82,6 +82,7 @@ hr {
 					<h4 align="left"><a href="mypage_reservation.do">나의 예매 내역</a></h4>
 					
 					<table class="table ">
+						<c:if test="${not empty myBookingList }">
 						<c:forEach var="booking" items="${myBookingList }">
 							<tr>
 								<td>예매번호<br><br><br><br><br><font style="font-weight: bold;">${booking.ticketnumber }</font></td>
@@ -146,6 +147,13 @@ hr {
 								</td>
 							</tr>
 						</c:forEach>
+						</c:if>
+						
+						<c:if test="${empty myBookingList }">
+							<tr>
+								<td colspan="4"><h4 style="color: #cd1726">예매내역이 없습니다.</h4></td>
+							</tr>
+						</c:if>
 					</table>
 				</div>
 				

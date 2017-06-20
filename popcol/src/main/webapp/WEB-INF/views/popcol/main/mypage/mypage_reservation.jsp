@@ -98,6 +98,7 @@ hr {
 					<h6 align="left" style="color: #cd1726;">지난 한달 간의 예매 내역입니다.</h6>
 					
 					<table class="table ">
+						<c:if test="${not empty myBookingList }">
 						<c:forEach var="booking" items="${myBookingList }">
 							<tr>
 								<td colspan="3"><font style="font-weight: bold;">예매번호&nbsp;&nbsp;${booking.ticketnumber }</font></td>
@@ -174,6 +175,13 @@ hr {
 								</td>
 							</tr>
 						</c:forEach>
+						</c:if>
+						
+						<c:if test="${empty myBookingList }">
+							<tr>
+								<td colspan="3"><h4 style="color: #cd1726">예매내역이 없습니다.</h4></td>
+							</tr>
+						</c:if>
 					</table>
 				</div>
 			</div>

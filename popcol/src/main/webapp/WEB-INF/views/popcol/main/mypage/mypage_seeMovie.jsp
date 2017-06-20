@@ -94,7 +94,7 @@ hr {
 								<td width="25%"><img alt="${myMovie.mtitle }" src="${path }/poster/${myMovie.murlposter }.jpg" width="150px"></td>
 								<td colspan="4" style="text-align: left;">
 									<div align="left">
-										<font size="5px" style="font-weight: bold;">${myMovie.mtitle }${myMovie.mid }</font><br>
+										<font size="5px" style="font-weight: bold;">${myMovie.mtitle }</font><br>
 									
 										<font size="2px">
 										${myMovie.moriginaltitle }<br><br><br><br>
