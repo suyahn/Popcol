@@ -86,4 +86,10 @@ public class CustomerServiceImpl implements CustomerService {
 
 		return cd.adminCustomerSelect(cid);
 	}
+
+	@Override
+	public int adminCustomerUpdate(Customer customer) {
+
+		return cd.adminCustomerUpdate(customer);
+	}
 }

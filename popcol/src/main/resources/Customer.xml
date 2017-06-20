@@ -103,14 +103,18 @@
 		select * from(select rownum rn, a.* from
 		(select cid,
 		cname, cphone from customer
-		where cdel !='y' and cid != 'master' order by creg_date desc)a)
+		where cdel !='y' and cid != 'master' order
+		by creg_date desc)a)
 		where
 		rn between #{startRow} and #{endRow}
 	</select>
-	<select id="adminCustomerSelect" parameterType="string" resultType="customer">
+	<select id="adminCustomerSelect" parameterType="string"
+		resultType="customer">
 		select * from
 		customer where cid =#{cid}
 	</select>
-
+	<update id="adminCustomerUpdate" parameterType="customer">
+		update customer set cname = #{cname} where cid = #{cid}
+	</update>
 
 </mapper>

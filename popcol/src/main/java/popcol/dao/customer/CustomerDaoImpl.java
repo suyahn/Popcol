@@ -107,4 +107,10 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		return sst.selectOne("customerns.adminCustomerSelect", cid);
 	}
+
+	@Override
+	public int adminCustomerUpdate(Customer customer) {
+
+		return sst.update("customerns.adminCustomerUpdate", customer);
+	}
 }

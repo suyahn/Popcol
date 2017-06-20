@@ -10,13 +10,13 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("수정 성공");
-			location.href = "adminCustomerList.do?pageNum=${pageNum}";
+			alert("삭제 성공");
+			location.href = "adminList.do?pageNum=${pageNum}";
 		</script>
 	</c:if>
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("수정 다시하세요");
+			alert("삭제실패");
 			history.go(-1);
 		</script>
 	</c:if>
