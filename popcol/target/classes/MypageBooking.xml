@@ -6,6 +6,7 @@
 		<result property="mtitle" column="mtitle" />
 		<result property="moriginaltitle" column="moriginaltitle" />
 		<result property="murlposter" column="murlposter" />
+		<result property="mid" column="mid" />
 		<result property="lname" column="lname" />
 		<result property="tname" column="tname" />
 		<result property="rtdate" column="rtdate" />
@@ -16,13 +17,14 @@
 		<result property="bseat" column="bseat" />
 		<result property="ticketnumber" column="ticketnumber" />
 		<result property="human" column="human" />
+		<result property="peopleC" column="peopleC" />
 	</resultMap>
 	
 	<!-- 도은 -->
 	<!-- 메인에서~ -->
 	<select id="selectMyBookingListMain" parameterType="hashmap" resultMap="mypagebookingResult">
 		select * from (select 
-		ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate
+		ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
 		from booking b, movie m, location l, theater t, runningtimetable rt, price p
 		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
 		group by ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate, bdate
@@ -32,7 +34,7 @@
 	<!-- 마이 페이지 1개월 간 예매 내역 받아오기 -->
 	<select id="selectMyBookingList" parameterType="hashmap" resultMap="mypagebookingResult">
 		select 
-		ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate
+		ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
 		from booking b, movie m, location l, theater t, runningtimetable rt, price p
 		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
 		group by ticketnumber, mtitle, moriginaltitle, murlposter, lname, tname, rtdate, bdate
@@ -45,6 +47,19 @@
 		from booking b, price p
 		where b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
 		order by b.bdate desc
+	</select>
+	
+	<!-- 내가 본 영화 -->
+	<select id="selectMySeeMovieList" parameterType="string" resultMap="mypagebookingResult">
+		<![CDATA[
+		select 
+		ticketnumber, b.mid, mtitle, moriginaltitle, murlposter, rtdate, lname, tname, 
+		count(ticketnumber) peopleC, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
+		from booking b, movie m, runningtimetable rt, location l, theater t
+		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.cid = #{cid} and rtdate < sysdate
+		group by ticketnumber, b.mid, mtitle, moriginaltitle, murlposter, rtdate, lname, tname
+		order by rtdate desc
+		]]>
 	</select>
 	
 	<!-- 예매 취소 -->

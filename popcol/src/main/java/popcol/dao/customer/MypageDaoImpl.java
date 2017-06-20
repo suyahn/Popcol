@@ -7,14 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import popcol.model.Booking;
 import popcol.model.Customer;
-import popcol.model.Location;
-import popcol.model.Movie;
 import popcol.model.MypageBooking;
-import popcol.model.Price;
-import popcol.model.RunningtimeTable;
-import popcol.model.Theater;
+import popcol.model.Review;
 
 @Repository
 public class MypageDaoImpl implements MypageDao {
@@ -72,5 +67,20 @@ public class MypageDaoImpl implements MypageDao {
 		sst.update("mypagebookingns.deleteBookingPoint", hs);
 		
 		return sst.delete("mypagebookingns.deleteBooking", ticketnumber);
+	}
+
+	public List<MypageBooking> selectMySeeMovieList(String cid) {
+		
+		return sst.selectList("mypagebookingns.selectMySeeMovieList", cid);
+	}
+	
+	public List<Review> selectMyReviewList(String cid) {
+		
+		return sst.selectList("reviewns.selectMyReviewList", cid);
+	}
+
+	public Review selectReview(Review review) {
+		
+		return sst.selectOne("reviewns.selectReview", review);
 	}
 }

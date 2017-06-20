@@ -6,14 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import popcol.dao.customer.MypageDao;
-import popcol.model.Booking;
 import popcol.model.Customer;
-import popcol.model.Location;
-import popcol.model.Movie;
 import popcol.model.MypageBooking;
-import popcol.model.Price;
-import popcol.model.RunningtimeTable;
-import popcol.model.Theater;
+import popcol.model.Review;
 
 @Service
 public class MypageServiceImpl implements MypageService{
@@ -58,5 +53,20 @@ public class MypageServiceImpl implements MypageService{
 	public int deleteBooking(String ticketnumber, String cid) {
 		
 		return md.deleteBooking(ticketnumber, cid);
+	}
+	
+	public List<MypageBooking> selectMySeeMovieList(String cid) {
+		
+		return md.selectMySeeMovieList(cid);
+	}
+
+	public List<Review> selectMyReviewList(String cid) {
+	
+		return md.selectMyReviewList(cid);
+	}
+
+	public Review selectReview(Review review) {
+		
+		return md.selectReview(review);
 	}
 }

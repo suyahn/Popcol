@@ -2,14 +2,9 @@ package popcol.service.customer;
 
 import java.util.List;
 
-import popcol.model.Booking;
 import popcol.model.Customer;
-import popcol.model.Location;
-import popcol.model.Movie;
 import popcol.model.MypageBooking;
-import popcol.model.Price;
-import popcol.model.RunningtimeTable;
-import popcol.model.Theater;
+import popcol.model.Review;
 
 public interface MypageService {
 
@@ -28,4 +23,10 @@ public interface MypageService {
 	List<MypageBooking> selectMyPriceSeatList(String cid, String oneMonthAgo);
 
 	int deleteBooking(String ticketnumber, String cid);
+
+	List<MypageBooking> selectMySeeMovieList(String cid);
+
+	List<Review> selectMyReviewList(String cid);
+
+	Review selectReview(Review review);
 }
