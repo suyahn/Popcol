@@ -43,6 +43,12 @@ hr {
 				}
 			}); 
 		});
+		
+		$('.reviewC').each(function() {
+			
+			$(this).load('mypage_Review.do', {'mid' : $(this).attr('id')});
+		});
+		
 	});
 </script>
 </head>
@@ -79,43 +85,35 @@ hr {
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 			<div class="container" style="width: 800px;">
 				<div style="margin-bottom: 50px;">
-					<h4 align="left"><a href="mypage_reservation.do">나의 예매 내역</a></h4>
+					<h4 align="left"><a href="mypage_reservation.do">내가 본 영화</a></h4>
 					
-					<table class="table ">
-						<tr>
-							<td>예매번호</td>
-							<td>포스터</td>
-							<td>영화제목<br>관람극장 극장명<br>관람일시 날짜, 시간</td>
-							<td>좌석, 인원수, 가격</td>
-						</tr>
-					</table>
-				</div>
-				
-				<hr>
-				
-				<div style="margin-bottom: 50px;">
-					<h4 align="left"><a href="mypage_myPoint.do">나의 포인트 내역</a></h4>
-					
-					<table class="table ">
-						<tr>
-							<td>날짜</td>
-							<td>포인트 사용내역</td>
-							<td>포인트 내역 (+7000, -2000 이렇게)</td>
-						</tr>
-					</table>
-				</div>
-				
-				<hr>
-				
-				<div style="margin-bottom: 50px;">
-					<h4 align="left"><a href="mypage_myQna.do">나의 문의 내역</a></h4>
-					
-					<table class="table ">
-						<tr>
-							<td>작성날짜</td>
-							<td>[답변상태]</td>
-							<td>질문제목(하이퍼링크는 고민해보고)</td>
-						</tr>
+					<table class="table table-stripped">
+						<c:if test="${not empty mySeeMovieList }">
+						<c:forEach var="myMovie" items="${mySeeMovieList }">
+							<tr>
+								<td width="25%"><img alt="${myMovie.mtitle }" src="${path }/poster/${myMovie.murlposter }.jpg" width="150px"></td>
+								<td colspan="4" style="text-align: left;">
+									<div align="left">
+										<font size="5px" style="font-weight: bold;">${myMovie.mtitle }</font><br>
+									
+										<font size="2px">
+										${myMovie.moriginaltitle }<br><br><br><br>
+										${myMovie.theDate }&nbsp;(${myMovie.theDay })&nbsp;${myMovie.theTime }<br>
+										Popcorn&amp;Cola&nbsp;${myMovie.lname }&nbsp;${myMovie.tname }&nbsp;/&nbsp;${myMovie.peopleC }명<br><br><br>
+										</font>
+									</div>
+									
+									<div class="reviewC" id="${myMovie.mid }"></div>
+								</td>
+							</tr>
+						</c:forEach>
+						</c:if>
+						
+						<c:if test="${empty mySeeMovieList }">
+							<tr>
+								<td colspan="3"><h4 style="color: #cd1726">관람하신 영화가 없습니다.</h4></td>
+							</tr>
+						</c:if>
 					</table>
 				</div>
 			</div>

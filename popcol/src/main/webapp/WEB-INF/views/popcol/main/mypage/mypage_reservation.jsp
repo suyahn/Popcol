@@ -47,10 +47,12 @@ hr {
 		// 영화 예매 취소하기
 		$('.cancel').click(function() {
 			var id = $(this).attr('id');
-
-			$.post('cancelBooking.do', 'ticketnumber=', id, function(result) {
+			var formData = 'ticketnumber=' + id;
+			
+			$.post('cancelBooking.do', formData, function(result) {
 				if (result > 0) {
 					alert("예매가 취소되었습니다.");
+					location.href="mypage_reservation.do";
 				} else if (result <= 0) {
 					alert("다시 시도해주세요.")
 				}
@@ -92,10 +94,11 @@ hr {
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 			<div class="container" style="width: 800px;">
 				<div style="margin-bottom: 50px;">
-					<h4 align="left"><a>나의 예매 내역</a></h4>
-					<h6 align="left"><a>지난 한달 간의 예매 내역입니다.</a></h6>
+					<h4 align="left" style="color: #cd1726;">나의 예매 내역</h4>
+					<h6 align="left" style="color: #cd1726;">지난 한달 간의 예매 내역입니다.</h6>
 					
 					<table class="table ">
+						<c:if test="${not empty myBookingList }">
 						<c:forEach var="booking" items="${myBookingList }">
 							<tr>
 								<td colspan="3"><font style="font-weight: bold;">예매번호&nbsp;&nbsp;${booking.ticketnumber }</font></td>
@@ -130,7 +133,9 @@ hr {
 							
 								<td>
 									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br>
-									<font size="2px">관람극장&nbsp;&nbsp;${booking.lname }<br>
+									<font size="2px">
+									관람극장&nbsp;&nbsp;Popcorn&amp;Cola&nbsp;${booking.lname }&nbsp;&nbsp;
+											<a href="#" style="color: black !important;">[극장정보]</a><br>
 									관람일시&nbsp;&nbsp;<font color="#cd1726">${booking.theDate }&nbsp;(${booking.theDay })&nbsp;${booking.theTime }</font><br>
 									상&nbsp;영&nbsp;관&nbsp;&nbsp;&nbsp;${booking.tname }<br>
 									관람인원&nbsp;
@@ -170,6 +175,13 @@ hr {
 								</td>
 							</tr>
 						</c:forEach>
+						</c:if>
+						
+						<c:if test="${empty myBookingList }">
+							<tr>
+								<td colspan="3"><h4 style="color: #cd1726">예매내역이 없습니다.</h4></td>
+							</tr>
+						</c:if>
 					</table>
 				</div>
 			</div>

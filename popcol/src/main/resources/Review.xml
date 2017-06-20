@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviewns">
+	<resultMap id="reviewResult" type="review">
+		<result property="rid" column="rid" />
+		<result property="mid" column="mid" />
+		<result property="cid" column="cid" />
+		<result property="rcontent" column="rcontent" />
+		<result property="rvaluation" column="rvaluation" />
+		<result property="rdate" column="rdate" />
+		<result property="rdel" column="rdel" />
+	</resultMap>
+	
+	<select id="selectReview" parameterType="review" resultType="review">
+		select * from review where cid = #{cid} and mid = #{mid} and rdel = 'n'
+	</select>
+	
+	<select id="selectReviewForUpdate" parameterType="review" resultType="review">
+		select * from review where rid = #{rid}
+	</select>
+	
+	<update id="updateReview" parameterType="review">
+		update review set rcontent = #{rcontent}, rvaluation = #{rvaluation} where rid = #{rid} and cid = #{cid}
+	</update>
+	
+	<update id="deleteReview" parameterType="review">
+		update review set rdel = 'y' where rid = #{rid}
+	</update>
+	
+	<insert id="insertReview" parameterType="review">
+		insert into review values((select max(nvl(rid, 0)) + 1 from review), #{mid}, #{cid}, #{rcontent}, #{rvaluation}, sysdate, 'n')
+	</insert>
+</mapper>

@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import popcol.model.Booking;
 import popcol.model.Customer;
-import popcol.model.Location;
 import popcol.model.Movie;
 import popcol.model.MypageBooking;
-import popcol.model.Price;
-import popcol.model.RunningtimeTable;
-import popcol.model.Theater;
+import popcol.model.Review;
 import popcol.service.customer.MypageService;
 
 @Controller
@@ -53,12 +48,12 @@ public class MypageController {
 	   List<MypageBooking> myBookingList = new ArrayList<MypageBooking>();
 	   myBookingList = ms.selectMyBookingListMain(id, oneMonthAgo);
 	   
-	   SimpleDateFormat df2 = new SimpleDateFormat("yyyy년 MM월 dd일");
-	   SimpleDateFormat df3 = new SimpleDateFormat("HH시 mm분");
+	   /*SimpleDateFormat df2 = new SimpleDateFormat("yyyy.MM.dd");
+	   SimpleDateFormat df3 = new SimpleDateFormat("HH:mm");*/
 
 	   for(MypageBooking mb : myBookingList) {
-		   String theDate = df2.format(mb.getRtdate());
-		   String theTime = df3.format(mb.getRtdate());
+		   /*String theDate = df2.format(mb.getRtdate());
+		   String theTime = df3.format(mb.getRtdate());*/
 		   
 			c.setTime(mb.getRtdate());
 			int dayNum = c.get(Calendar.DAY_OF_WEEK);
@@ -89,8 +84,8 @@ public class MypageController {
 
 			}
 
-			mb.setTheDate(theDate);
-			mb.setTheTime(theTime);
+			/*mb.setTheDate(theDate);
+			mb.setTheTime(theTime);*/
 			mb.setTheDay(theDay);
 	   }
 	   
@@ -99,6 +94,10 @@ public class MypageController {
 	  
 	   model.addAttribute("myBookingList", myBookingList);
 	   model.addAttribute("MyPriceSeatList", MyPriceSeatList);
+	   
+	   //포인트조회
+	   
+	   //1:1문의조회
 			   
 
 		return "mypage_Main";
@@ -127,6 +126,8 @@ public class MypageController {
 		// 1개월 간의 예매내역만 출력
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
+		Customer customer = ms.getSessionCustomerInfo(id);
+		model.addAttribute("customer", customer);
 		
 		// 1개월 전 날짜 구하기
 		SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd");
@@ -143,14 +144,83 @@ public class MypageController {
 	    
 	   List<MypageBooking> myBookingList = new ArrayList<MypageBooking>();
 	   myBookingList = ms.selectMyBookingList(id, oneMonthAgo);
-	   
-	   SimpleDateFormat df2 = new SimpleDateFormat("yyyy년 MM월 dd일");
-	   SimpleDateFormat df3 = new SimpleDateFormat("HH시 mm분");
 
 	   for(MypageBooking mb : myBookingList) {
-		   String theDate = df2.format(mb.getRtdate());
-		   String theTime = df3.format(mb.getRtdate());
-		   
+			c.setTime(mb.getRtdate());
+			int dayNum = c.get(Calendar.DAY_OF_WEEK);
+			String theDay = "";
+
+			switch (dayNum) {
+			case 1:
+				theDay = "일";
+				break;
+			case 2:
+				theDay = "월";
+				break;
+			case 3:
+				theDay = "화";
+				break;
+			case 4:
+				theDay = "수";
+				break;
+			case 5:
+				theDay = "목";
+				break;
+			case 6:
+				theDay = "금";
+				break;
+			case 7:
+				theDay = "토";
+				break;
+
+			}
+			mb.setTheDay(theDay);
+	   }
+	   
+	   List<MypageBooking> MyPriceSeatList = new ArrayList<MypageBooking>();
+	   MyPriceSeatList = ms.selectMyPriceSeatList(id, oneMonthAgo);
+	  
+	   model.addAttribute("myBookingList", myBookingList);
+	   model.addAttribute("MyPriceSeatList", MyPriceSeatList);
+	   model.addAttribute("today", today6);
+	   
+	   return "mypage_reservation";
+	}
+	
+	// 영화 예매 취소
+	@RequestMapping("cancelBooking")
+	public String cancelBooking(String ticketnumber, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		int result = ms.deleteBooking(ticketnumber, id);
+		model.addAttribute("result", result);
+		
+		return "cancelBooking";
+	}
+	
+	
+	
+	// 내가 본 영화 보기
+	/*@RequestMapping("mypage_seeMovie")
+	public String mypage_seeMovie(Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		Customer customer = ms.getSessionCustomerInfo(id);
+		
+		model.addAttribute("customer", customer);
+		
+		// 상영일이 지난 내가 본 영화 리스트 가져오기
+		List<MypageBooking> mySeeMovieList = new ArrayList<MypageBooking>();
+		mySeeMovieList = ms.selectMySeeMovieList(id);
+		
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy.MM.dd");
+		SimpleDateFormat df3 = new SimpleDateFormat("HH:mm");
+		Calendar c = Calendar.getInstance();
+		
+		for (MypageBooking mb : mySeeMovieList) {
+			String theDate = df2.format(mb.getRtdate());
+			String theTime = df3.format(mb.getRtdate());
+
 			c.setTime(mb.getRtdate());
 			int dayNum = c.get(Calendar.DAY_OF_WEEK);
 			String theDay = "";
@@ -183,30 +253,154 @@ public class MypageController {
 			mb.setTheDate(theDate);
 			mb.setTheTime(theTime);
 			mb.setTheDay(theDay);
-	   }
-	   
-	   List<MypageBooking> MyPriceSeatList = new ArrayList<MypageBooking>();
-	   MyPriceSeatList = ms.selectMyPriceSeatList(id, oneMonthAgo);
-	  
-	   model.addAttribute("myBookingList", myBookingList);
-	   model.addAttribute("MyPriceSeatList", MyPriceSeatList);
-	   model.addAttribute("today", today6);
-	   
-	   return "mypage_reservation";
-	}
+			
+		}
+		
+		// 내가 쓴 리뷰 리스트 가져오기
+		List<Review> myReviewList = new ArrayList<Review>();
+		myReviewList = ms.selectMyReviewList(id);
+		
+		model.addAttribute("mySeeMovieList", mySeeMovieList);
+		model.addAttribute("myReviewList", myReviewList);
+		
+		return "mypage_seeMovie";
+	}*/
 	
-	// 영화 예매 취소
-	@RequestMapping("cancelBooking")
-	public String cancelBooking(String ticketnumber, Model model, HttpSession session, HttpServletRequest request) {
+	@RequestMapping("mypage_seeMovie")
+	public String mypage_seeMovie(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		int result = ms.deleteBooking(ticketnumber, id);
-		model.addAttribute("result", result);
+		Customer customer = ms.getSessionCustomerInfo(id);
 		
-		return "cancelBooking";
+		model.addAttribute("customer", customer);
+		
+		// 상영일이 지난 내가 본 영화 리스트 가져오기
+		List<MypageBooking> mySeeMovieList = ms.selectMySeeMovieList(id);
+		
+		Calendar c = Calendar.getInstance();
+		
+		for (MypageBooking mb : mySeeMovieList) {
+			c.setTime(mb.getRtdate());
+			int dayNum = c.get(Calendar.DAY_OF_WEEK);
+			String theDay = "";
+
+			switch (dayNum) {
+			case 1:
+				theDay = "일";
+				break;
+			case 2:
+				theDay = "월";
+				break;
+			case 3:
+				theDay = "화";
+				break;
+			case 4:
+				theDay = "수";
+				break;
+			case 5:
+				theDay = "목";
+				break;
+			case 6:
+				theDay = "금";
+				break;
+			case 7:
+				theDay = "토";
+				break;
+
+			}
+
+			mb.setTheDay(theDay);
+			
+		}
+		
+		model.addAttribute("mySeeMovieList", mySeeMovieList);
+		
+		return "mypage_seeMovie";
 	}
 	
-	// 내가 본 영화 보기
+	
+	// 리뷰
+	@RequestMapping("mypage_Review")
+	public String mypage_Review(Review review, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		review.setCid(id);
+		
+		Review myReview = ms.selectReview(review);
+		
+		if (myReview != null)
+			model.addAttribute("myReview", myReview);
+		else
+			model.addAttribute("mid", review.getMid());
+
+		return "mypage_Review";
+	}
+	
+	@RequestMapping("mypage_showReview")
+	public String mypage_showReview(Review review, Model model) {
+		System.out.println("rid : " + review.getRid());
+		System.out.println("mid : " + review.getMid());
+		// 리뷰 보여주는것인데 업데이트 폼 불러오는 거랑 똑같아서 그냥 씀
+		Review modifyReview = ms.selectReviewForUpdate(review);
+		model.addAttribute("review", modifyReview);
+		
+		Movie movie = ms.selectMovieForReview(review.getMid());
+		model.addAttribute("movie", movie);
+		model.addAttribute("url", movie.getMurlPoster());
+		
+		return "mypage_showReview";
+	}
+	
+	@RequestMapping("mypage_reviewWriteForm")
+	public String mypage_reviewForm(String mid, Model model) {
+		
+		model.addAttribute("mid", mid);
+		
+		return "mypage_reviewWriteForm";
+	}
+	
+	@RequestMapping("mypage_writeReview")
+	public String mypage_writeReview(Review review, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		review.setCid(id);
+		
+		int result = ms.insertReview(review);
+		model.addAttribute("result", result);
+		
+		return "mypage_writeReview";
+	}
+	
+	@RequestMapping("mypage_reviewModifyForm")
+	public String mypage_reviewModifyForm(Review review, Model model) {
+		
+		Review modifyReview = ms.selectReviewForUpdate(review);
+		model.addAttribute("review", modifyReview);
+		
+		return "mypage_reviewModifyForm";
+	}
+	
+	@RequestMapping("mypage_modifyReview")
+	public String mypage_modifyReview(Review review, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		review.setCid(id);
+		
+		int result = ms.updateReview(review);
+		model.addAttribute("result", result);
+		
+		return "mypage_modifyReview";
+	}
+	
+	@RequestMapping("mypage_deleteReview")
+	public String mypage_deleteReview(Review review, Model model) {
+		int result = ms.deleteReview(review);
+		model.addAttribute("result", result);
+		
+		return "mypage_deleteReview";
+	}
+	
 	
 	// 회원 정보 수정
 	@RequestMapping("mypage_Modifyintro")

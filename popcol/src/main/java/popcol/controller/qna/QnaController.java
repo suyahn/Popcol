@@ -118,4 +118,29 @@ public class QnaController {
 		
 		return "qnaDelete";
 	}
+	
+	/*답변*/
+	@RequestMapping("qnaReply")
+	public String qnaReply(int qid, Model model, HttpSession session) {
+		Qna qna = qs.select(qid);
+		
+		String id = (String) session.getAttribute("id");
+		
+		model.addAttribute("qnaReply", qna);
+		model.addAttribute("id", id);
+		
+		return "qnaReply";
+	}
+	
+	@RequestMapping("qnaReplyInsert")
+	public String qnaReplyInsert(Qna qna) {
+		qs.insertReply(qna);
+		return "redirect:qnaReply.do?qid=" + qna.getQid();
+	}
+	
+	@RequestMapping("qnaReplyDelete")
+	public String qnaReplyDelete(int qid) {
+		qs.deleteReply(qid);
+		return "redirect:qnaReply.do?qid=" + qid;
+	}
 }

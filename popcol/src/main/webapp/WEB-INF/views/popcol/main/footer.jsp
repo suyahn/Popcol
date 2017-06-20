@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>	
-	<font color="white" style="float: right;">© Popcorn&amp;Cola</font>
+	<font color="white" style="float: right; margin-top: 100px;">© Popcorn&amp;Cola</font>
 </body>
 </html>

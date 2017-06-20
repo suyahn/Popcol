@@ -93,4 +93,10 @@
 		select * from movie
 		where mdel='n' order by mtitle
 	</select>
+	
+	<!-- 도은 -->
+	<!-- 리뷰보면서 영화정보도 -->
+	<select id="selectMovieForReview" parameterType="int" resultType="movie">
+		select * from movie where mid = #{mid}
+	</select>
 </mapper>

@@ -47,4 +47,12 @@
 	<update id="delete" parameterType="int">
 		update qna set qdel = 'y' where qid = #{qid}
 	</update>
+	
+	<update id="insertReply" parameterType="qna">
+		update qna set qreplycontent = #{qreplycontent} where qid = #{qid}
+	</update>
+	
+	<update id="deleteReply" parameterType="int">
+		update qna set qreplycontent = null where qid = #{qid}
+	</update>
 </mapper>
