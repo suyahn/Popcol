@@ -84,14 +84,16 @@ hr {
 					<table class="table ">
 						<c:forEach var="booking" items="${myBookingList }">
 							<tr>
-								<td>예매번호<br><br><br><br><font style="font-weight: bold;">${booking.ticketnumber }</font></td>
+								<td>예매번호<br><br><br><br><br><font style="font-weight: bold;">${booking.ticketnumber }</font></td>
 							
-								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlposter}.jpg" width="80px">
+								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlposter}.jpg" width="90px">
 							
 								<td>
-									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br>
-									${booking.lname }&nbsp;${booking.tname }<br>
-									${booking.theDate }&nbsp;(${booking.theDay })&nbsp;${booking.theTime }
+									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br><br>
+									<font size="2px">
+									Popcorn&amp;Cola&nbsp;${booking.lname }&nbsp;${booking.tname }&nbsp;&nbsp;
+											<a href="#" style="color: black !important;">[극장정보]</a><br>
+									${booking.theDate }&nbsp;(${booking.theDay })&nbsp;${booking.theTime }</font>
 								</td>
 							
 							<c:set var="countA" value="0" />
@@ -119,14 +121,14 @@ hr {
 							
 							
 								<td>
-									<br>
+									<font size="2px"><br><br>
 									<c:forEach var="ps" items="${MyPriceSeatList }">
 										<c:if test="${booking.ticketnumber == ps.ticketnumber }">
 											${ps.bseat }&nbsp;
 										</c:if>
 									</c:forEach>
 									
-									<br><br>
+									<br><br><br>
 									
 									<c:if test="${countA > 0 }">
 										어른${countA }&nbsp;
@@ -140,7 +142,7 @@ hr {
 										우대${countS }&nbsp;
 									</c:if>
 									
-									<br>${sum }원
+									<br>${sum }원</font>
 								</td>
 							</tr>
 						</c:forEach>

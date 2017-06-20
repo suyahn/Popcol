@@ -125,7 +125,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/mypage/cancelBooking.jsp" />
 	</definition>
-
+	
+	<!-- 내가 본 영화 -->
+	<definition name="mypage_seeMovie" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_seeMovie.jsp" />
+	</definition>
+	<definition name="mypage_Review" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Review.jsp" />
+	</definition>
+	
 	<!-- 회원 정보 수정 -->
 
 	<definition name="mypage_Modifyintro" extends="mainLayout">

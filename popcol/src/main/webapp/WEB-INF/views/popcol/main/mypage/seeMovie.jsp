@@ -44,11 +44,9 @@ hr {
 			}); 
 		});
 		
-		$('.reviewC').each(function() {
-			
-			$(this).load('mypage_Review.do', {'mid' : $(this).attr('id')});
+		$('.mr').click(function() {
+			var id = $(this).attr('id');
 		});
-		
 	});
 </script>
 </head>
@@ -88,22 +86,41 @@ hr {
 					<h4 align="left"><a href="mypage_reservation.do">내가 본 영화</a></h4>
 					
 					<table class="table table-stripped">
+						<form></form>
 						<c:if test="${not empty mySeeMovieList }">
 						<c:forEach var="myMovie" items="${mySeeMovieList }">
 							<tr>
 								<td width="25%"><img alt="${myMovie.mtitle }" src="${path }/poster/${myMovie.murlposter }.jpg" width="150px"></td>
 								<td colspan="4" style="text-align: left;">
-									<div align="left">
-										<font size="5px" style="font-weight: bold;">${myMovie.mtitle }${myMovie.mid }</font><br>
+									<div align="left"><font size="5px" style="font-weight: bold;">${myMovie.mtitle }</font><br>
+									<font size="2px">${myMovie.moriginaltitle }<br><br><br><br>
+									${myMovie.theDate }&nbsp;(${myMovie.theDay })&nbsp;${myMovie.theTime }<br>
+									Popcorn&amp;Cola&nbsp;${myMovie.lname }&nbsp;${myMovie.tname }&nbsp;/&nbsp;${myMovie.peopleC }명<br><br><br></font></div>
 									
-										<font size="2px">
-										${myMovie.moriginaltitle }<br><br><br><br>
-										${myMovie.theDate }&nbsp;(${myMovie.theDay })&nbsp;${myMovie.theTime }<br>
-										Popcorn&amp;Cola&nbsp;${myMovie.lname }&nbsp;${myMovie.tname }&nbsp;/&nbsp;${myMovie.peopleC }명<br><br><br>
-										</font>
+									<div class="reviewC">
+									<c:if test="${not empty myReviewList }">
+									<c:forEach var="review" items="${myReviewList }">
+										<c:if test="${myMovie.mid == review.mid }">
+											<c:if test="${review.rvaluation == 'g' }">
+												<img alt="good" src="${path }/images/good.png" width="25px"> 좋아요~
+											</c:if>
+											<c:if test="${review.rvaluation == 'b' }">
+												<img alt="bad" src="${path }/images/bad.png" width="25px"> 별로에요~
+											</c:if>
+										</c:if>
+									</c:forEach>
+									<button onclick="deleteReivew(${review.rid})" class="btn btn-default btn-sm dr" style="margin-left: 10px; float: right;">리뷰삭제하기</button>
+									<button id="${review.rid }" class="btn btn-info btn-sm mr" style="border-color: #cd1726; background-color: #cd1726; float: right;">리뷰수정하기</button>
+									</c:if>
+									
+									<c:if test="${empty myReviewList}">
+										<button id="${myMovie.mid }" class="btn btn-info btn-sm wr" style="border-color: #cd1726; background-color: #cd1726; float: right;">리뷰작성하기</button>
+									</c:if>
 									</div>
-									
-									<div class="reviewC" id="${myMovie.mid }"></div>
+								</td>
+								
+								<td>
+									<div class="movieReview"></div>
 								</td>
 							</tr>
 						</c:forEach>

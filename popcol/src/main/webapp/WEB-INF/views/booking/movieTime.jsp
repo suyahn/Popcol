@@ -16,6 +16,19 @@
 			$('#'+idd).css("color","white");
 		})	;
 	});
+	
+	function btnClick() {
+		$('.timertid').each(function(i, obj) {
+			var color = $(obj).css("background-color");
+			if(color == 'rgb(0, 0, 0)' || color == 'black') {
+				var time = $(obj).attr('id');
+				location.href="seatSelect.do?rtid="+time;
+			} else {
+				alert("시간을 선택하세요");
+				return false;
+			}
+		});
+	}	
 
 </script>
 </head>
@@ -24,9 +37,15 @@
 		<c:forEach var="time" items="${timeList}">
 		<!-- items의 locationList는 컨트롤의 리퀘스트 맵핑의 locationList와 연결 -->
 			<tr>
-				<td id="time_${time.rtid}" class="timertid" onclick="timeSelect(${time.mid},${time.lid},${time.rtdate },${time.rtid} )" style="cursor: pointer;">${time.rttime }</td>
+				<td id="${time.rtid}" class="timertid" onclick="timeSelect(${time.mid},${time.lid},${time.rtdate },${time.rtid} )" style="cursor: pointer;">${time.rttime }</td>
 			</tr>
 		</c:forEach>
+		<tr>
+				<th id="seat" colspan="4" align="right">
+				<button onclick='btnClick()' class="btn btn-info btn-sm" style="float: right; border-color:
+					#cd1726; background-color: #cd1726;">확인</button>
+				</th>
+			</tr>
 	</table>
 </body>
 </html>

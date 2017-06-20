@@ -12,5 +12,6 @@ public interface BookingService {
 	List<Location> locationList(int mid);
 	List<RunningtimeTable> dateList(int mid, int lid);
 	List<RunningtimeTable> timeList(int mid, int lid, int rtid);
+	RunningtimeTable selectRt(int rtid);
 
 }

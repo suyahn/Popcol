@@ -29,5 +29,8 @@ public class BookingServiceImpl implements BookingService {
 	public List<RunningtimeTable> timeList(int mid, int lid, int rtid) {
 		return bd.timeList(mid,lid,rtid);
 	}
+	public RunningtimeTable selectRt(int rtid) {
+		return bd.selectRt(rtid);
+	}
 
 }

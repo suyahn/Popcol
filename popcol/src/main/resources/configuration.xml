@@ -15,7 +15,7 @@
 		<typeAlias alias="notice" type="popcol.model.Notice" />
 		<typeAlias alias="price" type="popcol.model.Price" />
 		<typeAlias alias="qna" type="popcol.model.Qna" />
-		<!-- <typeAlias alias="review" type="popcol.model.Review" /> -->
+		<typeAlias alias="review" type="popcol.model.Review" />
 		<typeAlias alias="runningtimetable" type="popcol.model.RunningtimeTable" />
 		<typeAlias alias="theater" type="popcol.model.Theater" />
 		<typeAlias alias="mypagebooking" type="popcol.model.MypageBooking" />
@@ -31,7 +31,7 @@
 		<mapper resource="Notice.xml" />
 		<mapper resource="Price.xml" />
 		<mapper resource="Qna.xml" />
-		<!-- <mapper resource="Review.xml" /> -->
+		<mapper resource="Review.xml" />
 		<mapper resource="RunningtimeTable.xml" />
 		<mapper resource="Theater.xml" />
 		<mapper resource="MypageBooking.xml" />

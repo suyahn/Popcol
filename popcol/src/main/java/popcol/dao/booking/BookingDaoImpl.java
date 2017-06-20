@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import popcol.model.Booking;
 import popcol.model.Location;
 import popcol.model.Movie;
 import popcol.model.RunningtimeTable;
@@ -16,7 +17,6 @@ public class BookingDaoImpl implements BookingDao{
 	@Autowired
 	private SqlSessionTemplate sst;
 
-	@Override
 	public List<Movie> movieList() {
 		return sst.selectList("moviens.bookingMovieList");
 	}
@@ -34,5 +34,8 @@ public class BookingDaoImpl implements BookingDao{
 		HashMap<String,Integer> time=new HashMap<String,Integer>();
 		time.put("mid",mid); time.put("lid", lid); time.put("rtid", rtid);
 		return sst.selectList("runningtimetablens.bookingRttList",time);
+	}
+	public RunningtimeTable selectRt(int rtid) {
+		return sst.selectOne("runningtimetablens.bookingrtList",rtid);
 	}
 }

@@ -6,6 +6,7 @@ public class MypageBooking {
 	private String mtitle;
 	private String moriginaltitle;
 	private String murlposter;
+	private int mid;
 	private String lname;
 	private String tname;
 	private Date rtdate;
@@ -16,6 +17,7 @@ public class MypageBooking {
 	private String bseat;
 	private String ticketnumber;
 	private String human;
+	private int peopleC;
 
 	public String getMtitle() {
 		return mtitle;
@@ -39,6 +41,14 @@ public class MypageBooking {
 
 	public void setMurlposter(String murlposter) {
 		this.murlposter = murlposter;
+	}
+
+	public int getMid() {
+		return mid;
+	}
+
+	public void setMid(int mid) {
+		this.mid = mid;
 	}
 
 	public String getLname() {
@@ -119,5 +129,13 @@ public class MypageBooking {
 
 	public void setHuman(String human) {
 		this.human = human;
+	}
+
+	public int getPeopleC() {
+		return peopleC;
+	}
+
+	public void setPeopleC(int peopleC) {
+		this.peopleC = peopleC;
 	}
 }
