@@ -47,4 +47,14 @@ public class QnaDaoImpl implements QnaDao {
 	public int delete(int qid) {
 		return sst.update("qnans.delete", qid);
 	}
+
+	@Override
+	public void insertReply(Qna qna) {
+		sst.update("qnans.insertReply", qna);
+	}
+
+	@Override
+	public void deleteReply(int qid) {
+		sst.update("qnans.deleteReply", qid);
+	}
 }

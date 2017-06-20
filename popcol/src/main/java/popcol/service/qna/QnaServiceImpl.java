@@ -47,4 +47,14 @@ public class QnaServiceImpl implements QnaService {
 	public int delete(int qid) {
 		return qd.delete(qid);
 	}
+
+	@Override
+	public void insertReply(Qna qna) {
+		qd.insertReply(qna);
+	}
+
+	@Override
+	public void deleteReply(int qid) {
+		qd.deleteReply(qid);
+	}
 }
