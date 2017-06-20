@@ -10,7 +10,28 @@ public class RunningtimeTable {
 	private int mid;
 	private Date rtdate;
 	private String rttime;
+	private String mtitle;
+	private String lname;
+	private String tname;
 	
+	public String getMtitle() {
+		return mtitle;
+	}
+	public void setMtitle(String mtitle) {
+		this.mtitle = mtitle;
+	}
+	public String getLname() {
+		return lname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+	public String getTname() {
+		return tname;
+	}
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
 	public String getRttime() {
 		return rttime;
 	}

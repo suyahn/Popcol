@@ -28,8 +28,6 @@ public class LoginCheck implements HandlerInterceptor {
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 		HttpSession session;
-
-		System.out.println("랄라");
 		
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
