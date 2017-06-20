@@ -39,7 +39,7 @@
 			</tr>
 			<tr>
 				<td>생년월일</td>
-				<td>${customer.cbirth_date}</td>
+				<td>${customer.cbirthday}</td>
 			</tr>
 		</table>
 		<a href="adminCustomerList.do?" class="btn btn-info"
