@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
+<%@ include file="counter.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,15 @@
 			
 			$('#goodimg').css('width', '100px');
 		});
+		
+		$('#rcontent').keyup(function() {
+			var content = $(this).val();
+			
+			$(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+			$('#counter').html(content.length + '/120');
+		});
+		
+		$('#rcontent').keyup();
 	});
 	
 	function closeWindow2() {
@@ -36,7 +46,7 @@
 		
 		<br><br> -->
 		
-		<form action="mypage_modifyReview.do" name="frm">
+		<form action="mypage_reviewMoify.do" name="frm">
 			<input type="hidden" name="rid" value="${review.rid }">
 			<table>
 				<tr>
@@ -59,9 +69,12 @@
 				
 				<tr>
 					<td>
+						<div id="wrap">
 						<br><br>
-						<pre><textarea rows="5" cols="50" name="rcontent" required="required" autofocus="autofocus" maxlength="33" style="resize:none;">${review.rcontent }</textarea></pre>
+						<pre><textarea rows="5" cols="50" name="rcontent" id="rcontent" required="required" autofocus="autofocus" maxlength="120" style="resize:none;">${review.rcontent }</textarea></pre>
+						<span id="counter"></span>
 						<br><br>
+						</div>
 					</td>
 				</tr>
 				

@@ -11,6 +11,7 @@
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("리뷰가 수정되었습니다.");
+			// 부모 창 새로고침
 			opener.parent.location.reload();
 			window.close();
 		</script>

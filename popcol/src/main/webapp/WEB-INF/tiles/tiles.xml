@@ -126,36 +126,36 @@
 			value="/WEB-INF/views/popcol/main/mypage/mypage_Review.jsp" />
 	</definition>
 	
-	<definition name="mypage_showReview" extends="reviewLayout">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_showReview.jsp" />
+	<definition name="mypage_reviewShow" extends="reviewLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewShow.jsp" />
 	</definition>
 	
 	<definition name="mypage_reviewWriteForm" extends="reviewLayout">
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewWriteForm.jsp" />
 	</definition>
 	
-	<definition name="mypage_writeReview" extends="empty">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_writeReview.jsp" />
+	<definition name="mypage_reviewWrite" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewWrite.jsp" />
 	</definition>
 	
 	<definition name="mypage_reviewModifyForm" extends="reviewLayout">
 		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewModifyForm.jsp" />
 	</definition>
 	
-	<definition name="mypage_modifyReview" extends="empty">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_modifyReview.jsp" />
+	<definition name="mypage_reviewMoify" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewMoify.jsp" />
 	</definition>
 	
-	<definition name="mypage_deleteReview" extends="empty">
-		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_deleteReview.jsp" />
+	<definition name="mypage_reviewDelete" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewDelete.jsp" />
 	</definition>
 	
 	
 	<!-- 회원 정보 수정 -->
 
-	<definition name="mypage_Modifyintro" extends="mainLayout">
+	<definition name="mypage_myInfoModifyintro" extends="mainLayout">
 		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/mypage/mypage_Modifyintro.jsp" />
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModifyintro.jsp" />
 	</definition>
 
 	<definition name="mypage_myInfoModifyForm" extends="mainLayout">

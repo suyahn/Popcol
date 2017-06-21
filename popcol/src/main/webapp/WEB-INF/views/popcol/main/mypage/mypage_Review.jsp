@@ -8,31 +8,12 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
-		/* var dd = "toolbar=no,directories=no,scrollbars=no,resizable=no,status=no,menubar=no,width=600, height=500, top=0,left=20";
 		
-		$('#wr').on("click", function(){
-		    window.open("", "리뷰작성하기", dd);
-		    $("#frm1").submit();
-		  });
-		
-		$('#mr').each(function() {
-			$(this).on("click", function(){
-			    window.open("", "리뷰수정하기", dd);
-			    $("#frm2").submit();
-			  });
-		});
-		
-		$('.img').each(function() {
-			$(this).on("click", function(){
-			    window.open("", "리뷰보기", dd);
-			    $("#frm3").submit();
-			  });
-		}); */
 	});
 
 	function deleteReivew(rid) {
 		
-		$.post('mypage_deleteReview.do', 'rid=' + rid, function(result) {
+		$.post('mypage_reviewDelete.do', 'rid=' + rid, function(result) {
 			if(result > 0) {
 				alert("리뷰를 삭제하였습니다.");
 				location.href="mypage_seeMovie.do";
@@ -42,23 +23,7 @@
 		}); 
 	} 
 	
-	/* function modifyReview(rid, mid) {
-		alert(rid);
-		alert(mid);
-		
-		var pop_title="리뷰수정하기";
-		var status = "toolbar=no,directories=no,scrollbars=no,resizable=no,status=no,menubar=no,width=600, height=500, top=0,left=20"; 
-		
-		window.open("", pop_title, status);
-         
-        var frm = document.frm2;
-        frm.target = pop_title;
-        frm.action = "mypage_reviewModifyForm.do";
-         
-        frm.submit();
-
-	} */
-	
+	// 동적으로 form을 생성 1
 	function create_form(nm,mt,ac,tg) {
 	    var fm = document.createElement("form");
 	    fm.name = nm;
@@ -69,6 +34,7 @@
 	    return fm;
 	}
 	
+	// 동적으로 form을 생성 2
 	function add_input(fm,nm,vu){
 	    var input = document.createElement("input");
 	    input.type = "hidden";
@@ -91,7 +57,7 @@
 	}
 	
 	function showReview(rid, mid) {
-		  var frm = create_form('dummy', 'POST', 'mypage_showReview.do', '리뷰보기')
+		  var frm = create_form('dummy', 'POST', 'mypage_reviewShow.do', '리뷰보기')
 		   frm = add_input(frm,'rid',rid);
 		  frm = add_input(frm,'mid',mid);
 		   document.body.insertBefore(frm,null);

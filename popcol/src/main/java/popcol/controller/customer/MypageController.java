@@ -337,7 +337,7 @@ public class MypageController {
 		return "mypage_Review";
 	}
 	
-	@RequestMapping("mypage_showReview")
+	@RequestMapping("mypage_reviewShow")
 	public String mypage_showReview(Review review, Model model) {
 		System.out.println("rid : " + review.getRid());
 		System.out.println("mid : " + review.getMid());
@@ -349,7 +349,7 @@ public class MypageController {
 		model.addAttribute("movie", movie);
 		model.addAttribute("url", movie.getMurlPoster());
 		
-		return "mypage_showReview";
+		return "mypage_reviewShow";
 	}
 	
 	@RequestMapping("mypage_reviewWriteForm")
@@ -360,7 +360,7 @@ public class MypageController {
 		return "mypage_reviewWriteForm";
 	}
 	
-	@RequestMapping("mypage_writeReview")
+	@RequestMapping("mypage_reviewWrite")
 	public String mypage_writeReview(Review review, Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -369,7 +369,7 @@ public class MypageController {
 		int result = ms.insertReview(review);
 		model.addAttribute("result", result);
 		
-		return "mypage_writeReview";
+		return "mypage_reviewWrite";
 	}
 	
 	@RequestMapping("mypage_reviewModifyForm")
@@ -381,7 +381,7 @@ public class MypageController {
 		return "mypage_reviewModifyForm";
 	}
 	
-	@RequestMapping("mypage_modifyReview")
+	@RequestMapping("mypage_reviewMoify")
 	public String mypage_modifyReview(Review review, Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -390,20 +390,20 @@ public class MypageController {
 		int result = ms.updateReview(review);
 		model.addAttribute("result", result);
 		
-		return "mypage_modifyReview";
+		return "mypage_reviewMoify";
 	}
 	
-	@RequestMapping("mypage_deleteReview")
+	@RequestMapping("mypage_reviewDelete")
 	public String mypage_deleteReview(Review review, Model model) {
 		int result = ms.deleteReview(review);
 		model.addAttribute("result", result);
 		
-		return "mypage_deleteReview";
+		return "mypage_reviewDelete";
 	}
 	
 	
 	// 회원 정보 수정
-	@RequestMapping("mypage_Modifyintro")
+	@RequestMapping("mypage_myInfoModifyintro")
 	public String mypage_Modifyintro(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -411,11 +411,9 @@ public class MypageController {
 		
 		model.addAttribute("customer", customer);
 		
-		return "mypage_Modifyintro";
+		return "mypage_myInfoModifyintro";
 	}
-
 	
-	// 회원 탈퇴
 	@RequestMapping("mypage_myInfoModifyForm")
 	public String mypage_myInfoModifyForm(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
@@ -436,6 +434,8 @@ public class MypageController {
 		return "mypage_myInfoModify";
 	}
 	
+	
+	// 회원 탈퇴
 	@RequestMapping("mypage_byePopcolForm")
 	public String mypage_byePopcolForm(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
@@ -460,5 +460,13 @@ public class MypageController {
 		model.addAttribute("result", result);
 		
 		return "mypage_byePopcol";
+	}
+	
+	
+	// 1:1 문의
+	@RequestMapping("mypage_myQna")
+	public String mypage_myQna() {
+		
+		return "mypage_myQna";
 	}
 }
