@@ -11,8 +11,8 @@ import popcol.model.Location;
 import popcol.model.Movie;
 import popcol.model.Price;
 import popcol.model.RunningtimeTable;
-import popcol.service.booking.BookingService;
-import popcol.service.movie.MovieService;
+import popcol.service.BookingService;
+import popcol.service.MovieService;
 
 @Controller
 public class BookingController {

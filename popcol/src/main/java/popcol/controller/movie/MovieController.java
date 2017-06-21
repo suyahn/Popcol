@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Movie;
-import popcol.service.movie.MovieService;
+import popcol.service.MovieService;
 
 @Controller
 public class MovieController {

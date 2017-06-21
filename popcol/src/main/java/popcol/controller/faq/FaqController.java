@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Faq;
+import popcol.service.FaqService;
 import popcol.service.PagingPgm;
-import popcol.service.faq.FaqService;
 
 @Controller
 public class FaqController {

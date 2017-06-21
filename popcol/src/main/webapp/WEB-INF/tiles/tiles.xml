@@ -179,6 +179,30 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/mypage/mypage_byePopcol.jsp" />
 	</definition>
+	
+	<!-- 1:1문의 보기 -->
+
+	<definition name="mypage_myQna" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myQna.jsp" />
+	</definition>
+	
+	<definition name="mypage_myQnaShow" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myQnaShow.jsp" />
+	</definition>
+	
+	<definition name="mypage_myQnaDelete" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myQnaDelete.jsp" />
+	</definition>
+	
+	
+	<definition name="pointPage" extends="empty">
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/pointPage.jsp" />
+	</definition>
+	
 
 
 
