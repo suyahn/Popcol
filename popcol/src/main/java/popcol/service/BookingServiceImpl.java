@@ -38,8 +38,8 @@ public class BookingServiceImpl implements BookingService {
 	public List<Booking> seatrtList(int rtid) {
 		return bd.seatrtList(rtid);
 	}
-	public List<Price> pricestList() {
-		return bd.pricestList();
+	public List<Price> timezonePricestList(String timezone) {
+		return bd.timezonePricestList(timezone);
 	}
 
 }

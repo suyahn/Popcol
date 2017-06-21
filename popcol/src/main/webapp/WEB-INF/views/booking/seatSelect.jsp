@@ -53,8 +53,9 @@
 			$('.kk').each(function(i,obj) {
 				//i =index obj=td(id: kk)를 가져옴
 				var color = $(obj).css("background-color");//td의 색깔을 받아옴
-				if(color == 'rgb(12, 7, 50)') {//navy
-					var seat = $(obj).attr('id');//id=a4이런거
+				if(color == 'rgb(12, 7, 50)') //navy
+				{
+					var seat = $(obj).attr('id'); //id=a4이런거
 					selectedSeatList = selectedSeatList + seat +" ";
 				}
 			});
@@ -81,6 +82,69 @@
 		}
 		
 		$('#personCount').html(adultStr + youthStr + specialStr);
+		
+
+		var adultList = new Array();
+		var youthList = new Array();
+		var specialList = new Array();
+		var adultPrice = 0;
+		var youthPrice = 0;
+		var specialPrice = 0;
+		var totalPrice = 0;
+
+		<c:forEach var="price" items="${ priceList }">
+			<c:if test="${ price.human eq 'adult' }">
+				adultList.push("${ price.price }");//{var=price,db에있는 price}
+			</c:if>
+			<c:if test="${ price.human eq 'youth' }">
+				youthList.push("${ price.price }");
+			</c:if>
+			<c:if test="${ price.human eq 'special' }">
+				specialList.push("${ price.price }");
+			</c:if>
+		</c:forEach>
+
+		adultPrice = adultList[0]; // index=0
+		youthPrice = youthList[0];
+		specialPrice = specialList[0];
+
+		totalPrice = adultPrice * adult + youthPrice * youth + specialPrice* special;
+		$('#totalPrice').html(totalPrice + '원');
+	}
+	function btnClick() {
+		var adult = $("#adult option:selected").text();
+		var youth = $("#youth option:selected").text();
+		var special = $("#special option:selected").text();
+		adult*=1; youth*=1; special*=1;
+		var totalPerson = adult+youth+special;
+		if(adult == 0 && youth == 0 && special == 0) {
+			alert("인원을 선택하세요");
+			return false;
+		}//000으로 되어있으면 결제 페이지로 넘어가지 않음
+		
+		var seatCount = 0;
+		$('.kk').each(function(i,obj) {
+			//i =index obj=td(id: kk)를 가져옴
+			
+			var color = $(obj).css("background-color");
+			if(color == 'rgb(12, 7, 50)') {//navy
+				seatCount++;
+			}
+		});
+		
+		if(seatCount != totalPerson) {
+			alert("좌석을 선택하세요");
+			return false;
+		}else{
+			var price= $('#totalPrice').text();
+			var seat=$('#totalSeat').text();
+			var adult = $("#adult option:selected").text();
+			var youth = $("#youth option:selected").text();
+			var special = $("#special option:selected").text();
+			location.href="bookingChk.do?rtid=${rt.rtid}&price="+price+"&seat="+seat+"&adult="+adult+"&youth="+youth
+					+"&special="+special;
+		} 
+			
 	}
 </script>
 </head>

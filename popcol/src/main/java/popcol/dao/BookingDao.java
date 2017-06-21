@@ -16,6 +16,6 @@ public interface BookingDao {
 	List<RunningtimeTable> timeList(int mid, int lid, int rtid);
 	RunningtimeTable selectRt(int rtid);
 	List<Booking> seatrtList(int rtid);
-	List<Price> pricestList();
+	List<Price> timezonePricestList(String timezone);
 
 }

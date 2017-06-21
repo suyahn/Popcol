@@ -42,7 +42,7 @@ public class BookingDaoImpl implements BookingDao{
 	public List<Booking> seatrtList(int rtid) {
 		return sst.selectList("bookingns.bookingRtSList",rtid);
 	}
-	public List<Price> pricestList() {
-		return sst.selectList("pricens.priceList");
+	public List<Price> timezonePricestList(String timezone) {
+		return sst.selectList("pricens.timezonePriceList", timezone);
 	}
 }
