@@ -10,6 +10,51 @@
 		<result property="eclosingdate" column="eclosingdate" />
 		<result property="estartingdate" column="estartingdate" />
 		<result property="edel" column="edel" />
+		<result property="startRow" column="startRow"/>
+		<result property="endRow" column="endRow"/>
 	</resultMap>
 	
+	<select id="eventList" parameterType="event" resultMap="eventResult">
+		select * from (
+			select a.*, rownum rn from (
+				select * from event
+				<where>
+					<if test="keyword != null and search != 'subcon'">
+						${search} like '%' || #{keyword} || '%'
+						and edel = 'n' and eclosingdate >= sysdate
+					</if>
+					<if test="keyword != null and search == 'subcon'">
+						(esubject like '%' || #{keyword} || '%'
+						or econtent like '%' || #{keyword} || '%')
+						and edel = 'n' and eclosingdate >= sysdate
+					</if>
+					<if test="keyword == null">
+						edel = 'n' and eclosingdate >= sysdate
+					</if>
+				</where>
+				order by estartingdate desc) a ) 
+		where rn between #{startRow} and #{endRow} 
+	</select>
+	
+	<select id="getTotal" parameterType="event" resultType="int">
+		select count(*) from event
+		<where>
+			<if test="keyword != null and search != 'subcon'">
+				${search} like '%' || #{keyword} || '%'
+				and edel = 'n' and eclosingdate >= sysdate
+			</if>
+			<if test="keyword != null and search == 'subcon'">
+				(esubject like '%' || #{keyword} || '%'
+				or econtent like '%' || #{keyword} || '%')
+				and edel = 'n' and eclosingdate >= sysdate
+			</if>
+			<if test="keyword == null">
+				edel = 'n' and eclosingdate >= sysdate
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectEvent" parameterType="int" resultType="event">
+		select * from event where eid = #{eid}
+	</select>
 </mapper>

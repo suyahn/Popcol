@@ -245,7 +245,7 @@
 
 	<definition name="faqDelete" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqDelete.jsp" />
- </definition>
+ 	</definition>
     
     <!-- qna 1:1 문의 -->
     <definition name="qnaList" extends="mainLayout">
@@ -279,6 +279,16 @@
     <definition name="qnaReply" extends="empty">
 		<put-attribute name="body" value="/WEB-INF/views/qna/qnaReply.jsp" />
     </definition>
+    
+    <!-- 이벤트 -->
+    <definition name="eventList" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventList.jsp" />
+    </definition>
+    
+    <definition name="eventView" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventView.jsp" />
+    </definition>
+    
     
     
     

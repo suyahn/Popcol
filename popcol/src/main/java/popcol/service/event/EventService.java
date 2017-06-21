@@ -1,10 +1,10 @@
-package popcol.dao.event;
+package popcol.service.event;
 
 import java.util.List;
 
 import popcol.model.Event;
 
-public interface EventDao {
+public interface EventService {
 	List<Event> eventList(Event event);
 	int getTotal(Event event);
 	Event selectEvent(int eid);
