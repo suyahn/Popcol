@@ -15,8 +15,10 @@ import popcol.service.customer.CustomerService;
 import popcol.model.Customer;
 import popcol.model.Location;
 import popcol.model.Movie;
+import popcol.model.Notice;
 import popcol.service.location.LocationService;
 import popcol.service.movie.MovieService;
+import popcol.service.notice.NoticeService;
 import popcol.service.theater.TheaterService;
 
 @Controller
@@ -28,6 +30,8 @@ public class AdminController {
 	private CustomerService cs;
 	@Autowired
 	private MovieService ms;
+	@Autowired
+	private NoticeService ns;
 	/*
 	 * @Autowired private TheaterService ts;
 	 */
@@ -45,12 +49,16 @@ public class AdminController {
 		// 성공!/ 비밀번호가 일치하지 않으면 로그인 실패!
 
 		int result = cs.loginCheck(customer);
-		model.addAttribute("result", result);
+		String masterid = customer.getCid();
 
 		session = request.getSession();
+		model.addAttribute("result", result);
+		model.addAttribute("masterid", masterid);
 
 		if (result > 0) {
+
 			session.setAttribute("id", customer.getCid());
+
 		}
 
 		if (result <= 0) {
@@ -248,14 +256,68 @@ public class AdminController {
 
 	/* 고객정보 상세보기 */
 	@RequestMapping("adminCustomerView")
-	public String adminCustomerView(Model model, String cid, String pageNum ) {
+	public String adminCustomerView(Model model, String cid, String pageNum) {
 		Customer customer = cs.adminCustomerSelect(cid);
-		System.out.println("asd");
+
 		model.addAttribute("customer", customer);
-		model.addAttribute("pageNum",pageNum);
-		
+		model.addAttribute("pageNum", pageNum);
+
 		return "adminCustomerView";
 
 	}
 
+	/* 고객정보 수정폼 */
+	@RequestMapping("adminCustomerUpdateForm")
+	public String adminCustomerUpdateForm(Model model, String pageNum, String cid) {
+		Customer customer = cs.adminCustomerSelect(cid);
+
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("customer", customer);
+
+		return "adminCustomerUpdateForm";
+
+	}
+
+	@RequestMapping("adminCustomerUpdate")
+	public String adminCustomerUpdate(Model model, Customer customer, String pageNum) {
+		int result = cs.adminCustomerUpdate(customer);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		return "adminCustomerUpdate";
+
+	}
+
+	/* 관리자 notice */
+	@RequestMapping("adminNoticeList")
+	public String noticeList(String pageNum, Notice notice, Model model) {
+		final int ROW_PER_PAGE = 10;
+
+		if (pageNum == null || pageNum.equals("")) {
+			pageNum = "1";
+		}
+
+		int currentPage = Integer.parseInt(pageNum);
+
+		int total = ns.getTotal(notice);
+
+		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
+		int endRow = startRow + ROW_PER_PAGE - 1;
+		notice.setStartRow(startRow);
+		notice.setEndRow(endRow);
+		List<Notice> list = ns.list(notice);
+
+		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
+
+		int no = total - startRow + 1;
+
+		model.addAttribute("list", list);
+		model.addAttribute("no", no);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("pp", pp);
+		model.addAttribute("search", notice.getSearch());
+		model.addAttribute("keyword", notice.getKeyword());
+
+		return "adminNoticeList";
+	}
 }

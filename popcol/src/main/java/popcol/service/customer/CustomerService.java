@@ -35,4 +35,6 @@ public interface CustomerService {
 
 	Customer adminCustomerSelect(String cid);
 
+	int adminCustomerUpdate(Customer customer);
+
 }

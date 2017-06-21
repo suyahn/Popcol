@@ -9,83 +9,47 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<h2 class="text-primary">영화 수정</h2>
-		<form action="adminUpdate.do" method="post">
-			<input type="hidden" name="mid" value="${movie.mid}"> 
-			<input type="hidden" name="pageNum" value="${pageNum}"> 
-		<table class="table table-bordered">
-			<tr>
-				<td>아이디</td>
-				<td>${movie.mid}</td>
-			</tr>
-			<tr>
-				<td>제목</td>
-				<td><input type="text" name="mtitle" required="required"
-					value="${movie.mtitle}"></td>
-			</tr>
-			<tr>
-				<td>원제</td>
-				<td><input type="text" name="moriginaltitle"
-					required="required" value="${movie.moriginaltitle}"></td>
-			</tr>
-			<tr>
-				<td>감독</td>
-				<td><input type="text" name="mdirector" required="required"
-					value="${movie.mdirector}"></td>
-			</tr>
-			<tr>
-				<td>배우</td>
-				<td><input type="text" name="mactor" required="required"
-					value="${movie.mactor}"></td>
-			</tr>
-			<tr>
-				<td>줄거리</td>
-				<td><pre>
-						<textarea rows="5" cols="30" name="mcontent" required="required">${movie.mcontent}
-						</textarea>
-					</pre></td>
-			</tr>
-			<tr>
-				<td>개봉일</td>
-				<td><input type="date" name="mreleaseDate" required="required"
-					value="${movie.mreleaseDate}"></td>
-			</tr>
-			<tr>
-				<td>러닝타임</td>
-				<td><input type="text" name="mrunningTime" required="required"
-					value="${movie.mrunningTime}"></td>
-			</tr>
-			<tr>
-				<td>예고편</td>
-				<td><input type="text" name="murlPreview" required="required"
-					value="${movie.murlPreview}"></td>
-			</tr>
-			<tr>
-				<td>포스터</td>
-				<td><input type="text" name="murlPoster" required="required"
-					value="${movie.murlPoster}"></td>
-			</tr>
-			<tr>
-				<td>상영등급</td>
-				<td><input type="text" name="mgrade" required="required"
-					value="${movie.mgrade}"></td>
-			</tr>
-			<tr>
-				<td>국가</td>
-				<td><input type="text" name="mnation" required="required"
-					value="${movie.mnation}"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit" value="확인"></td>
-			</tr>
-		</table>
+		<h2>
+			<img src="location/logo.png" width="250" height="70">고객정보 수정
+		</h2>
+		<form action="adminCustomerUpdate.do" method="post">
+			<input type="hidden" name="cid" value="${customer.cid}"> <input
+				type="hidden" name="pageNum" value="${pageNum}">
+			<table class="table table-bordered">
+				<tr>
+					<td>아이디</td>
+					<td>${ customer.cid }</td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="cname" required="required"
+						value="${customer.cname}"></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td>${customer.cemail}</td>
+				</tr>
+				<tr>
+					<td>연락처</td>
+					<td>${customer.cphone}</td>
+				</tr>
+				<tr>
+					<td>포인트</td>
+					<td>${customer.cpoint}</td>
+				</tr>
+				<tr>
+					<td>회원가입일</td>
+					<td>${customer.creg_date}</td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td>${customer.cbirthday}</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value="확인"></td>
+				</tr>
+			</table>
 		</form>
-	<%-- 	<a href="adminList.do?pageNum=${pageNum}" class="btn btn-info">목록</a>
-		<a href="adminUpdateForm.do?num=${board.num}&pageNum=${pageNum}"
-			class="btn btn-info">수정</a> <a
-			href="adminDeleteForm.do?num=${board.num}&pageNum=${pageNum}"
-			class="btn btn-info">삭제</a> --%>
-
 	</div>
 </body>
 </html>

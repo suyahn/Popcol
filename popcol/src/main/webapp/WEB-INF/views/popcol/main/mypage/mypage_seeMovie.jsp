@@ -3,32 +3,12 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ include file="../../header.jsp" %>
 <%@ include file="verticaltab.jsp" %>
+<%@ include file="mypage.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.nav>li.active>a {
-	background-color: #cd1726 !important;
-	color: white !important;
-}
-
-a {
-	color: #cd1726 !important;
-}
-
-.nav>li>a:hover {
-	background-color: #fdeaeb !important;
-	color : #fcba2e !important;
-}
-
-hr {
-    color: #dfdfdf;    /* IE */
-    border-color: #dfdfdf;  /* 사파리 */
-    background-color: #dfdfdf;   /* 크롬, 모질라 등, 기타 브라우저 */
-}
-</style>
 <script type="text/javascript">
 	$(function() {
 		// 생일축하 포인트 받기
@@ -94,7 +74,7 @@ hr {
 								<td width="25%"><img alt="${myMovie.mtitle }" src="${path }/poster/${myMovie.murlposter }.jpg" width="150px"></td>
 								<td colspan="4" style="text-align: left;">
 									<div align="left">
-										<font size="5px" style="font-weight: bold;">${myMovie.mtitle }${myMovie.mid }</font><br>
+										<font size="5px" style="font-weight: bold;">${myMovie.mtitle }</font><br>
 									
 										<font size="2px">
 										${myMovie.moriginaltitle }<br><br><br><br>
@@ -127,7 +107,7 @@ hr {
 						<li class="" id=""><a href="mypage_reservation.do" class="" id="">나의 예매내역</a></li>
 						<li class="active" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
 						<li class="" id=""><a href="mypage_myPoint.do" class="" id="">나의 포인트 내역</a></li>
-						<li class="" id=""><a href="mypage_Modifyintro.do" class="" id="">회원 정보 수정</a></li>
+						<li class="" id=""><a href="mypage_myInfoModifyintro.do" class="" id="">회원 정보 수정</a></li>
 						<li class="" id=""><a href="mypage_byePopcolForm.do" class="" id="">회원 탈퇴</a></li>
 						<li class="" id=""><a href="mypage_myQna.do" class="" id="">나의 문의 내역</a></li>
 					</ul>

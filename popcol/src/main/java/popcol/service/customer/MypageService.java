@@ -3,6 +3,7 @@ package popcol.service.customer;
 import java.util.List;
 
 import popcol.model.Customer;
+import popcol.model.Movie;
 import popcol.model.MypageBooking;
 import popcol.model.Review;
 
@@ -29,4 +30,14 @@ public interface MypageService {
 	List<Review> selectMyReviewList(String cid);
 
 	Review selectReview(Review review);
+
+	int deleteReview(Review review);
+
+	int insertReview(Review review);
+
+	Review selectReviewForUpdate(Review review);
+
+	int updateReview(Review review);
+
+	Movie selectMovieForReview(int mid);
 }

@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Customer;
+import popcol.model.Movie;
 import popcol.model.MypageBooking;
 import popcol.model.Review;
 import popcol.service.customer.MypageService;
@@ -317,27 +318,92 @@ public class MypageController {
 		return "mypage_seeMovie";
 	}
 	
+	
+	// 리뷰
 	@RequestMapping("mypage_Review")
 	public String mypage_Review(Review review, Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		Customer customer = ms.getSessionCustomerInfo(id);
 		
 		review.setCid(id);
 		
-		System.out.println("mid : " + review.getMid());
-		
-		model.addAttribute("customer", customer);
 		Review myReview = ms.selectReview(review);
 		
-		model.addAttribute("myReview", myReview);
-		
+		if (myReview != null)
+			model.addAttribute("myReview", myReview);
+		else
+			model.addAttribute("mid", review.getMid());
+
 		return "mypage_Review";
+	}
+	
+	@RequestMapping("mypage_reviewShow")
+	public String mypage_showReview(Review review, Model model) {
+		System.out.println("rid : " + review.getRid());
+		System.out.println("mid : " + review.getMid());
+		// 리뷰 보여주는것인데 업데이트 폼 불러오는 거랑 똑같아서 그냥 씀
+		Review modifyReview = ms.selectReviewForUpdate(review);
+		model.addAttribute("review", modifyReview);
+		
+		Movie movie = ms.selectMovieForReview(review.getMid());
+		model.addAttribute("movie", movie);
+		model.addAttribute("url", movie.getMurlPoster());
+		
+		return "mypage_reviewShow";
+	}
+	
+	@RequestMapping("mypage_reviewWriteForm")
+	public String mypage_reviewForm(String mid, Model model) {
+		
+		model.addAttribute("mid", mid);
+		
+		return "mypage_reviewWriteForm";
+	}
+	
+	@RequestMapping("mypage_reviewWrite")
+	public String mypage_writeReview(Review review, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		review.setCid(id);
+		
+		int result = ms.insertReview(review);
+		model.addAttribute("result", result);
+		
+		return "mypage_reviewWrite";
+	}
+	
+	@RequestMapping("mypage_reviewModifyForm")
+	public String mypage_reviewModifyForm(Review review, Model model) {
+		
+		Review modifyReview = ms.selectReviewForUpdate(review);
+		model.addAttribute("review", modifyReview);
+		
+		return "mypage_reviewModifyForm";
+	}
+	
+	@RequestMapping("mypage_reviewMoify")
+	public String mypage_modifyReview(Review review, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		review.setCid(id);
+		
+		int result = ms.updateReview(review);
+		model.addAttribute("result", result);
+		
+		return "mypage_reviewMoify";
+	}
+	
+	@RequestMapping("mypage_reviewDelete")
+	public String mypage_deleteReview(Review review, Model model) {
+		int result = ms.deleteReview(review);
+		model.addAttribute("result", result);
+		
+		return "mypage_reviewDelete";
 	}
 	
 	
 	// 회원 정보 수정
-	@RequestMapping("mypage_Modifyintro")
+	@RequestMapping("mypage_myInfoModifyintro")
 	public String mypage_Modifyintro(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -345,11 +411,9 @@ public class MypageController {
 		
 		model.addAttribute("customer", customer);
 		
-		return "mypage_Modifyintro";
+		return "mypage_myInfoModifyintro";
 	}
-
 	
-	// 회원 탈퇴
 	@RequestMapping("mypage_myInfoModifyForm")
 	public String mypage_myInfoModifyForm(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
@@ -370,6 +434,8 @@ public class MypageController {
 		return "mypage_myInfoModify";
 	}
 	
+	
+	// 회원 탈퇴
 	@RequestMapping("mypage_byePopcolForm")
 	public String mypage_byePopcolForm(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
@@ -394,5 +460,13 @@ public class MypageController {
 		model.addAttribute("result", result);
 		
 		return "mypage_byePopcol";
+	}
+	
+	
+	// 1:1 문의
+	@RequestMapping("mypage_myQna")
+	public String mypage_myQna() {
+		
+		return "mypage_myQna";
 	}
 }

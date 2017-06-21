@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import popcol.dao.booking.BookingDao;
+import popcol.model.Booking;
 import popcol.model.Location;
 import popcol.model.Movie;
+import popcol.model.Price;
 import popcol.model.RunningtimeTable;
 
 
@@ -31,6 +33,12 @@ public class BookingServiceImpl implements BookingService {
 	}
 	public RunningtimeTable selectRt(int rtid) {
 		return bd.selectRt(rtid);
+	}
+	public List<Booking> seatrtList(int rtid) {
+		return bd.seatrtList(rtid);
+	}
+	public List<Price> pricestList() {
+		return bd.pricestList();
 	}
 
 }

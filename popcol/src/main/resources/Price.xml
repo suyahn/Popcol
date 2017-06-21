@@ -9,5 +9,7 @@
 		<result property="price" column="price" />
 		<result property="human" column="human" />
 	</resultMap>
-	
+	<select id="priceList" resultMap="priceResult">
+		select * from price
+	</select>
 </mapper>

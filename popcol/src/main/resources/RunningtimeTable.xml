@@ -4,12 +4,12 @@
 <mapper namespace="runningtimetablens">
 	<resultMap id="runningtimetableResult" type="runningtimetable">
 		<result property="rtid" column="rtid" />
-		<result property="pid" column="pid" />
 		<result property="lid" column="lid" />
 		<result property="tid" column="tid" />
 		<result property="mid" column="mid" />
 		<result property="rtdate" column="rtdate" />
 		<result property="rttime" column="rttime"/>
+		<result property="timezone" column="timezone"/>
 	</resultMap>
 
 	<select id="bookingRTList" resultMap="runningtimetableResult"
