@@ -1,10 +1,10 @@
-package popcol.dao.qna;
+package popcol.service;
 
 import java.util.List;
 
 import popcol.model.Qna;
 
-public interface QnaDao {
+public interface QnaService {
 	int getTotal();
 	List<Qna> list(Qna qna);
 	int getMaxNum();

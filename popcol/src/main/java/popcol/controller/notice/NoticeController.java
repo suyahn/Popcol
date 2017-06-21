@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Notice;
+import popcol.service.NoticeService;
 import popcol.service.PagingPgm;
-import popcol.service.notice.NoticeService;
 
 @Controller
 public class NoticeController {

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import popcol.model.Customer;
-import popcol.service.customer.CustomerService;
+import popcol.service.CustomerService;
 
 public class LoginCheck2 implements HandlerInterceptor {
 	@Autowired

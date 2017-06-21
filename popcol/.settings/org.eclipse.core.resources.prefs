@@ -3,4 +3,8 @@ eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/views/booking/bookingPay.jsp=UTF-8
 =======
 encoding//src/main/webapp/WEB-INF/views/popcol/main/mypage/mypage.jsp=UTF-8
+<<<<<<< HEAD
 >>>>>>> 26469ea3f15ee69abf3bb8c9d0e45cbaf0330ea7
+=======
+encoding//src/main/webapp/WEB-INF/views/popcol/main/mypage/pointPage.jsp=UTF-8
+>>>>>>> 97b66cfe046d3ad9b6c0c02c6ce9b500d7503a28

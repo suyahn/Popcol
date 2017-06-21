@@ -57,4 +57,24 @@ public class QnaDaoImpl implements QnaDao {
 	public void deleteReply(int qid) {
 		sst.update("qnans.deleteReply", qid);
 	}
+
+	public int mypage_getTotal(String cid) {
+		
+		return sst.selectOne("qnans.mypage_getTotal", cid);
+	}
+
+	public List<Qna> mypage_list(Qna qna) {
+		
+		return sst.selectList("qnans.mypage_list", qna);
+	}
+
+	public Qna mypage_qnaShow(int qid) {
+		
+		return sst.selectOne("qnans.mypage_qnaShow", qid);
+	}
+
+	public int mypage_qnaDelete(int qid) {
+		
+		return sst.update("qnans.mypage_qnaDelete", qid);
+	}
 }

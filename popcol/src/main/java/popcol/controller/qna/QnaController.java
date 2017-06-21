@@ -10,9 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Qna;
+import popcol.service.CustomerService;
 import popcol.service.PagingPgm;
-import popcol.service.customer.CustomerService;
-import popcol.service.qna.QnaService;
+import popcol.service.QnaService;
 
 @Controller
 public class QnaController {

@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Customer;
-import popcol.service.customer.CustomerService;
+import popcol.service.CustomerService;
 
 @Controller
 public class CustomerController {

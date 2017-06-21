@@ -11,18 +11,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
-		// 생일축하 포인트 받기
-		$('#receivePoint').click(function() {
-			
-			$.post('receivePoint.do', function(result) {
-				if(result == 1) {
-					alert("생일축하 10000 포인트 지급 완료~ 즐거운 하루되세요.");
-					
-				} else if(result == 0) {
-					alert("다시 시도해주세요.");
-				}
-			}); 
-		});
+		$('#pointPage').load("pointPage.do");
 	});
 	
 	function ChkPassword() {
@@ -35,44 +24,21 @@
 </script>
 </head>
 <body>
-	<div style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; margin: auto; background-image: URL(${path}/images/ticket.png); ">
-		<div style="width: 100%; height: 303px;">
-			<br>
-			<br>
-			<br>
-			<h2 class="" style="margin: 10px;">
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-				${customer.cname }님
-				<font size="2px">(${customer.cid })</font>
-			</h2>
-			<br>
-			<h4 class="" style="margin: 10px;">
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-				고객님께서 현재 보유하신 포인트는 ${customer.cpoint }점입니다.
-			</h4>
-			
-			<c:if test="${checkPoint == 'n' }">
-				<br>
-				<h4>
-					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-					생일축하 포인트가 지급되었습니다. 옆의 버튼을 눌러주세요.
-					<button id="receivePoint" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">생일축하 포인트 받기</button>
-				</h4>
-			</c:if>
-		</div>
+	<div id="pointPage" style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; 
+											margin: auto; background-image: URL(${path}/images/ticket.png); ">
 	</div>
 
 	 <div class="container-fluid " align="center" style="width: 80%; margin-bottom: 50px !important; margin: auto;">
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
-			<div class="container" align="center" style="width: 600px;">
-				<h2 class="text-primary" align="left">회원 정보 수정</h2>
+			<div class="container" align="center" style="width: 800px;">
+				<h2 class="text-primary" align="left" style="color: #cd1726;">회원 정보 수정</h2>
 				
 				<hr>
 				
-				<h4 class="text-primary">회원정보를 수정하시려면 비밀번호를 입력하셔야 합니다.</h4>
-				<h6 class="text-primary">회원님의 개인정보 보호를 위한 본인 확인 절차이오니, </h6>
-				<h6 class="text-primary">Popcorn&amp;Cola 회원 로그인 시 사용하시는 비밀번호를 입력해주세요.</h6>
+				<h4 class="text-primary" style="color: #cd1726;">회원정보를 수정하시려면 비밀번호를 입력하셔야 합니다.</h4>
+				<h6 class="text-primary" style="color: #cd1726;">회원님의 개인정보 보호를 위한 본인 확인 절차이오니, </h6>
+				<h6 class="text-primary" style="color: #cd1726;">Popcorn&amp;Cola 회원 로그인 시 사용하시는 비밀번호를 입력해주세요.</h6>
 				
 				<br>
 				<br>

@@ -4,61 +4,159 @@
 <%@ include file="../../header.jsp" %>
 <%@ include file="verticaltab.jsp" %>
 <%@ include file="mypage.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+td, th {
+	text-align: center;
+}
+
+.red-active {
+	color: black  !important;
+	text-decoration: none;
+}
+
+.red-active:hover {
+	color: #cd1726  !important;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.pagination>li.active>a {
+  background: #cd1726;
+  border-color: #cd1726;
+  color: white !important;
+}
+</style>
 <script type="text/javascript">
 	$(function() {
-		// 생일축하 포인트 받기
-		$('#receivePoint').click(function() {
-			
-			$.post('receivePoint.do', function(result) {
-				if(result == 1) {
-					alert("생일축하 10000 포인트 지급 완료~ 즐거운 하루되세요.");
-					
-				} else if(result == 0) {
-					alert("다시 시도해주세요.");
-				}
-			}); 
+		$('#cb_all').click(function() {
+			if($(this).is(":checked")) {
+				$("input[class=cb]:checkbox").prop("checked", "checked");
+				
+			} else {
+				$('input:checkbox[class="cb"]').each(function() {
+				     if(this.checked){ //값 비교
+				            this.checked = false; //checked 처리
+				      }
+				 });
+
+				// $("input[class=cb]:checkbox").removeProp("checked"); 근데 왜 얘는 안먹힐까.
+			}
 		});
+		
+		$('#pointPage').load("pointPage.do");
 	});
+	
+	function deleteChk() {
+		var chk = confirm("정말로 삭제하시겠습니까?");
+		
+		if (chk) {
+			frm.action = "mypage_myQnaDelete.do";
+			frm.submit();
+		}
+	}
 </script>
 </head>
 <body>
-	<div style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; margin: auto; background-image: URL(${path}/images/ticket.png); ">
-		<div style="width: 100%; height: 303px;">
-			<br>
-			<br>
-			<br>
-			<h2 class="" style="margin: 10px;">
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-				${customer.cname }님
-				<font size="2px">(${customer.cid })</font>
-			</h2>
-			<br>
-			<h4 class="" style="margin: 10px;">
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-				고객님께서 현재 보유하신 포인트는 ${customer.cpoint }점입니다.
-			</h4>
-			
-			<c:if test="${checkPoint == 'n' }">
-				<br>
-				<h4>
-					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-					생일축하 포인트가 지급되었습니다. 옆의 버튼을 눌러주세요.
-					<button id="receivePoint" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">생일축하 포인트 받기</button>
-				</h4>
-			</c:if>
-		</div>
+	<div id="pointPage" style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; 
+											margin: auto; background-image: URL(${path}/images/ticket.png); ">
 	</div>
 
 	 <div class="container-fluid " align="center" style="width: 80%; margin-bottom: 50px !important; margin: auto;">
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 			<div class="container" style="width: 800px;">
+				<h4 align="left" style="color: #cd1726;">나의 문의 내역</h4>
+				<h6 align="left" style="color: #cd1726;">1:1 문의</h6>
 				
+				<br>
+				<br>
+				
+				<form name="frm" onsubmit=" return deleteChk()">
+				<input type="submit" class="btn btn-default btn-sm" value="선택삭제" style="float: right;">
+				
+				<br>
+				<br>
+				
+				<table class="table table-hover">
+					<tr>
+						<th><input type="checkbox" id="cb_all"></th>
+						<th width="10%">번호</th>
+						<th>상태</th>
+						<th>제목</th>
+						<th>등록일</th>
+					</tr>
+					
+					<c:if test="${empty qnalist }">
+						<tr>
+							<th colspan="4" style="text-align: center;">고객님의 상담 내역이 존재하지 않습니다.</th>
+						</tr>
+					</c:if>
+					
+					<c:if test="${not empty qnalist }">
+						<c:set var="no1" value="${no }" />
+						
+						<c:forEach var="qna" items="${qnalist }">
+							<tr>
+								<th><input type="checkbox" name="qid" value="${qna.qid }" class="cb"></th>
+						
+								<td>${no1 }</td>
+								
+								
+								<td>
+									<c:if test="${empty qna.qreplycontent }">
+										<img alt="wait" src="${path }/images/waitanswer.png" width="70px">
+									</c:if>
+									
+									<c:if test="${not empty qna.qreplycontent }">
+										<img alt="complete" src="${path }/images/completeanswer.png" width="70px">
+									</c:if>
+								</td>
+								
+								<td style="text-align: left;">
+									<a href="mypage_myQnaShow.do?qid=${qna.qid }&pageNum=${pageNum }" class="red-active">${qna.qsubject }</a>
+								</td>
+								
+								<td width="20%">
+									<fmt:parseDate value="${qna.qdate }" var="qdate" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${qdate }" pattern="yyyy.MM.dd"/>
+								</td>
+							</tr>
+							<c:set var="no1" value="${no1 - 1 }"></c:set>
+						</c:forEach>
+					</c:if>
+				</table>
+				</form>
+				
+				<div align="center">
+					<nav aria-label="Page navigation">
+						<ul class="pagination pagination-sm">
+							<c:if test="${pp.startPage > pp.PAGE_PER_BLOCK }">
+								<li>
+									<a href="mypage_myQna.do?pageNum=${pp.startPage - 1 }" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+							</c:if>
+							
+							<c:forEach var="i" begin="${pp.startPage }" end="${pp.endPage }">
+								<li <c:if test="${pp.currentPage == i }">class="active"</c:if>><a href="mypage_myQna.do?pageNum=${ i }">${ i }</a>
+							</c:forEach>
+							
+							<c:if test="${pp.endPage < pp.totPage }">
+								<li>
+									<a href="mypage_myQna.do?pageNum=${pp.startPage + pp.PAGE_PER_BLOCK }" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>						
+							</c:if>
+						</ul>
+					</nav>
+				</div>
 			</div>
 			</div>
 			
