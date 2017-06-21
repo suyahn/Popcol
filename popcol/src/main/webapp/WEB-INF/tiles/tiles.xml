@@ -322,6 +322,14 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/seatSelect.jsp" />
 	</definition>
+	<definition name="bookingChk" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/booking/bookingChk.jsp" />
+	</definition>
+	<definition name="bookingPay" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/booking/bookingPay.jsp" />
+	</definition>
 
 	<!-- 규랑 -->
 	<definition name="admin" template="/WEB-INF/views/admin/layout.jsp">
