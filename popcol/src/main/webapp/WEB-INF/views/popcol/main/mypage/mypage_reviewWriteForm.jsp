@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
+<%@ include file="counter.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="counter.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function() {
 		$('#goodimg').click(function() {
@@ -23,8 +25,18 @@
 			
 			$('#goodimg').css('width', '100px');
 		});
+		
+			
+		$('#rcontent').keyup(function() {
+			var content = $(this).val();
+			
+			$(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+			$('#counter').html(content.length + '/120');
+		});
+		
+		$('#rcontent').keyup();
 	});
-	
+
 	function closeWindow2() {
 		window.close();
 	}
@@ -36,7 +48,7 @@
 		
 		<br><br> -->
 		
-		<form action="mypage_writeReview.do" name="frm">
+		<form action="mypage_reviewWrite.do" name="frm">
 			<input type="hidden" name="mid" value="${mid }">
 			<table>
 				<tr>
@@ -52,9 +64,12 @@
 				
 				<tr>
 					<td>
+						<div id="wrap">
 						<br><br>
-						<pre><textarea rows="5" cols="50" name="rcontent" required="required" autofocus="autofocus" maxlength="33" style="resize:none;"></textarea></pre>
+						<pre><textarea rows="5" cols="50" name="rcontent" id="rcontent" required="required" autofocus="autofocus" maxlength="120" style="resize:none;"></textarea></pre>
+						<span id="counter"></span>
 						<br><br>
+						</div>
 					</td>
 				</tr>
 				
