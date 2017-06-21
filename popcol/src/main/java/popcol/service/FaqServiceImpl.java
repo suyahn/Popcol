@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import popcol.dao.faq.FaqDao;
+import popcol.dao.FaqDao;
 import popcol.model.Faq;
 
 @Service

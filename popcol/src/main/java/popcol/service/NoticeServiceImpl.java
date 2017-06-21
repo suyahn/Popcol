@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import popcol.dao.notice.NoticeDao;
+import popcol.dao.NoticeDao;
 import popcol.model.Notice;
 
 @Service
