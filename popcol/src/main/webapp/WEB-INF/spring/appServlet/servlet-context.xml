@@ -32,8 +32,8 @@
 	
 	<context:component-scan base-package="popcol" />
 	
-	<beans:bean id="lc1" class="popcol.controller.customer.LoginCheck" />
-	<beans:bean id="lc2" class="popcol.controller.customer.LoginCheck2" />
+	<beans:bean id="lc1" class="popcol.controller.LoginCheck" />
+	<beans:bean id="lc2" class="popcol.controller.LoginCheck2" />
 	
 	<interceptors>
 		<interceptor>

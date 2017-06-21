@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import popcol.dao.booking.BookingDao;
+
+import popcol.dao.BookingDao;
 import popcol.model.Booking;
 import popcol.model.Location;
 import popcol.model.Movie;

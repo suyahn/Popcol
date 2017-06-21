@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import popcol.dao.customer.MypageDao;
+import popcol.dao.MypageDao;
 import popcol.model.Customer;
 import popcol.model.Movie;
 import popcol.model.MypageBooking;
