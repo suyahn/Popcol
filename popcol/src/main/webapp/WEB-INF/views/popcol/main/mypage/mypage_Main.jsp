@@ -9,6 +9,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.red-active {
+	color: black  !important;
+	text-decoration: none;
+}
+
+.red-active:hover {
+	color: #cd1726  !important;
+	text-decoration: underline;
+	font-weight: bold;
+}
+</style>
 <script type="text/javascript">
 	$(function() {
 		$('#pointPage').load("pointPage.do");
@@ -123,11 +135,36 @@
 					<h4 align="left"><a href="mypage_myQna.do">나의 문의 내역</a></h4>
 					
 					<table class="table ">
-						<tr>
-							<td>작성날짜</td>
-							<td>[답변상태]</td>
-							<td>질문제목(하이퍼링크는 고민해보고)</td>
-						</tr>
+						<c:if test="${not empty myQnaList }">
+						<c:forEach var="qna" items="${myQnaList }">
+							<tr>
+								<td>
+									<fmt:parseDate value="${qna.qdate }" var="qdate" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${qdate }" pattern="yyyy.MM.dd"/>
+								</td>
+							
+								<td>
+									<c:if test="${empty qna.qreplycontent }">
+										<img alt="wait" src="${path }/images/waitanswer.png" width="70px">
+									</c:if>
+									
+									<c:if test="${not empty qna.qreplycontent }">
+										<img alt="complete" src="${path }/images/completeanswer.png" width="70px">
+									</c:if>
+								</td>
+								
+								<td width="60%">
+									<a href="mypage_myQnaShow.do?qid=${qna.qid }" class="red-active">${qna.qsubject }</a>
+								</td>
+							</tr>
+						</c:forEach>
+						</c:if>
+						
+						<c:if test="${empty myQnaList }">
+							<tr>
+								<td colspan="3"><h4 style="color: #cd1726">문의내역이 없습니다.</h4></td>
+							</tr>
+						</c:if>
 					</table>
 				</div>
 			</div>

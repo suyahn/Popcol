@@ -6,6 +6,8 @@ import popcol.model.Customer;
 
 public interface CustomerService {
 
+	/* 도은 */
+	/* 메인 */
 	void updateForbirthday();
 
 	int loginCheck(Customer customer);
@@ -27,6 +29,13 @@ public interface CustomerService {
 	Customer findCustomerPassword(Customer customer);
 
 	int updateFindPassword(Customer customer);
+
+	/* 마이페이지 */
+	int updateForBirthdayPoint(String cid);
+
+	int updateCustomerInfo(Customer customer);
+
+	int deleteCutomerInfo(String cid);
 	
 	/*규랑*/
 	int getTotal();

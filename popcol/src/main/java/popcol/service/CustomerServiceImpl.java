@@ -13,6 +13,8 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerDao cd;
 
+	/* 도은 */
+	/* 메인 */
 	public void updateForbirthday() {
 
 		cd.updateForbityhday();
@@ -66,6 +68,22 @@ public class CustomerServiceImpl implements CustomerService {
 	public int updateFindPassword(Customer customer) {
 
 		return cd.updateFindPassword(customer);
+	}
+	
+	/* 마이페이지 */
+	public int updateForBirthdayPoint(String cid) {
+		
+		return cd.updateForBirthdayPoint(cid);
+	}
+
+	public int updateCustomerInfo(Customer customer) {
+		
+		return cd.updateCustomerInfo(customer);
+	}
+
+	public int deleteCutomerInfo(String cid) {
+		
+		return cd.deleteCustomerInfo(cid);
 	}
 
 	/* 규랑 */

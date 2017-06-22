@@ -17,5 +17,9 @@ public interface MovieDao {
 	int adminUpdate(Movie movie);
 	int adminDelete(int mid);
 	
+	/* 도은 */
+	/* 마이페이지 */
+	Movie selectMovieForReview(int mid);
+	
 	
 }

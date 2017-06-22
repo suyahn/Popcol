@@ -20,4 +20,10 @@
 		select * from booking where rtid=#{rtid}
 	</select>
 	<!-- rtid에 있는 모든 예약된 좌석 리스트를 끌고와야해서 전체의 rtid의 값을 들고옴 -->
+	
+	<!-- 도은 -->
+	<!-- 예매 취소 -->
+	<delete id="deleteBooking" parameterType="string">
+		delete from booking where ticketnumber = #{ticketnumber}
+	</delete>
 </mapper>

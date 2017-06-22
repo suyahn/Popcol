@@ -22,18 +22,24 @@ import popcol.model.Qna;
 import popcol.model.Review;
 import popcol.service.BookingService;
 import popcol.service.CustomerService;
-import popcol.service.MypageService;
+import popcol.service.MovieService;
+import popcol.service.MypageBookingService;
 import popcol.service.PagingPgm;
 import popcol.service.QnaService;
+import popcol.service.ReviewService;
 
 @Controller
 public class MypageController {
 	@Autowired
-	MypageService ms;
-	@Autowired
 	CustomerService cs;
 	@Autowired
+	MypageBookingService mbs;
+	@Autowired
 	BookingService bs;
+	@Autowired
+	ReviewService rs;
+	@Autowired
+	MovieService ms;
 	@Autowired
 	QnaService qs;
 
@@ -41,9 +47,6 @@ public class MypageController {
 	public String mypage_Main(Model model, HttpSession session, HttpServletRequest request) throws ParseException {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		Customer customer = ms.getSessionCustomerInfo(id);
-
-		model.addAttribute("customer", customer);
 
 		// 예매 내역 2~3건
 		// 1개월 간의 예매내역만 출력
@@ -57,7 +60,7 @@ public class MypageController {
 		String oneMonthAgo = df.format(c.getTime());
 
 		List<MypageBooking> myBookingList = new ArrayList<MypageBooking>();
-		myBookingList = ms.selectMyBookingListMain(id, oneMonthAgo);
+		myBookingList = mbs.selectMyBookingListMain(id, oneMonthAgo);
 
 		/*
 		 * SimpleDateFormat df2 = new SimpleDateFormat("yyyy.MM.dd");
@@ -106,7 +109,7 @@ public class MypageController {
 		}
 
 		List<MypageBooking> MyPriceSeatList = new ArrayList<MypageBooking>();
-		MyPriceSeatList = ms.selectMyPriceSeatList(id, oneMonthAgo);
+		MyPriceSeatList = mbs.selectMyPriceSeatList(id, oneMonthAgo);
 
 		model.addAttribute("myBookingList", myBookingList);
 		model.addAttribute("MyPriceSeatList", MyPriceSeatList);
@@ -114,7 +117,10 @@ public class MypageController {
 		// 포인트조회
 
 		// 1:1문의조회
+		List<Qna> myQnaList = qs.mypage_listMain(id);
 
+		model.addAttribute("myQnaList", myQnaList);
+		
 		return "mypage_Main";
 	}
 
@@ -125,7 +131,7 @@ public class MypageController {
 
 		if (session.getAttribute("id") != null) {
 			id = (String) session.getAttribute("id");
-			int result = ms.updateForBirthdayPoint(id);
+			int result = cs.updateForBirthdayPoint(id);
 
 			session.setAttribute("checkPoint", "y");
 
@@ -137,12 +143,11 @@ public class MypageController {
 
 	// 예매내역 보기
 	@RequestMapping("mypage_reservation")
-	public String mypage_reservation(Model model, HttpSession session, HttpServletRequest request)
-			throws ParseException {
+	public String mypage_reservation(Model model, HttpSession session, HttpServletRequest request) throws ParseException {
 		// 1개월 간의 예매내역만 출력
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		Customer customer = ms.getSessionCustomerInfo(id);
+		Customer customer = cs.getSessionCustomerInfo(id);
 		model.addAttribute("customer", customer);
 
 		// 1개월 전 날짜 구하기
@@ -158,7 +163,7 @@ public class MypageController {
 		String oneMonthAgo = df.format(c.getTime());
 
 		List<MypageBooking> myBookingList = new ArrayList<MypageBooking>();
-		myBookingList = ms.selectMyBookingList(id, oneMonthAgo);
+		myBookingList = mbs.selectMyBookingList(id, oneMonthAgo);
 
 		for (MypageBooking mb : myBookingList) {
 			c.setTime(mb.getRtdate());
@@ -193,7 +198,7 @@ public class MypageController {
 		}
 
 		List<MypageBooking> MyPriceSeatList = new ArrayList<MypageBooking>();
-		MyPriceSeatList = ms.selectMyPriceSeatList(id, oneMonthAgo);
+		MyPriceSeatList = mbs.selectMyPriceSeatList(id, oneMonthAgo);
 
 		model.addAttribute("myBookingList", myBookingList);
 		model.addAttribute("MyPriceSeatList", MyPriceSeatList);
@@ -207,7 +212,7 @@ public class MypageController {
 	public String cancelBooking(String ticketnumber, Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		int result = ms.deleteBooking(ticketnumber, id);
+		int result = bs.deleteBooking(ticketnumber, id);
 		model.addAttribute("result", result);
 
 		return "cancelBooking";
@@ -259,12 +264,9 @@ public class MypageController {
 	public String mypage_seeMovie(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		Customer customer = ms.getSessionCustomerInfo(id);
-
-		model.addAttribute("customer", customer);
 
 		// 상영일이 지난 내가 본 영화 리스트 가져오기
-		List<MypageBooking> mySeeMovieList = ms.selectMySeeMovieList(id);
+		List<MypageBooking> mySeeMovieList = mbs.selectMySeeMovieList(id);
 
 		Calendar c = Calendar.getInstance();
 
@@ -315,7 +317,7 @@ public class MypageController {
 
 		review.setCid(id);
 
-		Review myReview = ms.selectReview(review);
+		Review myReview = rs.selectReview(review);
 
 		if (myReview != null)
 			model.addAttribute("myReview", myReview);
@@ -327,10 +329,8 @@ public class MypageController {
 
 	@RequestMapping("mypage_reviewShow")
 	public String mypage_showReview(Review review, Model model) {
-		System.out.println("rid : " + review.getRid());
-		System.out.println("mid : " + review.getMid());
 		// 리뷰 보여주는것인데 업데이트 폼 불러오는 거랑 똑같아서 그냥 씀
-		Review modifyReview = ms.selectReviewForUpdate(review);
+		Review modifyReview = rs.selectReviewForUpdate(review);
 		model.addAttribute("review", modifyReview);
 
 		Movie movie = ms.selectMovieForReview(review.getMid());
@@ -342,7 +342,6 @@ public class MypageController {
 
 	@RequestMapping("mypage_reviewWriteForm")
 	public String mypage_reviewForm(String mid, Model model) {
-
 		model.addAttribute("mid", mid);
 
 		return "mypage_reviewWriteForm";
@@ -354,7 +353,7 @@ public class MypageController {
 		String id = (String) session.getAttribute("id");
 		review.setCid(id);
 
-		int result = ms.insertReview(review);
+		int result = rs.insertReview(review);
 		model.addAttribute("result", result);
 
 		return "mypage_reviewWrite";
@@ -362,8 +361,7 @@ public class MypageController {
 
 	@RequestMapping("mypage_reviewModifyForm")
 	public String mypage_reviewModifyForm(Review review, Model model) {
-
-		Review modifyReview = ms.selectReviewForUpdate(review);
+		Review modifyReview = rs.selectReviewForUpdate(review);
 		model.addAttribute("review", modifyReview);
 
 		return "mypage_reviewModifyForm";
@@ -375,7 +373,7 @@ public class MypageController {
 		String id = (String) session.getAttribute("id");
 		review.setCid(id);
 
-		int result = ms.updateReview(review);
+		int result = rs.updateReview(review);
 		model.addAttribute("result", result);
 
 		return "mypage_reviewMoify";
@@ -383,7 +381,7 @@ public class MypageController {
 
 	@RequestMapping("mypage_reviewDelete")
 	public String mypage_deleteReview(Review review, Model model) {
-		int result = ms.deleteReview(review);
+		int result = rs.deleteReview(review);
 		model.addAttribute("result", result);
 
 		return "mypage_reviewDelete";
@@ -394,7 +392,8 @@ public class MypageController {
 	public String mypage_Modifyintro(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		Customer customer = ms.getSessionCustomerInfo(id);
+		// 회원정보 수정 전 비밀번호 체크를 위한 것
+		Customer customer = cs.getSessionCustomerInfo(id);
 
 		model.addAttribute("customer", customer);
 
@@ -405,7 +404,7 @@ public class MypageController {
 	public String mypage_myInfoModifyForm(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		Customer customer = ms.getSessionCustomerInfo(id);
+		Customer customer = cs.getSessionCustomerInfo(id);
 
 		model.addAttribute("customer", customer);
 
@@ -414,7 +413,7 @@ public class MypageController {
 
 	@RequestMapping("mypage_myInfoModify")
 	public String mypage_myInfoModify(Customer customer, Model model) {
-		int result = ms.updateCustomerInfo(customer);
+		int result = cs.updateCustomerInfo(customer);
 
 		model.addAttribute("result", result);
 
@@ -426,7 +425,7 @@ public class MypageController {
 	public String mypage_byePopcolForm(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		Customer customer = ms.getSessionCustomerInfo(id);
+		Customer customer = cs.getSessionCustomerInfo(id);
 
 		model.addAttribute("customer", customer);
 
@@ -437,7 +436,7 @@ public class MypageController {
 	public String mypage_byePopcol(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		int result = ms.deleteCutomerInfo(id);
+		int result = cs.deleteCutomerInfo(id);
 
 		if (result > 0) {
 			session.invalidate();
@@ -453,9 +452,6 @@ public class MypageController {
 	public String mypage_myQna(String pageNum, Qna qna, Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		Customer customer = ms.getSessionCustomerInfo(id);
-
-		model.addAttribute("customer", customer);
 
 		// 문의게시판 페이징
 		final int ROW_PER_PAGE = 10;
@@ -520,11 +516,11 @@ public class MypageController {
 		return "mypage_myQnaDelete";
 	}
 	
-	@RequestMapping("pointPage.do")
+	@RequestMapping("pointPage")
 	public String navigation(Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		Customer customer = ms.getSessionCustomerInfo(id);
+		Customer customer = cs.getSessionCustomerInfo(id);
 
 		model.addAttribute("customer", customer);
 		

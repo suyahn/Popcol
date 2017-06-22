@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 td, th {
-	text-align: center;
+	text-align: center !important;
 }
 
 .red-active {
@@ -117,7 +117,7 @@ td, th {
 									</c:if>
 								</td>
 								
-								<td style="text-align: left;">
+								<td style="text-align: left !important;">
 									<a href="mypage_myQnaShow.do?qid=${qna.qid }&pageNum=${pageNum }" class="red-active">${qna.qsubject }</a>
 								</td>
 								

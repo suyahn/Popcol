@@ -173,11 +173,13 @@
 						</tr>
 						
 						<tr>
-							<th colspan="2" align="center">		
+							<th colspan="2">		
 								<br>				
-								<div class="form-group" style="display: inline;">
+								<div align="center">
+								<div class="form-group"  style="display: inline;">
 									<input type="submit" class="btn btn-info btn-sm" value="회원 정보 수정" style="border-color: #cd1726; background-color: #cd1726;">
 									<input type="button" onclick="location.href='home.do'" class="btn btn-default btn-sm" value="취소" >
+								</div>
 								</div>
 							</th>
 						</tr>
