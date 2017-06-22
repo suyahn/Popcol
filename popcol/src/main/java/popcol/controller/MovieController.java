@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Movie;
+import popcol.model.Qna;
+import popcol.model.Review;
 import popcol.service.MovieService;
+import popcol.service.PagingPgm;
 
 @Controller
 public class MovieController {
@@ -33,5 +36,11 @@ public class MovieController {
 		model.addAttribute("movie", movie);
 		model.addAttribute("reviewCountList", reviewCountList);
 		return "movieDetail";
+	}
+	
+	@RequestMapping("movieDetailReviewList")
+	public String movieDetailReviewList(String pageNum, Review review, Model model) {
+		
+		return "movieDetailReviewList";
 	}
 }
