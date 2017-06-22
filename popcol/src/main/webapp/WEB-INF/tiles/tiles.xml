@@ -224,6 +224,12 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/movie/movieDetailReviewList.jsp" />
 	</definition>
+	
+	<!-- 현재 상영작 -->
+	<definition name="nowMovies" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/nowMovies.jsp" />
+	</definition>
 
 	<!-- 공지사항 -->
 	<definition name="noticeList" extends="mainLayout">

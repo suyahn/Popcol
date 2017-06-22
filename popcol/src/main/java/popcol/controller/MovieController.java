@@ -1,6 +1,5 @@
 package popcol.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,7 @@ public class MovieController {
 	@Autowired
 	private ReviewService rs;
 	
+	/*무비 차트*/
 	@RequestMapping("movieChart")
 	public String movieChart(Model model) {
 		List<Movie> movieList = ms.movieChart();
@@ -31,6 +31,7 @@ public class MovieController {
 		return "movieChart";
 	}
 	
+	/*영화 상세 정보*/
 	@RequestMapping("movieDetail")
 	public String movieDetail(int mid, Model model) {
 		Movie movie = ms.movieDetail(mid);
@@ -44,6 +45,7 @@ public class MovieController {
 		return "movieDetail";
 	}
 	
+	/*해당 영화의 후기 리스트*/
 	@RequestMapping("movieDetailReviewList")
 	public String movieDetailReviewList(String pageNum, Review review, Model model) {
 		final int ROW_PER_PAGE = 10;
@@ -73,5 +75,17 @@ public class MovieController {
 		model.addAttribute("pp", pp);
 
 		return "movieDetailReviewList";
+	}
+	
+	/*현재 상영작*/
+	@RequestMapping("nowMovies")
+	public String nowMovies(Model model) {
+		List<Movie> movieList = ms.nowMoviesList();
+		List<Movie> reviewCountList = ms.reviewGoodBadCount();
+		
+		model.addAttribute("movieList", movieList);
+		model.addAttribute("reviewCountList", reviewCountList);
+		
+		return "nowMovies";
 	}
 }

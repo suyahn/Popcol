@@ -5,9 +5,12 @@ import java.util.List;
 import popcol.model.Movie;
 
 public interface MovieDao {
+	/*수연*/
 	List<Movie> movieChart();
 	Movie movieDetail(int mid);
 	List<Movie> reviewGoodBadCount();
+	List<Movie> nowMoviesList();
+	
 	
 	/*규랑*/
 	List<Movie> adminList(int startRow, int endRow);
@@ -20,6 +23,5 @@ public interface MovieDao {
 	/* 도은 */
 	/* 마이페이지 */
 	Movie selectMovieForReview(int mid);
-	
 	
 }

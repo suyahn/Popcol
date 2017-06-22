@@ -18,6 +18,8 @@ public class MovieDaoImpl implements MovieDao {
 	@Autowired
 	private SqlSessionTemplate sst;
 
+	/*수연*/
+	/*무비차트*/
 	@Override
 	public List<Movie> movieChart() {
 		List<Movie> movies = sst.selectList("moviens.list");
@@ -46,14 +48,22 @@ public class MovieDaoImpl implements MovieDao {
 		return movieChart;
 	}
 	
+	/*영화 세부 정보*/
 	@Override
 	public Movie movieDetail(int mid) {
 		return sst.selectOne("moviens.movieChart", mid);
 	}
 	
+	/*영화들의 좋아요 싫어요 개수 리스트*/
 	@Override
 	public List<Movie> reviewGoodBadCount() {
 		return sst.selectList("moviens.movieChartReviewCount");
+	}
+	
+	/*현재 상영작*/
+	@Override
+	public List<Movie> nowMoviesList() {
+		return sst.selectList("moviens.nowMoviesList");
 	}
 
 
@@ -103,4 +113,5 @@ public class MovieDaoImpl implements MovieDao {
 		
 		return sst.selectOne("moviens.selectMovieForReview", mid);
 	}
+
 }
