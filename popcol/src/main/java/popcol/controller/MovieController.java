@@ -18,16 +18,20 @@ public class MovieController {
 	@RequestMapping("movieChart")
 	public String movieChart(Model model) {
 		List<Movie> movieList = ms.movieChart();
+		List<Movie> reviewCountList = ms.reviewGoodBadCount();
 		
 		model.addAttribute("movieList", movieList);
+		model.addAttribute("reviewCountList", reviewCountList);
 		return "movieChart";
 	}
 	
 	@RequestMapping("movieDetail")
 	public String movieDetail(int mid, Model model) {
 		Movie movie = ms.movieDetail(mid);
+		List<Movie> reviewCountList = ms.reviewGoodBadCount();
 		
 		model.addAttribute("movie", movie);
+		model.addAttribute("reviewCountList", reviewCountList);
 		return "movieDetail";
 	}
 }

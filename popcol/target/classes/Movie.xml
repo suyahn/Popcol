@@ -16,6 +16,8 @@
 		<result property="mgrade" column="mgrade" />
 		<result property="mnation" column="mnation" />
 		<result property="mdel" column="mdel" />
+		<result property="goodCount" column="goodCount" />
+		<result property="badCount" column="badCount" />
 	</resultMap>
 
 	<!-- 규랑 -->
@@ -86,6 +88,15 @@
 						) a, movie m 
 			where m.mid = #{mid}
 		]]>
+	</select>
+	
+	<select id="movieChartReviewCount" resultMap="movieResult">
+		select movie.mid, nvl(g.good, 0) goodCount, nvl(b.bad, 0) badCount
+		from movie,
+			(select mid, count(rvaluation) as good from review where rvaluation = 'g' group by mid) g,
+			(select mid, count(rvaluation) as bad from review where rvaluation = 'b' group by mid) b
+		where movie.mid = g.mid(+) and movie.mid = b.mid(+)
+		order by movie.mid
 	</select>
 
 	<!-- 혜진 -->

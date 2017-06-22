@@ -31,4 +31,5 @@
 	<insert id="insertReview" parameterType="review">
 		insert into review values((select max(nvl(rid, 0)) + 1 from review), #{mid}, #{cid}, #{rcontent}, #{rvaluation}, sysdate, 'n')
 	</insert>
+	
 </mapper>

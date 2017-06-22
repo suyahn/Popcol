@@ -7,6 +7,8 @@ import popcol.model.Movie;
 public interface MovieDao {
 	List<Movie> movieChart();
 	Movie movieDetail(int mid);
+	List<Movie> reviewGoodBadCount();
+	
 	/*규랑*/
 	List<Movie> adminList(int startRow, int endRow);
 	int getTotal();

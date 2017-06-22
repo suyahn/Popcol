@@ -24,13 +24,20 @@
 					<font style="font-style: italic;">${ movie.moriginaltitle }</font>
 				<p>
 				<p>예매율 <font style="font-weight: bold;">${ movie.bookingRate }%</font></p>
-				<p>
-					<font style="font-weight: bold;">좋아요</font> ~ 개 <font style="font-weight: bold;">싫어요</font> ~ 개</p>
 				<p>${ movie.mreleaseDate }개봉</p>
 				<p>
-					<button type="button" onclick="location.href='reservation.do'" class="btn btn-primary"
-						style="border-color: #CD1726; background-color: #CD1726;">예매하기</button>
-				</p>
+     				<c:forEach var="reviewCount" items="${ reviewCountList }">
+     					<c:if test="${ reviewCount.mid == movie.mid }">
+     						<img alt="good" src="images/good_face.png" width="20" height="20">
+     						${ reviewCount.goodCount }개
+     						<img alt="bad" src="images/bad_face.png" width="20" height="20">
+     						${ reviewCount.badCount }개
+     					</c:if>
+     				</c:forEach>
+     			</p>
+				<br><br>
+				<button type="button" onclick="location.href='reservation.do'" class="btn btn-primary"
+					style="border-color: #CD1726; background-color: #CD1726;">예매하기</button>
 			</div>
 		</div>
 		<div class="row">
