@@ -230,6 +230,12 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/movie/nowMovies.jsp" />
 	</definition>
+	
+	<!-- 개봉 예정작 -->
+	<definition name="preMovies" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/preMovies.jsp" />
+	</definition>
 
 	<!-- 공지사항 -->
 	<definition name="noticeList" extends="mainLayout">

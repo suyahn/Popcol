@@ -65,6 +65,12 @@ public class MovieDaoImpl implements MovieDao {
 	public List<Movie> nowMoviesList() {
 		return sst.selectList("moviens.nowMoviesList");
 	}
+	
+	/*개봉 예정작*/
+	@Override
+	public List<Movie> preMoviesList() {
+		return sst.selectList("moviens.preMoviesList");
+	}
 
 
 	/* 규랑 */
@@ -114,4 +120,5 @@ public class MovieDaoImpl implements MovieDao {
 		return sst.selectOne("moviens.selectMovieForReview", mid);
 	}
 
+	
 }

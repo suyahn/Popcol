@@ -10,6 +10,7 @@ public interface MovieService {
 	Movie movieDetail(int mid);
 	List<Movie> reviewGoodBadCount();
 	List<Movie> nowMoviesList();
+	List<Movie> preMoviesList();
 	
 	/*규랑*/
 	List<Movie> adminList(int startRow, int endRow);

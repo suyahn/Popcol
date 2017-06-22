@@ -88,4 +88,14 @@ public class MovieController {
 		
 		return "nowMovies";
 	}
+	
+	/*개봉 예정작*/
+	@RequestMapping("preMovies")
+	public String preMovies(Model model) {
+		List<Movie> movieList = ms.preMoviesList();
+		
+		model.addAttribute("movieList", movieList);
+		
+		return "preMovies";
+	}
 }

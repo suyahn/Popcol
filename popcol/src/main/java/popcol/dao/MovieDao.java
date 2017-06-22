@@ -10,6 +10,7 @@ public interface MovieDao {
 	Movie movieDetail(int mid);
 	List<Movie> reviewGoodBadCount();
 	List<Movie> nowMoviesList();
+	List<Movie> preMoviesList();
 	
 	
 	/*규랑*/

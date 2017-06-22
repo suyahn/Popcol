@@ -30,6 +30,11 @@ public class MovieServiceImpl implements MovieService {
 	public List<Movie> nowMoviesList() {
 		return md.nowMoviesList();
 	}
+	@Override
+	public List<Movie> preMoviesList() {
+		return md.preMoviesList();
+	}
+	
 
 	
 	
