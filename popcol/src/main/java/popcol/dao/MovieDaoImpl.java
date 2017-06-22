@@ -89,4 +89,11 @@ public class MovieDaoImpl implements MovieDao {
 		return sst.update("moviens.adminDelete",mid);
 	}
 
+	
+	/* 도은 */
+	/* 마이페이지 */
+	public Movie selectMovieForReview(int mid) {
+		
+		return sst.selectOne("moviens.selectMovieForReview", mid);
+	}
 }

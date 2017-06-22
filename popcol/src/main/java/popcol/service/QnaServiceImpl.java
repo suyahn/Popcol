@@ -58,7 +58,8 @@ public class QnaServiceImpl implements QnaService {
 		qd.deleteReply(qid);
 	}
 
-	
+	/* 도은 */
+	/* 마이페이지 */
 	public int mypage_getTotal(String cid) {
 		
 		return qd.mypage_getTotal(cid);
@@ -77,5 +78,10 @@ public class QnaServiceImpl implements QnaService {
 	public int mypage_qnaDelete(int qid) {
 		
 		return qd.mypage_qnaDelete(qid);
+	}
+
+	public List<Qna> mypage_listMain(String cid) {
+		
+		return qd.mypage_listMain(cid);
 	}
 }

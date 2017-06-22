@@ -199,8 +199,7 @@
 	
 	
 	<definition name="pointPage" extends="empty">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/mypage/pointPage.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/pointPage.jsp" />
 	</definition>
 	
 

@@ -18,5 +18,9 @@ public interface BookingService {
 	RunningtimeTable selectRt(int rtid);
 	List<Booking> seatrtList(int rtid);
 	List<Price> timezonePricestList(String timezone);
+	
+	/* 도은 */
+	/* 마이페이지 */
+	int deleteBooking(String ticketnumber, String cid);
 
 }

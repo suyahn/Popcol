@@ -45,4 +45,15 @@ public class BookingDaoImpl implements BookingDao{
 	public List<Price> timezonePricestList(String timezone) {
 		return sst.selectList("pricens.timezonePriceList", timezone);
 	}
+	
+	/* 도은 */
+	/* 마이페이지 */
+	public int deleteBooking(String ticketnumber, String cid) {
+		HashMap<String, String> hs = new HashMap<String, String>();
+		hs.put("cid", cid);
+		hs.put("ticketnumber", ticketnumber);
+		sst.update("mypagebookingns.deleteBookingPoint", hs);
+		
+		return sst.delete("bookingns.deleteBooking", ticketnumber);
+	}
 }

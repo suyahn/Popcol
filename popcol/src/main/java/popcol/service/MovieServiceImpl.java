@@ -52,5 +52,12 @@ public class MovieServiceImpl implements MovieService {
 		return md.adminDelete(mid);
 	}
 	
+	/* 도은 */
+	/* 마이페이지 */
+	public Movie selectMovieForReview(int mid) {
+		
+		return md.selectMovieForReview(mid);
+	}
+	
 
 }

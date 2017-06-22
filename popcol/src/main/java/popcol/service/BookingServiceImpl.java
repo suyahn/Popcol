@@ -42,4 +42,11 @@ public class BookingServiceImpl implements BookingService {
 		return bd.timezonePricestList(timezone);
 	}
 
+	/* 도은 */
+	/* 마이페이지 */
+	public int deleteBooking(String ticketnumber, String cid) {
+		
+		return bd.deleteBooking(ticketnumber, cid);
+	}
+
 }
