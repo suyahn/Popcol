@@ -6,6 +6,8 @@ import popcol.model.Customer;
 
 public interface CustomerDao {
 
+	/* 도은 */
+	/* 메인 */
 	void updateForbityhday();
 
 	int loginCheck(Customer customer);
@@ -27,6 +29,13 @@ public interface CustomerDao {
 	Customer findCustomerPassword(Customer customer);
 
 	int updateFindPassword(Customer customer);
+
+	/* 마이페이지 */
+	int updateForBirthdayPoint(String cid);
+
+	int updateCustomerInfo(Customer customer);
+
+	int deleteCustomerInfo(String cid);
 	
 	/*규랑*/
 	

@@ -199,8 +199,7 @@
 	
 	
 	<definition name="pointPage" extends="empty">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/mypage/pointPage.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/pointPage.jsp" />
 	</definition>
 	
 
@@ -219,6 +218,23 @@
 	<definition name="movieDetail" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/movie/movieDetail.jsp" />
+	</definition>
+	
+	<definition name="movieDetailReviewList" extends="empty">
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/movieDetailReviewList.jsp" />
+	</definition>
+	
+	<!-- 현재 상영작 -->
+	<definition name="nowMovies" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/nowMovies.jsp" />
+	</definition>
+	
+	<!-- 개봉 예정작 -->
+	<definition name="preMovies" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/preMovies.jsp" />
 	</definition>
 
 	<!-- 공지사항 -->

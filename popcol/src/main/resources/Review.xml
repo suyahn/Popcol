@@ -10,6 +10,8 @@
 		<result property="rvaluation" column="rvaluation" />
 		<result property="rdate" column="rdate" />
 		<result property="rdel" column="rdel" />
+		<result property="startRow" column="startRow"/>
+		<result property="endRow" column="endRow"/>
 	</resultMap>
 	
 	<select id="selectReview" parameterType="review" resultType="review">
@@ -31,4 +33,20 @@
 	<insert id="insertReview" parameterType="review">
 		insert into review values((select max(nvl(rid, 0)) + 1 from review), #{mid}, #{cid}, #{rcontent}, #{rvaluation}, sysdate, 'n')
 	</insert>
+	
+	<!-- 수연 -->
+	<!-- 무비디테일 -->
+	<select id="movieDetailReviewTotal" parameterType="int" resultType="int">
+		select count(*) from review where rdel = 'n' and mid = #{mid}
+	</select>
+	
+	<select id="movieDetailReviewList" parameterType="review" resultMap="reviewResult">
+		select * from (
+			select a.*, rownum rn from (
+				select rid, mid, replace(cid, substr(cid, -2), '**') cid, rcontent, rvaluation, rdate, rdel from review
+				where rdel = 'n' and mid = #{mid}
+				order by rdate desc) a ) 
+		where rn between #{startRow} and #{endRow} 
+	</select>
+	
 </mapper>

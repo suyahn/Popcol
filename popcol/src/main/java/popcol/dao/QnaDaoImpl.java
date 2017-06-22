@@ -57,7 +57,9 @@ public class QnaDaoImpl implements QnaDao {
 	public void deleteReply(int qid) {
 		sst.update("qnans.deleteReply", qid);
 	}
-
+	
+	/* 도은 */
+	/* 마이페이지 */
 	public int mypage_getTotal(String cid) {
 		
 		return sst.selectOne("qnans.mypage_getTotal", cid);
@@ -76,5 +78,10 @@ public class QnaDaoImpl implements QnaDao {
 	public int mypage_qnaDelete(int qid) {
 		
 		return sst.update("qnans.mypage_qnaDelete", qid);
+	}
+
+	public List<Qna> mypage_listMain(String cid) {
+		
+		return sst.selectList("qnans.mypage_listMain", cid);
 	}
 }

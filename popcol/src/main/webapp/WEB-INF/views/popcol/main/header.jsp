@@ -102,8 +102,8 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="movieChart.do">무비 차트</a></li>
-							<li><a href="${ path }/gatheringCalendar/index.jsp">현재 상영작</a></li>
-							<li><a href="${ path }/gatheringCalendar/index.jsp">개봉 예정작</a></li>
+							<li><a href="nowMovies.do">현재 상영작</a></li>
+							<li><a href="preMovies.do">개봉 예정작</a></li>
 						</ul>
 					</li>
 					

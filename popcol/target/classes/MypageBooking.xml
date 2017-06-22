@@ -62,11 +62,6 @@
 		]]>
 	</select>
 	
-	<!-- 예매 취소 -->
-	<delete id="deleteBooking" parameterType="string">
-		delete from booking where ticketnumber = #{ticketnumber}
-	</delete>
-	
 	<!-- 예매 시 받은 포인트 수거 -->
 	<update id="deleteBookingPoint" parameterType="hashmap">
 		update customer set cpoint = cpoint - (select sum(price)*0.05 from booking b, price p where b.pid = p.pid and ticketnumber = #{ticketnumber}) 

@@ -14,6 +14,8 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Autowired
 	private SqlSessionTemplate sst;
 
+	/* 도은 */
+	/* 메인 */
 	public void updateForbityhday() {
 
 		sst.update("customerns.updateForbityhday");
@@ -85,6 +87,24 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		return sst.update("customerns.updateFindPassword", customer);
 	}
+	
+	/* 마이페이지 */
+	public int updateForBirthdayPoint(String cid) {
+	
+		return sst.update("customerns.updateForBirthdayPoint", cid);
+	}
+
+	public int updateCustomerInfo(Customer customer) {
+		
+		return sst.update("customerns.updateCustomerInfo", customer);
+	}
+
+	public int deleteCustomerInfo(String cid) {
+		
+		return sst.update("customerns.deleteCustomerInfo", cid);
+	}
+	
+	
 	/* 규랑 */
 
 	@Override

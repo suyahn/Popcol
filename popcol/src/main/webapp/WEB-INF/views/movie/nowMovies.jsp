@@ -13,14 +13,17 @@
 </head>
 <body>
 	<div class="container" style="width: 80%;">
-		<h1 style="font-weight: bold;">무비 차트</h1>
+		<h1 style="font-weight: bold;">현재 상영작</h1>
 		<hr>
-		<div class="row">
-			<c:set var="rank" value="1" />
-			<c:forEach var="movie" items="${ movieList }">
+		<c:set var="date" value=""/>
+		<c:forEach var="movie" items="${ movieList }">
+			<fmt:parseDate value="${ movie.mreleaseDate }" var="mreleaseDate" pattern="yyyy-MM-dd"/>
+			<c:if test="${ date != mreleaseDate }">
+				<h2><fmt:formatDate value="${ mreleaseDate }" pattern="yyyy년 MM월 dd일"/></h2>
+			</c:if>
+			<div class="row">
 		  		<div class="col-md-3 col-md-3">
-		   			<div class="thumbnail" align="center" style="height: 600px;">
-		   				<h3 align="center" style="border: 2px solid black; width: 197px; background-color: #CD1726; font-weight: bold;">No.${ rank }</h3>
+		   			<div class="thumbnail" align="center" style="height: 500px;">
 		   				<a href="movieDetail.do?mid=${ movie.mid }">
 		      				<img src="poster/${ movie.murlPoster }.jpg" alt="${ movie.mtitle }" style="border: 2px solid black; width: 197px; height: 272px;">
 		      			</a>
@@ -30,11 +33,7 @@
 		        				<img alt="${ movie.mgrade }" src="icon/${ movie.mgrade }.png" width="20" height="20">
 		        			</p>
 		        			<p><font style="font-style: italic;">${ movie.moriginaltitle }</font><p>
-		        			<p>예매율 <font style="font-weight: bold;">${ movie.bookingRate }%</font></p>
-		        			<p>
-		        				<fmt:parseDate value="${ movie.mreleaseDate }" var="mreleaseDate" pattern="yyyy-MM-dd"/>
-		        				<fmt:formatDate value="${ mreleaseDate }" pattern="yyyy.MM.dd"/> 개봉
-		        			</p>
+		        			<p><fmt:formatDate value="${ mreleaseDate }" pattern="yyyy.MM.dd"/> 개봉</p>
 		        			<p>
 		        				<c:forEach var="reviewCount" items="${ reviewCountList }">
 		        					<c:if test="${ reviewCount.mid == movie.mid }">
@@ -52,9 +51,10 @@
 		      			</div>
 		    		</div>
 		  		</div>
-		  		<c:set var="rank" value="${ rank + 1 }" />
-	  		</c:forEach>
-		</div>
+	  		</div>
+	  		<hr>
+	  		<c:set var="date" value="mreleaseDate"/>
+  		</c:forEach>
 	</div>
 </body>
 </html>

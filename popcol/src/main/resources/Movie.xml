@@ -16,6 +16,8 @@
 		<result property="mgrade" column="mgrade" />
 		<result property="mnation" column="mnation" />
 		<result property="mdel" column="mdel" />
+		<result property="goodCount" column="goodCount" />
+		<result property="badCount" column="badCount" />
 	</resultMap>
 
 	<!-- 규랑 -->
@@ -63,12 +65,14 @@
 		
 	</update>
 	
+	
 	<!-- 수연 -->
-
+	<!-- 영화 리스트 -->
 	<select id="list" resultMap="movieResult">
 		select * from movie where mdel = 'n'
 	</select>
 
+	<!-- 무비차트에서 쓸 예매율 포함 영화 정보 -->
 	<select id="movieChart" parameterType="int" resultType="movie">
 		<![CDATA[
 		select * 
@@ -87,6 +91,31 @@
 			where m.mid = #{mid}
 		]]>
 	</select>
+	
+	<!-- 무비차트에서 쓸 영화별 좋아요, 싫어요 개수 리스트 -->
+	<select id="movieChartReviewCount" resultMap="movieResult">
+		select movie.mid, nvl(g.good, 0) goodCount, nvl(b.bad, 0) badCount
+		from movie,
+			(select mid, count(rvaluation) as good from review where rvaluation = 'g' group by mid) g,
+			(select mid, count(rvaluation) as bad from review where rvaluation = 'b' group by mid) b
+		where movie.mid = g.mid(+) and movie.mid = b.mid(+)
+		order by movie.mid
+	</select>
+	
+	<!-- 현재 상영중인 영화의 리스트 -->
+	<select id="nowMoviesList" resultMap="movieResult">
+		<![CDATA[
+			select * from movie where mdel = 'n' and mreleaseDate <= sysdate order by mreleaseDate desc
+		]]>
+	</select>
+	
+	<!-- 개봉 예정인 영화의 리스트 -->
+	<select id="preMoviesList" resultMap="movieResult">
+		<![CDATA[
+			select * from movie where mdel = 'n' and mreleaseDate > sysdate order by mreleaseDate
+		]]>
+	</select>
+	
 
 	<!-- 혜진 -->
 	<select id="bookingMovieList" resultMap="movieResult">

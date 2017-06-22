@@ -11,16 +11,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import popcol.model.Movie;
+import popcol.model.Review;
 
 @Repository
 public class MovieDaoImpl implements MovieDao {
 	@Autowired
 	private SqlSessionTemplate sst;
 
+	/*수연*/
+	/*무비차트*/
 	@Override
 	public List<Movie> movieChart() {
 		List<Movie> movies = sst.selectList("moviens.list");
-		List<Movie> movieChart = new ArrayList<Movie>();
+		List<Movie> movieChart = new ArrayList<Movie>(); 
 
 		for (Movie movie : movies) {
 			movieChart.add((Movie) sst.selectOne("moviens.movieChart", movie.getMid()));
@@ -45,10 +48,30 @@ public class MovieDaoImpl implements MovieDao {
 		return movieChart;
 	}
 	
+	/*영화 세부 정보*/
 	@Override
 	public Movie movieDetail(int mid) {
 		return sst.selectOne("moviens.movieChart", mid);
 	}
+	
+	/*영화들의 좋아요 싫어요 개수 리스트*/
+	@Override
+	public List<Movie> reviewGoodBadCount() {
+		return sst.selectList("moviens.movieChartReviewCount");
+	}
+	
+	/*현재 상영작*/
+	@Override
+	public List<Movie> nowMoviesList() {
+		return sst.selectList("moviens.nowMoviesList");
+	}
+	
+	/*개봉 예정작*/
+	@Override
+	public List<Movie> preMoviesList() {
+		return sst.selectList("moviens.preMoviesList");
+	}
+
 
 	/* 규랑 */
 	@Override
@@ -89,4 +112,13 @@ public class MovieDaoImpl implements MovieDao {
 		return sst.update("moviens.adminDelete",mid);
 	}
 
+	
+	/* 도은 */
+	/* 마이페이지 */
+	public Movie selectMovieForReview(int mid) {
+		
+		return sst.selectOne("moviens.selectMovieForReview", mid);
+	}
+
+	
 }

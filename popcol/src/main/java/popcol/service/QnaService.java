@@ -15,6 +15,8 @@ public interface QnaService {
 	void insertReply(Qna qna);
 	void deleteReply(int qid);
 	
+	/* 도은 */
+	/* 마이페이지 */
 	int mypage_getTotal(String cid);
 	
 	List<Qna> mypage_list(Qna qna);
@@ -22,4 +24,6 @@ public interface QnaService {
 	Qna mypage_qnaShow(int qid);
 	
 	int mypage_qnaDelete(int qid);
+	
+	List<Qna> mypage_listMain(String cid);
 }
