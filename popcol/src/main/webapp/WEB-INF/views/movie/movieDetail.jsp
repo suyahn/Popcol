@@ -45,7 +45,10 @@
 								<c:if test="${ movie.mgrade != '19' }">${ movie.mgrade }세 이상</c:if>
 							</c:if>
 					 / ${ movie.mrunningTime }분 / ${ movie.mnation }
-				<p>개봉 : ${ movie.mreleaseDate }</p>
+				<p>
+					개봉 : <fmt:parseDate value="${ movie.mreleaseDate }" var="mreleaseDate" pattern="yyyy-MM-dd"/>
+		        			<fmt:formatDate value="${ mreleaseDate }" pattern="yyyy.MM.dd"/>
+		        </p>
 				<br><br>
 				<button type="button" onclick="location.href='reservation.do'" class="btn btn-primary"
 					style="border-color: #CD1726; background-color: #CD1726;">예매하기</button>

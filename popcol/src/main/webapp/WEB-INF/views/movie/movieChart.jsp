@@ -31,7 +31,10 @@
 		        			</p>
 		        			<p><font style="font-style: italic;">${ movie.moriginaltitle }</font><p>
 		        			<p>예매율 <font style="font-weight: bold;">${ movie.bookingRate }%</font></p>
-		        			<p>${ movie.mreleaseDate } 개봉</p>
+		        			<p>
+		        				<fmt:parseDate value="${ movie.mreleaseDate }" var="mreleaseDate" pattern="yyyy-MM-dd"/>
+		        				<fmt:formatDate value="${ mreleaseDate }" pattern="yyyy.MM.dd"/> 개봉
+		        			</p>
 		        			<p>
 		        				<c:forEach var="reviewCount" items="${ reviewCountList }">
 		        					<c:if test="${ reviewCount.mid == movie.mid }">
