@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import popcol.model.Movie;
+import popcol.model.Review;
 
 @Repository
 public class MovieDaoImpl implements MovieDao {
@@ -20,7 +21,7 @@ public class MovieDaoImpl implements MovieDao {
 	@Override
 	public List<Movie> movieChart() {
 		List<Movie> movies = sst.selectList("moviens.list");
-		List<Movie> movieChart = new ArrayList<Movie>();
+		List<Movie> movieChart = new ArrayList<Movie>(); 
 
 		for (Movie movie : movies) {
 			movieChart.add((Movie) sst.selectOne("moviens.movieChart", movie.getMid()));
@@ -49,6 +50,12 @@ public class MovieDaoImpl implements MovieDao {
 	public Movie movieDetail(int mid) {
 		return sst.selectOne("moviens.movieChart", mid);
 	}
+	
+	@Override
+	public List<Movie> reviewGoodBadCount() {
+		return sst.selectList("moviens.movieChartReviewCount");
+	}
+
 
 	/* 규랑 */
 	@Override
@@ -89,4 +96,5 @@ public class MovieDaoImpl implements MovieDao {
 		return sst.update("moviens.adminDelete",mid);
 	}
 
+	
 }

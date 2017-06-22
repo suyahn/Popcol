@@ -21,6 +21,12 @@ public class MovieServiceImpl implements MovieService {
 	public Movie movieDetail(int mid) {
 		return md.movieDetail(mid);
 	}
+	@Override
+	public List<Movie> reviewGoodBadCount() {
+		return md.reviewGoodBadCount();
+	}
+	
+	
 	/*규랑*/
 	@Override
 	public List<Movie> adminList(int startRow, int endRow) {

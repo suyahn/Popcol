@@ -18,6 +18,8 @@ public class Movie {
 	private String mnation;// 만든 나라
 	private String mdel;
 	private double bookingRate; //예매율
+	private int goodCount; //좋아요 개수
+	private int badCount; //싫어요 개수
 
 	public int getMid() {
 		return mid;
@@ -130,4 +132,22 @@ public class Movie {
 	public void setMdel(String mdel) {
 		this.mdel = mdel;
 	}
+
+	public int getGoodCount() {
+		return goodCount;
+	}
+
+	public void setGoodCount(int goodCount) {
+		this.goodCount = goodCount;
+	}
+
+	public int getBadCount() {
+		return badCount;
+	}
+
+	public void setBadCount(int badCount) {
+		this.badCount = badCount;
+	}
+	
+	
 }
