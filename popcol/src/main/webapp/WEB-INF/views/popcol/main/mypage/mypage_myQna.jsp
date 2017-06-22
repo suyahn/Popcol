@@ -30,6 +30,12 @@ td, th {
   border-color: #cd1726;
   color: white !important;
 }
+
+.pagination>li.active>a:hover {
+  background: #fcba2e;
+  border-color: #fcba2e;
+  color: white !important;
+}
 </style>
 <script type="text/javascript">
 	$(function() {

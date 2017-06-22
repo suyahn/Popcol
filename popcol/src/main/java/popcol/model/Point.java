@@ -11,6 +11,10 @@ public class Point {
 	private int ppoint;
 	private Date pdate;
 	private String lname;
+	
+	/*페이징처리*/
+	private int startRow;
+	private int endRow;
 
 	public int getPid() {
 		return pid;
@@ -74,5 +78,21 @@ public class Point {
 
 	public void setLname(String lname) {
 		this.lname = lname;
+	}
+
+	public int getStartRow() {
+		return startRow;
+	}
+
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
+
+	public int getEndRow() {
+		return endRow;
+	}
+
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
 	}
 }

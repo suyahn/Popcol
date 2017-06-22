@@ -28,6 +28,7 @@ import popcol.service.LocationService;
 import popcol.service.MovieService;
 import popcol.service.MypageBookingService;
 import popcol.service.PagingPgm;
+import popcol.service.PointService;
 import popcol.service.QnaService;
 import popcol.service.ReviewService;
 
@@ -47,7 +48,9 @@ public class MypageController {
 	QnaService qs;
 	@Autowired
 	LocationService ls;
-
+	@Autowired
+	PointService ps;
+	
 	@RequestMapping("mypage_Main")
 	public String mypage_Main(Model model, HttpSession session, HttpServletRequest request) throws ParseException {
 		session = request.getSession();
@@ -140,7 +143,7 @@ public class MypageController {
 
 			if(result > 0) {
 				session.setAttribute("checkPoint", "y");
-				cs.giveBirthdayPoint(id);
+				ps.giveBirthdayPoint(id);
 			}
 			model.addAttribute("result", result);
 		}
@@ -223,7 +226,7 @@ public class MypageController {
 		int result = bs.deleteBooking(ticketnumber, id);
 		
 		if (result > 0) {
-			cs.deletePointContent(ticketnumber, id);
+			ps.deletePointContent(ticketnumber, id);
 		}
 		
 		model.addAttribute("result", result);
@@ -401,25 +404,42 @@ public class MypageController {
 	
 	// 포인트 조회
 	@RequestMapping("mypage_myPoint")
-	public String mypage_myPoint(Model model, HttpSession session, HttpServletRequest request) {
+	public String mypage_myPoint(String pageNum, Point point, Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
-		List<Point> pointList = cs.selectPointList(id);
-		System.out.println("크기1 : " + pointList.size());
+		// 포인트게시판 페이징
+		final int ROW_PER_PAGE = 10;
+
+		if (pageNum == null || pageNum.equals("")) {
+			pageNum = "1";
+		}
+
+		int currentPage = Integer.parseInt(pageNum);
+
+		int total = ps.mypage_getTotal(id);
+
+		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
+		int endRow = startRow + ROW_PER_PAGE - 1;
+		point.setStartRow(startRow);
+		point.setEndRow(endRow);
+		point.setCid(id);
+		
+		List<Point> pointList = ps.mypage_list(point);
 		List<Location> location = ls.selectPointLocation();
-		System.out.println("크기2 : " + location.size());
 		
 		for(Point p : pointList) {
-			System.out.println("pid : " + p.getPid());
-			
 			for(Location l : location) {
 				if(p.getLid() == l.getLid())
 					p.setLname(l.getLname());
 			}
 		}
 		
+		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
+
 		model.addAttribute("pointList", pointList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("pp", pp);
 		
 		return "mypage_myPoint";
 	}

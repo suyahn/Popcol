@@ -89,29 +89,6 @@ public class CustomerDaoImpl implements CustomerDao {
 		return sst.update("customerns.updateFindPassword", customer);
 	}
 
-	public void giveJoinPoint(String cid) {
-
-		sst.insert("pointns.giveJoinPoint", cid);
-	}
-
-	public void giveBirthdayPoint(String cid) {
-
-		sst.insert("pointns.giveBirthdayPoint", cid);
-	}
-
-	public void deletePointContent(String ticketnumber, String cid) {
-		HashMap<String, String> hm = new HashMap<String, String>();
-		hm.put("ticketnumber", ticketnumber);
-		hm.put("cid", cid);
-
-		sst.delete("pointns.deletePointContent", hm);
-	}
-
-	public List<Point> selectPointList(String cid) {
-		
-		return sst.selectList("pointns.selectPointList", cid);
-	}
-
 	/* 마이페이지 */
 	public int updateForBirthdayPoint(String cid) {
 

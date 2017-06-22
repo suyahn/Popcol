@@ -31,14 +31,6 @@ public interface CustomerDao {
 
 	int updateFindPassword(Customer customer);
 
-	void giveJoinPoint(String cid);
-
-	void giveBirthdayPoint(String cid);
-
-	void deletePointContent(String ticketnumber, String cid);
-
-	List<Point> selectPointList(String cid);
-
 	/* 마이페이지 */
 	int updateForBirthdayPoint(String cid);
 

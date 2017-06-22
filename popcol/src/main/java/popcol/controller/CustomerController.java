@@ -15,6 +15,7 @@ import popcol.model.Customer;
 import popcol.model.Movie;
 import popcol.service.CustomerService;
 import popcol.service.MovieService;
+import popcol.service.PointService;
 
 @Controller
 public class CustomerController {
@@ -22,6 +23,8 @@ public class CustomerController {
 	private CustomerService cs;
 	@Autowired
 	private MovieService ms;
+	@Autowired
+	private PointService ps;
 
 	@RequestMapping("home")
 	public String home(Model model, HttpSession session) {
@@ -151,7 +154,7 @@ public class CustomerController {
 		int result = cs.insertCustomer(customer);
 		
 		if (result > 0) {
-			cs.giveJoinPoint(customer.getCid());
+			ps.giveJoinPoint(customer.getCid());
 		}
 
 		model.addAttribute("result", result);

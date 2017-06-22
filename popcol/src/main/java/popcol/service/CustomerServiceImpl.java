@@ -70,26 +70,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 		return cd.updateFindPassword(customer);
 	}
-
-	public void giveJoinPoint(String cid) {
-		
-		cd.giveJoinPoint(cid);
-	}
-
-	public void giveBirthdayPoint(String cid) {
-
-		cd.giveBirthdayPoint(cid);
-	}
-
-	public void deletePointContent(String ticketnumber, String cid) {
-		
-		cd.deletePointContent(ticketnumber, cid);
-	}
-
-	public List<Point> selectPointList(String cid) {
-		
-		return cd.selectPointList(cid);
-	}
 	
 	/* 마이페이지 */
 	public int updateForBirthdayPoint(String cid) {
