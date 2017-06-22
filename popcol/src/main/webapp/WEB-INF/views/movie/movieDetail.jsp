@@ -64,9 +64,9 @@
 			</div>
 		</div>
 		<hr>
-		<div style="width: 80%; margin-left: 75px;">
-			<h4 style="font-weight: bold; color: #FCBA2E;">후기</h4>
-			<div style="border: 0.5px solid lightgray; border-radius: 10px;" id="movieDetailReviewList"></div>
+		<div style="width: 85%; margin-left: 80px;">
+			<h4 style="font-weight: bold;"><font color="#CD1726">${ totalReviewCount }명</font>의 후기</h4>
+			<div id="movieDetailReviewList"></div>
 		</div>
 	</div>
 </body>

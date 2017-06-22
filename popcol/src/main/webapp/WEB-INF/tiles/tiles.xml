@@ -219,6 +219,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/movie/movieDetail.jsp" />
 	</definition>
+	
+	<definition name="movieDetailReviewList" extends="empty">
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/movieDetailReviewList.jsp" />
+	</definition>
 
 	<!-- 공지사항 -->
 	<definition name="noticeList" extends="mainLayout">

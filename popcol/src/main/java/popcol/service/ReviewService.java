@@ -1,5 +1,7 @@
 package popcol.service;
 
+import java.util.List;
+
 import popcol.model.Review;
 
 public interface ReviewService {
@@ -15,5 +17,10 @@ public interface ReviewService {
 	int updateReview(Review review);
 
 	int deleteReview(Review review);
+
+	/*수연*/
+	/*무비디테일*/
+	int movieDetailReviewTotal(int mid);
+	List<Review> movieDetailReviewList(Review review);
 
 }
