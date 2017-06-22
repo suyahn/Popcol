@@ -98,6 +98,12 @@ public class MovieDaoImpl implements MovieDao {
 
 	
 	/* 도은 */
+	/* 메인 */
+	public Movie selectRunningMovieRandom() {
+	
+		return sst.selectOne("moviens.selectRunningMovieRandom");
+	}
+	
 	/* 마이페이지 */
 	public Movie selectMovieForReview(int mid) {
 		

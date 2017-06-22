@@ -17,6 +17,8 @@
 		<result property="ccheckbd" column="ccheckbd" />
 	</resultMap>
 
+	<!-- 도은 -->
+	<!-- 메인 -->
 	<select id="loginCheck" parameterType="customer" resultType="string">
 		select cpassword from customer where cid = #{cid} and cdel = 'n'
 	</select>

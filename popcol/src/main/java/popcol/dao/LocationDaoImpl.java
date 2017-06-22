@@ -43,4 +43,10 @@ public class LocationDaoImpl implements LocationDao {
 		return sst.insert("locationns.adminLocationInsert", location);
 	}
 
+	
+	public List<Location> selectPointLocation() {
+		
+		return sst.selectList("locationns.selectPointLocation");
+	}
+
 }

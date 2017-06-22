@@ -9,15 +9,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.red-active {
+	color: black  !important;
+	text-decoration: none;
+}
+
+.red-active:hover {
+	color: #cd1726  !important;
+	text-decoration: underline;
+	font-weight: bold;
+}
+</style>
 <script type="text/javascript">
 	$(function() {
 		$('#pointPage').load("pointPage.do");
-		
-		$('.reviewC').each(function() {
-			
-			$(this).load('mypage_Review.do', {'mid' : $(this).attr('id')});
-		});
-		
 	});
 </script>
 </head>
@@ -30,35 +36,35 @@
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
 			<div class="container" style="width: 800px;">
-				<div style="margin-bottom: 50px;">
-					<h4 align="left" style="color: #cd1726;">내가 본 영화</h4>
+				<div style="margin-bottom: 50px;"> 
+					<h4 align="left"><a href="mypage_reservation.do">나의 포인트 내역</a></h4>
 					
-					<table class="table table-stripped">
-						<c:if test="${not empty mySeeMovieList }">
-						<c:forEach var="myMovie" items="${mySeeMovieList }">
+					<table>
+						<tr>
+							<td>구매 구분</td>
+							<td>구매 극장</td>
+							<td>적립일</td>
+							<td>적립</td>
+						</tr>
+					
+						<c:if test="${empty pointList }">
 							<tr>
-								<td width="25%"><img alt="${myMovie.mtitle }" src="${path }/poster/${myMovie.murlPoster }.jpg" width="150px"></td>
-								<td colspan="4" style="text-align: left;">
-									<div align="left">
-										<font size="5px" style="font-weight: bold;">${myMovie.mtitle }</font><br>
-									
-										<font size="2px">
-										${myMovie.moriginaltitle }<br><br><br><br>
-										${myMovie.theDate }&nbsp;(${myMovie.theDay })&nbsp;${myMovie.theTime }<br>
-										Popcorn&amp;Cola&nbsp;${myMovie.lname }&nbsp;${myMovie.tname }&nbsp;/&nbsp;${myMovie.peopleC }명<br><br><br>
-										</font>
-									</div>
-									
-									<div class="reviewC" id="${myMovie.mid }"></div>
+								<td colspan="4">포인트 내역이 없습니다.</td>
+							</tr>
+						</c:if>
+					
+						<c:if test="${not empty pointList }">
+						<c:forEach var="point" items="${pointList }">
+							<tr>
+								<td>${point.psort }</td>
+								<td>${point.lname }</td>
+								<td>
+									<fmt:parseDate value="${point.pdate }" var="pdate" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${pdate }" pattern="yyyy.MM.dd"/>
 								</td>
+								<td>${point.ppoint }</td>
 							</tr>
 						</c:forEach>
-						</c:if>
-						
-						<c:if test="${empty mySeeMovieList }">
-							<tr>
-								<td colspan="3"><h4 style="color: #cd1726">관람하신 영화가 없습니다.</h4></td>
-							</tr>
 						</c:if>
 					</table>
 				</div>
@@ -69,9 +75,9 @@
 			<div class="col-sm-3 col-sm-pull-9">
 				<div class="text-xs-center text-sm-left">			
 					<ul class="nav nav-stacked menu">
-						<li class="" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
+						<li class="active" id=""><a href="mypage_Main.do" class="" id="">My PopCol Home</a></li>
 						<li class="" id=""><a href="mypage_reservation.do" class="" id="">나의 예매내역</a></li>
-						<li class="active" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
+						<li class="" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
 						<li class="" id=""><a href="mypage_myPoint.do" class="" id="">나의 포인트 내역</a></li>
 						<li class="" id=""><a href="mypage_myInfoModifyintro.do" class="" id="">회원 정보 수정</a></li>
 						<li class="" id=""><a href="mypage_byePopcolForm.do" class="" id="">회원 탈퇴</a></li>

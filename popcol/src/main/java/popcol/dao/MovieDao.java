@@ -18,6 +18,9 @@ public interface MovieDao {
 	int adminDelete(int mid);
 	
 	/* 도은 */
+	/* 메인 */
+	Movie selectRunningMovieRandom();
+	
 	/* 마이페이지 */
 	Movie selectMovieForReview(int mid);
 	

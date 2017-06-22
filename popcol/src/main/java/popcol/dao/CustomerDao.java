@@ -3,6 +3,7 @@ package popcol.dao;
 import java.util.List;
 
 import popcol.model.Customer;
+import popcol.model.Point;
 
 public interface CustomerDao {
 
@@ -30,6 +31,14 @@ public interface CustomerDao {
 
 	int updateFindPassword(Customer customer);
 
+	void giveJoinPoint(String cid);
+
+	void giveBirthdayPoint(String cid);
+
+	void deletePointContent(String ticketnumber, String cid);
+
+	List<Point> selectPointList(String cid);
+
 	/* 마이페이지 */
 	int updateForBirthdayPoint(String cid);
 
@@ -46,5 +55,6 @@ public interface CustomerDao {
 	Customer adminCustomerSelect(String cid);
 
 	int adminCustomerUpdate(Customer customer);
+
 
 }

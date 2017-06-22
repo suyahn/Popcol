@@ -12,16 +12,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Customer;
+import popcol.model.Movie;
 import popcol.service.CustomerService;
+import popcol.service.MovieService;
 
 @Controller
 public class CustomerController {
 	@Autowired
 	private CustomerService cs;
+	@Autowired
+	private MovieService ms;
 
 	@RequestMapping("home")
 	public String home(Model model, HttpSession session) {
-		
 		// 1월 1일에는 생일체크를 초기화해서 'n'으로 바꿔 생일에 포인트를 받을 수 있게 한다.
 		SimpleDateFormat df = new SimpleDateFormat("MM/dd");
 		String today = df.format(new java.util.Date());
@@ -29,6 +32,9 @@ public class CustomerController {
 		if (today.equals("01/01")) {
 			cs.updateForbirthday();
 		}
+		
+		Movie randomMovie = ms.selectRunningMovieRandom();
+		model.addAttribute("movie", randomMovie);
 		 
 		return "home";
 	}
@@ -143,6 +149,10 @@ public class CustomerController {
 	public String join(Customer customer, String cbirthdaystring, Model model) {
 		customer.setCbirthday(Date.valueOf(cbirthdaystring));
 		int result = cs.insertCustomer(customer);
+		
+		if (result > 0) {
+			cs.giveJoinPoint(customer.getCid());
+		}
 
 		model.addAttribute("result", result);
 

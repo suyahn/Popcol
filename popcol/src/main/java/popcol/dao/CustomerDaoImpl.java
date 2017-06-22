@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import popcol.model.Customer;
+import popcol.model.Point;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
@@ -87,24 +88,46 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		return sst.update("customerns.updateFindPassword", customer);
 	}
-	
+
+	public void giveJoinPoint(String cid) {
+
+		sst.insert("pointns.giveJoinPoint", cid);
+	}
+
+	public void giveBirthdayPoint(String cid) {
+
+		sst.insert("pointns.giveBirthdayPoint", cid);
+	}
+
+	public void deletePointContent(String ticketnumber, String cid) {
+		HashMap<String, String> hm = new HashMap<String, String>();
+		hm.put("ticketnumber", ticketnumber);
+		hm.put("cid", cid);
+
+		sst.delete("pointns.deletePointContent", hm);
+	}
+
+	public List<Point> selectPointList(String cid) {
+		
+		return sst.selectList("pointns.selectPointList", cid);
+	}
+
 	/* 마이페이지 */
 	public int updateForBirthdayPoint(String cid) {
-	
+
 		return sst.update("customerns.updateForBirthdayPoint", cid);
 	}
 
 	public int updateCustomerInfo(Customer customer) {
-		
+
 		return sst.update("customerns.updateCustomerInfo", customer);
 	}
 
 	public int deleteCustomerInfo(String cid) {
-		
+
 		return sst.update("customerns.deleteCustomerInfo", cid);
 	}
-	
-	
+
 	/* 규랑 */
 
 	@Override

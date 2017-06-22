@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import popcol.dao.CustomerDao;
 import popcol.model.Customer;
+import popcol.model.Point;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -68,6 +69,26 @@ public class CustomerServiceImpl implements CustomerService {
 	public int updateFindPassword(Customer customer) {
 
 		return cd.updateFindPassword(customer);
+	}
+
+	public void giveJoinPoint(String cid) {
+		
+		cd.giveJoinPoint(cid);
+	}
+
+	public void giveBirthdayPoint(String cid) {
+
+		cd.giveBirthdayPoint(cid);
+	}
+
+	public void deletePointContent(String ticketnumber, String cid) {
+		
+		cd.deletePointContent(ticketnumber, cid);
+	}
+
+	public List<Point> selectPointList(String cid) {
+		
+		return cd.selectPointList(cid);
 	}
 	
 	/* 마이페이지 */

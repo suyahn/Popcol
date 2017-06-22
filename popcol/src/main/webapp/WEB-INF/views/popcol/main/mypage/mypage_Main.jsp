@@ -45,7 +45,7 @@
 							<tr>
 								<td>예매번호<br><br><br><br><br><font style="font-weight: bold;">${booking.ticketnumber }</font></td>
 							
-								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlposter}.jpg" width="90px">
+								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlPoster}.jpg" width="90px">
 							
 								<td>
 									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br><br>

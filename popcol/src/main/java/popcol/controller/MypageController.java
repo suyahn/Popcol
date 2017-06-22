@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import popcol.model.Customer;
+import popcol.model.Location;
 import popcol.model.Movie;
 import popcol.model.MypageBooking;
 import popcol.model.Qna;
 import popcol.model.Review;
+import popcol.model.Point;
 import popcol.service.BookingService;
 import popcol.service.CustomerService;
+import popcol.service.LocationService;
 import popcol.service.MovieService;
 import popcol.service.MypageBookingService;
 import popcol.service.PagingPgm;
@@ -42,6 +45,8 @@ public class MypageController {
 	MovieService ms;
 	@Autowired
 	QnaService qs;
+	@Autowired
+	LocationService ls;
 
 	@RequestMapping("mypage_Main")
 	public String mypage_Main(Model model, HttpSession session, HttpServletRequest request) throws ParseException {
@@ -133,8 +138,10 @@ public class MypageController {
 			id = (String) session.getAttribute("id");
 			int result = cs.updateForBirthdayPoint(id);
 
-			session.setAttribute("checkPoint", "y");
-
+			if(result > 0) {
+				session.setAttribute("checkPoint", "y");
+				cs.giveBirthdayPoint(id);
+			}
 			model.addAttribute("result", result);
 		}
 
@@ -212,7 +219,13 @@ public class MypageController {
 	public String cancelBooking(String ticketnumber, Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
+		
 		int result = bs.deleteBooking(ticketnumber, id);
+		
+		if (result > 0) {
+			cs.deletePointContent(ticketnumber, id);
+		}
+		
 		model.addAttribute("result", result);
 
 		return "cancelBooking";
@@ -335,7 +348,6 @@ public class MypageController {
 
 		Movie movie = ms.selectMovieForReview(review.getMid());
 		model.addAttribute("movie", movie);
-		model.addAttribute("url", movie.getMurlPoster());
 
 		return "mypage_reviewShow";
 	}
@@ -386,6 +398,32 @@ public class MypageController {
 
 		return "mypage_reviewDelete";
 	}
+	
+	// 포인트 조회
+	@RequestMapping("mypage_myPoint")
+	public String mypage_myPoint(Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		List<Point> pointList = cs.selectPointList(id);
+		System.out.println("크기1 : " + pointList.size());
+		List<Location> location = ls.selectPointLocation();
+		System.out.println("크기2 : " + location.size());
+		
+		for(Point p : pointList) {
+			System.out.println("pid : " + p.getPid());
+			
+			for(Location l : location) {
+				if(p.getLid() == l.getLid())
+					p.setLname(l.getLname());
+			}
+		}
+		
+		model.addAttribute("pointList", pointList);
+		
+		return "mypage_myPoint";
+	}
+	
 
 	// 회원 정보 수정
 	@RequestMapping("mypage_myInfoModifyintro")

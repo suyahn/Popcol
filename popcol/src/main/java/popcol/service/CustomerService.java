@@ -3,6 +3,7 @@ package popcol.service;
 import java.util.List;
 
 import popcol.model.Customer;
+import popcol.model.Point;
 
 public interface CustomerService {
 
@@ -29,6 +30,14 @@ public interface CustomerService {
 	Customer findCustomerPassword(Customer customer);
 
 	int updateFindPassword(Customer customer);
+
+	void giveJoinPoint(String cid);
+
+	void giveBirthdayPoint(String cid);
+
+	void deletePointContent(String ticketnumber, String cid);
+
+	List<Point> selectPointList(String cid);
 
 	/* 마이페이지 */
 	int updateForBirthdayPoint(String cid);

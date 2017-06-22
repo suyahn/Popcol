@@ -19,6 +19,7 @@
 		<typeAlias alias="runningtimetable" type="popcol.model.RunningtimeTable" />
 		<typeAlias alias="theater" type="popcol.model.Theater" />
 		<typeAlias alias="mypagebooking" type="popcol.model.MypageBooking" />
+		<typeAlias alias="point" type="popcol.model.Point" />
 	</typeAliases>
 	
 	<mappers>
@@ -35,6 +36,7 @@
 		<mapper resource="RunningtimeTable.xml" />
 		<mapper resource="Theater.xml" />
 		<mapper resource="MypageBooking.xml" />
+		<mapper resource="Point.xml" />
 	</mappers>
 	
 </configuration>

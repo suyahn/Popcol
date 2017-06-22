@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pointns">
+	<resultMap id="pointResult" type="point">
+		<result property="pid" column="pid" />
+		<result property="cid" column="cid" />
+		<result property="bid" column="bid" />
+		<result property="lid" column="lid" />
+		<result property="psort" column="psort" />
+		<result property="ppoint" column="ppoint" />
+		<result property="pdate" column="pdate" />
+		<result property="lname" column="lname" />
+	</resultMap>
+	
+	<!-- 도은 -->
+	<!-- 포인트 기록 -->
+	<select id="selectPointList" parameterType="string" resultMap="pointResult">
+		select pid, cid, nvl(bid, 0), nvl(lid, 0), psort, ppoint, pdate  from point where cid = #{cid}
+	</select>
+	
+	<insert id="giveJoinPoint" parameterType="point">
+		insert into point values ((select max(nvl(rid, 0)) + 1 from point), #{cid}, null, null, '이벤트(가입)', 2000, sysdate)
+	</insert>
+	
+	<insert id="giveBirthdayPoint" parameterType="point">
+		insert into point values ((select max(nvl(rid, 0)) + 1 from point), #{cid}, null, null, '이벤트(생일)', 10000, sysdate)
+	</insert>
+	
+	<insert id="giveReservPoint" parameterType="point">
+		insert into point values ((select max(nvl(rid, 0)) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '매표', #{ppoint}, sysdate)
+	</insert>
+	
+	<insert id="usePointForReserv" parameterType="point">
+		insert into point values ((select max(nvl(rid, 0)) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '매표', -#{ppoint}, sysdate)
+	</insert>
+	
+	<delete id="deletePointContent" parameterType="hashmap" >
+		delete from point where cid = #{cid} and bid = (select bid from booking where ticketnumber = #{ticketnumber})
+	</delete>
+</mapper>

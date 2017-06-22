@@ -75,7 +75,7 @@
 							</c:forEach>
 						
 							<tr>
-								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlposter}.jpg" width="120px"></td>
+								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlPoster}.jpg" width="120px"></td>
 							
 								<td>
 									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br>

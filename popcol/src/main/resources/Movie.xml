@@ -106,6 +106,11 @@
 	</select>
 	
 	<!-- 도은 -->
+	<!-- 메인에 영화 랜덤 -->
+	<select id="selectRunningMovieRandom" resultType="movie">
+		select * from (select * from movie where mdel != 'y' order by DBMS_RANDOM.RANDOM) where rownum = 1
+    </select>
+	
 	<!-- 리뷰보면서 영화정보도 -->
 	<select id="selectMovieForReview" parameterType="int" resultType="movie">
 		select * from movie where mid = #{mid}
