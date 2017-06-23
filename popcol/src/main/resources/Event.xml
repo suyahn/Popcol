@@ -78,6 +78,6 @@
 	<!-- 도은 -->
 	<!--  메인 -->
 	<select id="selectEventListForHome" resultMap="eventResult">
-		select * from (select * from event where edel != 'y' and eclosingdate >= sysdate) where rownum between 1 and 6
+		select * from (select * from event where edel != 'y' and eclosingdate >= sysdate order by estartingdate desc) where rownum between 1 and 6
 	</select>
 </mapper>
