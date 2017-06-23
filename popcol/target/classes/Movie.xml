@@ -119,8 +119,7 @@
 
 	<!-- 혜진 -->
 	<select id="bookingMovieList" resultMap="movieResult">
-		select * from movie
-		where mdel='n' order by mtitle
+		select * from movie where mdel='n' order by mtitle
 	</select>
 	
 	<!-- 도은 -->

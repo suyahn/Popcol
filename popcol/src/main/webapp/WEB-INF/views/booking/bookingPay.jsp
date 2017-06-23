@@ -73,7 +73,7 @@ display: none;
 								</tr>
 								<tr></tr>
 								<tr align="right">
-									<th style="text-align: center; vertical-align: center;">●할인된 금액</th>
+									<th style="text-align: center; vertical-align: center;">●총 금액</th>
 									<td id="resultPrice" colspan="2" style="text-align: left;">
 										<font style="font-weight: normal">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${price }원
@@ -166,7 +166,8 @@ display: none;
 							</div>
 						</div>
 						<input type="submit" value="결제 하기"  class="btn btn-info btn-sm" style="border-color:
-						#cd1726; background-color: #cd1726; text-align: center; vertical-align: middle; margin-bottom: 25px;" >
+						#cd1726; background-color: #cd1726; text-align: center; vertical-align: middle; margin-bottom: 25px;" 
+						="">
 					</div>
 				</div>
 			</div>
