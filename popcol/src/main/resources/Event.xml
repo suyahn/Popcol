@@ -65,4 +65,10 @@
 	<insert id="insertEvent" parameterType="event">
 		insert into event values (#{eid}, #{esubject}, #{econtent}, #{epicture}, #{eclosingdate}, #{estartingdate}, 'n')
 	</insert>
+	
+	<!-- 도은 -->
+	<!--  메인 -->
+	<select id="selectEventListForHome" resultMap="eventResult">
+		select * from (select * from event where edel != 'y' and eclosingdate >= sysdate) where rownum between 1 and 6
+	</select>
 </mapper>

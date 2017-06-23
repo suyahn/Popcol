@@ -78,7 +78,9 @@
 								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlPoster}.jpg" width="120px"></td>
 							
 								<td>
-									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br>
+									<font style="font-weight: bold;">
+										<a href="movieDetail.do?mid=${booking.mid }" style="color: black !important;">${booking.mtitle }(${booking.moriginaltitle })</a>
+									</font><br><br><br>
 									<font size="2px">
 									관람극장&nbsp;&nbsp;Popcorn&amp;Cola&nbsp;${booking.lname }&nbsp;&nbsp;
 											<a href="#" style="color: black !important;">[극장정보]</a><br>

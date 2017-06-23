@@ -37,4 +37,12 @@ public class EventServiceImpl implements EventService {
 	public int getMaxNum() {
 		return ed.getMaxNum();
 	}
+
+	
+	/* 도은 */
+	/* 메인 */
+	public List<Event> selectEventListForHome() {
+	
+		return ed.selectEventListForHome();
+	}
 }

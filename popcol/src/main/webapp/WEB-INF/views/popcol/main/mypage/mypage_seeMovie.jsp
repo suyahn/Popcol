@@ -40,10 +40,12 @@
 								<td width="25%"><img alt="${myMovie.mtitle }" src="${path }/poster/${myMovie.murlPoster }.jpg" width="150px"></td>
 								<td colspan="4" style="text-align: left;">
 									<div align="left">
-										<font size="5px" style="font-weight: bold;">${myMovie.mtitle }</font><br>
+										<font size="5px" style="font-weight: bold;">
+											<a href="movieDetail.do?mid=${myMovie.mid }" style="color: black !important;">${myMovie.mtitle }</a>
+										</font><br>
 									
 										<font size="2px">
-										${myMovie.moriginaltitle }<br><br><br><br>
+										<a href="movieDetail.do?mid=${myMovie.mid }" style="color: black !important;">${myMovie.moriginaltitle }</a><br><br><br><br>
 										${myMovie.theDate }&nbsp;(${myMovie.theDay })&nbsp;${myMovie.theTime }<br>
 										Popcorn&amp;Cola&nbsp;${myMovie.lname }&nbsp;${myMovie.tname }&nbsp;/&nbsp;${myMovie.peopleC }명<br><br><br>
 										</font>

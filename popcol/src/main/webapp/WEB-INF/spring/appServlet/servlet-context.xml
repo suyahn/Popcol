@@ -48,6 +48,8 @@
 			
 			
 			<mapping path="/qnaInsertForm.do"/>
+			
+			<mapping path="/reservation.do" />
 			<beans:ref bean="lc1" />
 		</interceptor>
 		

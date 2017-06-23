@@ -38,4 +38,11 @@ public class EventDaoImpl implements EventDao {
 		return sst.selectOne("eventns.getMaxNum");
 	}
 
+	/* 도은 */
+	/* 메인 */
+	public List<Event> selectEventListForHome() {
+	
+		return sst.selectList("eventns.selectEventListForHome");
+	}
+
 }

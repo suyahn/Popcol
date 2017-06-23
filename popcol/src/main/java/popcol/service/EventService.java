@@ -10,4 +10,8 @@ public interface EventService {
 	Event selectEvent(int eid);
 	int insertEvent(Event event);
 	int getMaxNum();
+	
+	/* 도은 */
+	/* 메인 */
+	List<Event> selectEventListForHome();
 }
