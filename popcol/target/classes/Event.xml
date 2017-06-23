@@ -57,4 +57,12 @@
 	<select id="selectEvent" parameterType="int" resultType="event">
 		select * from event where eid = #{eid}
 	</select>
+	
+	<select id="getMaxNum" resultType="int">
+		select max(nvl(eid, 0)) + 1 from event
+	</select>
+	
+	<insert id="insertEvent" parameterType="event">
+		insert into event values (#{eid}, #{esubject}, #{econtent}, #{epicture}, #{eclosingdate}, #{estartingdate}, 'n')
+	</insert>
 </mapper>

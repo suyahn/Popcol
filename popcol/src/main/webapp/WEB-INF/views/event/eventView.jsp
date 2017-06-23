@@ -28,7 +28,12 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<img alt="${ event.epicture }" src="images/${ event.epicture }.jpg">
+					<c:if test="${ empty event.epicture }">
+						<img class="media-object" src="images/event_default.jpg" alt="${ event.epicture }" width="200" height="150">
+					</c:if>
+					<c:if test="${ not empty event.epicture }">
+						<img class="media-object" src="images/${ event.epicture }" alt="${ event.epicture }" width="200" height="150">
+					</c:if>
 				</td>
 			</tr>
 			<tr>

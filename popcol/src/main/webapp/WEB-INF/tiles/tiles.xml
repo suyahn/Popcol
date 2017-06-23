@@ -348,6 +348,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/event/eventView.jsp" />
     </definition>
     
+    <definition name="eventInsertForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventInsertForm.jsp" />
+    </definition>
+    
+    <definition name="eventInsert" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventInsert.jsp" />
+    </definition>
+    
     
     
     

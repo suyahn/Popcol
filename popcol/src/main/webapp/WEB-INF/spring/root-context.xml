@@ -22,4 +22,6 @@
 		<property name="password" value="${jdbc.password}" />
 		<property name="maxPoolSize" value="${jdbc.maxPoolSize}" />
 	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans>
