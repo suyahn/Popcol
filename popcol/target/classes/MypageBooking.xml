@@ -5,7 +5,7 @@
 	<resultMap id="mypagebookingResult" type="mypagebooking">
 		<result property="mtitle" column="mtitle" />
 		<result property="moriginaltitle" column="moriginaltitle" />
-		<result property="murlposter" column="murlposter" />
+		<result property="murlPoster" column="murlPoster" />
 		<result property="mid" column="mid" />
 		<result property="lname" column="lname" />
 		<result property="tname" column="tname" />

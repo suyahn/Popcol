@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import popcol.model.Customer;
+import popcol.model.Point;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
@@ -87,24 +88,23 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		return sst.update("customerns.updateFindPassword", customer);
 	}
-	
+
 	/* 마이페이지 */
 	public int updateForBirthdayPoint(String cid) {
-	
+
 		return sst.update("customerns.updateForBirthdayPoint", cid);
 	}
 
 	public int updateCustomerInfo(Customer customer) {
-		
+
 		return sst.update("customerns.updateCustomerInfo", customer);
 	}
 
 	public int deleteCustomerInfo(String cid) {
-		
+
 		return sst.update("customerns.deleteCustomerInfo", cid);
 	}
-	
-	
+
 	/* 규랑 */
 
 	@Override

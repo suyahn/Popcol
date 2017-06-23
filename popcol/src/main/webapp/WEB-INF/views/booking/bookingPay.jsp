@@ -73,7 +73,7 @@ display: none;
 								</tr>
 								<tr></tr>
 								<tr align="right">
-									<th style="text-align: center; vertical-align: center;">●할인된 금액</th>
+									<th style="text-align: center; vertical-align: center;">●총 금액</th>
 									<td id="resultPrice" colspan="2" style="text-align: left;">
 										<font style="font-weight: normal">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${price }원

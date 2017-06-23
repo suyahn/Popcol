@@ -28,20 +28,26 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<img alt="${ event.epicture }" src="images/${ event.epicture }.jpg">
+					<c:if test="${ empty event.epicture }">
+						<img alt="event_default" src="images/event_default.jpg">
+					</c:if>
+					<c:if test="${ not empty event.epicture }">
+						<img alt="${ event.epicture }" src="images/${ event.epicture }">
+					</c:if>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><pre style="white-space: pre-wrap; height: 300px;">${ event.econtent }</pre></td>
+				<td colspan="2"><pre style="white-space: none; height: 300px;">${ event.econtent }</pre></td>
 			</tr>
 		</table>
-		<!-- 마스터면! 수정 삭제 버튼 보이게 -->
+		
 		<button type="button" onclick="location.href='eventUpdateForm.do?eid=${ event.eid }&pageNum=${ pageNum }'" 
 			class="btn btn-default">수정</button>
 		<button type="button" onclick="deleteChk(${ event.eid }, ${ pageNum })" 
 			class="btn btn-default">삭제</button>
 		<button type="button" onclick="location.href='eventList.do?pageNum=${ pageNum }'" class="btn btn-primary"
 			style="border-color: #CD1726; background-color: #CD1726;">목록</button>
+		<hr>
 	</div>
 </body>
 </html>

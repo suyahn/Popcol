@@ -151,6 +151,12 @@
 	</definition>
 	
 	
+	<!-- 포인트 조회 -->
+	<definition name="mypage_myPoint" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_myPoint.jsp" />
+	</definition>
+	
+	
 	<!-- 회원 정보 수정 -->
 
 	<definition name="mypage_myInfoModifyintro" extends="mainLayout">
@@ -346,6 +352,18 @@
     
     <definition name="eventView" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/event/eventView.jsp" />
+    </definition>
+    
+    <definition name="eventInsertForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventInsertForm.jsp" />
+    </definition>
+    
+    <definition name="eventInsert" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventInsert.jsp" />
+    </definition>
+    
+    <definition name="eventUpdateForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventUpdateForm.jsp" />
     </definition>
     
     

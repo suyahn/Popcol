@@ -37,7 +37,7 @@
 						<c:if test="${not empty mySeeMovieList }">
 						<c:forEach var="myMovie" items="${mySeeMovieList }">
 							<tr>
-								<td width="25%"><img alt="${myMovie.mtitle }" src="${path }/poster/${myMovie.murlposter }.jpg" width="150px"></td>
+								<td width="25%"><img alt="${myMovie.mtitle }" src="${path }/poster/${myMovie.murlPoster }.jpg" width="150px"></td>
 								<td colspan="4" style="text-align: left;">
 									<div align="left">
 										<font size="5px" style="font-weight: bold;">${myMovie.mtitle }</font><br>

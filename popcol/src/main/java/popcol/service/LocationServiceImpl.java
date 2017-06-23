@@ -43,4 +43,10 @@ public class LocationServiceImpl implements LocationService {
 		return ld.adminLocationInsert(location);
 	}
 
+	/* 도은 */
+	public List<Location> selectPointLocation() {
+		
+		return ld.selectPointLocation();
+	}
+
 }

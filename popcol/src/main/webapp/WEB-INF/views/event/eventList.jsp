@@ -34,13 +34,17 @@
 		<c:if test="${ not empty eventList }">
 			<c:forEach var="event" items="${ eventList }">
 				<div class="media" style="border: 0.5px solid lightgray; border-radius: 10px; width: 70%; margin-left: 100px;">
-					<div class="media-left">
+					<div class="media-left" style="width: 200px; height: 150px; vertical-align: middle;">
 						<a href="eventView.do?eid=${ event.eid }">
-							<img class="media-object" src="images/${ event.epicture }.jpg" alt="${ event.epicture }" width="200" height="150">
+							<c:if test="${ empty event.epicture }">
+								<img class="media-object" src="images/event_default.jpg" alt="${ event.epicture }" width="200">
+							</c:if>
+							<c:if test="${ not empty event.epicture }">
+								<img class="media-object" src="images/${ event.epicture }" alt="${ event.epicture }" width="200">
+							</c:if>
 						</a>
 					</div>
-					<div class="media-body">
-						<br><br><br>
+					<div class="media-body" style="vertical-align: middle;">
 						<h4 class="media-heading" style="font-weight: bold;">
 							<a href="eventView.do?eid=${ event.eid }&pageNum=${ pageNum }" class="red-active">${ event.esubject }</a>
 						</h4>

@@ -16,6 +16,9 @@ public interface LocationDao {
 
 	int adminLocationInsert(Location location);
 
+	/* 도은 */
+	List<Location> selectPointLocation();
+
 	
 
 }

@@ -8,4 +8,6 @@ public interface EventDao {
 	List<Event> eventList(Event event);
 	int getTotal(Event event);
 	Event selectEvent(int eid);
+	int insertEvent(Event event);
+	int getMaxNum();
 }

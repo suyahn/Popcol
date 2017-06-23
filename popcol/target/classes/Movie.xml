@@ -96,8 +96,8 @@
 	<select id="movieChartReviewCount" resultMap="movieResult">
 		select movie.mid, nvl(g.good, 0) goodCount, nvl(b.bad, 0) badCount
 		from movie,
-			(select mid, count(rvaluation) as good from review where rvaluation = 'g' group by mid) g,
-			(select mid, count(rvaluation) as bad from review where rvaluation = 'b' group by mid) b
+			(select mid, count(rvaluation) as good from review where rvaluation = 'g' and rdel = 'n' group by mid) g,
+			(select mid, count(rvaluation) as bad from review where rvaluation = 'b' and rdel = 'n' group by mid) b
 		where movie.mid = g.mid(+) and movie.mid = b.mid(+)
 		order by movie.mid
 	</select>
@@ -123,6 +123,11 @@
 	</select>
 	
 	<!-- 도은 -->
+	<!-- 메인에 영화 랜덤 -->
+	<select id="selectRunningMovieRandom" resultType="movie">
+		select * from (select * from movie where mdel != 'y' order by DBMS_RANDOM.RANDOM) where rownum = 1
+    </select>
+	
 	<!-- 리뷰보면서 영화정보도 -->
 	<select id="selectMovieForReview" parameterType="int" resultType="movie">
 		select * from movie where mid = #{mid}

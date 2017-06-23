@@ -22,7 +22,7 @@
 			</tr>
 			
 			<tr>
-				<td width="25%"><img alt="${movie.mtitle }" src="${path }/poster/${url }.jpg" width="150px"></td>
+				<td width="25%"><img alt="${movie.mtitle }" src="${path }/poster/${movie.murlPoster }.jpg" width="150px"></td>
 				
 				<td>
 					<div style="margin-left: 30px;">

@@ -27,4 +27,14 @@ public class EventServiceImpl implements EventService {
 	public Event selectEvent(int eid) {
 		return ed.selectEvent(eid);
 	}
+
+	@Override
+	public int insertEvent(Event event) {
+		return ed.insertEvent(event);
+	}
+
+	@Override
+	public int getMaxNum() {
+		return ed.getMaxNum();
+	}
 }

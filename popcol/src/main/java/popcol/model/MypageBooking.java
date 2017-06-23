@@ -5,7 +5,7 @@ import java.sql.Date;
 public class MypageBooking {
 	private String mtitle;
 	private String moriginaltitle;
-	private String murlposter;
+	private String murlPoster;
 	private int mid;
 	private String lname;
 	private String tname;
@@ -35,12 +35,12 @@ public class MypageBooking {
 		this.moriginaltitle = moriginaltitle;
 	}
 
-	public String getMurlposter() {
-		return murlposter;
+	public String getMurlPoster() {
+		return murlPoster;
 	}
 
-	public void setMurlposter(String murlposter) {
-		this.murlposter = murlposter;
+	public void setMurlPoster(String murlPoster) {
+		this.murlPoster = murlPoster;
 	}
 
 	public int getMid() {
