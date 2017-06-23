@@ -44,4 +44,17 @@ public class ReviewDaoImpl implements ReviewDao {
 
 		return sst.update("reviewns.updateReview", review);
 	}
+
+	
+	/*수연*/
+	/*무비디테일*/
+	@Override
+	public int movieDetailReviewTotal(int mid) {
+		return sst.selectOne("reviewns.movieDetailReviewTotal", mid);
+	}
+
+	@Override
+	public List<Review> movieDetailReviewList(Review review) {
+		return sst.selectList("reviewns.movieDetailReviewList", review);
+	}
 }

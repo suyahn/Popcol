@@ -10,6 +10,7 @@ import popcol.model.Movie;
 
 @Service
 public class MovieServiceImpl implements MovieService {
+	/*수연*/
 	@Autowired
 	private MovieDao md;
 	
@@ -25,6 +26,16 @@ public class MovieServiceImpl implements MovieService {
 	public List<Movie> reviewGoodBadCount() {
 		return md.reviewGoodBadCount();
 	}
+	@Override
+	public List<Movie> nowMoviesList() {
+		return md.nowMoviesList();
+	}
+	@Override
+	public List<Movie> preMoviesList() {
+		return md.preMoviesList();
+	}
+	
+
 	
 	
 	/*규랑*/
@@ -71,5 +82,4 @@ public class MovieServiceImpl implements MovieService {
 		return md.selectMovieForReview(mid);
 	}
 	
-
 }

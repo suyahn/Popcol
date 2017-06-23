@@ -57,7 +57,7 @@
 				</tr>
 				<tr>
 					<th class="dd">가격</th>
-					<td>${price}</td>
+					<td>${price}원</td>
 				</tr>
 				<tr align="center">
 					<th colspan="2" style="text-align: center">

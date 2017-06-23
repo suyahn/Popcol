@@ -69,7 +69,7 @@ public class BookingController {
 	}
 	
 	@RequestMapping("bookingChk")
-	public String bookingChk(Model model, int rtid, String price, String seat, int adult, int youth, int special){
+	public String bookingChk(Model model, int rtid, int price, String seat, int adult, int youth, int special){
 		RunningtimeTable rt= bs.selectRt(rtid);
 		Movie movie = ms.movieDetail(rt.getMid());
 		/*String[] arrayseat = seat.split(" ");//a4 b3 이 사이의 한칸띔을 나타냄
@@ -84,7 +84,7 @@ public class BookingController {
 		return "bookingChk";
 	}
 	@RequestMapping("bookingPay")
-	public String bookingPay(Model model, int rtid, String price, String seat, int adult, int youth, int special, HttpSession session){
+	public String bookingPay(Model model, int rtid, int price, String seat, int adult, int youth, int special, HttpSession session){
 		RunningtimeTable rt= bs.selectRt(rtid);
 		Movie movie = ms.movieDetail(rt.getMid());
 		/*String[] arrayseat = seat.split(" ");//a4 b3 이 사이의 한칸띔을 나타냄

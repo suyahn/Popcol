@@ -5,9 +5,13 @@ import java.util.List;
 import popcol.model.Movie;
 
 public interface MovieService {
+	/*수연*/
 	List<Movie> movieChart();
 	Movie movieDetail(int mid);
 	List<Movie> reviewGoodBadCount();
+	List<Movie> nowMoviesList();
+	List<Movie> preMoviesList();
+	
 	/*규랑*/
 	List<Movie> adminList(int startRow, int endRow);
 	int getTotal();

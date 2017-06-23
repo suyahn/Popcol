@@ -1,5 +1,7 @@
 package popcol.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +38,18 @@ public class ReviewServiceImpl implements ReviewService {
 	public int deleteReview(Review review) {
 	
 		return rd.deleteReview(review);
+	}
+
+	
+	/*수연*/
+	/*무비디테일*/
+	@Override
+	public int movieDetailReviewTotal(int mid) {
+		return rd.movieDetailReviewTotal(mid);
+	}
+
+	@Override
+	public List<Review> movieDetailReviewList(Review review) {
+		return rd.movieDetailReviewList(review);
 	}
 }
