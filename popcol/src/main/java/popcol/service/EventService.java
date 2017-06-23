@@ -10,4 +10,6 @@ public interface EventService {
 	Event selectEvent(int eid);
 	int insertEvent(Event event);
 	int getMaxNum();
+	int updateEvent(Event event);
+	int deleteEvent(int eid);
 }

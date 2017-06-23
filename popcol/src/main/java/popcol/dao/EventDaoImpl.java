@@ -38,4 +38,14 @@ public class EventDaoImpl implements EventDao {
 		return sst.selectOne("eventns.getMaxNum");
 	}
 
+	@Override
+	public int updateEvent(Event event) {
+		return sst.update("eventns.updateEvent", event);
+	}
+
+	@Override
+	public int deleteEvent(int eid) {
+		return sst.update("eventns.deleteEvent", eid);
+	}
+
 }

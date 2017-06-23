@@ -37,7 +37,7 @@
 				<tr>
 					<th>사진</th>
 					<td>
-						<input type="file" name="epicture">
+						<input type="file" name="newEpicture">
 					</td>
 				</tr>
 				<tr>
