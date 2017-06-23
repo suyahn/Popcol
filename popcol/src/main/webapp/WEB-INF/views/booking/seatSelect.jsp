@@ -37,7 +37,7 @@
 				}
 			});
 			
-			if(seatCount < totalPerson) {
+			if(seatCount <= totalPerson) {
 				var idd = $(this).attr('id');
 				var color = $('#' + idd).css("background-color");
 				if (color == "rgb(12, 7, 50)") {//navy일 때
