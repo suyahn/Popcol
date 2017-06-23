@@ -70,6 +70,12 @@ public class MovieServiceImpl implements MovieService {
 	}
 	
 	/* 도은 */
+	/* 메인 */
+	public Movie selectRunningMovieRandom() {
+		
+		return md.selectRunningMovieRandom();
+	}
+	
 	/* 마이페이지 */
 	public Movie selectMovieForReview(int mid) {
 		

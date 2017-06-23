@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import popcol.dao.CustomerDao;
 import popcol.model.Customer;
+import popcol.model.Point;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

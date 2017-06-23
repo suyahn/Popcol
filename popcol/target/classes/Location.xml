@@ -48,4 +48,8 @@
 		rt.lid = l.lid and rt.mid = #{mid}
 	</select>
 	
+	<!-- 도은 -->
+	<select id="selectPointLocation" resultMap="locationResult">
+		select * from location
+	</select>
 </mapper>

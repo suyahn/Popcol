@@ -16,15 +16,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import popcol.model.Customer;
+import popcol.model.Location;
 import popcol.model.Movie;
 import popcol.model.MypageBooking;
 import popcol.model.Qna;
 import popcol.model.Review;
+import popcol.model.Point;
 import popcol.service.BookingService;
 import popcol.service.CustomerService;
+import popcol.service.LocationService;
 import popcol.service.MovieService;
 import popcol.service.MypageBookingService;
 import popcol.service.PagingPgm;
+import popcol.service.PointService;
 import popcol.service.QnaService;
 import popcol.service.ReviewService;
 
@@ -42,7 +46,11 @@ public class MypageController {
 	MovieService ms;
 	@Autowired
 	QnaService qs;
-
+	@Autowired
+	LocationService ls;
+	@Autowired
+	PointService ps;
+	
 	@RequestMapping("mypage_Main")
 	public String mypage_Main(Model model, HttpSession session, HttpServletRequest request) throws ParseException {
 		session = request.getSession();
@@ -133,8 +141,10 @@ public class MypageController {
 			id = (String) session.getAttribute("id");
 			int result = cs.updateForBirthdayPoint(id);
 
-			session.setAttribute("checkPoint", "y");
-
+			if(result > 0) {
+				session.setAttribute("checkPoint", "y");
+				ps.giveBirthdayPoint(id);
+			}
 			model.addAttribute("result", result);
 		}
 
@@ -212,7 +222,13 @@ public class MypageController {
 	public String cancelBooking(String ticketnumber, Model model, HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
+		
 		int result = bs.deleteBooking(ticketnumber, id);
+		
+		if (result > 0) {
+			ps.deletePointContent(ticketnumber, id);
+		}
+		
 		model.addAttribute("result", result);
 
 		return "cancelBooking";
@@ -335,7 +351,6 @@ public class MypageController {
 
 		Movie movie = ms.selectMovieForReview(review.getMid());
 		model.addAttribute("movie", movie);
-		model.addAttribute("url", movie.getMurlPoster());
 
 		return "mypage_reviewShow";
 	}
@@ -386,6 +401,49 @@ public class MypageController {
 
 		return "mypage_reviewDelete";
 	}
+	
+	// 포인트 조회
+	@RequestMapping("mypage_myPoint")
+	public String mypage_myPoint(String pageNum, Point point, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		// 포인트게시판 페이징
+		final int ROW_PER_PAGE = 10;
+
+		if (pageNum == null || pageNum.equals("")) {
+			pageNum = "1";
+		}
+
+		int currentPage = Integer.parseInt(pageNum);
+
+		int total = ps.mypage_getTotal(id);
+
+		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
+		int endRow = startRow + ROW_PER_PAGE - 1;
+		point.setStartRow(startRow);
+		point.setEndRow(endRow);
+		point.setCid(id);
+		
+		List<Point> pointList = ps.mypage_list(point);
+		List<Location> location = ls.selectPointLocation();
+		
+		for(Point p : pointList) {
+			for(Location l : location) {
+				if(p.getLid() == l.getLid())
+					p.setLname(l.getLname());
+			}
+		}
+		
+		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
+
+		model.addAttribute("pointList", pointList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("pp", pp);
+		
+		return "mypage_myPoint";
+	}
+	
 
 	// 회원 정보 수정
 	@RequestMapping("mypage_myInfoModifyintro")
