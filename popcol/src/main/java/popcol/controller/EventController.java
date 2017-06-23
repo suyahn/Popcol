@@ -110,4 +110,14 @@ public class EventController {
 		
 		return "eventInsert";
 	}
+	
+	@RequestMapping("eventUpdateForm")
+	public String eventUpdateForm(int eid, String pageNum, Model model) {
+		Event event = es.selectEvent(eid);
+		
+		model.addAttribute("event", event);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "eventUpdateForm";
+	}
 }

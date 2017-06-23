@@ -96,8 +96,8 @@
 	<select id="movieChartReviewCount" resultMap="movieResult">
 		select movie.mid, nvl(g.good, 0) goodCount, nvl(b.bad, 0) badCount
 		from movie,
-			(select mid, count(rvaluation) as good from review where rvaluation = 'g' group by mid) g,
-			(select mid, count(rvaluation) as bad from review where rvaluation = 'b' group by mid) b
+			(select mid, count(rvaluation) as good from review where rvaluation = 'g' and rdel = 'n' group by mid) g,
+			(select mid, count(rvaluation) as bad from review where rvaluation = 'b' and rdel = 'n' group by mid) b
 		where movie.mid = g.mid(+) and movie.mid = b.mid(+)
 		order by movie.mid
 	</select>

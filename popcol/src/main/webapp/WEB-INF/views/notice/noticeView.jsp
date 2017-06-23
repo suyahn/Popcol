@@ -35,6 +35,7 @@
 			class="btn btn-default">삭제</button>
 		<button type="button" onclick="location.href='noticeList.do?pageNum=${ pageNum }'" class="btn btn-primary"
 			style="border-color: #CD1726; background-color: #CD1726;">목록</button>
+		<hr>
 	</div>
 </body>
 </html>

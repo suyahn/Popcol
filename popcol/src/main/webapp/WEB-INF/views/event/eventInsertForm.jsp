@@ -41,9 +41,15 @@
 					</td>
 				</tr>
 				<tr>
-					<th>기간</th>
+					<th>시작</th>
 					<td>
-						<input type="date" name="estartingdateString" required="required"> ~ <input type="date"  name="eclosingdateString" required="required">
+						<input type="date" name="estartingdateString" required="required">
+					</td>
+				</tr>
+				<tr>
+					<th>~ 끝</th>
+					<td>
+						<input type="date"  name="eclosingdateString" required="required">
 					</td>
 				</tr>
 				<tr>

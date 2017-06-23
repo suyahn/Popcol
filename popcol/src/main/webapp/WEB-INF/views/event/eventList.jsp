@@ -44,8 +44,7 @@
 							</c:if>
 						</a>
 					</div>
-					<div class="media-body">
-						<br><br><br>
+					<div class="media-body" style="vertical-align: middle;">
 						<h4 class="media-heading" style="font-weight: bold;">
 							<a href="eventView.do?eid=${ event.eid }&pageNum=${ pageNum }" class="red-active">${ event.esubject }</a>
 						</h4>
