@@ -73,36 +73,32 @@ public class EventController {
 		return "eventInsertForm";
 	}
 	
-	@RequestMapping(value="eventInsert", method=RequestMethod.POST)
-	public String eventInsert(String pageNum, String esubject, String econtent, String estartingdateString, String eclosingdateString
-			, @RequestParam("epicture") MultipartFile mf, Model model, HttpSession session) throws IllegalStateException, IOException {
-		String epicture = "";
+	@RequestMapping("eventInsert")
+	public String eventInsert(String pageNum, Event event, String estartingdateString, String eclosingdateString
+			, @RequestParam("newEpicture") MultipartFile mf, Model model, HttpSession session) throws IllegalStateException, IOException {
+	/*public String eventInsert(String pageNum, String esubject, String econtent, String estartingdateString, String eclosingdateString
+			, @RequestParam("epicture") MultipartFile mf, Model model, HttpSession session) throws IllegalStateException, IOException {*/
+		String fileName = "";
 		 
-		if(mf.getOriginalFilename() != null && mf.getOriginalFilename().equals("")) {
-			epicture = "event_" + mf.getOriginalFilename();
+		if(mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
+			fileName = "event_" + mf.getOriginalFilename();
 			
 			/*webapp밑에 images에 저장*/
 			String path = session.getServletContext().getRealPath("/images");
-			FileOutputStream fos = new FileOutputStream(path + "/" + epicture);
+			FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
 			fos.write(mf.getBytes());
 			fos.close();
 		}
 		
-		Event event = new Event();
-		
 		int eid = es.getMaxNum();
 		event.setEid(eid);
-		
-		event.setEsubject(esubject);
-		event.setEcontent(econtent);
-		event.setEpicture(epicture);
+		event.setEpicture(fileName);
 		
 		/*String을 sql.Date로 타입변경*/
 		event.setEstartingdate(Date.valueOf(estartingdateString));
 		event.setEclosingdate(Date.valueOf(eclosingdateString));
 		
 		int result = es.insertEvent(event);
-		
 		
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("eid", event.getEid());
@@ -119,5 +115,46 @@ public class EventController {
 		model.addAttribute("pageNum", pageNum);
 		
 		return "eventUpdateForm";
+	}
+	
+	@RequestMapping("eventUpdate")
+	public String eventUpdate(String pageNum, Event event, String estartingdateString, String eclosingdateString
+			, @RequestParam("newEpicture") MultipartFile mf, Model model, HttpSession session) throws IllegalStateException, IOException {
+		
+		String fileName = "";
+		 
+		if(mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
+			fileName = "event_" + mf.getOriginalFilename();
+			
+			/*webapp밑에 images에 저장*/
+			String path = session.getServletContext().getRealPath("/images");
+			FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
+			fos.write(mf.getBytes());
+			fos.close();
+			
+			event.setEpicture(fileName);
+		}
+		
+		/*String을 sql.Date로 타입변경*/
+		event.setEstartingdate(Date.valueOf(estartingdateString));
+		event.setEclosingdate(Date.valueOf(eclosingdateString));
+		
+		int result = es.updateEvent(event);
+		
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("eid", event.getEid());
+		model.addAttribute("result", result);
+		
+		return "eventUpdate";
+	}
+	
+	@RequestMapping("eventDelete")
+	public String eventDelete(int eid, String pageNum, Model model) {
+		int result = es.deleteEvent(eid);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "eventDelete";
 	}
 }

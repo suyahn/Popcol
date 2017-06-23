@@ -366,6 +366,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/event/eventUpdateForm.jsp" />
     </definition>
     
+    <definition name="eventUpdate" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventUpdate.jsp" />
+    </definition>
+    
+    <definition name="eventDelete" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventDelete.jsp" />
+    </definition>
+    
     
     
     

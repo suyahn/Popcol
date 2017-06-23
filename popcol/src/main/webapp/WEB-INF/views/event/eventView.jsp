@@ -29,10 +29,10 @@
 			<tr>
 				<td colspan="2" align="center">
 					<c:if test="${ empty event.epicture }">
-						<img alt="event_default" src="images/event_default.jpg">
+						<img alt="event_default" src="images/event_default.jpg" width="50%">
 					</c:if>
 					<c:if test="${ not empty event.epicture }">
-						<img alt="${ event.epicture }" src="images/${ event.epicture }">
+						<img alt="${ event.epicture }" src="images/${ event.epicture }" width="70%">
 					</c:if>
 				</td>
 			</tr>

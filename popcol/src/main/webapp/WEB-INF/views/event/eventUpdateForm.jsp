@@ -21,6 +21,7 @@
 		<form action="eventUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return updateChk()">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			<input type="hidden" name="eid" value="${ event.eid }">
+			<input type="hidden" name="epicture" value="${ event.epicture }">
 			
 			<table class="table"  style="width: 60%">
 				<tr>
@@ -36,9 +37,9 @@
 					</td>
 				</tr>
 				<tr>
-					<th>사진 <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="color: #cd1726"></span></th>
-					<td id="fileName">
-						<input type="file" name="epicture">
+					<th>사진 <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="color: #cd1726" title="사진 변경을 원하지 않으시면 파일 업로드 하지 마세요."></span></th>
+					<td>
+						<input type="file" name="newEpicture">
 					</td>
 				</tr>
 				<tr>
