@@ -45,6 +45,12 @@ public class BookingDaoImpl implements BookingDao{
 	public List<Price> timezonePricestList(String timezone) {
 		return sst.selectList("pricens.timezonePriceList", timezone);
 	}
+	public String getMaxticketnumber() {
+		return sst.selectOne("bookingns.getMaxticketnumber");
+	}
+	public int insert(Booking booking) {
+		return sst.insert("bookingns.insert",booking);
+	}
 	
 	/* 도은 */
 	/* 마이페이지 */
@@ -56,4 +62,5 @@ public class BookingDaoImpl implements BookingDao{
 		
 		return sst.delete("bookingns.deleteBooking", ticketnumber);
 	}
+
 }

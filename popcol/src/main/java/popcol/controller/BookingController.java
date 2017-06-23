@@ -17,6 +17,7 @@ import popcol.model.RunningtimeTable;
 import popcol.service.BookingService;
 import popcol.service.CustomerService;
 import popcol.service.MovieService;
+import popcol.service.PriceService;
 
 @Controller
 public class BookingController {
@@ -26,6 +27,8 @@ public class BookingController {
 	private MovieService ms;
 	@Autowired
 	private CustomerService cs;
+	@Autowired
+	private PriceService prices;
 
 	@RequestMapping("reservation")
 	public String reserve(Model model) {
@@ -100,6 +103,113 @@ public class BookingController {
 		model.addAttribute("price",price);
 		model.addAttribute("point",customer.getCpoint());
 		return "bookingPay";
+	}
+	@RequestMapping("bookingComplete")
+	public String bookingComplete(Model model, int rtid, int price, String seat, int adult, int youth, int special, HttpSession session,
+	int point){
+		RunningtimeTable rt =bs.selectRt(rtid);
+		String id = (String)session.getAttribute("id");
+		List<Price> p =  prices.select(rt.getTimezone());
+		int pid=0; 
+		String[] sit = seat.split(" ");
+		int cnt = 0;
+		String ticketnumberMax=bs.getMaxticketnumber();
+		int ticketnum = Integer.parseInt(ticketnumberMax)+1;
+		String ticketnumber = ""; 
+		int result=0;
+		
+		//어른 
+		for(int i=0; i<adult; i++){
+			Booking booking = new Booking();
+			booking.setRtid(rtid);
+			booking.setCid(id);
+			booking.setLid(rt.getLid());
+			booking.setTid(rt.getTid());
+			booking.setMid(rt.getMid());
+			
+			for(Price cost: p){
+				if(cost.getHuman().equals("adult")){
+					pid= cost.getPid();
+				}
+			}
+			booking.setPid(pid);
+			booking.setBseat(sit[cnt]);
+			cnt++;
+			
+			if(ticketnum < 10){
+				ticketnumber = String.format("%04d", ticketnum); 
+			}else if(ticketnum < 100){
+				ticketnumber = String.format("%03d", ticketnum); 
+			}else if(ticketnum < 1000){
+				ticketnumber = String.format("%02d", ticketnum); 
+			}else{
+				ticketnumber = String.format("%01d", ticketnum); 
+			}
+			
+			booking.setTicketnumber(ticketnumber);
+			result = bs.insert(booking);
+		}
+		//젊은이
+		for(int i=0; i<youth; i++){
+			Booking booking = new Booking();
+			booking.setRtid(rtid);
+			booking.setCid(id);
+			booking.setLid(rt.getLid());
+			booking.setTid(rt.getTid());
+			booking.setMid(rt.getMid());
+			for(Price cost: p){
+				if(cost.getHuman().equals("youth")){
+					pid= cost.getPid();
+				}
+			}
+			booking.setPid(pid);
+			booking.setBseat(sit[cnt]);
+			cnt++;
+			if(ticketnum < 10){
+				ticketnumber = String.format("%04d", ticketnum); 
+			}else if(ticketnum < 100){
+				ticketnumber = String.format("%03d", ticketnum); 
+			}else if(ticketnum < 1000){
+				ticketnumber = String.format("%02d", ticketnum); 
+			}else{
+				ticketnumber = String.format("%01d", ticketnum); 
+			}
+			
+			booking.setTicketnumber(ticketnumber);
+			result = bs.insert(booking);
+		}
+		//우대
+		for(int i=0; i<special; i++){
+			Booking booking = new Booking();
+			booking.setRtid(rtid);
+			booking.setCid(id);
+			booking.setLid(rt.getLid());
+			booking.setTid(rt.getTid());
+			booking.setMid(rt.getMid());
+			for(Price cost: p){
+				if(cost.getHuman().equals("special")){
+					pid= cost.getPid();
+				}
+			}
+			booking.setPid(pid);
+			booking.setBseat(sit[cnt]);
+			cnt++;
+			if(ticketnum < 10){
+				ticketnumber = String.format("%04d", ticketnum); 
+			}else if(ticketnum < 100){
+				ticketnumber = String.format("%03d", ticketnum); 
+			}else if(ticketnum < 1000){
+				ticketnumber = String.format("%02d", ticketnum); 
+			}else{
+				ticketnumber = String.format("%01d", ticketnum); 
+			}
+			
+			booking.setTicketnumber(ticketnumber);
+			result = bs.insert(booking);
+		}
+		//point 추가하고 빼주기
+		//point 기록
+		return "bookingComplete";
 	}
 }
 
