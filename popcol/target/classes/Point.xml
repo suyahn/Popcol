@@ -39,7 +39,7 @@
 	</insert>
 	
 	<insert id="usePointForReserv" parameterType="point">
-		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '매표', -#{ppoint}, sysdate)
+		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '사용', #{ppoint}, sysdate)
 	</insert>
 	
 	<delete id="deletePointContent" parameterType="hashmap" >
