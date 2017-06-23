@@ -37,7 +37,15 @@ public class EventServiceImpl implements EventService {
 	public int getMaxNum() {
 		return ed.getMaxNum();
 	}
+	@Override
+	public int updateEvent(Event event) {
+		return ed.updateEvent(event);
+	}
 
+	@Override
+	public int deleteEvent(int eid) {
+		return ed.deleteEvent(eid);
+	}
 	
 	/* 도은 */
 	/* 메인 */

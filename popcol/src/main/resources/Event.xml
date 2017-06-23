@@ -66,6 +66,15 @@
 		insert into event values (#{eid}, #{esubject}, #{econtent}, #{epicture}, #{eclosingdate}, #{estartingdate}, 'n')
 	</insert>
 	
+	<update id="updateEvent" parameterType="event">
+		update event set esubject = #{esubject}, econtent = #{econtent}, epicture = #{epicture}, eclosingdate = #{eclosingdate},
+		estartingdate = #{estartingdate} where eid = #{eid} 
+	</update>
+	
+	<update id="deleteEvent" parameterType="int">
+		update event set edel = 'y' where eid = #{eid}
+	</update>
+	
 	<!-- 도은 -->
 	<!--  메인 -->
 	<select id="selectEventListForHome" resultMap="eventResult">

@@ -7,8 +7,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <style type="text/css">
-	 .red-active { color: black; text-decoration: none;}
- 	.red-active:hover { color: #CD1726; text-decoration: underline; font-weight: bold;}
+.red-active {
+	color: black;
+	text-decoration: none;
+}
+
+.red-active:hover {
+	color: #CD1726;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.pagination>li>a {
+	color: #cd1726 !important;
+}
+
+.pagination>li>a:hover {
+	color: #fcba2e !important;
+}
+
+.pagination>li.active>a {
+	background: #cd1726;
+	border-color: #cd1726;
+	color: white !important;
+}
+
+.pagination>li.active>a:hover {
+	background: #fcba2e;
+	border-color: #fcba2e;
+	color: white !important;
+}
 </style>
 </head>
 <body>
@@ -35,7 +63,7 @@
 			<c:forEach var="event" items="${ eventList }">
 				<div class="media" style="border: 0.5px solid lightgray; border-radius: 10px; width: 70%; margin-left: 100px;">
 					<div class="media-left" style="width: 200px; height: 150px; vertical-align: middle;">
-						<a href="eventView.do?eid=${ event.eid }">
+						<a href="eventView.do?eid=${ event.eid }&pageNum=${ pageNum }">
 							<c:if test="${ empty event.epicture }">
 								<img class="media-object" src="images/event_default.jpg" alt="${ event.epicture }" width="200">
 							</c:if>
