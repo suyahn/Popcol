@@ -17,6 +17,10 @@ public interface BookingDao {
 	RunningtimeTable selectRt(int rtid);
 	List<Booking> seatrtList(int rtid);
 	List<Price> timezonePricestList(String timezone);
+	String getMaxticketnumber();
+	int insert(Booking booking);
+	
+
 	
 	/* 도은 */
 	/* 마이페이지 */

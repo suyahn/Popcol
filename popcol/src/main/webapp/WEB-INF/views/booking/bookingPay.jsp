@@ -16,16 +16,20 @@ display: none;
 </style>
 <script type="text/javascript">
 	$(function() {
-		$('#usingpoint').blur(function() {//blur는 빈칸에 값이 입력되었을 때 입력된 값을 이용하도록 해줌
-			var point = $(this).val();//this에 입력된 값을 var point에 넣어줌
+ 		$('#usingpoint').blur(function() {//blur는 빈칸에 값이 입력되었을 때 입력된 값을 이용하도록 해줌
+ 			var usePoint =parseInt( $(this).val());//this에 입력된 값을 var point에 넣어줌
 			var price = $('#price').val();
-			var dd = price - point;
-			if (point > price) {
+			var dd =parseInt(price) - parseInt(usePoint);
+			var point =parseInt($('#totalPoint').text()); 
+			if (usePoint > point){
+				alert("사용하시려는 포인트가 보유한 포인트를 초과하였습니다.");
+	 			$(this).val(point);
+			}if(usePoint > price) {
 				alert("포인트가 예매 금액을 초과하였습니다.");
-				$(this).val(price);//포인트 입력창에 price값이 입력되게끔 해줌
-				dd = 0;
+ 				$(this).val(price);//포인트 입력창에 price값이 입력되게끔 해줌
+				dd = 0; 
 			}
-			$('#resultPrice').html(
+		$('#resultPrice').html(
 					'<font style="font-weight:normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 							+ dd + '원</font>');
 		});
@@ -40,7 +44,7 @@ display: none;
 <body>
 	<div class="container" align="center">
 		<h2 style="color: #cd1726;" align="center">결제 선택</h2>
-		<form action="main.do" method="post">
+		<form action="bookingComplete.do" method="post">
 			<input type="hidden" value="${rt.rtid}" name="rtid"> <input
 				type="hidden" value="${price}" name="price" id="price"> <input
 				type="hidden" value="${seat}" name="seat"> <input
@@ -66,9 +70,9 @@ display: none;
 								<tr>
 									<th style="text-align: center; vertical-align: center;">●팝콜 포인트</th>
 									<th style="text-align: center; vertical-align: center; font-weight: normal;">
-									현재 보유 포인트: ${point} point</th>
+									현재 보유 포인트: <div id="totalPoint">${point}</div> point</th>
 									<th style="text-align: center; vertical-align: center; font-weight: normal;">
-									사용할 포인트: <input type="number" value="point" style="width: 30%;" id="usingpoint">
+									사용할 포인트: <input type="number" value="point" style="width: 30%;" id="usingpoint" name="point">
 									</th>
 								</tr>
 								<tr></tr>
@@ -167,7 +171,7 @@ display: none;
 						</div>
 						<input type="submit" value="결제 하기"  class="btn btn-info btn-sm" style="border-color:
 						#cd1726; background-color: #cd1726; text-align: center; vertical-align: middle; margin-bottom: 25px;" 
-						="">
+						>
 					</div>
 				</div>
 			</div>

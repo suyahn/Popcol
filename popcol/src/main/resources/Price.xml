@@ -11,7 +11,7 @@
 	<select id="priceList" resultMap="priceResult">
 		select * from price
 	</select>
-	<select id="timezonePriceList" parameterType="int" resultMap="priceResult">
+	<select id="timezonePriceList" parameterType="string" resultMap="priceResult">
 		select * from price where timezone=#{timezone}
 	</select>
 </mapper>

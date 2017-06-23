@@ -41,6 +41,14 @@ public class BookingServiceImpl implements BookingService {
 	public List<Price> timezonePricestList(String timezone) {
 		return bd.timezonePricestList(timezone);
 	}
+	public String getMaxticketnumber() {
+		return bd.getMaxticketnumber();
+	}
+	public int insert(Booking booking) {
+		return bd.insert(booking);
+	}
+
+
 
 	/* 도은 */
 	/* 마이페이지 */
@@ -49,4 +57,5 @@ public class BookingServiceImpl implements BookingService {
 		return bd.deleteBooking(ticketnumber, cid);
 	}
 
+	
 }
