@@ -109,7 +109,7 @@
 		specialPrice = specialList[0];
 
 		totalPrice = adultPrice * adult + youthPrice * youth + specialPrice* special;
-		$('#totalPrice').html(totalPrice + '원');
+		$('#totalPrice').html(totalPrice);
 	}
 	function btnClick() {
 		var adult = $("#adult option:selected").text();
@@ -209,7 +209,7 @@
 					<td style="width: 70px; font-weight: bold;">상영시간</td>
 					<td style="width: 70px;">${movie.mrunningTime}분</td>
 					<td style="width: 70px; font-weight: bold;">가격</td>
-					<td style="width: 100px;" id="totalPrice"></td>
+					<td style="width: 100px;"><div id="totalPrice" style="display: inline;"></div>원</td>
 				</tr>
 				<tr>
 					<td align="right" colspan="6">
