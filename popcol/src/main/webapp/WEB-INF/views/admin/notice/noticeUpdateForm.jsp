@@ -18,7 +18,7 @@
 	<div class="container" align="center">
 		<h1>공지사항 수정</h1>
 		
-		<form action="noticeUpdate.do" method="post" onsubmit="return updateChk()">
+		<form action="adminNoticeUpdate.do" method="post" onsubmit="return updateChk()">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			<input type="hidden" name="nid" value="${ notice.nid }">
 			
@@ -38,7 +38,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
-						<button type="button" class="btn btn-default" onclick="location.href='noticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }'">이전</button>
+						<button type="button" class="btn btn-default" onclick="location.href='adminNoticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }'">이전</button>
 					</td>
 				</tr>
 			</table>
