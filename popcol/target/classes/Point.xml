@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pointns">
+	<resultMap id="pointResult" type="point">
+		<result property="pid" column="pid" />
+		<result property="cid" column="cid" />
+		<result property="bid" column="bid" />
+		<result property="lid" column="lid" />
+		<result property="psort" column="psort" />
+		<result property="ppoint" column="ppoint" />
+		<result property="pdate" column="pdate" />
+		<result property="lname" column="lname" />
+	</resultMap>
+	
+	<!-- 도은 -->
+	<select id="selectPointList" parameterType="string" resultMap="pointResult">
+		select * from point where cid = #{cid}
+	</select>
+	
+	<select id="mypage_getTotal" parameterType="string" resultType="int">
+		select count(*) from point where cid = #{cid}
+	</select>
+	
+	<select id="mypage_list" parameterType="point" resultMap="pointResult">
+		select * from (select a.*, rownum rn from (select p.* from point p where cid = #{cid} order by pdate desc) a) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="mypage_listMain" parameterType="string" resultMap="pointResult">
+		select * from (select p.* from point p where cid = #{cid} order by pdate desc) where rownum between 1 and 3
+	</select>
+	
+	<insert id="giveJoinPoint" parameterType="point">
+		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, null, null, '이벤트(가입)', 2000, sysdate)
+	</insert>
+	
+	<insert id="giveBirthdayPoint" parameterType="point">
+		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, null, null, '이벤트(생일)', 10000, sysdate)
+	</insert>
+	
+	<insert id="giveReservPoint" parameterType="point">
+		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '매표', #{ppoint}, sysdate)
+	</insert>
+	
+	<insert id="usePointForReserv" parameterType="point">
+		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '사용', #{ppoint}, sysdate)
+	</insert>
+	
+	<delete id="deletePointContent" parameterType="hashmap" >
+		delete from point where cid = #{cid} and bid = (select bid from booking where ticketnumber = #{ticketnumber})
+	</delete>
+</mapper>

@@ -3,46 +3,15 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ include file="../../header.jsp" %>
 <%@ include file="verticaltab.jsp" %>
+<%@ include file="mypage.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.nav>li.active>a {
-	background-color: #cd1726 !important;
-	color: white !important;
-}
-
-a {
-	color: #cd1726 !important;
-}
-
-.nav>li>a:hover {
-	background-color: #fdeaeb !important;
-	color : #fcba2e !important;
-}
-
-hr {
-    color: #dfdfdf;    /* IE */
-    border-color: #dfdfdf;  /* 사파리 */
-    background-color: #dfdfdf;   /* 크롬, 모질라 등, 기타 브라우저 */
-}
-</style>
 <script type="text/javascript">
 	$(function() {
-		// 생일축하 포인트 받기
-		$('#receivePoint').click(function() {
-
-			$.post('receivePoint.do', function(result) {
-				if (result > 0) {
-					alert("생일축하 10000 포인트 지급 완료~ 즐거운 하루되세요.");
-
-				} else if (result <= 0) {
-					alert("다시 시도해주세요.");
-				}
-			});
-		});
+		$('#pointPage').load("pointPage.do");
 
 		// 영화 예매 취소하기
 		$('.cancel').click(function() {
@@ -62,33 +31,10 @@ hr {
 </script>
 </head>
 <body>
-	<div style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; margin: auto; background-image: URL(${path}/images/ticket.png); ">
-		<div style="width: 100%; height: 303px;">
-			<br>
-			<br>
-			<br>
-			<h2 class="" style="margin: 10px;">
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-				${customer.cname }님
-				<font size="2px">(${customer.cid })</font>
-			</h2>
-			<br>
-			<h4 class="" style="margin: 10px;">
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-				고객님께서 현재 보유하신 포인트는 ${customer.cpoint }점입니다.
-			</h4>
-			
-			<c:if test="${checkPoint == 'n' }">
-				<br>
-				<h4>
-					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-					생일축하 포인트가 지급되었습니다. 옆의 버튼을 눌러주세요.
-					<button id="receivePoint" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">생일축하 포인트 받기</button>
-				</h4>
-			</c:if>
-		</div>
+	<div id="pointPage" style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; 
+											margin: auto; background-image: URL(${path}/images/ticket.png); ">
 	</div>
-
+	
 	 <div class="container-fluid " align="center" style="width: 80%; margin-bottom: 50px !important; margin: auto;">
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
@@ -98,6 +44,7 @@ hr {
 					<h6 align="left" style="color: #cd1726;">지난 한달 간의 예매 내역입니다.</h6>
 					
 					<table class="table ">
+						<c:if test="${not empty myBookingList }">
 						<c:forEach var="booking" items="${myBookingList }">
 							<tr>
 								<td colspan="3"><font style="font-weight: bold;">예매번호&nbsp;&nbsp;${booking.ticketnumber }</font></td>
@@ -128,10 +75,12 @@ hr {
 							</c:forEach>
 						
 							<tr>
-								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlposter}.jpg" width="120px"></td>
+								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlPoster}.jpg" width="120px"></td>
 							
 								<td>
-									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br>
+									<font style="font-weight: bold;">
+										<a href="movieDetail.do?mid=${booking.mid }" style="color: black !important;">${booking.mtitle }(${booking.moriginaltitle })</a>
+									</font><br><br><br>
 									<font size="2px">
 									관람극장&nbsp;&nbsp;Popcorn&amp;Cola&nbsp;${booking.lname }&nbsp;&nbsp;
 											<a href="#" style="color: black !important;">[극장정보]</a><br>
@@ -174,6 +123,13 @@ hr {
 								</td>
 							</tr>
 						</c:forEach>
+						</c:if>
+						
+						<c:if test="${empty myBookingList }">
+							<tr>
+								<td colspan="3"><h4 style="color: #cd1726">예매내역이 없습니다.</h4></td>
+							</tr>
+						</c:if>
 					</table>
 				</div>
 			</div>
@@ -187,7 +143,7 @@ hr {
 						<li class="active" id=""><a href="mypage_reservation.do" class="" id="">나의 예매내역</a></li>
 						<li class="" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
 						<li class="" id=""><a href="mypage_myPoint.do" class="" id="">나의 포인트 내역</a></li>
-						<li class="" id=""><a href="mypage_Modifyintro.do" class="" id="">회원 정보 수정</a></li>
+						<li class="" id=""><a href="mypage_myInfoModifyintro.do" class="" id="">회원 정보 수정</a></li>
 						<li class="" id=""><a href="mypage_byePopcolForm.do" class="" id="">회원 탈퇴</a></li>
 						<li class="" id=""><a href="mypage_myQna.do" class="" id="">나의 문의 내역</a></li>
 					</ul>

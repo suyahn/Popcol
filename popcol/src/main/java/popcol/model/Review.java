@@ -10,6 +10,10 @@ public class Review {
 	private String rvaluation;
 	private Date rdate;
 	private String rdel;
+	
+	/*페이징처리*/
+	private int startRow;
+	private int endRow;
 
 	public int getRid() {
 		return rid;
@@ -65,5 +69,19 @@ public class Review {
 
 	public void setRdel(String rdel) {
 		this.rdel = rdel;
+	}
+	
+	/*페이징처리*/
+	public int getStartRow() {
+		return startRow;
+	}
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
+	public int getEndRow() {
+		return endRow;
+	}
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
 	}
 }

@@ -5,9 +5,13 @@
 	<resultMap id="priceResult" type="price">
 		<result property="pid" column="pid" />
 		<result property="timezone" column="timezone" />
-		<result property="price" column="econtent" />
 		<result property="price" column="price" />
 		<result property="human" column="human" />
 	</resultMap>
-	
+	<select id="priceList" resultMap="priceResult">
+		select * from price
+	</select>
+	<select id="timezonePriceList" parameterType="string" resultMap="priceResult">
+		select * from price where timezone=#{timezone}
+	</select>
 </mapper>

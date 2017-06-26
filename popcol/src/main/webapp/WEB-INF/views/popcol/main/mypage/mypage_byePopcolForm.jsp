@@ -3,46 +3,15 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ include file="../../header.jsp" %>
 <%@ include file="verticaltab.jsp" %>
+<%@ include file="mypage.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.nav>li.active>a {
-	background-color: #cd1726 !important;
-	color: white !important;
-}
-
-a {
-	color: #cd1726 !important;
-}
-
-.nav>li>a:hover {
-	background-color: #fdeaeb !important;
-	color : #fcba2e !important;
-}
-
-hr {
-    color: #dfdfdf;    /* IE */
-    border-color: #dfdfdf;  /* 사파리 */
-    background-color: #dfdfdf;   /* 크롬, 모질라 등, 기타 브라우저 */
-}
-</style>
 <script type="text/javascript">
 	$(function() {
-		// 생일축하 포인트 받기
-		$('#receivePoint').click(function() {
-			
-			$.post('receivePoint.do', function(result) {
-				if(result == 1) {
-					alert("생일축하 10000 포인트 지급 완료~ 즐거운 하루되세요.");
-					
-				} else if(result == 0) {
-					alert("다시 시도해주세요.");
-				}
-			}); 
-		});
+		$('#pointPage').load("pointPage.do");
 	});
 	
 	function ChkPassword() {
@@ -55,43 +24,20 @@ hr {
 </script>
 </head>
 <body>
-	<div style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; margin: auto; background-image: URL(${path}/images/ticket.png); ">
-		<div style="width: 100%; height: 303px;">
-			<br>
-			<br>
-			<br>
-			<h2 class="" style="margin: 10px;">
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-				${customer.cname }님
-				<font size="2px">(${customer.cid })</font>
-			</h2>
-			<br>
-			<h4 class="" style="margin: 10px;">
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-				고객님께서 현재 보유하신 포인트는 ${customer.cpoint }점입니다.
-			</h4>
-			
-			<c:if test="${checkPoint == 'n' }">
-				<br>
-				<h4>
-					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-					생일축하 포인트가 지급되었습니다. 옆의 버튼을 눌러주세요.
-					<button id="receivePoint" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">생일축하 포인트 받기</button>
-				</h4>
-			</c:if>
-		</div>
+	<div id="pointPage" style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; 
+											margin: auto; background-image: URL(${path}/images/ticket.png); ">
 	</div>
 
 	 <div class="container-fluid " align="center" style="width: 80%; margin-bottom: 50px !important; margin: auto;">
 			
 			<div class="col-sm-9 col-sm-push-3 contentAreaStyle">
-			<div class="container" align="center" style="width: 600px;">
-				<h2 class="text-primary" align="left">회원 탈퇴</h2>
+			<div class="container" align="center" style="width: 800px;">
+				<h2 class="text-primary" align="left" style="color: #cd1726;">회원 탈퇴</h2>
 				
 				<hr>
 				
-				<h4 class="text-primary">비밀번호 확인</h4>
-				<h6 class="text-primary">회원님의 개인정보 보호를 위한 절차이오니, Popcorn&amp;Cola 로그인 시 사용하는 비밀번호를 입력해 주세요. </h6>
+				<h4 class="text-primary" style="color: #cd1726;">비밀번호 확인</h4>
+				<h6 class="text-primary" style="color: #cd1726;">회원님의 개인정보 보호를 위한 절차이오니, Popcorn&amp;Cola 로그인 시 사용하는 비밀번호를 입력해 주세요. </h6>
 				
 				<br>
 				<br>
@@ -145,7 +91,7 @@ hr {
 						<li class="" id=""><a href="mypage_reservation.do" class="" id="">나의 예매내역</a></li>
 						<li class="" id=""><a href="mypage_seeMovie.do" class="" id="">내가 본 영화</a></li>
 						<li class="" id=""><a href="mypage_myPoint.do" class="" id="">나의 포인트 내역</a></li>
-						<li class="" id=""><a href="mypage_Modifyintro.do" class="" id="">회원 정보 수정</a></li>
+						<li class="" id=""><a href="mypage_myInfoModifyintro.do" class="" id="">회원 정보 수정</a></li>
 						<li class="active" id=""><a href="mypage_byePopcolForm.do" class="" id="">회원 탈퇴</a></li>
 						<li class="" id=""><a href="mypage_myQna.do" class="" id="">나의 문의 내역</a></li>
 					</ul>

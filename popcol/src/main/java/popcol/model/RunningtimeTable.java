@@ -4,11 +4,11 @@ import java.sql.Date;
 
 public class RunningtimeTable {
 	private int rtid;
-	private int pid;
 	private int lid;
 	private int tid;
 	private int mid;
 	private Date rtdate;
+	private String timezone;
 	private String rttime;
 	private String mtitle;
 	private String lname;
@@ -44,12 +44,6 @@ public class RunningtimeTable {
 	public void setRtid(int rtid) {
 		this.rtid = rtid;
 	}
-	public int getPid() {
-		return pid;
-	}
-	public void setPid(int pid) {
-		this.pid = pid;
-	}
 	public int getLid() {
 		return lid;
 	}
@@ -73,5 +67,11 @@ public class RunningtimeTable {
 	}
 	public void setRtdate(Date rtdate) {
 		this.rtdate = rtdate;
+	}
+	public String getTimezone() {
+		return timezone;
+	}
+	public void setTimezone(String timezone) {
+		this.timezone = timezone;
 	}
 }

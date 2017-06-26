@@ -55,4 +55,35 @@
 	<update id="deleteReply" parameterType="int">
 		update qna set qreplycontent = null where qid = #{qid}
 	</update>
+	
+	<!-- 도은 -->
+	<!-- mypage와 qna -->
+	<select id="mypage_getTotal" parameterType="string" resultType="int">
+		select count(*) from qna where cid = #{cid} and qdel = 'n'
+	</select>
+	
+	<select id="mypage_list" parameterType="qna" resultMap="qnaResult">
+		select * from (
+			select a.*, rownum rn from (
+				select q.*, c.cname from qna q, customer c
+				where qdel = 'n' and q.cid = c.cid and q.cid = #{cid}
+				order by qdate desc) a ) 
+		where rn between #{startRow} and #{endRow} 
+	</select>
+	
+	<select id="mypage_qnaShow" parameterType="int" resultType="qna">
+		select * from qna where qid = #{qid}
+	</select>
+	
+	<select id="mypage_listMain" parameterType="string" resultMap="qnaResult">
+		select * from (
+				select q.*, c.cname from qna q, customer c
+				where qdel = 'n' and q.cid = c.cid and q.cid = #{cid}
+				order by qdate desc) 
+		where rownum between 1 and 3
+	</select>
+	
+	<update id="mypage_qnaDelete" parameterType="int">
+		update qna set qdel = 'y' where qid = #{qid}
+	</update>
 </mapper>

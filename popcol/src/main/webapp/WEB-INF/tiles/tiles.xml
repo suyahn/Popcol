@@ -4,11 +4,16 @@
 <tiles-definitions>
 	<definition name="mainLayout" template="/WEB-INF/views/popcol/main/layout.jsp">
 		<put-attribute name="title" value="Popcorn&amp;Cola" />
-		<put-attribute name="header"
-			value="/WEB-INF/views/popcol/main/header.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/popcol/main/header.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer"
-			value="/WEB-INF/views/popcol/main/footer.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/popcol/main/footer.jsp" />
+	</definition>
+	
+	<definition name="reviewLayout" template="/WEB-INF/views/popcol/main/layout_review.jsp">
+		<put-attribute name="title" value="Popcorn&amp;Cola" />
+		<put-attribute name="header" value="/WEB-INF/views/popcol/main/header_review.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/popcol/main/footer_review.jsp" />
 	</definition>
 
 
@@ -17,68 +22,55 @@
 	<!-- 메인 -->
 
 	<definition name="home" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/home.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/home.jsp" />
 	</definition>
 
 	<definition name="loginForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/loginForm.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/loginForm.jsp" />
 	</definition>
 
 	<definition name="login" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/login.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/login.jsp" />
 	</definition>
 
 	<definition name="joinmain" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/joinmain.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/joinmain.jsp" />
 	</definition>
 
 	<definition name="joinCheckForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/joinCheckForm.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/joinCheckForm.jsp" />
 	</definition>
 
 	<definition name="joinCheck" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/joinCheck.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/joinCheck.jsp" />
 	</definition>
 
 	<definition name="joinForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/joinForm.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/joinForm.jsp" />
 	</definition>
 
 	<definition name="join" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/join.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/join.jsp" />
 	</definition>
 
 	<definition name="findForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/findForm.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findForm.jsp" />
 	</definition>
 
 	<definition name="findId" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/findId.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findId.jsp" />
 	</definition>
 
 	<definition name="findPasswordForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/findPasswordForm.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findPasswordForm.jsp" />
 	</definition>
 
 	<definition name="findPassword" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/findPassword.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findPassword.jsp" />
 	</definition>
 
 	<definition name="findPassword_changePassword" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/findPassword_changePassword.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/findPassword_changePassword.jsp" />
 	</definition>
 
 
@@ -87,8 +79,7 @@
 	</definition>
 
 	<definition name="idDupCheck" extends="empty">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/member/idDupCheck.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/member/idDupCheck.jsp" />
 	</definition>
 
 	<!-- 마이페이지 -->
@@ -103,27 +94,23 @@
 
 
 	<definition name="mypage_Main" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_Main.jsp" />
 	</definition>
 
 	<definition name="receivePoint" extends="empty">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/mypage/receivePoint.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/receivePoint.jsp" />
 	</definition>
 
 
 
 	<!-- 예매 내역 확인 -->
 	<definition name="mypage_reservation" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/mypage/mypage_reservation.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reservation.jsp" />
 	</definition>
 
 	<!-- 예매 내역 취소 -->
 	<definition name="cancelBooking" extends="empty">
-		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/mypage/cancelBooking.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/cancelBooking.jsp" />
 	</definition>
 
 	<!-- 내가 본 영화 -->
@@ -131,16 +118,50 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/mypage/mypage_seeMovie.jsp" />
 	</definition>
+	
+	
+	<!-- 리뷰 -->
 	<definition name="mypage_Review" extends="empty">
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/mypage/mypage_Review.jsp" />
 	</definition>
-
+	
+	<definition name="mypage_reviewShow" extends="reviewLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewShow.jsp" />
+	</definition>
+	
+	<definition name="mypage_reviewWriteForm" extends="reviewLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewWriteForm.jsp" />
+	</definition>
+	
+	<definition name="mypage_reviewWrite" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewWrite.jsp" />
+	</definition>
+	
+	<definition name="mypage_reviewModifyForm" extends="reviewLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewModifyForm.jsp" />
+	</definition>
+	
+	<definition name="mypage_reviewMoify" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewMoify.jsp" />
+	</definition>
+	
+	<definition name="mypage_reviewDelete" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_reviewDelete.jsp" />
+	</definition>
+	
+	
+	<!-- 포인트 조회 -->
+	<definition name="mypage_myPoint" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/mypage_myPoint.jsp" />
+	</definition>
+	
+	
 	<!-- 회원 정보 수정 -->
 
-	<definition name="mypage_Modifyintro" extends="mainLayout">
+	<definition name="mypage_myInfoModifyintro" extends="mainLayout">
 		<put-attribute name="body"
-			value="/WEB-INF/views/popcol/main/mypage/mypage_Modifyintro.jsp" />
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myInfoModifyintro.jsp" />
 	</definition>
 
 	<definition name="mypage_myInfoModifyForm" extends="mainLayout">
@@ -164,6 +185,29 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/popcol/main/mypage/mypage_byePopcol.jsp" />
 	</definition>
+	
+	<!-- 1:1문의 보기 -->
+
+	<definition name="mypage_myQna" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myQna.jsp" />
+	</definition>
+	
+	<definition name="mypage_myQnaShow" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myQnaShow.jsp" />
+	</definition>
+	
+	<definition name="mypage_myQnaDelete" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/popcol/main/mypage/mypage_myQnaDelete.jsp" />
+	</definition>
+	
+	
+	<definition name="pointPage" extends="empty">
+		<put-attribute name="body" value="/WEB-INF/views/popcol/main/mypage/pointPage.jsp" />
+	</definition>
+	
 
 
 
@@ -180,6 +224,23 @@
 	<definition name="movieDetail" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/movie/movieDetail.jsp" />
+	</definition>
+	
+	<definition name="movieDetailReviewList" extends="empty">
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/movieDetailReviewList.jsp" />
+	</definition>
+	
+	<!-- 현재 상영작 -->
+	<definition name="nowMovies" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/nowMovies.jsp" />
+	</definition>
+	
+	<!-- 개봉 예정작 -->
+	<definition name="preMovies" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/movie/preMovies.jsp" />
 	</definition>
 
 	<!-- 공지사항 -->
@@ -282,13 +343,43 @@
 
 	<definition name="qnaReply" extends="empty">
 		<put-attribute name="body" value="/WEB-INF/views/qna/qnaReply.jsp" />
-	</definition>
-
-
-
-
-	<!-- 혜진 -->
-	<definition name="reserve" extends="mainLayout">
+    </definition>
+    
+    <!-- 이벤트 -->
+    <definition name="eventList" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventList.jsp" />
+    </definition>
+    
+    <definition name="eventView" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventView.jsp" />
+    </definition>
+    
+    <definition name="eventInsertForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventInsertForm.jsp" />
+    </definition>
+    
+    <definition name="eventInsert" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventInsert.jsp" />
+    </definition>
+    
+    <definition name="eventUpdateForm" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventUpdateForm.jsp" />
+    </definition>
+    
+    <definition name="eventUpdate" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventUpdate.jsp" />
+    </definition>
+    
+    <definition name="eventDelete" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/views/event/eventDelete.jsp" />
+    </definition>
+    
+    
+    
+    
+    
+    <!-- 혜진 -->
+    <definition name="reserve" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/booking/reserve.jsp" />
 	</definition>
 	<definition name="movielocation" extends="empty">
@@ -306,6 +397,18 @@
 	<definition name="seatSelect" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/seatSelect.jsp" />
+	</definition>
+	<definition name="bookingChk" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/booking/bookingChk.jsp" />
+	</definition>
+	<definition name="bookingPay" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/booking/bookingPay.jsp" />
+	</definition>
+	<definition name="bookingComplete" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/booking/bookingComplete.jsp" />
 	</definition>
 
 	<!-- 규랑 -->

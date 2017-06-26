@@ -14,8 +14,8 @@
 				
 				<hr>
 				
-				<h4 class="text-primary">회원 탈퇴 완료</h4>
-				<h6 class="text-primary">그동안 저희 Popcorn&amp;Cola를 이용해주셔서 감사합니다.</h6>
+				<h4 class="text-primary" style="color: #cd1726;">회원 탈퇴 완료</h4>
+				<h6 class="text-primary" style="color: #cd1726;">그동안 저희 Popcorn&amp;Cola를 이용해주셔서 감사합니다.</h6>
 				
 				<br>
 				<br>

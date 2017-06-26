@@ -76,6 +76,7 @@
 		<div align="center" style="width: 70%;">
 			<c:if test="${ id != 'master' }">
 				<h4 style="font-weight: bold;" align="left">답변이 아직 작성되지 않았습니다.</h4>
+				<br>
 			</c:if>
 			<c:if test="${ id == 'master' }">
 				<h4 style="font-weight: bold;" align="left">답변</h4>

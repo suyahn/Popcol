@@ -16,6 +16,8 @@
 		<result property="mgrade" column="mgrade" />
 		<result property="mnation" column="mnation" />
 		<result property="mdel" column="mdel" />
+		<result property="goodCount" column="goodCount" />
+		<result property="badCount" column="badCount" />
 	</resultMap>
 
 	<!-- 규랑 -->
@@ -63,12 +65,14 @@
 		
 	</update>
 	
+	
 	<!-- 수연 -->
-
+	<!-- 영화 리스트 -->
 	<select id="list" resultMap="movieResult">
 		select * from movie where mdel = 'n'
 	</select>
 
+	<!-- 무비차트에서 쓸 예매율 포함 영화 정보 -->
 	<select id="movieChart" parameterType="int" resultType="movie">
 		<![CDATA[
 		select * 
@@ -87,10 +91,45 @@
 			where m.mid = #{mid}
 		]]>
 	</select>
+	
+	<!-- 무비차트에서 쓸 영화별 좋아요, 싫어요 개수 리스트 -->
+	<select id="movieChartReviewCount" resultMap="movieResult">
+		select movie.mid, nvl(g.good, 0) goodCount, nvl(b.bad, 0) badCount
+		from movie,
+			(select mid, count(rvaluation) as good from review where rvaluation = 'g' and rdel = 'n' group by mid) g,
+			(select mid, count(rvaluation) as bad from review where rvaluation = 'b' and rdel = 'n' group by mid) b
+		where movie.mid = g.mid(+) and movie.mid = b.mid(+)
+		order by movie.mid
+	</select>
+	
+	<!-- 현재 상영중인 영화의 리스트 -->
+	<select id="nowMoviesList" resultMap="movieResult">
+		<![CDATA[
+			select * from movie where mdel = 'n' and mreleaseDate <= sysdate order by mreleaseDate desc
+		]]>
+	</select>
+	
+	<!-- 개봉 예정인 영화의 리스트 -->
+	<select id="preMoviesList" resultMap="movieResult">
+		<![CDATA[
+			select * from movie where mdel = 'n' and mreleaseDate > sysdate order by mreleaseDate
+		]]>
+	</select>
+	
 
 	<!-- 혜진 -->
 	<select id="bookingMovieList" resultMap="movieResult">
-		select * from movie
-		where mdel='n' order by mtitle
+		select * from movie where mdel='n' order by mtitle
+	</select>
+	
+	<!-- 도은 -->
+	<!-- 메인에 영화 랜덤 -->
+	<select id="selectRunningMovieRandom" resultType="movie">
+		select * from (select * from movie where mdel != 'y' order by DBMS_RANDOM.RANDOM) where rownum = 1
+    </select>
+	
+	<!-- 리뷰보면서 영화정보도 -->
+	<select id="selectMovieForReview" parameterType="int" resultType="movie">
+		select * from movie where mid = #{mid}
 	</select>
 </mapper>
