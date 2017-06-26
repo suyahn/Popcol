@@ -48,7 +48,9 @@
 								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlPoster}.jpg" width="90px">
 							
 								<td>
-									<font style="font-weight: bold;">${booking.mtitle }(${booking.moriginaltitle })</font><br><br><br><br>
+									<font style="font-weight: bold;">
+										<a href="movieDetail.do?mid=${booking.mid }" style="color: black !important;">${booking.mtitle }(${booking.moriginaltitle })</a>
+									</font><br><br><br><br>
 									<font size="2px">
 									Popcorn&amp;Cola&nbsp;${booking.lname }&nbsp;${booking.tname }&nbsp;&nbsp;
 											<a href="#" style="color: black !important;">[극장정보]</a><br>
@@ -121,11 +123,26 @@
 					<h4 align="left"><a href="mypage_myPoint.do">나의 포인트 내역</a></h4>
 					
 					<table class="table ">
-						<tr>
-							<td>날짜</td>
-							<td>포인트 사용내역</td>
-							<td>포인트 내역 (+7000, -2000 이렇게)</td>
-						</tr>
+						<c:if test="${not empty myPointList }">
+						<c:forEach var="point" items="${myPointList }">
+							<tr>
+								<td width="30%">
+									<fmt:parseDate value="${point.pdate }" var="pdate" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${pdate }" pattern="yyyy.MM.dd"/>
+								</td>
+							
+								<td>${point.psort }</td>
+								
+								<td>${point.ppoint }점</td>
+							</tr>
+						</c:forEach>
+						</c:if>
+						
+						<c:if test="${empty myPointList }">
+							<tr>
+								<td colspan="3"><h4 style="color: #cd1726">포인트 내역이 없습니다.</h4></td>
+							</tr>
+						</c:if>
 					</table>
 				</div>
 				
@@ -162,7 +179,7 @@
 						
 						<c:if test="${empty myQnaList }">
 							<tr>
-								<td colspan="3"><h4 style="color: #cd1726">문의내역이 없습니다.</h4></td>
+								<td colspan="3"><h4 style="color: #cd1726">문의 내역이 없습니다.</h4></td>
 							</tr>
 						</c:if>
 					</table>

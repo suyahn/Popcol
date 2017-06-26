@@ -47,7 +47,7 @@
 			<br><br>
 			<div align="right">
 				<button type="button" class="btn btn-info btn-sm"
-					style="display: inline; border-color: navy; background-color: navy;"
+					style="display: inline; border-color: #cd1726; background-color: #cd1726;"
 					onclick="location.href='adminLocationInsertForm.do'">
 					영화관 입력</button>
 			</div>

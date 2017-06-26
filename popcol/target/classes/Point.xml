@@ -26,6 +26,10 @@
 		select * from (select a.*, rownum rn from (select p.* from point p where cid = #{cid} order by pdate desc) a) where rn between #{startRow} and #{endRow}
 	</select>
 	
+	<select id="mypage_listMain" parameterType="string" resultMap="pointResult">
+		select * from (select p.* from point p where cid = #{cid} order by pdate desc) where rownum between 1 and 3
+	</select>
+	
 	<insert id="giveJoinPoint" parameterType="point">
 		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, null, null, '이벤트(가입)', 2000, sysdate)
 	</insert>

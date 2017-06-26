@@ -15,5 +15,7 @@ public interface PointDao {
 	int mypage_getTotal(String cid);
 
 	List<Point> mypage_list(Point point);
+
+	List<Point> mypage_listMain(String cid);
 	
 }

@@ -12,4 +12,9 @@ public interface EventDao {
 	int getMaxNum();
 	int updateEvent(Event event);
 	int deleteEvent(int eid);
+	
+	/* 도은 */
+	/* 메인 */
+	List<Event> selectEventListForHome();
+	
 }

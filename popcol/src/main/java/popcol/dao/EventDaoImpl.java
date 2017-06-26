@@ -37,7 +37,7 @@ public class EventDaoImpl implements EventDao {
 	public int getMaxNum() {
 		return sst.selectOne("eventns.getMaxNum");
 	}
-
+	
 	@Override
 	public int updateEvent(Event event) {
 		return sst.update("eventns.updateEvent", event);
@@ -48,4 +48,10 @@ public class EventDaoImpl implements EventDao {
 		return sst.update("eventns.deleteEvent", eid);
 	}
 
+	/* 도은 */
+	/* 메인 */
+	public List<Event> selectEventListForHome() {
+	
+		return sst.selectList("eventns.selectEventListForHome");
+	}
 }

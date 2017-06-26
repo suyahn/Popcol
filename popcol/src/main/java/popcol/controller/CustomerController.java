@@ -2,6 +2,7 @@ package popcol.controller;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,8 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Customer;
+import popcol.model.Event;
 import popcol.model.Movie;
 import popcol.service.CustomerService;
+import popcol.service.EventService;
 import popcol.service.MovieService;
 import popcol.service.PointService;
 
@@ -25,6 +28,8 @@ public class CustomerController {
 	private MovieService ms;
 	@Autowired
 	private PointService ps;
+	@Autowired
+	private EventService es;
 
 	@RequestMapping("home")
 	public String home(Model model, HttpSession session) {
@@ -38,6 +43,9 @@ public class CustomerController {
 		
 		Movie randomMovie = ms.selectRunningMovieRandom();
 		model.addAttribute("movie", randomMovie);
+		
+		List<Event> eventList = es.selectEventListForHome();
+		model.addAttribute("eventList", eventList);
 		 
 		return "home";
 	}

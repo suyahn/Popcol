@@ -56,9 +56,9 @@
 				}
 			%>
 		</table>
-		<div align="left">
+		<div align="right">
 			<button type="button" class="btn btn-info btn-sm"
-				style="display: inline; border-color: navy; background-color: navy;"
+				style="display: inline; border-color: #cd1726; background-color: #cd1726;"
 				onclick="location.href='adminInsertForm.do?pageNum=${ pageNum }'">
 				영화입력</button>
 		</div>

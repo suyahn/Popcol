@@ -37,4 +37,9 @@ public class PointServiceImpl implements PointService{
 		
 		return pd.mypage_list(point);
 	}
+
+	public List<Point> mypage_listMain(String cid) {
+		
+		return pd.mypage_listMain(cid);
+	}
 }

@@ -41,5 +41,10 @@ public class PointDaoImpl implements PointDao {
 	
 		return sst.selectList("pointns.mypage_list", point);
 	}
+
+	public List<Point> mypage_listMain(String cid) {
+		
+		return sst.selectList("pointns.mypage_listMain", cid);
+	}
 	
 }
