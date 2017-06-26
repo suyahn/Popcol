@@ -44,8 +44,8 @@
 
 	<!-- 혜진 -->
 	<select id="bookingLocationList" parameterType="int" resultMap="locationResult">
-		select l.lid, lname, rt.mid from location l, runningtimetable rt where
-		rt.lid = l.lid and rt.mid = #{mid}
+		select  l.lid, lname, rt.mid from location l, runningtimetable rt where
+		rt.lid = l.lid and rt.mid = #{mid} group by l.lid, lname, rt.mid
 	</select>
 	
 	<!-- 도은 -->
