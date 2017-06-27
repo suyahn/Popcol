@@ -31,7 +31,7 @@
 	</update>
 	
 	<insert id="insertReview" parameterType="review">
-		insert into review values((select max(nvl(rid, 0)) + 1 from review), #{mid}, #{cid}, #{rcontent}, #{rvaluation}, sysdate, 'n')
+		insert into review values((select nvl(max(rid), 0) + 1 from review), #{mid}, #{cid}, #{rcontent}, #{rvaluation}, sysdate, 'n')
 	</insert>
 	
 	<!-- 수연 -->
