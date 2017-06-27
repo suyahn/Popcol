@@ -86,6 +86,17 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return cd.deleteCustomerInfo(cid);
 	}
+	
+	/* 예매관련 포인트 */
+	public int updateMoviePoint(Customer customer) {
+		
+		return cd.updateMoviePoint(customer);
+	}
+
+	public int updateUsePoint(Customer customer) {
+		
+		return cd.updateUsePoint(customer);
+	}
 
 	/* 규랑 */
 	@Override

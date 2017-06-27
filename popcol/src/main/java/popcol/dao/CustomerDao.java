@@ -38,6 +38,11 @@ public interface CustomerDao {
 
 	int deleteCustomerInfo(String cid);
 	
+	/* 예매관련 포인트 */
+	int updateMoviePoint(Customer customer);
+
+	int updateUsePoint(Customer customer);
+	
 	/*규랑*/
 	
 	int getTotal();
