@@ -85,11 +85,6 @@
 			<h2 style="font-weight: bold;">현재 해당되는 이벤트가 없습니다.</h2>
 		</c:if>
 		
-		<!-- 아이디가 마스터면 -->
-		<div align="right">
-			<button type="button" class="btn btn-primary" onclick="location.href='eventInsertForm.do?pageNum=${ pageNum }'"
-				style="border-color: #CD1726; background-color: #CD1726;">이벤트 작성</button>
-			
 			<div align="center">
 				<nav aria-label="Page navigation">
 					<ul class="pagination">
@@ -139,7 +134,7 @@
 					</ul>
 				</nav>
 			</div>
-		</div>
+	
 	</div>
 </body>
 </html>

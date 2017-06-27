@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<h2 class="text-primary">영화 상세정보</h2>
+		<h2 style="font-weight: bold;" >영화 상세정보</h2>
 		<table class="table table-bordered">
 			<tr>
 				<td>아이디</td>
@@ -65,11 +65,13 @@
 				<td>${movie.mnation}</td>
 			</tr>
 		</table>
-		<a href="adminList.do?pageNum=${pageNum}" class="btn btn-info">목록</a>
+			
+		<a href="adminList.do?pageNum=${pageNum}" class="btn btn-info" style="display: inline; border-color: #CD1726; background-color: #CD1726;">목록</a>
 		<a href="adminUpdateForm.do?mid=${movie.mid}&pageNum=${pageNum}"
-			class="btn btn-info">수정</a> 
+			class="btn btn-info"style="display: inline; border-color: #CD1726; background-color: #CD1726;">수정</a> 
 		<a href="adminDelete.do?mid=${movie.mid}&pageNum=${pageNum}"
-			class="btn btn-info">삭제</a>
+			class="btn btn-info"style="display: inline; border-color: #CD1726; background-color: #CD1726;">삭제</a>
+		<br><br>
 		<!-- <div id="list"></div> -->
 	</div>
 </body>

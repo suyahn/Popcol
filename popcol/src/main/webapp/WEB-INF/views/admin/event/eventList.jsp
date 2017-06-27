@@ -42,6 +42,7 @@
 <body>
 	<div class="container" style="width: 70%">
 		<h1 align="left" style="font-weight: bold;">
+			<img src="location/logo.png" width="250" height="70"> 
 			<a href='adminEventList.do' class="red-active">이벤트</a>
 		</h1>
 		<hr>
@@ -67,9 +68,9 @@
 				<th>No</th>
 				<th>제목</th>
 				<th>이벤트 기간</th>
-				
+
 			</tr>
-			
+
 			<c:if test="${ empty eventList }">
 				<h2 style="font-weight: bold;">현재 해당되는 이벤트가 없습니다.</h2>
 			</c:if>
@@ -85,8 +86,8 @@
 						<td><a
 							href="adminEventView.do?eid=${event.eid}&pageNum=${pp.currentPage}"
 							class="btn btn-default">${event.esubject}</a></td>
-						<td>${event.estartingdate } ~ ${event.eclosingdate }</td>
-						
+						<td>${event.estartingdate }~ ${event.eclosingdate }</td>
+
 
 						<c:set value="${no-1 }" var="no" />
 					</tr>
