@@ -15,12 +15,12 @@
 	<select id="bookingRTList" resultMap="runningtimetableResult"
 		parameterType="hashMap"> select rt.rtid, rt.rtdate from location l,
 		runningtimetable rt where rt.lid = l.lid and rt.mid = #{mid} and
-		rt.lid = #{lid} </select>
+		rt.lid = #{lid} group by rt.rtid, rt.rtdate</select>
 
 	<select id="bookingRttList" resultMap="runningtimetableResult"
 		parameterType="hashMap"> select to_char(rtdate,'HH24:MM')rttime,rtid from
 		runningtimetable where rtdate = (select rtdate from runningtimetable
-		where rtid = #{rtid}) </select>
+		where rtid = #{rtid})  </select>
 		
 	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
 	    select rt.*, to_char(rtdate,'HH24:MM') rttime, m.mtitle, l.lname, t.tname

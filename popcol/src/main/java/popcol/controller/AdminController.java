@@ -11,15 +11,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.service.CustomerService;
+import popcol.service.FaqService;
 import popcol.service.LocationService;
 import popcol.service.MovieService;
 import popcol.service.NoticeService;
 import popcol.service.PagingPgm;
+import popcol.service.QnaService;
 import popcol.service.TheaterService;
 import popcol.model.Customer;
+import popcol.model.Faq;
 import popcol.model.Location;
 import popcol.model.Movie;
 import popcol.model.Notice;
+import popcol.model.Qna;
 
 @Controller
 public class AdminController {
@@ -32,9 +36,11 @@ public class AdminController {
 	private MovieService ms;
 	@Autowired
 	private NoticeService ns;
-	/*
-	 * @Autowired private TheaterService ts;
-	 */
+	@Autowired
+	private FaqService fs;
+	@Autowired
+	private QnaService qs;
+	
 
 	/* 로그인 */
 	@RequestMapping("adminLoginForm")
@@ -52,9 +58,9 @@ public class AdminController {
 		String masterid = customer.getCid();
 
 		session = request.getSession();
+
 		model.addAttribute("result", result);
 		model.addAttribute("masterid", masterid);
-
 		if (result > 0) {
 
 			session.setAttribute("id", customer.getCid());
@@ -290,7 +296,9 @@ public class AdminController {
 
 	/* 관리자 notice */
 	@RequestMapping("adminNoticeList")
-	public String noticeList(String pageNum, Notice notice, Model model) {
+	public String noticeList(String pageNum, Notice notice, Model model, HttpSession session,
+			HttpServletRequest request, Customer customer) {
+
 		final int ROW_PER_PAGE = 10;
 
 		if (pageNum == null || pageNum.equals("")) {
@@ -320,4 +328,284 @@ public class AdminController {
 
 		return "adminNoticeList";
 	}
+
+	@RequestMapping("adminNoticeInsertForm")
+	public String noticeInsertForm(String pageNum, Model model) {
+		model.addAttribute("pageNum", pageNum);
+
+		return "adminNoticeInsertForm";
+	}
+
+	@RequestMapping("adminNoticeInsert")
+	public String noticeInsert(Notice notice, String pageNum, Model model) {
+		int number = ns.getMaxNum();
+		notice.setNid(number);
+		int result = ns.insert(notice);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("nid", notice.getNid());
+
+		return "adminNoticeInsert";
+	}
+
+	@RequestMapping("adminNoticeView")
+	public String noticeView(int nid, String pageNum, Model model) {
+		Notice notice = ns.select(nid);
+
+		model.addAttribute("notice", notice);
+		model.addAttribute("pageNum", pageNum);
+
+		return "adminNoticeView";
+	}
+
+	@RequestMapping("adminNoticeUpdateForm")
+	public String noticeUpdateForm(int nid, String pageNum, Model model) {
+		Notice notice = ns.select(nid);
+
+		model.addAttribute("notice", notice);
+		model.addAttribute("pageNum", pageNum);
+
+		return "adminNoticeUpdateForm";
+	}
+
+	@RequestMapping("adminNoticeUpdate")
+	public String noticeUpdate(Notice notice, String pageNum, Model model) {
+		int result = ns.update(notice);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("nid", notice.getNid());
+
+		return "adminNoticeUpdate";
+	}
+
+	@RequestMapping("adminNoticeDelete")
+	public String noticeDelete(int nid, String pageNum, Model model) {
+		int result = ns.delete(nid);
+
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("result", result);
+
+		return "adminNoticeDelete";
+	}
+
+	/* 관리자 FAQ */
+	@RequestMapping("adminFaqList")
+	public String FaqList(String pageNum, Faq faq, Model model) {
+		final int ROW_PER_PAGE = 10;
+
+		if (pageNum == null || pageNum.equals("")) {
+			pageNum = "1";
+		}
+
+		int currentPage = Integer.parseInt(pageNum);
+
+		int total = fs.getTotal(faq);
+
+		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
+		int endRow = startRow + ROW_PER_PAGE - 1;
+		faq.setStartRow(startRow);
+		faq.setEndRow(endRow);
+		List<Faq> list = fs.list(faq);
+
+		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
+
+		int no = total - startRow + 1;
+
+		model.addAttribute("list", list);
+		model.addAttribute("no", no);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("pp", pp);
+		model.addAttribute("search", faq.getSearch());
+		model.addAttribute("keyword", faq.getKeyword());
+
+		return "adminFaqList";
+	}
+
+	@RequestMapping("adminFaqInsertForm")
+	public String faqInsertForm(String pageNum, Model model) {
+		model.addAttribute("pageNum", pageNum);
+
+		return "adminFaqInsertForm";
+	}
+
+	@RequestMapping("adminFaqInsert")
+	public String faqInsert(Faq faq, String pageNum, Model model) {
+		int number = fs.getMaxNum();
+		faq.setFid(number);
+		int result = fs.insert(faq);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("fid", faq.getFid());
+
+		return "adminFaqInsert";
+	}
+
+	@RequestMapping("adminFaqView")
+	public String faqView(int fid, String pageNum, Model model) {
+		Faq faq = fs.select(fid);
+
+		model.addAttribute("faq", faq);
+		model.addAttribute("pageNum", pageNum);
+
+		return "adminFaqView";
+	}
+
+	@RequestMapping("adminFaqUpdateForm")
+	public String faqUpdateForm(int fid, String pageNum, Model model) {
+		Faq faq = fs.select(fid);
+
+		model.addAttribute("faq", faq);
+		model.addAttribute("pageNum", pageNum);
+
+		return "adminFaqUpdateForm";
+	}
+
+	@RequestMapping("adminFaqUpdate")
+	public String faqUpdate(Faq faq, String pageNum, Model model) {
+		int result = fs.update(faq);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("fid", faq.getFid());
+
+		return "adminFaqUpdate";
+	}
+
+	@RequestMapping("adminFaqDelete")
+	public String faqDelete(int fid, String pageNum, Model model) {
+		int result = fs.delete(fid);
+
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("result", result);
+
+		return "adminFaqDelete";
+	}
+
+	/* 관리자 QnA */
+	@RequestMapping("adminQnaList")
+	public String qnaList(String pageNum, Qna qna, Model model) {
+		final int ROW_PER_PAGE = 10;
+
+		if (pageNum == null || pageNum.equals("")) {
+			pageNum = "1";
+		}
+
+		int currentPage = Integer.parseInt(pageNum);
+
+		int total = qs.getTotal();
+
+		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
+		int endRow = startRow + ROW_PER_PAGE - 1;
+		qna.setStartRow(startRow);
+		qna.setEndRow(endRow);
+		List<Qna> list = qs.list(qna);
+
+		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
+
+		int no = total - startRow + 1;
+
+		model.addAttribute("list", list);
+		model.addAttribute("no", no);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("pp", pp);
+
+		return "adminQnaList";
+	}
+
+	@RequestMapping("adminQnaInsertForm")
+	public String qnaInsertForm(String pageNum, HttpSession session, Model model) {
+		String cid = (String) session.getAttribute("id");
+		String cname = cs.getCustomerName(cid);
+
+		model.addAttribute("cid", cid);
+		model.addAttribute("cname", cname);
+		model.addAttribute("pageNum", pageNum);
+
+		return "adminQnaInsertForm";
+	}
+
+	@RequestMapping("adminQnaInsert")
+	public String qnaInsert(Qna qna, String pageNum, Model model) {
+		int number = qs.getMaxNum();
+		qna.setQid(number);
+		int result = qs.insert(qna);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("qid", qna.getQid());
+
+		return "adminQnaInsert";
+	}
+
+	@RequestMapping("adminQnaView")
+	public String qnaView(int qid, String pageNum, HttpSession session, Model model) {
+		Qna qna = qs.select(qid);
+		String id = (String) session.getAttribute("id");
+
+		model.addAttribute("qna", qna);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("id", id);
+
+		return "adminQnaView";
+	}
+
+	@RequestMapping("adminQnaUpdateForm")
+	public String qnaUpdateForm(int qid, String pageNum, Model model) {
+		Qna qna = qs.select(qid);
+
+		model.addAttribute("qna", qna);
+		model.addAttribute("pageNum", pageNum);
+
+		return "adminQnaUpdateForm";
+	}
+
+	@RequestMapping("adminQnaUpdate")
+	public String noticeUpdate(Qna qna, String pageNum, Model model) {
+		int result = qs.update(qna);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("qid", qna.getQid());
+
+		return "adminQnaUpdate";
+	}
+
+	@RequestMapping("adminQnaDelete")
+	public String qnaDelete(int qid, String pageNum, Model model) {
+		int result = qs.delete(qid);
+
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("result", result);
+
+		return "adminQnaDelete";
+	}
+
+	/* 답변 */
+	@RequestMapping("adminQnaReply")
+	public String qnaReply(int qid, Model model, HttpSession session) {
+		Qna qna = qs.select(qid);
+
+		String id = (String) session.getAttribute("id");
+
+		model.addAttribute("qnaReply", qna);
+		model.addAttribute("id", id);
+
+		return "adminQnaReply";
+	}
+
+	/*@RequestMapping("adminQnaReplyInsert")
+	public String qnaReplyInsert(Qna qna) {
+		qs.insertReply(qna);
+		return "redirect:adminQnaReply.do?qid=" + qna.getQid();
+	}
+
+	@RequestMapping("adminQnaReplyDelete")
+	public String qnaReplyDelete(int qid) {
+		qs.deleteReply(qid);
+		return "redirect:adminQnaReply.do?qid=" + qid;
+	}*/
+
 }
