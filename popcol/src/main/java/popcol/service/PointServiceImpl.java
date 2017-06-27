@@ -42,4 +42,14 @@ public class PointServiceImpl implements PointService{
 		
 		return pd.mypage_listMain(cid);
 	}
+
+	public int giveReservPoint(Point point) {
+	
+		return pd.giveReservPoint(point);
+	}
+	
+	public int usePointForReserv(Point point) {
+
+		return pd.usePointForReserv(point);
+	}
 }

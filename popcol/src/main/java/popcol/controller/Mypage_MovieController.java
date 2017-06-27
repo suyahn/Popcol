@@ -122,6 +122,7 @@ public class Mypage_MovieController {
 		
 		if (result > 0) {
 			ps.deletePointContent(ticketnumber, id);
+			
 		}
 		
 		model.addAttribute("result", result);
