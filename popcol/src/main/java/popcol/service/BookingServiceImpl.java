@@ -26,11 +26,11 @@ public class BookingServiceImpl implements BookingService {
 	public List<Location> locationList(int mid) {
 		return bd.locationList(mid);
 	}
+	/*public List<RunningtimeTable> dateList(int mid, int lid) {
+		return bd.dateList(mid,lid);
+	}*/
 	public List<RunningtimeTable> dateList(int mid, int lid) {
 		return bd.dateList(mid,lid);
-	}
-	public List<RunningtimeTable> timeList(int mid, int lid, int rtid) {
-		return bd.timeList(mid,lid,rtid);
 	}
 	public RunningtimeTable selectRt(int rtid) {
 		return bd.selectRt(rtid);

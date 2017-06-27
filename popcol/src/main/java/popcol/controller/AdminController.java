@@ -639,13 +639,7 @@ public class AdminController {
 		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
 		
 		int no = total - startRow + 1;
-		System.out.println("eid:"+event.getEid());
-		System.out.println("esubject:"+event.getEsubject());
-		System.out.println("econtent:"+event.getEcontent());
-		System.out.println("epicture:"+event.getEpicture());
-		System.out.println("eclosingdate:"+event.getEclosingdate());
-		System.out.println("estartingdate:"+event.getEstartingdate());
-		System.out.println("edel:"+event.getEdel());
+		
 		model.addAttribute("eventList", list);
 		model.addAttribute("no", no);
 		model.addAttribute("pageNum", pageNum);
@@ -699,13 +693,7 @@ public class AdminController {
 		event.setEclosingdate(Date.valueOf(eclosingdateString));
 		
 		int result = es.insertEvent(event);
-		System.out.println("eid:"+event.getEid());
-		System.out.println("esubject:"+event.getEsubject());
-		System.out.println("econtent:"+event.getEcontent());
-		System.out.println("epicture:"+event.getEpicture());
-		System.out.println("eclosingdate:"+event.getEclosingdate());
-		System.out.println("estartingdate:"+event.getEstartingdate());
-		System.out.println("edel:"+event.getEdel());
+		
 		
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("eid", event.getEid());
