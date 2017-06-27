@@ -17,16 +17,36 @@
 	text-decoration: underline;
 	font-weight: bold;
 }
+
+.pagination>li>a {
+	color: #cd1726 !important;
+}
+
+.pagination>li>a:hover {
+	color: #fcba2e !important;
+}
+
+.pagination>li.active>a {
+	background: #cd1726;
+	border-color: #cd1726;
+	color: white !important;
+}
+
+.pagination>li.active>a:hover {
+	background: #fcba2e;
+	border-color: #fcba2e;
+	color: white !important;
+}
 </style>
 </head>
 <body>
 	<div class="container" align="center" style="width: 70%">
 		<h1 align="left" style="font-weight: bold;">
-			<a href='noticeList.do' class="red-active">공지사항</a>
+			<a href='adminNoticeList.do' class="red-active">공지사항</a>
 		</h1>
 		<hr>
 		<div align="right">
-			<form action="noticeList.do">
+			<form action="adminNoticeList.do">
 				<input type="hidden" name="pageNum" value="1"> <select
 					name="search" style="height: 25px;">
 					<option value="nsubject"
@@ -59,7 +79,7 @@
 						<td>${ no1 }</td>
 						<td>
 							<button
-								onclick="location.href='noticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }'"
+								onclick="location.href='adminNoticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }'"
 								class="btn btn-link red-active">${ notice.nsubject }</button>
 						</td>
 						<td><fmt:formatDate value="${ notice.ndate }"
@@ -70,12 +90,10 @@
 			</c:if>
 		</table>
 
-		<!-- 아이디가 마스터면 -->
 		<div align="right">
 			<button type="button" class="btn btn-primary"
-				onclick="location.href='noticeInsertForm.do?pageNum=${ pageNum }'"
-				style="border-color: #CD1726; background-color: #CD1726;">글
-				작성</button>
+				onclick="location.href='adminNoticeInsertForm.do?pageNum=${ pageNum }'"
+				style="border-color: #CD1726; background-color: #CD1726;">글작성</button>
 
 			<div align="center">
 				<nav aria-label="Page navigation">
@@ -83,7 +101,7 @@
 						<c:if test="${ not empty keyword }">
 							<c:if test="${ pp.startPage > pp.PAGE_PER_BLOCK }">
 								<li><a
-									href="noticeList.do?pageNum=${ pp.startPage - 1 }&search=${ search }&keyword=${ keyword }"
+									href="adminNoticeList.do?pageNum=${ pp.startPage - 1 }&search=${ search }&keyword=${ keyword }"
 									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								</a></li>
 							</c:if>
@@ -91,12 +109,12 @@
 							<c:forEach var="i" begin="${ pp.startPage }"
 								end="${ pp.endPage }">
 								<li <c:if test="${ pp.currentPage == i }">class="active"</c:if>><a
-									href="noticeList.do?pageNum=${ i }&search=${ search }&keyword=${ keyword }">${ i }</a>
+									href="adminNoticeList.do?pageNum=${ i }&search=${ search }&keyword=${ keyword }">${ i }</a>
 							</c:forEach>
 
 							<c:if test="${ pp.endPage < pp.totPage }">
 								<li><a
-									href="noticeList.do?pageNum=${ pp.startPage + pp.PAGE_PER_BLOCK }&search=${ search }&keyword=${ keyword }"
+									href="adminNoticeList.do?pageNum=${ pp.startPage + pp.PAGE_PER_BLOCK }&search=${ search }&keyword=${ keyword }"
 									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 								</a></li>
 							</c:if>
@@ -104,7 +122,8 @@
 
 						<c:if test="${ empty keyword }">
 							<c:if test="${ pp.startPage > pp.PAGE_PER_BLOCK }">
-								<li><a href="noticeList.do?pageNum=${ pp.startPage - 1 }"
+								<li><a
+									href="adminNoticeList.do?pageNum=${ pp.startPage - 1 }"
 									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								</a></li>
 							</c:if>
@@ -112,12 +131,12 @@
 							<c:forEach var="i" begin="${ pp.startPage }"
 								end="${ pp.endPage }">
 								<li <c:if test="${ pp.currentPage == i }">class="active"</c:if>><a
-									href="noticeList.do?pageNum=${ i }">${ i }</a>
+									href="adminNoticeList.do?pageNum=${ i }">${ i }</a>
 							</c:forEach>
 
 							<c:if test="${ pp.endPage < pp.totPage }">
 								<li><a
-									href="noticeList.do?pageNum=${ pp.startPage + pp.PAGE_PER_BLOCK }"
+									href="adminNoticeList.do?pageNum=${ pp.startPage + pp.PAGE_PER_BLOCK }"
 									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 								</a></li>
 							</c:if>

@@ -27,7 +27,7 @@
 				</c:if>
 				<div class="row">
 			  		<div class="col-md-3 col-md-3">
-			   			<div class="thumbnail" align="center" style="height: 500px;">
+			   			<div class="thumbnail" align="center" style="height: 430px;">
 			   				<a href="movieDetail.do?mid=${ movie.mid }">
 			      				<img src="poster/${ movie.murlPoster }.jpg" alt="${ movie.mtitle }" style="border: 2px solid black; width: 197px; height: 272px;">
 			      			</a>
@@ -38,10 +38,14 @@
 			        			</p>
 			        			<p><font style="font-style: italic;">${ movie.moriginaltitle }</font><p>
 			        			<p><fmt:formatDate value="${ mreleaseDate }" pattern="yyyy.MM.dd"/> 개봉 예정</p>
-			        			<!-- <p>
-			        				<button type="button" onclick="location.href='reservation.do'" class="btn btn-primary"
-			        					style="border-color: #CD1726; background-color: #CD1726;">예매하기</button>
-			        			</p> -->
+			        			<p>
+			        				<c:forEach var="rt" items="${ rtList }">
+			        					<c:if test="${ rt.mid == movie.mid }">
+			        						<button type="button" onclick="location.href='reservation.do'" class="btn btn-primary"
+			        							style="border-color: #CD1726; background-color: #CD1726;">예매하기</button>	
+			        					</c:if>
+			        				</c:forEach>
+			        			</p>
 			      			</div>
 			    		</div>
 			  		</div>

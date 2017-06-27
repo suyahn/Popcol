@@ -13,7 +13,7 @@
 		<form action="adminLogin.do" method="post">
 			<%
 				String id = (String) session.getAttribute("id");
-				if (id == null) { /* 아이디가 있을때 */
+				if (id == null) { 
 			%>
 			<table>
 				<tr>
@@ -31,7 +31,7 @@
 				<tr>
 					<td colspan="2" align="center"><br>
 						<button type="submit" class="btn btn-info btn-sm"
-							style="border-color: navy; background-color: navy;">로그인</button>
+							style="border-color: #cd1726; background-color: #cd1726;">로그인</button>
 					</td>
 				</tr>
 

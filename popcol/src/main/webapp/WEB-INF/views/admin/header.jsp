@@ -36,7 +36,7 @@
 					<li>
 						<button class="btn btn-info btn-sm"
 							onclick="location.href='adminLoginForm.do'"
-							style="display: inline; border-color: navy; background-color: navy;">
+							style="display: inline; border-color: #cd1726; background-color: #cd1726;">
 							로그인</button>
 					</li>
 				</c:if>
@@ -46,13 +46,13 @@
 				%>
 				<c:if test="${not empty id }">
 					<li>${id }님환영합니다.
-						<button onclick="location.href='mypage.do'"
+						<!-- <button onclick="location.href='mypage.do'"
 							class="btn btn-info btn-sm"
 							style="display: inline; border-color: navy; background-color: navy;">
-							마이페이지</button>
+							마이페이지</button> -->
 						<button onclick="location.href='adminLogout.do'"
 							class="btn btn-info btn-sm"
-							style="display: inline; border-color: navy; background-color: navy;">
+							style="display: inline;border-color: #cd1726; background-color: #cd1726;">
 							로그아웃</button>
 					</li>
 				</c:if>
@@ -100,8 +100,8 @@
 					</a>
 						<ul class="dropdown-menu">
 							<li><a href="adminNoticeList.do">공지사항</a></li>
-							<li><a href="faqList.do">FAQ</a></li>
-							<li><a href="qnaList.do">QnA</a></li>
+							<li><a href="adminFaqList.do">FAQ</a></li>
+							<li><a href="adminQnaList.do">QnA</a></li>
 						</ul></li>
 
 				</ul>

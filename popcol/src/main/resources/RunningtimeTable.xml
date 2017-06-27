@@ -15,19 +15,23 @@
 	<select id="bookingRTList" resultMap="runningtimetableResult"
 		parameterType="hashMap"> select rt.rtid, rt.rtdate from location l,
 		runningtimetable rt where rt.lid = l.lid and rt.mid = #{mid} and
-		rt.lid = #{lid} </select>
+		rt.lid = #{lid} group by rt.rtid, rt.rtdate</select>
 
 	<select id="bookingRttList" resultMap="runningtimetableResult"
-		parameterType="hashMap"> select to_char(rtdate,'HH24:MM')rttime,rtid from
+		parameterType="hashMap"> select to_char(rtdate,'HH24:MI')rttime,rtid from
 		runningtimetable where rtdate = (select rtdate from runningtimetable
-		where rtid = #{rtid}) </select>
+		where rtid = #{rtid})  </select>
 		
 	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
-	    select rt.*, to_char(rtdate,'HH24:MM') rttime, m.mtitle, l.lname, t.tname
+	    select rt.*, to_char(rtdate,'HH24:MI') rttime, m.mtitle, l.lname, t.tname
 	    from movie m, location l, runningtimetable rt, theater t
 	    where  rt.lid = l.lid and rt.mid=m.mid and rt.tid = t.tid
 	    and rtdate = (select rtdate from runningtimetable
 		where rtid = #{rtid})
+	</select>
+	
+	<select id="runningtimeTableList" resultMap="runningtimetableResult">
+		select * from runningtimetable
 	</select>
 	
 </mapper>
