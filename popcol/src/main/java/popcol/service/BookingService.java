@@ -13,8 +13,8 @@ public interface BookingService {
 
 	List<Movie> movieList();
 	List<Location> locationList(int mid);
+	/*List<RunningtimeTable> dateList(int mid, int lid);*/
 	List<RunningtimeTable> dateList(int mid, int lid);
-	List<RunningtimeTable> timeList(int mid, int lid, int rtid);
 	RunningtimeTable selectRt(int rtid);
 	List<Booking> seatrtList(int rtid);
 	List<Price> timezonePricestList(String timezone);
