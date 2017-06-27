@@ -17,5 +17,9 @@ public interface PointDao {
 	List<Point> mypage_list(Point point);
 
 	List<Point> mypage_listMain(String cid);
+
+	int giveReservPoint(Point point);
+
+	int usePointForReserv(Point point);
 	
 }

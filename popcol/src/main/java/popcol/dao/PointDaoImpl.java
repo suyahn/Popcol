@@ -46,5 +46,15 @@ public class PointDaoImpl implements PointDao {
 		
 		return sst.selectList("pointns.mypage_listMain", cid);
 	}
+
+	public int giveReservPoint(Point point) {
+		
+		return sst.insert("pointns.giveReservPoint", point);
+	}
+
+	public int usePointForReserv(Point point) {
+		
+		return sst.insert("pointns.usePointForReserv", point);
+	}
 	
 }

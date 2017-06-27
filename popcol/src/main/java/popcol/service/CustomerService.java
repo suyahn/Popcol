@@ -37,6 +37,16 @@ public interface CustomerService {
 	int updateCustomerInfo(Customer customer);
 
 	int deleteCutomerInfo(String cid);
+
+	/* 예매관련 포인트 */
+	int updateMoviePoint(Customer customer);
+
+	int updateUsePoint(Customer customer);
+
+	/* 예매 취소할 때 사용한 포인트 돌려주기 */
+	/* 예매 취소할 때 받은 포인트 돌려주기 */
+	//void returnUsePoint(String ticketnumber, String id);
+
 	
 	/*규랑*/
 	int getTotal();
@@ -46,5 +56,4 @@ public interface CustomerService {
 	Customer adminCustomerSelect(String cid);
 
 	int adminCustomerUpdate(Customer customer);
-
 }

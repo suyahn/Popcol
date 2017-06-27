@@ -657,37 +657,37 @@
 	</definition>
 	
 	<!-- 관리자 이벤트 -->
-	<definition name="eventList" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/event/eventList.jsp" />
+	<definition name="adminEventList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/event/eventList.jsp" />
 	</definition>
 
-	<definition name="eventView" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/event/eventView.jsp" />
+	<definition name="adminEventView" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/event/eventView.jsp" />
 	</definition>
 
-	<definition name="eventInsertForm" extends="admin">
+	<definition name="adminEventInsertForm" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventInsertForm.jsp" />
+			value="/WEB-INF/views/admin/event/eventInsertForm.jsp" />
 	</definition>
 
-	<definition name="eventInsert" extends="admin">
+	<definition name="adminEventInsert" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventInsert.jsp" />
+			value="/WEB-INF/views/admin/event/eventInsert.jsp" />
 	</definition>
 
-	<definition name="eventUpdateForm" extends="admin">
+	<definition name="adminEventUpdateForm" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventUpdateForm.jsp" />
+			value="/WEB-INF/views/admin/event/eventUpdateForm.jsp" />
 	</definition>
 
-	<definition name="eventUpdate" extends="admin">
+	<definition name="adminEventUpdate" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventUpdate.jsp" />
+			value="/WEB-INF/views/admin/event/eventUpdate.jsp" />
 	</definition>
 
-	<definition name="eventDelete" extends="admin">
+	<definition name="adminEventDelete" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventDelete.jsp" />
+			value="/WEB-INF/views/admin/event/eventDelete.jsp" />
 	</definition>
 	
 	

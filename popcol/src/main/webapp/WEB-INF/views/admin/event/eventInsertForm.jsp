@@ -18,7 +18,7 @@
 	<div class="container" align="center">
 		<h1>이벤트 작성</h1>
 		
-		<form action="eventInsert.do" method="post" enctype="multipart/form-data" onsubmit="return insertChk()">
+		<form action="adminEventInsert.do" method="post" enctype="multipart/form-data" onsubmit="return insertChk()">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			
 			<table class="table"  style="width: 60%">
@@ -55,7 +55,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
-						<button type="button" class="btn btn-default" onclick="location.href='eventList.do?pageNum=${ pageNum }'">이전</button>
+						<button type="button" class="btn btn-default" onclick="location.href='adminEventList.do?pageNum=${ pageNum }'">이전</button>
 					</td>
 				</tr>
 			</table>

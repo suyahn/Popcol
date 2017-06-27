@@ -92,6 +92,15 @@
 		update customer
 		set cdel = 'y' where cid = #{cid}
 	</update>
+	
+	<!-- 예매관련 포인트 -->
+	<update id="updateMoviePoint" parameterType="customer">
+		update customer set cpoint = cpoint + #{cpoint} where cid = #{cid}
+	</update>
+	
+	<update id="updateUsePoint" parameterType="customer">
+		update customer set cpoint = cpoint - #{cpoint} where cid = #{cid}
+	</update>
 
 	<!-- 규랑 -->
 	<!-- 페이지 처리 -->
