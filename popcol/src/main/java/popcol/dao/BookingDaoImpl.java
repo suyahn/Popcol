@@ -58,7 +58,6 @@ public class BookingDaoImpl implements BookingDao{
 		HashMap<String, String> hs = new HashMap<String, String>();
 		hs.put("cid", cid);
 		hs.put("ticketnumber", ticketnumber);
-		sst.update("mypagebookingns.deleteBookingPoint", hs);
 		
 		return sst.delete("bookingns.deleteBooking", ticketnumber);
 	}

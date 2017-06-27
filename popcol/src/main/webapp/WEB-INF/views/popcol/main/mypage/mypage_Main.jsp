@@ -103,7 +103,14 @@
 										우대${countS }&nbsp;
 									</c:if>
 									
-									<br>${sum }원</font>
+									<br>
+									
+									<c:forEach var="point" items="${pointList }">
+										<c:if test="${point.bid == booking.bid && point.psort == '사용' }">
+											${point.ppoint }/
+										</c:if>
+									</c:forEach>
+									${sum }원</font>
 								</td>
 							</tr>
 						</c:forEach>
