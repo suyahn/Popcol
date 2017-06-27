@@ -10,7 +10,7 @@
 <body>
 	<c:if test="${ result > 0 }">
 		<script type="text/javascript">
-			location.href = "eventList.do?pageNum=${ pageNum }";
+			location.href = "adminEventList.do?pageNum=${ pageNum }";
 		</script>
 	</c:if>
 	<c:if test="${ result <= 0 }">

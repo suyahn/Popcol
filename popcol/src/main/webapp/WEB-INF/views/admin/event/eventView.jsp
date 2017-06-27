@@ -11,7 +11,7 @@
 		if(confirm("정말로 삭제하시겠습니까?") == false) {
 			return false;
 		}
-		location.href='eventDelete.do?eid=' + eid + '&pageNum=' + pageNum;
+		location.href='adminEventDelete.do?eid=' + eid + '&pageNum=' + pageNum;
 	}
 </script>
 </head>
@@ -41,11 +41,11 @@
 			</tr>
 		</table>
 		
-		<button type="button" onclick="location.href='eventUpdateForm.do?eid=${ event.eid }&pageNum=${ pageNum }'" 
+		<button type="button" onclick="location.href='adminEventUpdateForm.do?eid=${ event.eid }&pageNum=${ pageNum }'" 
 			class="btn btn-default">수정</button>
 		<button type="button" onclick="deleteChk(${ event.eid }, ${ pageNum })" 
 			class="btn btn-default">삭제</button>
-		<button type="button" onclick="location.href='eventList.do?pageNum=${ pageNum }'" class="btn btn-primary"
+		<button type="button" onclick="location.href='adminEventList.do?pageNum=${ pageNum }'" class="btn btn-primary"
 			style="border-color: #CD1726; background-color: #CD1726;">목록</button>
 		<hr>
 	</div>
