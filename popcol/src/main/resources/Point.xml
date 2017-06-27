@@ -31,22 +31,22 @@
 	</select>
 	
 	<insert id="giveJoinPoint" parameterType="point">
-		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, null, null, '이벤트(가입)', 2000, sysdate)
+		insert into point values ((select nvl(max(pid), 0) + 1 from point), #{cid}, null, null, '이벤트(가입)', 2000, sysdate)
 	</insert>
 	
 	<insert id="giveBirthdayPoint" parameterType="point">
-		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, null, null, '이벤트(생일)', 10000, sysdate)
+		insert into point values ((select nvl(max(pid), 0) + 1 from point), #{cid}, null, null, '이벤트(생일)', 10000, sysdate)
 	</insert>
 	
 	<insert id="giveReservPoint" parameterType="point">
-		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '매표', #{ppoint}, sysdate)
+		insert into point values ((select nvl(max(pid), 0) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '매표', #{ppoint}, sysdate)
 	</insert>
 	
 	<insert id="usePointForReserv" parameterType="point">
-		insert into point values ((select max(nvl(pid, 0)) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '사용', #{ppoint}, sysdate)
+		insert into point values ((select nvl(max(pid), 0) + 1 from point), #{cid}, (select max(bid) from booking), #{lid}, '사용', #{ppoint}, sysdate)
 	</insert>
 	
 	<delete id="deletePointContent" parameterType="hashmap" >
-		delete from point where cid = #{cid} and bid = (select bid from booking where ticketnumber = #{ticketnumber})
+		delete from point where cid = #{cid} and bid = (select max(bid) from booking where ticketnumber = #{ticketnumber})
 	</delete>
 </mapper>

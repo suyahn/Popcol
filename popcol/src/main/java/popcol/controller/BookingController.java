@@ -12,11 +12,13 @@ import popcol.model.Booking;
 import popcol.model.Customer;
 import popcol.model.Location;
 import popcol.model.Movie;
+import popcol.model.Point;
 import popcol.model.Price;
 import popcol.model.RunningtimeTable;
 import popcol.service.BookingService;
 import popcol.service.CustomerService;
 import popcol.service.MovieService;
+import popcol.service.PointService;
 import popcol.service.PriceService;
 
 @Controller
@@ -29,6 +31,8 @@ public class BookingController {
 	private CustomerService cs;
 	@Autowired
 	private PriceService prices;
+	@Autowired
+	private PointService ps;
 
 	@RequestMapping("reservation")
 	public String reserve(Model model) {
@@ -207,8 +211,31 @@ public class BookingController {
 			booking.setTicketnumber(ticketnumber);
 			result = bs.insert(booking);
 		}
-		//point 추가하고 빼주기
-		//point 기록
+		
+		// 포인트 추가
+		Customer pointCustomer = new Customer();
+		pointCustomer.setCid(id);
+		int moviePoint = (int) (price * 0.05);
+		pointCustomer.setCpoint(moviePoint); // 가격을 여기에 넣는다.
+		int pointResult = cs.updateMoviePoint(pointCustomer);
+		
+		// 추가한 포인트 기록
+		Point bookingPoint = new Point();
+		bookingPoint.setCid(id);
+		bookingPoint.setLid(rt.getLid());
+		bookingPoint.setPpoint(moviePoint);
+		pointResult = ps.giveReservPoint(bookingPoint);
+		
+		// 포인트 사용 시 포인트 빼주기
+		if (point > 0) {
+			pointCustomer.setCpoint(point);
+			pointResult = cs.updateUsePoint(pointCustomer);
+			
+			// 사용한 포인트 기록
+			bookingPoint.setPpoint(point);
+			pointResult = ps.usePointForReserv(bookingPoint);
+		}
+		
 		return "bookingComplete";
 	}
 }

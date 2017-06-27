@@ -69,7 +69,7 @@
 	<!-- 수연 -->
 	<!-- 영화 리스트 -->
 	<select id="list" resultMap="movieResult">
-		select * from movie where mdel = 'n'
+		select distinct m.* from movie m, runningtimetable rt where mdel = 'n' and m.mid = rt.mid
 	</select>
 
 	<!-- 무비차트에서 쓸 예매율 포함 영화 정보 -->
@@ -105,7 +105,8 @@
 	<!-- 현재 상영중인 영화의 리스트 -->
 	<select id="nowMoviesList" resultMap="movieResult">
 		<![CDATA[
-			select * from movie where mdel = 'n' and mreleaseDate <= sysdate order by mreleaseDate desc
+			select distinct m.* from movie m, runningtimetable rt 
+			where mdel = 'n' and m.mid = rt.mid and mreleaseDate <= sysdate order by mreleaseDate desc
 		]]>
 	</select>
 	

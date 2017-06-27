@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import popcol.model.Movie;
 import popcol.model.Review;
+import popcol.model.RunningtimeTable;
 import popcol.service.MovieService;
 import popcol.service.PagingPgm;
 import popcol.service.ReviewService;
+import popcol.service.RunningtimeTableService;
 
 @Controller
 public class MovieController {
@@ -19,6 +21,8 @@ public class MovieController {
 	private MovieService ms;
 	@Autowired
 	private ReviewService rs;
+	@Autowired
+	private RunningtimeTableService rts;
 	
 	/*무비 차트*/
 	@RequestMapping("movieChart")
@@ -93,8 +97,10 @@ public class MovieController {
 	@RequestMapping("preMovies")
 	public String preMovies(Model model) {
 		List<Movie> movieList = ms.preMoviesList();
+		List<RunningtimeTable> rtList = rts.runningtimeTableList();
 		
 		model.addAttribute("movieList", movieList);
+		model.addAttribute("rtList", rtList);
 		
 		return "preMovies";
 	}

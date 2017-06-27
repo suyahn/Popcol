@@ -14,6 +14,8 @@
 		<result property="endRow" column="endRow"/>
 	</resultMap>
 	
+	<!-- 도은 -->
+	<!-- 마이페이지 -->
 	<select id="selectReview" parameterType="review" resultType="review">
 		select * from review where cid = #{cid} and mid = #{mid} and rdel = 'n'
 	</select>

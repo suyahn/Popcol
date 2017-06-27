@@ -104,6 +104,17 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		return sst.update("customerns.deleteCustomerInfo", cid);
 	}
+	
+	/* 예매관련 포인트 */
+	public int updateMoviePoint(Customer customer) {
+		
+		return sst.update("customerns.updateMoviePoint", customer);
+	}
+
+	public int updateUsePoint(Customer customer) {
+		
+		return sst.update("customerns.updateUsePoint", customer);
+	}
 
 	/* 규랑 */
 
