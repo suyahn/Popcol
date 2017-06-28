@@ -55,6 +55,7 @@
 							<c:set var="countY" value="0" />
 							<c:set var="countS" value="0" />
 							<c:set var="sum" value="0" />
+							<c:set var="count" value="0" />
 							
 							<c:forEach var="ps" items="${MyPriceSeatList }">
 								<c:if test="${booking.ticketnumber == ps.ticketnumber }">
@@ -62,14 +63,17 @@
 									
 									<c:if test="${ps.human == 'adult' }">
 										<c:set var="countA" value="${countA + 1 }" />
+										<c:set var="count" value="${count + 1 }" />
 									</c:if>
 									
 									<c:if test="${ps.human == 'youth' }">
 										<c:set var="countY" value="${countY + 1 }" />
+										<c:set var="count" value="${count + 1 }" />
 									</c:if>
 									
 									<c:if test="${ps.human == 'special' }">
 										<c:set var="countS" value="${countS + 1 }" />
+										<c:set var="count" value="${count + 1 }" />
 									</c:if>
 								</c:if>
 							</c:forEach>
@@ -85,7 +89,7 @@
 									관람극장&nbsp;&nbsp;Popcorn&amp;Cola&nbsp;${booking.lname }&nbsp;&nbsp;
 											<a href="#" style="color: black !important;">[극장정보]</a><br>
 									관람일시&nbsp;&nbsp;<font color="#cd1726">${booking.theDate }&nbsp;(${booking.theDay })&nbsp;${booking.theTime }</font><br>
-									상&nbsp;영&nbsp;관&nbsp;&nbsp;&nbsp;${booking.tname }<br>
+									상영관&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${booking.tname }<br>
 									관람인원&nbsp;
 										<c:if test="${countA > 0 }">
 											어른${countA }&nbsp;
@@ -107,11 +111,36 @@
 											</c:if>
 										</c:forEach>
 										<br>
-									티켓가격&nbsp;&nbsp;${sum }</font>
+									매수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${count }</font>
 								</td>
 								
 								<td>
-									<br><br><br><br><br><br><br>
+									<font size="2px">
+									<c:if test="${empty pointList }">
+										<br>실결제금액&nbsp;&nbsp;${sum }원<br>
+											===================<br>
+											총결제금액&nbsp;&nbsp;${sum }원<br>
+									</c:if>
+									
+									<c:if test="${not empty pointList }">
+									<c:forEach var="point" items="${pointList }">
+										<c:if test="${point.bid == booking.bid }">
+											<br>실결제금액&nbsp;&nbsp;${sum - point.ppoint}원<br>
+											포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${point.ppoint }원<br>
+											===================<br>
+											총결제금액&nbsp;&nbsp;${sum }원
+										</c:if>
+										
+										<c:if test="${point.bid != booking.bid }">
+											<br>실결제금액&nbsp;&nbsp;${sum }원<br>
+											===================<br>
+											총결제금액&nbsp;&nbsp;${sum }원<br>
+										</c:if>
+									</c:forEach>
+									</c:if>
+									</font>
+									
+									<br><br><br>
 									<c:if test="${booking.rtdate >= today }">
 									<button id="${booking.ticketnumber }" class="btn btn-info btn-sm cancel" style="border-color: #cd1726; background-color: #cd1726; float: right;">
 									<%-- 예매번호&nbsp;${booking.ticketnumber }&nbsp; --%>예매취소

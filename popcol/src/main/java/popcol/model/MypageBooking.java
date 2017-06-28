@@ -123,6 +123,14 @@ public class MypageBooking {
 	public void setTicketnumber(String ticketnumber) {
 		this.ticketnumber = ticketnumber;
 	}
+	
+	public int getBid() {
+		return bid;
+	}
+	
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
 
 	public String getHuman() {
 		return human;

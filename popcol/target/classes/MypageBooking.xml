@@ -25,20 +25,20 @@
 	<!-- 메인에서~ -->
 	<select id="selectMyBookingListMain" parameterType="hashmap" resultMap="mypagebookingResult">
 		select * from (select 
-		b.bid, ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
+		max(b.bid) bid, ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
 		from booking b, movie m, location l, theater t, runningtimetable rt, price p
 		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
-		group by b.bid, ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, bdate
+		group by ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, bdate
 		order by b.bdate desc) where rownum between 1 and 3
 	</select>
 	
 	<!-- 마이 페이지 1개월 간 예매 내역 받아오기 -->
 	<select id="selectMyBookingList" parameterType="hashmap" resultMap="mypagebookingResult">
 		select 
-		b.bid, ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
+		max(b.bid) bid, ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
 		from booking b, movie m, location l, theater t, runningtimetable rt, price p
 		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
-		group by b.bid, ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, bdate
+		group by ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, bdate
 		order by b.bdate desc
 	</select>
 	

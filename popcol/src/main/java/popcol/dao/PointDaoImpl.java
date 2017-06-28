@@ -90,4 +90,9 @@ public class PointDaoImpl implements PointDao {
 		
 		return sst.selectList("pointns.selectPointForBookingList", hm);
 	}
+
+	public List<Point> selectUsePointList(String cid) {
+		
+		return sst.selectList("pointns.selectUsePointList", cid);
+	}
 }

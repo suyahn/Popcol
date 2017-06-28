@@ -74,4 +74,9 @@ public class PointServiceImpl implements PointService {
 
 		return pd.selectPointForBookingList(ticketnumber, cid);
 	}
+
+	public List<Point> selectUsePointList(String cid) {
+		
+		return pd.selectUsePointList(cid);
+	}
 }

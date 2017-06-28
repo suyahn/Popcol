@@ -31,5 +31,7 @@ public interface PointDao {
 	List<Point> selectPointForCancel(String ticketnumber, String cid);
 
 	List<Point> selectPointForBookingList(String ticketnumber, String cid);
+
+	List<Point> selectUsePointList(String cid);
 	
 }
