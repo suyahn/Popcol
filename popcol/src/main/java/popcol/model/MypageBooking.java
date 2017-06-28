@@ -16,6 +16,7 @@ public class MypageBooking {
 	private int price;
 	private String bseat;
 	private String ticketnumber;
+	private int bid;
 	private String human;
 	private int peopleC;
 

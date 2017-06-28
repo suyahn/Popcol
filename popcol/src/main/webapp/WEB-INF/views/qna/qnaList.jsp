@@ -84,7 +84,6 @@
 		<div align="right">
 			<button type="button" class="btn btn-primary" onclick="location.href='qnaInsertForm.do?pageNum=${ pageNum }'"
 				style="border-color: #CD1726; background-color: #CD1726;">글 작성</button>
-			
 			<div align="center">
 				<nav aria-label="Page navigation">
 					<ul class="pagination">

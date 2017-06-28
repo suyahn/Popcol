@@ -114,7 +114,15 @@ public class CustomerDaoImpl implements CustomerDao {
 	public int updateUsePoint(Customer customer) {
 		
 		return sst.update("customerns.updateUsePoint", customer);
+	}	
+
+	/* 예매 취소할 때 사용한 포인트 돌려주기 */
+	public void returnPointForCancel(Customer customer) {
+		
+		sst.update("customerns.returnPointForCancel", customer);	
 	}
+	
+	/* 예매 취소할 때 받은 포인트 돌려주기 */
 
 	/* 규랑 */
 

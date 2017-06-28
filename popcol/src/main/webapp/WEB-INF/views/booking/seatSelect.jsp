@@ -15,6 +15,19 @@
 </style>
 <script type="text/javascript">
 	$(function() {
+		var alreadySelectedSeat = new Array();
+		<c:forEach var="seat" items="${ seatrtbsList }">//bseat을 받음
+			alreadySelectedSeat.push("${ seat.bseat }");
+		</c:forEach>
+		
+		$('.kk').each(function(i, obj) {
+			var id = $(obj).attr('id');//id는${nn}${j}
+			for(var i in alreadySelectedSeat) {//i는 alreadySelectedSeat에서 있는 좌석을 배열로 받는 것
+				if(id == alreadySelectedSeat[i]) {
+					$('#' + id).css("background-color", "rgb(128,128,128)");
+				}
+			}
+		});
 		$('.kk').click(function() {
 			var adult = $("#adult option:selected").text();
 			var youth = $("#youth option:selected").text();
@@ -37,17 +50,33 @@
 				}
 			});
 			
-			if(seatCount <= totalPerson) {
+			if(seatCount == totalPerson) {
 				var idd = $(this).attr('id');
 				var color = $('#' + idd).css("background-color");
 				if (color == "rgb(12, 7, 50)") {//navy일 때
 					$('#' + idd).css("background-color", "#cd1726");//빨강으로 변경
-				} else if(color=="rgb(128,128,128)"){//비활성화 회색일 때
+				}
+				if(color=="rgb(128,128,128)"){//비활성화 회색일 때
 					return false;//아무것도 안함
-				} else {
-					$('#' + idd).css("background-color", "#0C0732");//빨강을 누르면 navy로 변경
+				} 
+				if(color=="rgb(205, 23, 38)") {
+					return false;//아무것도 안함
 				}	
 			}
+			
+			if(seatCount < totalPerson) {
+				var idd = $(this).attr('id');
+				var color = $('#' + idd).css("background-color");
+				if (color == "rgb(12, 7, 50)") {//navy일 때
+					$('#' + idd).css("background-color", "#cd1726");//빨강으로 변경
+				}
+				if(color=="rgb(128,128,128)"){//비활성화 회색일 때
+					return false;//아무것도 안함
+				} 
+				if(color=="rgb(205, 23, 38)") {
+					$('#' + idd).css("background-color", "#0C0732");//빨강을 누르면 navy로 변경
+				}	
+			} 
 			//좌석 색깔 변경하기
 			var selectedSeatList = "";
 			$('.kk').each(function(i,obj) {
@@ -229,23 +258,8 @@
 				 <!-- for문을 돌리면서 string을 잘라서 넣을 때 사용함 -->
 					<tr>
 						<c:forEach var="j" begin="1" end="4">
-							<c:if test="${ not empty seatrtbsList }">
-								<c:forEach var="selectedSeat" items="${ seatrtbsList }">
-									<c:set var="s" value="${ nn }${ j }"></c:set>
-									<c:if test="${ selectedSeat.bseat == s }">
-										<td bgcolor="gray" id="${nn}${j}" class="kk"
-											style="width: 40px; height: 20px">${nn}${j }</td>		
-									</c:if>
-									<c:if test="${ selectedSeat.bseat != s }">
-										<td bgcolor="#cd1726" id="${nn}${j}" class="kk"
-											style="width: 40px; height: 20px">${nn}${j }</td>
-									</c:if>
-								</c:forEach>
-							</c:if>
-							<c:if test="${ empty seatrtbsList }">
 								<td bgcolor="#cd1726" id="${nn}${j}" class="kk"
 									style="width: 40px; height: 20px">${nn}${j }</td>
-							</c:if>
 						</c:forEach>
 						<td bgcolor="white"></td>
 					</tr>
@@ -256,23 +270,8 @@
 				 <!-- for문을 돌리면서 string을 잘라서 넣을 때 사용함 -->
 					<tr>
 						<c:forEach var="j" begin="5" end="12">
-							<c:if test="${ not empty seatrtbsList }">
-								<c:forEach var="selectedSeat" items="${ seatrtbsList }">
-									<c:set var="s" value="${ nn }${ j }"></c:set>
-									<c:if test="${ selectedSeat.bseat == s }">
-										<td bgcolor="gray" id="${nn}${j}" class="kk"
-											style="width: 40px; height: 20px">${nn}${j }</td>		
-									</c:if>
-									<c:if test="${ selectedSeat.bseat != s }">
-										<td bgcolor="#cd1726" id="${nn}${j}" class="kk"
-											style="width: 40px; height: 20px">${nn}${j }</td>
-									</c:if>
-								</c:forEach>
-							</c:if>
-							<c:if test="${ empty seatrtbsList }">
 								<td bgcolor="#cd1726" id="${nn}${j}" class="kk"
 									style="width: 40px; height: 20px">${nn}${j }</td>
-							</c:if>
 						</c:forEach>
 						<td bgcolor="white"></td>
 					</tr>
@@ -283,23 +282,8 @@
 				 <!-- for문을 돌리면서 string을 잘라서 넣을 때 사용함 -->
 					<tr>
 						<c:forEach var="j" begin="13" end="16">
-							<c:if test="${ not empty seatrtbsList }">
-								<c:forEach var="selectedSeat" items="${ seatrtbsList }">
-									<c:set var="s" value="${ nn }${ j }"></c:set>
-									<c:if test="${ selectedSeat.bseat == s }">
-										<td bgcolor="gray" id="${nn}${j}" class="kk"
-											style="width: 40px; height: 20px">${nn}${j }</td>		
-									</c:if>
-									<c:if test="${ selectedSeat.bseat != s }">
-										<td bgcolor="#cd1726" id="${nn}${j}" class="kk"
-											style="width: 40px; height: 20px">${nn}${j }</td>
-									</c:if>
-								</c:forEach>
-							</c:if>
-							<c:if test="${ empty seatrtbsList }">
 								<td bgcolor="#cd1726" id="${nn}${j}" class="kk"
 									style="width: 40px; height: 20px">${nn}${j }</td>
-							</c:if>
 						</c:forEach>
 						<td bgcolor="white"></td>
 					</tr>

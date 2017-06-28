@@ -1,9 +1,13 @@
 package popcol.controller;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,7 +68,10 @@ public class Mypage_MainController {
 
 		List<MypageBooking> myBookingList = new ArrayList<MypageBooking>();
 		myBookingList = mbs.selectMyBookingListMain(id, oneMonthAgo);
-
+		
+		List<List<Point>> pointList = new ArrayList<List<Point>>();
+		HashSet<String> ticketnumber = new HashSet<String>();
+		
 		/*
 		 * SimpleDateFormat df2 = new SimpleDateFormat("yyyy.MM.dd");
 		 * SimpleDateFormat df3 = new SimpleDateFormat("HH:mm");
@@ -109,7 +116,21 @@ public class Mypage_MainController {
 			 * mb.setTheDate(theDate); mb.setTheTime(theTime);
 			 */
 			mb.setTheDay(theDay);
+			
+			// 포인트를 위한 티켓넘버
+			ticketnumber.add(mb.getTicketnumber());
 		}
+		
+		// 포인트 리스트
+		Iterator<String> itr = ticketnumber.iterator();
+		while(itr.hasNext()) {
+			String ticknum = (String) itr.next(); 
+			List<Point> p = ps.selectPointForBookingList(ticknum, id);
+			
+			pointList.add(p);
+		}
+		
+		model.addAttribute("pointList", pointList);
 
 		List<MypageBooking> MyPriceSeatList = new ArrayList<MypageBooking>();
 		MyPriceSeatList = mbs.selectMyPriceSeatList(id, oneMonthAgo);
