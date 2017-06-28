@@ -46,26 +46,27 @@ public class BookingController {
 		List<Location> locationList = bs.locationList(mid);
 		model.addAttribute("locationList", locationList);
 		return "movielocation";
-	}
+	}/*
 
 	@RequestMapping("moviedate")
 	public String moviedate(Model model, int mid, int lid) {
 		List<RunningtimeTable> dateList = bs.dateList(mid, lid);
 		model.addAttribute("dateList", dateList);
 		return "movieDate";
-	}
-
-	@RequestMapping("movietime")
-	public String movietime(Model model, int mid, int lid, int rtid) {
-		List<RunningtimeTable> timeList = bs.timeList(mid, lid, rtid);
-		model.addAttribute("timeList", timeList);
-		return "movieTime";
+	}*/
+	
+	@RequestMapping("moviedate")
+	public String movietime(Model model, int mid, int lid) {
+		List<RunningtimeTable> dateList = bs.dateList(mid, lid);
+		model.addAttribute("dateList", dateList);
+		return "movieDate";
 	}
 
 	@RequestMapping("seatSelect")
 	public String seatSelect(Model model, int rtid) {
 		RunningtimeTable rt =bs.selectRt(rtid); //해당 rtid(선택된 영화, 시간, 날짜)에 해당되는 이용가능 좌석 띄우기 위해서
 		List<Booking> seatrtbsList = bs.seatrtList(rtid); 
+		System.out.println(seatrtbsList.size());
 		List<Price> priceList = bs.timezonePricestList(rt.getTimezone());
 		Movie movie = ms.movieDetail(rt.getMid());//영화에 관한 List 뽑았던 걸 여기서 불러서 쓰려고//상영시간 뿌려줄려고
 		model.addAttribute("seatrtbsList",seatrtbsList);

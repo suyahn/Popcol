@@ -11,6 +11,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('#goodimg').click(function() {
+			
 			$('#rvaluation').val('g');
 			
 			$(this).css('width', '150px');

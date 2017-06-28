@@ -18,7 +18,7 @@
 	<div class="container" align="center">
 		<h1>이벤트 수정</h1>
 		
-		<form action="eventUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return updateChk()">
+		<form action="adminEventUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return updateChk()">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			<input type="hidden" name="eid" value="${ event.eid }">
 			<input type="hidden" name="epicture" value="${ event.epicture }">
@@ -57,7 +57,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
-						<button type="button" class="btn btn-default" onclick="location.href='eventView.do?eid=${ event.eid }&pageNum=${ pageNum }'">이전</button>
+						<button type="button" class="btn btn-default" onclick="location.href='adminEventView.do?eid=${ event.eid }&pageNum=${ pageNum }'">이전</button>
 					</td>
 				</tr>
 			</table>

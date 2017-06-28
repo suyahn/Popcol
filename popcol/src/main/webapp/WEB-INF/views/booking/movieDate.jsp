@@ -15,8 +15,16 @@
 			$('#'+idd).css("background-color","black");
 			$('#'+idd).css("color","white");
 		})	;
+		$('#okay').click(function() {
+			$('.datertid').each(function(i, obj) {
+				var color = $(obj).css("background-color");
+				if(color == 'rgb(0, 0, 0)' || color == 'black') {
+					var time = $(obj).attr('id');//td의 id date.rtid
+					location.href="seatSelect.do?rtid=" + time;
+				}
+			});
+		});
 	});
-
 </script>
 </head>
 <body>
@@ -24,11 +32,17 @@
 		<c:forEach var="date" items="${dateList}">
 		<!-- items의 locationList는 컨트롤의 리퀘스트 맵핑의 locationList와 연결 -->
 			<tr>
-				<td id="date_${date.rtid}" class="datertid" onclick="dateSelect(${date.mid}, ${date.lid},${date.rtid})" style="cursor: pointer;">
-					<fmt:formatDate value="${date.rtdate}" pattern="MM월 dd일"/>
+				<td id="${date.rtid}" class="datertid" style="cursor: pointer;">
+					 <fmt:formatDate value="${date.rtdate}" pattern="MM월 dd일"/> ${ date.rttime } (${ date.tname })
 				</td>
 			</tr>
 		</c:forEach>
+		<tr>
+				<th id="seat" colspan="4" align="right">
+				<button  class="btn btn-info btn-sm" style="float: right; border-color:
+					#cd1726; background-color: #cd1726; " id="okay">확인</button>
+				</th>
+			</tr>
 	</table>
 </body>
 </html>

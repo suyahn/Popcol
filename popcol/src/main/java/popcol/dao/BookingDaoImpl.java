@@ -25,16 +25,16 @@ public class BookingDaoImpl implements BookingDao{
 	public List<Location> locationList(int mid) {
 		return sst.selectList("locationns.bookingLocationList",mid);
 	}
-	public List<RunningtimeTable> dateList(int mid, int lid) {
+	/*public List<RunningtimeTable> dateList(int mid, int lid) {
 		HashMap<String , Integer> date=new HashMap<String, Integer>();
 		date.put("mid", mid);
 		date.put("lid", lid);
 		return sst.selectList("runningtimetablens.bookingRTList", date);
-	}
-	public List<RunningtimeTable> timeList(int mid, int lid, int rtid) {
-		HashMap<String,Integer> time=new HashMap<String,Integer>();
-		time.put("mid",mid); time.put("lid", lid); time.put("rtid", rtid);
-		return sst.selectList("runningtimetablens.bookingRttList",time);
+	}*/
+	public List<RunningtimeTable> dateList(int mid, int lid) {
+		HashMap<String,Integer> date=new HashMap<String,Integer>();
+		date.put("mid",mid); date.put("lid", lid);
+		return sst.selectList("runningtimetablens.bookingRttList",date);
 	}
 	public RunningtimeTable selectRt(int rtid) {
 		return sst.selectOne("runningtimetablens.bookingrtList",rtid);

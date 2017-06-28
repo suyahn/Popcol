@@ -41,10 +41,10 @@
 			</tr>
 		</table>
 		
-		<button type="button" onclick="location.href='eventUpdateForm.do?eid=${ event.eid }&pageNum=${ pageNum }'" 
+	<%-- 	<button type="button" onclick="location.href='eventUpdateForm.do?eid=${ event.eid }&pageNum=${ pageNum }'" 
 			class="btn btn-default">수정</button>
 		<button type="button" onclick="deleteChk(${ event.eid }, ${ pageNum })" 
-			class="btn btn-default">삭제</button>
+			class="btn btn-default">삭제</button> --%>
 		<button type="button" onclick="location.href='eventList.do?pageNum=${ pageNum }'" class="btn btn-primary"
 			style="border-color: #CD1726; background-color: #CD1726;">목록</button>
 		<hr>

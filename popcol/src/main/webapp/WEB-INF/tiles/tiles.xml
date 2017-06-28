@@ -277,66 +277,19 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/notice/noticeList.jsp" />
 	</definition>
-
-	<definition name="noticeInsertForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/notice/noticeInsertForm.jsp" />
-	</definition>
-
-	<definition name="noticeInsert" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/notice/noticeInsert.jsp" />
-	</definition>
-
+	
 	<definition name="noticeView" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/notice/noticeView.jsp" />
-	</definition>
-
-	<definition name="noticeUpdateForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/notice/noticeUpdateForm.jsp" />
-	</definition>
-
-	<definition name="noticeUpdate" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/notice/noticeUpdate.jsp" />
-	</definition>
-
-	<definition name="noticeDelete" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/notice/noticeDelete.jsp" />
 	</definition>
 
 	<!-- faq 자주하는 질문 -->
 	<definition name="faqList" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqList.jsp" />
 	</definition>
-
-	<definition name="faqInsertForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/faq/faqInsertForm.jsp" />
-	</definition>
-
-	<definition name="faqInsert" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/faq/faqInsert.jsp" />
-	</definition>
-
+	
 	<definition name="faqView" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqView.jsp" />
-	</definition>
-
-	<definition name="faqUpdateForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/faq/faqUpdateForm.jsp" />
-	</definition>
-
-	<definition name="faqUpdate" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/faq/faqUpdate.jsp" />
-	</definition>
-
-	<definition name="faqDelete" extends="mainLayout">
-		<put-attribute name="body" value="/WEB-INF/views/faq/faqDelete.jsp" />
 	</definition>
 
 	<!-- qna 1:1 문의 -->
@@ -383,30 +336,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/event/eventView.jsp" />
 	</definition>
 
-	<definition name="eventInsertForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventInsertForm.jsp" />
-	</definition>
-
-	<definition name="eventInsert" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventInsert.jsp" />
-	</definition>
-
-	<definition name="eventUpdateForm" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventUpdateForm.jsp" />
-	</definition>
-
-	<definition name="eventUpdate" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventUpdate.jsp" />
-	</definition>
-
-	<definition name="eventDelete" extends="mainLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventDelete.jsp" />
-	</definition>
 
 
 
@@ -424,10 +353,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/movieDate.jsp" />
 	</definition>
-	<definition name="movieTime" extends="empty">
+	<!-- <definition name="movieTime" extends="empty">
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/movieTime.jsp" />
-	</definition>
+	</definition> -->
 	<definition name="seatSelect" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/seatSelect.jsp" />
@@ -657,37 +586,37 @@
 	</definition>
 	
 	<!-- 관리자 이벤트 -->
-	<definition name="eventList" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/event/eventList.jsp" />
+	<definition name="adminEventList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/event/eventList.jsp" />
 	</definition>
 
-	<definition name="eventView" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/event/eventView.jsp" />
+	<definition name="adminEventView" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/event/eventView.jsp" />
 	</definition>
 
-	<definition name="eventInsertForm" extends="admin">
+	<definition name="adminEventInsertForm" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventInsertForm.jsp" />
+			value="/WEB-INF/views/admin/event/eventInsertForm.jsp" />
 	</definition>
 
-	<definition name="eventInsert" extends="admin">
+	<definition name="adminEventInsert" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventInsert.jsp" />
+			value="/WEB-INF/views/admin/event/eventInsert.jsp" />
 	</definition>
 
-	<definition name="eventUpdateForm" extends="admin">
+	<definition name="adminEventUpdateForm" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventUpdateForm.jsp" />
+			value="/WEB-INF/views/admin/event/eventUpdateForm.jsp" />
 	</definition>
 
-	<definition name="eventUpdate" extends="admin">
+	<definition name="adminEventUpdate" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventUpdate.jsp" />
+			value="/WEB-INF/views/admin/event/eventUpdate.jsp" />
 	</definition>
 
-	<definition name="eventDelete" extends="admin">
+	<definition name="adminEventDelete" extends="admin">
 		<put-attribute name="body"
-			value="/WEB-INF/views/event/eventDelete.jsp" />
+			value="/WEB-INF/views/admin/event/eventDelete.jsp" />
 	</definition>
 	
 	

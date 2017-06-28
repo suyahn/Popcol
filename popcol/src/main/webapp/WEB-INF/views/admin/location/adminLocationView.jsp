@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<h2>
+		<h2 style="font-weight: bold;">
 			<img src="location/logo.png" width="250" height="70"> 영화관
 		</h2>
 		<table class="table table-bordered">
@@ -44,12 +44,12 @@
 			</tr>
 		</table>
 		<a href="adminLocationList.do?" class="btn btn-info"
-			style="display: inline; border-color: navy; background-color: navy;">목록</a>
+			style="display: inline; border-color: #CD1726; background-color: #CD1726;">목록</a>
 		<a href="adminLocationUpdateForm.do?lid=${location.lid}"
 			class="btn btn-info"
-			style="display: inline; border-color: navy; background-color: navy;">수정</a>
+			style="display: inline; border-color: #CD1726; background-color: #CD1726;">수정</a>
 		<a href="adminLocationDelete.do?lid=${location.lid}" class="btn btn-info"
-			style="display: inline; border-color: navy; background-color: navy;">삭제</a>
+			style="display: inline; border-color: #CD1726; background-color: #CD1726;">삭제</a>
 		<!-- <div id="list"></div> -->
 	</div>
 </body>

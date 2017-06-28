@@ -21,18 +21,12 @@
 			$('#date').html(data);
 		});
 	}
-	function dateSelect(mid,lid,rtid){
-		var sendData ='mid='+mid + '&lid='+lid +'&rtid='+rtid;
-		$.post("movietime.do",sendData,function(data){
-			$('#time').html(data);
-		});
-	}
-	function seatSelect(mid,lid,rtid){
+/* 	function seatSelect(mid,lid,rtid){
 		var sendData ='mid='+mid + '&lid='+lid +'&rtid='+rtid;
 		$.post("seatSelect.do",sendData,function(data){
-			$('#seat').html(data);
+			$('#date').html(data);
 		});
-	}
+	} */
 	$(function () {
 		$('.moviemid').click(function(){
 			$('.moviemid').css("background-color","white");
@@ -51,8 +45,7 @@
 			<tr>
 				<th>영화</th>
 				<th>지역</th>
-				<th>날짜</th>
-				<th>시간</th>
+				<th>상영날짜 및 시간</th>
 			</tr>
 			<tr>
 				<td style="width: 30%;">
@@ -66,8 +59,7 @@
 					</table>
 				</td>
 				<td id="location" style="width: 30%;"></td>
-				<td id="date" style="width: 10%;"></td>
-				<td id="time" style="width: 30%;"></td>
+				<td id="date" style="width: 40%;"></td>
 			</tr>
 		</table>
 	</div>

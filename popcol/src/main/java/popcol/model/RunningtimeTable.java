@@ -14,6 +14,7 @@ public class RunningtimeTable {
 	private String lname;
 	private String tname;
 	
+
 	public String getMtitle() {
 		return mtitle;
 	}
