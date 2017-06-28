@@ -42,12 +42,12 @@
 <body>
 	<div class="container" align="center">
 		<h2>
-			<img src="location/logo.png" width="250" height="70"> 영화 리스트
+			<img src="location/logo.png" width="250" height="70"> 상영시간표
 		</h2>
 		<table class="table table-hover">
 			<tr>
 				<th>No</th>
-				<th>제목</th>
+				<th>날짜</th>
 				<th>원제</th>
 				<th>감독</th>
 				<th>국가</th>
