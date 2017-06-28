@@ -97,38 +97,38 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="dropdown" style="margin-right: 100px; margin-left: 150px;">
-						<a href="movieChart.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a href="movieChart.do" class="dropdown-toggle head" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							영화<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="movieChart.do">무비 차트</a></li>
-							<li><a href="nowMovies.do">현재 상영작</a></li>
-							<li><a href="preMovies.do">개봉 예정작</a></li>
+							<li><a href="movieChart.do" class="head">무비 차트</a></li>
+							<li><a href="nowMovies.do" class="head">현재 상영작</a></li>
+							<li><a href="preMovies.do" class="head">개봉 예정작</a></li>
 						</ul>
 					</li>
 					
 					<li class="dropdown" style="margin-right: 100px; margin-left: 100px;">
-						<a href="reservation.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a href="reservation.do" class="dropdown-toggle head" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							예매<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="reservation.do">빠른 예매</a></li>
-							<li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
+							<li><a href="reservation.do" class="head">빠른 예매</a></li>
+							<li><a href="${ path }/gathering/lala.jsp" class="head">상영 시간표</a></li>
 						</ul>
 					</li>
 					
 					 <li class="">
-					 	<a href="eventList.do" style="margin-right: 100px; margin-left: 100px;">이벤트</a>
+					 	<a href="eventList.do" class="head" style="margin-right: 100px; margin-left: 100px;">이벤트</a>
 					 </li>
 					
 					<li class="dropdown" style="margin-right: 150px; margin-left: 100px;">
-						<a href="noticeList.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a href="noticeList.do" class="dropdown-toggle head" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							고객센터<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="noticeList.do">공지사항</a></li>
-							<li><a href="faqList.do">자주하는 질문</a></li>
-							<li><a href="qnaList.do">1:1 문의</a></li>
+							<li><a href="noticeList.do" class="head">공지사항</a></li>
+							<li><a href="faqList.do" class="head">자주하는 질문</a></li>
+							<li><a href="qnaList.do" class="head">1:1 문의</a></li>
 						</ul>
 					</li>
 					

@@ -118,7 +118,7 @@
 									<font size="2px">
 									<c:if test="${empty pointList }">
 										<br>실결제금액&nbsp;&nbsp;${sum }원<br>
-											===================<br>
+											================<br>
 											총결제금액&nbsp;&nbsp;${sum }원<br>
 									</c:if>
 									
@@ -127,13 +127,13 @@
 										<c:if test="${point.bid == booking.bid }">
 											<br>실결제금액&nbsp;&nbsp;${sum - point.ppoint}원<br>
 											포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${point.ppoint }원<br>
-											===================<br>
+											================<br>
 											총결제금액&nbsp;&nbsp;${sum }원
 										</c:if>
 										
 										<c:if test="${point.bid != booking.bid }">
 											<br>실결제금액&nbsp;&nbsp;${sum }원<br>
-											===================<br>
+											================<br>
 											총결제금액&nbsp;&nbsp;${sum }원<br>
 										</c:if>
 									</c:forEach>
