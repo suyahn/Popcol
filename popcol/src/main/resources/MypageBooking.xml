@@ -16,6 +16,7 @@
 		<result property="price" column="price" />
 		<result property="bseat" column="bseat" />
 		<result property="ticketnumber" column="ticketnumber" />
+		<result property="bid" column="bid" />
 		<result property="human" column="human" />
 		<result property="peopleC" column="peopleC" />
 	</resultMap>
@@ -24,7 +25,7 @@
 	<!-- 메인에서~ -->
 	<select id="selectMyBookingListMain" parameterType="hashmap" resultMap="mypagebookingResult">
 		select * from (select 
-		ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
+		max(b.bid) bid, ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
 		from booking b, movie m, location l, theater t, runningtimetable rt, price p
 		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
 		group by ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, bdate
@@ -34,7 +35,7 @@
 	<!-- 마이 페이지 1개월 간 예매 내역 받아오기 -->
 	<select id="selectMyBookingList" parameterType="hashmap" resultMap="mypagebookingResult">
 		select 
-		ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
+		max(b.bid) bid, ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, to_char(rtdate, 'yyyy.MM.dd') theDate, to_char(rtdate, 'HH24:mm') theTime
 		from booking b, movie m, location l, theater t, runningtimetable rt, price p
 		where b.mid = m.mid and b.lid = l.lid and b.tid = t.tid and b.rtid = rt.rtid and b.pid = p.pid and b.cid = #{cid} and b.bdate >= #{oneMonthAgo}
 		group by ticketnumber, mtitle, moriginaltitle, murlposter, b.mid, lname, tname, rtdate, bdate

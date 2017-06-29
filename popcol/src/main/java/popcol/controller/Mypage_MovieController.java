@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import popcol.model.Customer;
 import popcol.model.Movie;
 import popcol.model.MypageBooking;
+import popcol.model.Point;
 import popcol.model.Review;
 import popcol.service.BookingService;
 import popcol.service.CustomerService;
@@ -69,6 +72,10 @@ public class Mypage_MovieController {
 
 		List<MypageBooking> myBookingList = new ArrayList<MypageBooking>();
 		myBookingList = mbs.selectMyBookingList(id, oneMonthAgo);
+		
+		//List<List<Point>> pointList = new ArrayList<List<Point>>();
+		//HashSet<String> ticketnumber = new HashSet<String>();
+		List<Point> pointList = new ArrayList<Point>();
 
 		for (MypageBooking mb : myBookingList) {
 			c.setTime(mb.getRtdate());
@@ -100,7 +107,23 @@ public class Mypage_MovieController {
 
 			}
 			mb.setTheDay(theDay);
+			
+			// 포인트를 위한 티켓넘버
+			// ticketnumber.add(mb.getTicketnumber());
 		}
+		
+		// 포인트 리스트
+		/*Iterator<String> itr = ticketnumber.iterator();
+		while(itr.hasNext()) {
+			String ticknum = (String) itr.next(); 
+			List<Point> p = ps.selectPointForBookingList(ticknum, id);
+			
+			pointList.add(p);
+		}*/
+		
+		pointList = ps.selectUsePointList(id);
+		
+		model.addAttribute("pointList", pointList);
 
 		List<MypageBooking> MyPriceSeatList = new ArrayList<MypageBooking>();
 		MyPriceSeatList = mbs.selectMyPriceSeatList(id, oneMonthAgo);
@@ -118,12 +141,45 @@ public class Mypage_MovieController {
 		session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
-		int result = bs.deleteBooking(ticketnumber, id);
+		Customer customer = new Customer();
+		customer.setCid(id);
 		
-		if (result > 0) {
-			ps.deletePointContent(ticketnumber, id);
-			
+		// 예매번호가 같은 포인트 테이블에있는애들 다 받아와서 하기
+		List<Point> pointList = ps.selectPointForCancel(ticketnumber, id);
+		
+		for(Point p : pointList) {
+			if (p.getPsort().equals("사용")) {
+				
+				customer.setCpoint(p.getPpoint());
+				System.out.println("point1 : " + customer.getCpoint());
+				cs.returnPointForCancel(customer);
+			} else if(p.getPsort().equals("매표")) {
+				
+
+				customer.setCpoint(-p.getPpoint());
+				System.out.println("point2 : " + customer.getCpoint());
+				cs.returnPointForCancel(customer);
+			}
 		}
+		
+		/*// 예매할 때 사용한 포인트 돌려주기(더해주기)
+		int point = ps.selectUsePoint(ticketnumber, id);
+		
+		if(point > 0) {
+			customer.setCpoint(point);
+			
+			cs.returnPointForCancel(customer);
+		}
+		
+		// 예매할 때 받은 포인트 돌려주기(빼주기)
+		point = ps.selectReceivePoint(ticketnumber, id);
+		System.out.println("point2 : " + -point);
+		customer.setCpoint(-point);
+		cs.returnPointForCancel(customer);*/
+		
+		ps.deletePointContent(ticketnumber, id);
+			
+		int result = bs.deleteBooking(ticketnumber, id);
 		
 		model.addAttribute("result", result);
 

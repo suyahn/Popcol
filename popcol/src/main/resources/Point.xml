@@ -30,6 +30,26 @@
 		select * from (select p.* from point p where cid = #{cid} order by pdate desc) where rownum between 1 and 3
 	</select>
 	
+	<select id="selectUsePoint" parameterType="hashmap" resultType="int">
+		select nvl(ppoint, 0) from point where cid = #{cid} and bid = (select max(bid) from booking where ticketnumber = #{ticketnumber}) and psort = '사용'
+	</select>
+	
+	<select id="selectReceivePoint" parameterType="hashmap" resultType="int">
+		select ppoint from point where cid = #{cid} and bid = (select max(bid) from booking where ticketnumber = #{ticketnumber}) and psort = '매표'
+	</select>
+	
+	<select id="selectPointForCancel" parameterType="hashmap" resultMap="pointResult">
+		select * from point where cid = #{cid} and bid = (select max(bid) from booking where ticketnumber = #{ticketnumber})
+	</select>
+	
+	<select id="selectPointForBookingList" parameterType="hashmap" resultMap="pointResult">
+		select * from point where cid = #{cid} and bid = (select max(bid) from booking where ticketnumber = #{ticketnumber}) and psort = '사용'
+	</select>
+	
+	<select id="selectUsePointList" parameterType="string" resultMap="pointResult">
+		select * from point where cid = #{cid} and psort = '사용'
+	</select>
+	 
 	<insert id="giveJoinPoint" parameterType="point">
 		insert into point values ((select nvl(max(pid), 0) + 1 from point), #{cid}, null, null, '이벤트(가입)', 2000, sysdate)
 	</insert>
