@@ -14,11 +14,8 @@
 
 	<!-- <select id="bookingRTList" resultMap="runningtimetableResult"
 		parameterType="hashMap">
-		
 		  select distinct to_date (to_char(rtdate,'rr/mm/dd'),'rr/mm/dd') rtdate 
 		from runningtimetable where mid=#{mid} and lid=#{lid} group by rtdate</select> -->
-
-<<<<<<< HEAD
 	<select id="bookingRttList" resultMap="runningtimetableResult" parameterType="hashMap">
 		<!-- select rtid, rtdate, to_char(rtdate,'HH24:mi') rttime from
 		runningtimetable where rtid = #{rtid} -->
@@ -27,15 +24,6 @@
 	</select>
 	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
 	    select rt.*, to_char(rtdate, 'HH24:MI') rttime, m.mtitle, l.lname, t.tname 
-=======
-	<select id="bookingRttList" resultMap="runningtimetableResult"
-		parameterType="hashMap"> select to_char(rtdate,'HH24:MI')rttime,rtid from
-		runningtimetable where rtdate = (select rtdate from runningtimetable
-		where rtid = #{rtid})  </select>
-		
-	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
-	    select rt.*, to_char(rtdate,'HH24:MI') rttime, m.mtitle, l.lname, t.tname
->>>>>>> 6d1d68fbcefc911f990b7e3ef76f11b0b36d435e
 	    from movie m, location l, runningtimetable rt, theater t
 	    where  rt.lid = l.lid and rt.mid=m.mid and rt.tid = t.tid
 	    and rtdate = (select rtdate from runningtimetable
