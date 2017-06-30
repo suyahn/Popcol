@@ -8,44 +8,51 @@
 		<result property="tid" column="tid" />
 		<result property="mid" column="mid" />
 		<result property="rtdate" column="rtdate" />
-		<result property="rttime" column="rttime"/>
-		<result property="timezone" column="timezone"/>
-		<result property="tname" column="tname"/>
+		<result property="rttime" column="rttime" />
+		<result property="timezone" column="timezone" />
+		<result property="tname" column="tname" />
+		<result property="lname" column="lname" />
 	</resultMap>
 
-	<!-- <select id="bookingRTList" resultMap="runningtimetableResult"
-		parameterType="hashMap">
-		
-		  select distinct to_date (to_char(rtdate,'rr/mm/dd'),'rr/mm/dd') rtdate 
-		from runningtimetable where mid=#{mid} and lid=#{lid} group by rtdate</select> -->
+	<!-- <select id="bookingRTList" resultMap="runningtimetableResult" parameterType="hashMap"> 
+		select distinct to_date (to_char(rtdate,'rr/mm/dd'),'rr/mm/dd') rtdate from 
+		runningtimetable where mid=#{mid} and lid=#{lid} group by rtdate</select> -->
 
-<<<<<<< HEAD
-	<select id="bookingRttList" resultMap="runningtimetableResult" parameterType="hashMap">
-		<!-- select rtid, rtdate, to_char(rtdate,'HH24:mi') rttime from
-		runningtimetable where rtid = #{rtid} -->
-		select rt.*, to_char(rtdate, 'HH24"시" MI"분"') rttime, tname from runningtimetable rt, theater t 
-    	where mid = #{mid} and rt.lid = #{lid} and t.tid = rt.tid
-	</select>
-		
-	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
-	    select rt.*, to_char(rtdate, 'HH24:MI') rttime, m.mtitle, l.lname, t.tname
-=======
+
 	<select id="bookingRttList" resultMap="runningtimetableResult"
 		parameterType="hashMap"> select to_char(rtdate,'HH24:MI')rttime,rtid from
 		runningtimetable where rtdate = (select rtdate from runningtimetable
-		where rtid = #{rtid})  </select>
-		
-	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
-	    select rt.*, to_char(rtdate,'HH24:MI') rttime, m.mtitle, l.lname, t.tname
->>>>>>> 102bf408cba6a2543ec65cf1d0d777e0601cefb1
-	    from movie m, location l, runningtimetable rt, theater t
-	    where  rt.lid = l.lid and rt.mid=m.mid and rt.tid = t.tid
-	    and rtdate = (select rtdate from runningtimetable
 		where rtid = #{rtid})
 	</select>
-	
-	<select id="runningtimeTableList" resultMap="runningtimetableResult">
-		select * from runningtimetable
+
+	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
+		select rt.*, to_char(rtdate,'HH24:MI') rttime, m.mtitle, l.lname,
+		t.tname
+
+		from movie m, location l, runningtimetable rt, theater t
+		where
+		rt.lid = l.lid and rt.mid=m.mid and rt.tid = t.tid
+		and rtdate = (select
+		rtdate from runningtimetable
+		where rtid = #{rtid})
 	</select>
-	
+
+	<select id="adminTTList" resultType="runningtimetable" parameterType="hashMap">
+		select * from 
+		(select rownum rn, a.* from (select rtid, lid, tid,mid,rtdate,timezone from runningtimetable order by rtid desc )a)
+		where rn between #{startRow} and #{endRow}
+	</select>
+
+	<!-- 규랑 -->
+
+	<!-- 페이지 처리 -->
+	<select id="getTotal1" resultType="int">
+		select count(*) from
+		runningtimetable
+	</select>
+	<!-- 상영관별 페이징 -->
+	<select id="getTotal2" resultType="int" parameterType="int">
+		select count(*) from
+		runningtimetable where lid =#{lid}
+	</select>
 </mapper>

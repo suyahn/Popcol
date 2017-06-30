@@ -23,7 +23,7 @@ import popcol.service.MovieService;
 import popcol.service.NoticeService;
 import popcol.service.PagingPgm;
 import popcol.service.QnaService;
-import popcol.service.TheaterService;
+import popcol.service.RunningtimeTableService;
 import popcol.model.Customer;
 import popcol.model.Event;
 import popcol.model.Faq;
@@ -31,6 +31,7 @@ import popcol.model.Location;
 import popcol.model.Movie;
 import popcol.model.Notice;
 import popcol.model.Qna;
+import popcol.model.RunningtimeTable;
 
 @Controller
 public class AdminController {
@@ -49,8 +50,8 @@ public class AdminController {
 	private QnaService qs;
 	@Autowired
 	private EventService es;
-	
-	
+	@Autowired
+	private RunningtimeTableService tts;
 
 	/* 로그인 */
 	@RequestMapping("adminLoginForm")
@@ -606,151 +607,189 @@ public class AdminController {
 		return "adminQnaReply";
 	}
 
-	/*@RequestMapping("adminQnaReplyInsert")
-	public String qnaReplyInsert(Qna qna) {
-		qs.insertReply(qna);
-		return "redirect:adminQnaReply.do?qid=" + qna.getQid();
-	}
-
-	@RequestMapping("adminQnaReplyDelete")
-	public String qnaReplyDelete(int qid) {
-		qs.deleteReply(qid);
-		return "redirect:adminQnaReply.do?qid=" + qid;
-	}*/
+	/*
+	 * @RequestMapping("adminQnaReplyInsert") public String qnaReplyInsert(Qna
+	 * qna) { qs.insertReply(qna); return "redirect:adminQnaReply.do?qid=" +
+	 * qna.getQid(); }
+	 * 
+	 * @RequestMapping("adminQnaReplyDelete") public String qnaReplyDelete(int
+	 * qid) { qs.deleteReply(qid); return "redirect:adminQnaReply.do?qid=" +
+	 * qid; }
+	 */
 
 	@RequestMapping("adminEventList")
 	public String eventList(String pageNum, Event event, Model model) {
 		final int ROW_PER_PAGE = 10;
-		
-		if(pageNum == null || pageNum.equals("")) {
+
+		if (pageNum == null || pageNum.equals("")) {
 			pageNum = "1";
 		}
-		
+
 		int currentPage = Integer.parseInt(pageNum);
-		
+
 		int total = es.getTotal(event);
-		
+
 		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
 		int endRow = startRow + ROW_PER_PAGE - 1;
 		event.setStartRow(startRow);
 		event.setEndRow(endRow);
 		List<Event> list = es.eventList(event);
-		
+
 		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
-		
+
 		int no = total - startRow + 1;
-		
+
 		model.addAttribute("eventList", list);
 		model.addAttribute("no", no);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("pp", pp);
 		model.addAttribute("search", event.getSearch());
 		model.addAttribute("keyword", event.getKeyword());
-		
+
 		return "adminEventList";
 	}
-	
+
 	@RequestMapping("adminEventView")
 	public String eventView(int eid, String pageNum, Model model) {
 		Event event = es.selectEvent(eid);
-		
+
 		model.addAttribute("event", event);
 		model.addAttribute("pageNum", pageNum);
-		
+
 		return "adminEventView";
 	}
-	
+
 	@RequestMapping("adminEventInsertForm")
 	public String eventInsertForm(String pageNum, Model model) {
 		model.addAttribute("pageNum", pageNum);
-		
+
 		return "adminEventInsertForm";
 	}
-	
+
 	@RequestMapping("adminEventInsert")
-	public String eventInsert(String pageNum, Event event, String estartingdateString, String eclosingdateString
-			, @RequestParam("newEpicture") MultipartFile mf, Model model, HttpSession session) throws IllegalStateException, IOException {
-	/*public String eventInsert(String pageNum, String esubject, String econtent, String estartingdateString, String eclosingdateString
-			, @RequestParam("epicture") MultipartFile mf, Model model, HttpSession session) throws IllegalStateException, IOException {*/
+	public String eventInsert(String pageNum, Event event, String estartingdateString, String eclosingdateString,
+			@RequestParam("newEpicture") MultipartFile mf, Model model, HttpSession session)
+			throws IllegalStateException, IOException {
+		/*
+		 * public String eventInsert(String pageNum, String esubject, String
+		 * econtent, String estartingdateString, String eclosingdateString
+		 * , @RequestParam("epicture") MultipartFile mf, Model model,
+		 * HttpSession session) throws IllegalStateException, IOException {
+		 */
 		String fileName = "";
-		 
-		if(mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
+
+		if (mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
 			fileName = "event_" + mf.getOriginalFilename();
-			
-			/*webapp밑에 images에 저장*/
+
+			/* webapp밑에 images에 저장 */
 			String path = session.getServletContext().getRealPath("/images");
 			FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
 			fos.write(mf.getBytes());
 			fos.close();
 		}
-		
+
 		int eid = es.getMaxNum();
 		event.setEid(eid);
 		event.setEpicture(fileName);
-		
-		/*String을 sql.Date로 타입변경*/
+
+		/* String을 sql.Date로 타입변경 */
 		event.setEstartingdate(Date.valueOf(estartingdateString));
 		event.setEclosingdate(Date.valueOf(eclosingdateString));
-		
+
 		int result = es.insertEvent(event);
-		
-		
+
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("eid", event.getEid());
 		model.addAttribute("result", result);
-		
+
 		return "adminEventInsert";
 	}
-	
+
 	@RequestMapping("adminEventUpdateForm")
 	public String eventUpdateForm(int eid, String pageNum, Model model) {
 		Event event = es.selectEvent(eid);
-		
+
 		model.addAttribute("event", event);
 		model.addAttribute("pageNum", pageNum);
-		
+
 		return "adminEventUpdateForm";
 	}
-	
+
 	@RequestMapping("adminEventUpdate")
-	public String eventUpdate(String pageNum, Event event, String estartingdateString, String eclosingdateString
-			, @RequestParam("newEpicture") MultipartFile mf, Model model, HttpSession session) throws IllegalStateException, IOException {
-		
+	public String eventUpdate(String pageNum, Event event, String estartingdateString, String eclosingdateString,
+			@RequestParam("newEpicture") MultipartFile mf, Model model, HttpSession session)
+			throws IllegalStateException, IOException {
+
 		String fileName = "";
-		 
-		if(mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
+
+		if (mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
 			fileName = "event_" + mf.getOriginalFilename();
-			
-			/*webapp밑에 images에 저장*/
+
+			/* webapp밑에 images에 저장 */
 			String path = session.getServletContext().getRealPath("/images");
 			FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
 			fos.write(mf.getBytes());
 			fos.close();
-			
+
 			event.setEpicture(fileName);
 		}
-		
-		/*String을 sql.Date로 타입변경*/
+
+		/* String을 sql.Date로 타입변경 */
 		event.setEstartingdate(Date.valueOf(estartingdateString));
 		event.setEclosingdate(Date.valueOf(eclosingdateString));
-		
+
 		int result = es.updateEvent(event);
-		
+
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("eid", event.getEid());
 		model.addAttribute("result", result);
-		
+
 		return "adminEventUpdate";
 	}
-	
+
 	@RequestMapping("adminEventDelete")
 	public String eventDelete(int eid, String pageNum, Model model) {
 		int result = es.deleteEvent(eid);
-		
+
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
-		
+
 		return "adminEventDelete";
+	}
+
+	/* 관리자 상영시간표 리스트 */
+	@RequestMapping("adminTTList")
+	public String adminTTList(String pageNum, RunningtimeTable runningtimeTable, Model model,
+			HttpServletRequest request) {
+		final int ROW_PER_PAGE = 10;
+		String test = request.getParameter("lid");
+		int total = 0;
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";
+		/* 전체보기 */
+		if (test == null || test.equals("") || test.equals("0")) {
+			total = tts.getTotal1();
+		} else {/* 상영관별 보기 */
+			total = tts.getTotal2(runningtimeTable);
+		}
+		int currentPage = Integer.parseInt(pageNum);
+
+		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
+		int endRow = startRow + ROW_PER_PAGE - 1;
+		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
+		List<RunningtimeTable> adminTTList = tts.adminTTList(startRow, endRow);
+		List<Location> locationList = ls.adminLocationList();
+		int no = total - startRow + 1;
+
+		model.addAttribute("adminTTList", adminTTList);
+		model.addAttribute("locationList", locationList);
+		model.addAttribute("no", no);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("pp", pp);
+		
+		/* model.addAttribute("keyword", runningtimeTable.getKeyword()); */
+
+		return "adminTTList";
 	}
 
 }

@@ -37,8 +37,8 @@
 			</tr>
 		</table>
 		
-		<button type="button" onclick="location.href='adminQnaUpdateForm.do?qid=${ qna.qid }&pageNum=${ pageNum }'" 
-			class="btn btn-default">수정</button>
+		<%-- <button type="button" onclick="location.href='adminQnaUpdateForm.do?qid=${ qna.qid }&pageNum=${ pageNum }'" 
+			class="btn btn-default">수정</button> --%>
 		<button type="button" onclick="deleteChk(${ qna.qid }, ${ pageNum })" 
 			class="btn btn-default">삭제</button>
 		<button type="button" onclick="location.href='adminQnaList.do?pageNum=${ pageNum }'" class="btn btn-primary"
