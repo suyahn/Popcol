@@ -61,7 +61,7 @@
 			
 			var reg_pw = /^.*(?=.{4,20})(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@!#$*()_&]).*$/;
 			if(!reg_pw.test(password1)) { 
-				$('#passwordCheck').html('<span class="err">4~12자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>');
+				$('#passwordCheck').html('<span class="err">4~12자 영문 대 소문자, 숫자, 특수문자(@!#$*()_&)를 사용하세요.</span>');
 				$('#password').focus();
 				
 				return false;
@@ -197,7 +197,7 @@
 					</th>
 					<td>						
 						<div class="form-group">
-							<br><input type="email" class="form-control" name="cemail" id="email" required="required" placeholder="이메일">
+							<br><input type="email" class="form-control" name="cemail" id="email" required="required" placeholder="이메일(aaaa@aaa.com)">
 						</div>
 					</td>
 				</tr>	
@@ -208,7 +208,7 @@
 					</th>
 					<td>						
 						<div class="form-group">
-							<br><input type="tel" class="form-control" name="cphone" id="phone" required="required" placeholder="전화번호" pattern="(010)-\d{3,4}-\d{4}">
+							<br><input type="tel" class="form-control" name="cphone" id="phone" required="required" placeholder="전화번호(010-000(0)-0000)" pattern="(010)-\d{3,4}-\d{4}">
 						</div>
 					</td>
 				</tr>	
