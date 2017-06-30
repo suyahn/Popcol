@@ -151,13 +151,11 @@ public class Mypage_MovieController {
 			if (p.getPsort().equals("사용")) {
 				
 				customer.setCpoint(p.getPpoint());
-				System.out.println("point1 : " + customer.getCpoint());
 				cs.returnPointForCancel(customer);
 			} else if(p.getPsort().equals("매표")) {
 				
 
 				customer.setCpoint(-p.getPpoint());
-				System.out.println("point2 : " + customer.getCpoint());
 				cs.returnPointForCancel(customer);
 			}
 		}
