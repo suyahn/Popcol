@@ -20,7 +20,7 @@
 		<!-- select rtid, rtdate, to_char(rtdate,'HH24:mi') rttime from
 		runningtimetable where rtid = #{rtid} -->
 		select rt.*, to_char(rtdate, 'HH24"시" MI"분"') rttime, tname from runningtimetable rt, theater t 
-    	where mid = #{mid} and rt.lid = #{lid} and t.tid = rt.tid
+    	where mid = #{mid} and rt.lid = #{lid} and t.tid = rt.tid and rtdate >= sysdate
 	</select>
 	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
 	    select rt.*, to_char(rtdate, 'HH24:MI') rttime, m.mtitle, l.lname, t.tname 
