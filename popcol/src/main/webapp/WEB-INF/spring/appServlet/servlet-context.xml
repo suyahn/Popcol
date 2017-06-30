@@ -34,6 +34,8 @@
 	
 	<beans:bean id="lc1" class="popcol.controller.LoginCheck" />
 	<beans:bean id="lc2" class="popcol.controller.LoginCheck2" />
+	<beans:bean id="lc3" class="popcol.controller.MasterLoginCheck" />
+	<beans:bean id="lc4" class="popcol.controller.MasterLoginCheck2" />
 	
 	<interceptors>
 		<interceptor>
@@ -56,6 +58,24 @@
 		<interceptor>
 			<mapping path="/loginForm.do"/>
 			<beans:ref bean="lc2" />
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/adminList.do"/>
+			<mapping path="/adminLocationList.do"/>
+			<mapping path="/sangyoungsiganpyo.do"/>
+			<mapping path="/adminCustomerList.do"/>
+			<mapping path="/adminEventList.do"/>
+			<mapping path="/adminNoticeList.do"/>
+			<mapping path="/adminFaqList.do"/>
+			<mapping path="/adminQnaList.do"/>
+			
+			<beans:ref bean="lc3" />
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/adminLoginForm.do"/>
+			<beans:ref bean="lc4" />
 		</interceptor>
 	</interceptors>
 	

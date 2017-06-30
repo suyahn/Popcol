@@ -10,7 +10,17 @@
 <script src="${path}/js/jquery.js"></script>
 <script src="${path}/js/bootstrap.min.js"></script>
 
+<style type="text/css">
 
+.head {
+	color: #cd1726 !important;
+}
+
+.head:hover {
+	background-color: #fdeaeb !important;
+	color : #fcba2e !important;
+}
+</style>
 
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">-->

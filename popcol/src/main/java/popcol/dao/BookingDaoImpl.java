@@ -19,7 +19,7 @@ public class BookingDaoImpl implements BookingDao{
 	private SqlSessionTemplate sst;
 
 	public List<Movie> movieList() {
-		return sst.selectList("moviens.list");
+		return sst.selectList("moviens.bookingMovieList");
 	}
 
 	public List<Location> locationList(int mid) {

@@ -76,7 +76,7 @@
 	<select id="movieChart" parameterType="int" resultType="movie">
 		<![CDATA[
 		select * 
-			from (select theMovie / total * 100 as bookingrate 
+			from (select round(theMovie / total * 100, 2) as bookingrate 
 						from (select count(*) theMovie 
 									from booking b, movie m, runningtimetable r
 									where b.rtid = r.rtid and b.mid = m.mid and m.mdel != 'y' 
@@ -120,13 +120,17 @@
 
 	<!-- 혜진 -->
 	<select id="bookingMovieList" resultMap="movieResult">
-		select * from movie where mdel='n' order by mtitle
+		select distinct m.* from movie m, runningtimetable rt 
+		where mdel = 'n' and m.mid = rt.mid and rt.rtdate >= sysdate order by mtitle
+		<!-- select * from movie where mdel='n' order by mtitle --> 
 	</select>
 	
 	<!-- 도은 -->
 	<!-- 메인에 영화 랜덤 -->
 	<select id="selectRunningMovieRandom" resultType="movie">
-		select * from (select * from movie where mdel != 'y' order by DBMS_RANDOM.RANDOM) where rownum = 1
+		<![CDATA[
+			select * from (select * from movie where mdel != 'y' and mreleaseDate <= sysdate order by DBMS_RANDOM.RANDOM) where rownum = 1
+		]]>
     </select>
 	
 	<!-- 리뷰보면서 영화정보도 -->

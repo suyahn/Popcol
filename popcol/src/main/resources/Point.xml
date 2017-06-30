@@ -43,7 +43,11 @@
 	</select>
 	
 	<select id="selectPointForBookingList" parameterType="hashmap" resultMap="pointResult">
-		select * from point where cid = #{cid} and bid = (select max(bid) from booking where ticketnumber = #{ticketnumber})
+		select * from point where cid = #{cid} and bid = (select max(bid) from booking where ticketnumber = #{ticketnumber}) and psort = '사용'
+	</select>
+	
+	<select id="selectUsePointList" parameterType="string" resultMap="pointResult">
+		select * from point where cid = #{cid} and psort = '사용'
 	</select>
 	 
 	<insert id="giveJoinPoint" parameterType="point">

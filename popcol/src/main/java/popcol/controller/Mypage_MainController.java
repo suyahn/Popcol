@@ -61,6 +61,9 @@ public class Mypage_MainController {
 		SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd");
 		String today = df.format(new java.util.Date());
 
+		SimpleDateFormat df6 = new SimpleDateFormat("yyyy-MM-dd");
+		String today6 = df6.format(new java.util.Date());
+
 		Calendar c = Calendar.getInstance();
 		c.setTime(df.parse(today));
 		c.add(Calendar.MONTH, -1);
@@ -69,8 +72,9 @@ public class Mypage_MainController {
 		List<MypageBooking> myBookingList = new ArrayList<MypageBooking>();
 		myBookingList = mbs.selectMyBookingListMain(id, oneMonthAgo);
 		
-		List<List<Point>> pointList = new ArrayList<List<Point>>();
+		//List<List<Point>> pointList = new ArrayList<List<Point>>();
 		HashSet<String> ticketnumber = new HashSet<String>();
+		List<Point> pointList = new ArrayList<Point>();
 		
 		/*
 		 * SimpleDateFormat df2 = new SimpleDateFormat("yyyy.MM.dd");
@@ -122,13 +126,15 @@ public class Mypage_MainController {
 		}
 		
 		// 포인트 리스트
-		Iterator<String> itr = ticketnumber.iterator();
+		/*Iterator<String> itr = ticketnumber.iterator();
 		while(itr.hasNext()) {
 			String ticknum = (String) itr.next(); 
 			List<Point> p = ps.selectPointForBookingList(ticknum, id);
 			
 			pointList.add(p);
-		}
+		}*/
+		
+		pointList = ps.selectUsePointList(id);
 		
 		model.addAttribute("pointList", pointList);
 
@@ -137,6 +143,7 @@ public class Mypage_MainController {
 
 		model.addAttribute("myBookingList", myBookingList);
 		model.addAttribute("MyPriceSeatList", MyPriceSeatList);
+		model.addAttribute("today", today);
 
 		// 포인트조회
 		List<Point> myPointList = ps.mypage_listMain(id);

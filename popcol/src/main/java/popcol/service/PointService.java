@@ -31,4 +31,6 @@ public interface PointService {
 	List<Point> selectPointForCancel(String ticketnumber, String cid);
 
 	List<Point> selectPointForBookingList(String ticknum, String cid);
+
+	List<Point> selectUsePointList(String cid);
 }
