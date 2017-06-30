@@ -23,7 +23,7 @@
 <body>
 	<nav class="navbar" style="margin-top: 10px;">
 		<div class="navbar-header">
-			<a class="" href="home.do"><img alt="logo"
+			<a class="" href="adminList.do"><img alt="logo"
 				src="${ path }/images/popcol logo.png" width="200px"
 				style="margin-top: -10px; margin-bottom: -10px;"></a>
 		</div>
