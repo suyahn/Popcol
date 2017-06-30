@@ -82,15 +82,8 @@
 							
 							
 								<td>
-									<font size="2px"><br><br>
-									<c:forEach var="ps" items="${MyPriceSeatList }">
-										<c:if test="${booking.ticketnumber == ps.ticketnumber }">
-											${ps.bseat }&nbsp;
-										</c:if>
-									</c:forEach>
-									
+									<font size="2px">
 									<br><br><br>
-									
 									<c:if test="${countA > 0 }">
 										어른${countA }&nbsp;
 									</c:if>
@@ -103,7 +96,24 @@
 										우대${countS }&nbsp;
 									</c:if>
 									
-									<br>${sum }원</font>
+									<br><br>
+									<c:if test="${empty pointList }">
+										<br>실결제금액&nbsp;&nbsp;${sum }원<br><br>
+									</c:if>
+									
+									<c:if test="${not empty pointList }">
+									<c:forEach var="point" items="${pointList }">
+										<c:if test="${point.bid == booking.bid }">
+											실결제금액&nbsp;&nbsp;${sum - point.ppoint}원<br>
+											포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${point.ppoint }원
+										</c:if>
+										
+										<c:if test="${point.bid != booking.bid }">
+											<br>실결제금액&nbsp;&nbsp;${sum }원<br><br>
+										</c:if>
+									</c:forEach>
+									</c:if>
+									</font>
 								</td>
 							</tr>
 						</c:forEach>

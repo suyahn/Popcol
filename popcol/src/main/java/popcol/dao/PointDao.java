@@ -1,7 +1,9 @@
 package popcol.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import popcol.model.Customer;
 import popcol.model.Point;
 
 public interface PointDao {
@@ -21,5 +23,15 @@ public interface PointDao {
 	int giveReservPoint(Point point);
 
 	int usePointForReserv(Point point);
+
+	int selectUsePoint(String ticketnumber, String cid);
+
+	int selectReceivePoint(String ticketnumber, String cid);
+
+	List<Point> selectPointForCancel(String ticketnumber, String cid);
+
+	List<Point> selectPointForBookingList(String ticketnumber, String cid);
+
+	List<Point> selectUsePointList(String cid);
 	
 }

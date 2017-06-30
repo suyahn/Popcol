@@ -44,10 +44,10 @@ public interface CustomerService {
 	int updateUsePoint(Customer customer);
 
 	/* 예매 취소할 때 사용한 포인트 돌려주기 */
-	/* 예매 취소할 때 받은 포인트 돌려주기 */
-	//void returnUsePoint(String ticketnumber, String id);
-
+	void returnPointForCancel(Customer customer);
 	
+	/* 예매 취소할 때 받은 포인트 돌려주기 */
+
 	/*규랑*/
 	int getTotal();
 

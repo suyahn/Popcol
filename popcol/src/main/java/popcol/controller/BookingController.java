@@ -217,6 +217,8 @@ public class BookingController {
 		Customer pointCustomer = new Customer();
 		pointCustomer.setCid(id);
 		int moviePoint = (int) (price * 0.05);
+		System.out.println("가격 : " + price);
+		System.out.println("포인트 : " + moviePoint);
 		pointCustomer.setCpoint(moviePoint); // 가격을 여기에 넣는다.
 		int pointResult = cs.updateMoviePoint(pointCustomer);
 		

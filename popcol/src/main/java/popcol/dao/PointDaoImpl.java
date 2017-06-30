@@ -1,5 +1,6 @@
 package popcol.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import popcol.model.Customer;
 import popcol.model.Point;
 
 @Repository
@@ -56,5 +58,41 @@ public class PointDaoImpl implements PointDao {
 		
 		return sst.insert("pointns.usePointForReserv", point);
 	}
-	
+
+	public int selectUsePoint(String ticketnumber, String cid) {
+		HashMap<String, String> hm = new HashMap<String, String>();
+		hm.put("ticketnumber", ticketnumber);
+		hm.put("cid", cid);
+
+		return sst.selectOne("pointns.selectUsePoint", hm);
+	}
+
+	public int selectReceivePoint(String ticketnumber, String cid) {
+		HashMap<String, String> hm = new HashMap<String, String>();
+		hm.put("ticketnumber", ticketnumber);
+		hm.put("cid", cid);
+		
+		return sst.selectOne("pointns.selectReceivePoint", hm);
+	}
+
+	public List<Point> selectPointForCancel(String ticketnumber, String cid) {
+		HashMap<String, String> hm = new HashMap<String, String>();
+		hm.put("ticketnumber", ticketnumber);
+		hm.put("cid", cid);
+		
+		return sst.selectList("pointns.selectPointForCancel", hm);
+	}
+
+	public List<Point> selectPointForBookingList(String ticketnumber, String cid) {
+		HashMap<String, String> hm = new HashMap<String, String>();
+		hm.put("ticketnumber", ticketnumber);
+		hm.put("cid", cid);
+		
+		return sst.selectList("pointns.selectPointForBookingList", hm);
+	}
+
+	public List<Point> selectUsePointList(String cid) {
+		
+		return sst.selectList("pointns.selectUsePointList", cid);
+	}
 }

@@ -65,10 +65,10 @@
 				<a href="eventView.do?eid=${event.eid }">
 					<%-- <img alt="${event.esubject }" src="${path }/images/${event.epicture }" width="220px" style="margin-right: 20px;"> --%>
 					<c:if test="${ empty event.epicture }">
-						<img src="${path }/images/event_default.jpg" alt="${event.esubject }" width="220px" style="margin-right: 20px;">
+						<img src="${path }/images/event_default.jpg" alt="${event.esubject }" width="220px" style="margin-right: 20px; margin-bottom: 20px;">
 					</c:if>
 					<c:if test="${ not empty event.epicture }">
-						<img src="${path }/images/${ event.epicture }" alt="${event.esubject }" width="220px" style="margin-right: 20px;">
+						<img src="${path }/images/${ event.epicture }" alt="${event.esubject }" width="220px" style="margin-right: 20px; margin-bottom: 20px;">
 					</c:if>
 				</a>
 				<c:set var="count" value="${count + 1 }"/>
