@@ -81,7 +81,7 @@
 							<tr>
 								<td><img alt="${booking.mtitle }" src="${path }/poster/${booking.murlPoster}.jpg" width="120px"></td>
 							
-								<td>
+								<td width="50%">
 									<font style="font-weight: bold;">
 										<a href="movieDetail.do?mid=${booking.mid }" style="color: black !important;">${booking.mtitle }(${booking.moriginaltitle })</a>
 									</font><br><br><br>
@@ -147,7 +147,7 @@
 									</button>
 									</c:if>
 									<c:if test="${booking.rtdate < today }">
-									<h6 style="color: #cd1726;" align="right">상영이 지난 영화입니다.</h6>
+									<h6 style="color: #cd1726;" align="left">상영이 지난 영화입니다.</h6>
 									</c:if>
 								</td>
 							</tr>
