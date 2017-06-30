@@ -66,7 +66,6 @@ public class BookingController {
 	public String seatSelect(Model model, int rtid) {
 		RunningtimeTable rt =bs.selectRt(rtid); //해당 rtid(선택된 영화, 시간, 날짜)에 해당되는 이용가능 좌석 띄우기 위해서
 		List<Booking> seatrtbsList = bs.seatrtList(rtid); 
-		System.out.println(seatrtbsList.size());
 		List<Price> priceList = bs.timezonePricestList(rt.getTimezone());
 		Movie movie = ms.movieDetail(rt.getMid());//영화에 관한 List 뽑았던 걸 여기서 불러서 쓰려고//상영시간 뿌려줄려고
 		model.addAttribute("seatrtbsList",seatrtbsList);
@@ -141,7 +140,7 @@ public class BookingController {
 			booking.setBseat(sit[cnt]);
 			cnt++;
 			
-			if(ticketnum < 10){
+			/*if(ticketnum < 10){
 				ticketnumber = String.format("%04d", ticketnum); 
 			}else if(ticketnum < 100){
 				ticketnumber = String.format("%03d", ticketnum); 
@@ -149,7 +148,8 @@ public class BookingController {
 				ticketnumber = String.format("%02d", ticketnum); 
 			}else{
 				ticketnumber = String.format("%01d", ticketnum); 
-			}
+			}*/
+			ticketnumber = String.format("%04d", ticketnum);
 			
 			booking.setTicketnumber(ticketnumber);
 			result = bs.insert(booking);
@@ -217,8 +217,6 @@ public class BookingController {
 		Customer pointCustomer = new Customer();
 		pointCustomer.setCid(id);
 		int moviePoint = (int) (price * 0.05);
-		System.out.println("가격 : " + price);
-		System.out.println("포인트 : " + moviePoint);
 		pointCustomer.setCpoint(moviePoint); // 가격을 여기에 넣는다.
 		int pointResult = cs.updateMoviePoint(pointCustomer);
 		
