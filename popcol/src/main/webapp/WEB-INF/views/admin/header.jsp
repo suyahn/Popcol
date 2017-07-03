@@ -68,30 +68,9 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<%-- <li class="dropdown"><a href="adminList.do"
-                  class="dropdown-toggle" data-toggle="dropdown" role="button"
-                  aria-haspopup="true" aria-expanded="false">영화 관리<span
-                     class="caret"></span>
-               </a> <ul class="dropdown-menu">
-                     <li><a href="movieChart.do">무비 차트</a></li>
-                     <li><a href="${ path }/gatheringCalendar/index.jsp">현재
-                           상영작</a></li>
-                     <li><a href="${ path }/gatheringCalendar/index.jsp">개봉
-                           예정작</a></li>
-                  </ul></li>
-
-               <li class="dropdown"><a href="reservation.do"
-                  class="dropdown-toggle" data-toggle="dropdown" role="button"
-                  aria-haspopup="true" aria-expanded="false">극장관리<span
-                     class="caret"></span>
-               </a>
-                  <ul class="dropdown-menu">
-                     <li><a href="${ path }/gathering/lala.jsp">상영 시간표</a></li>
-                     <li><a href="reservation.do">빠른 예매</a></li>
-                  </ul></li> --%>
 					<li class=""><a href="adminList.do">영화관리</a></li>
 					<li class=""><a href="adminLocationList.do">극장관리</a></li>
-					<li class=""><a href=".do">상영시간표</a></li>
+					<li class=""><a href="adminTTList.do">상영시간표</a></li>
 					<li class=""><a href="adminCustomerList.do">회원관리</a></li>
 					<li class=""><a href="adminEventList.do">이벤트관리</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"

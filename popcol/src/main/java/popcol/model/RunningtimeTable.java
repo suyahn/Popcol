@@ -14,6 +14,7 @@ public class RunningtimeTable {
 	private String lname;
 	private String tname;
 	
+	
 
 	public String getMtitle() {
 		return mtitle;
@@ -75,4 +76,5 @@ public class RunningtimeTable {
 	public void setTimezone(String timezone) {
 		this.timezone = timezone;
 	}
+	
 }

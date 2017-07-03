@@ -277,7 +277,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/notice/noticeList.jsp" />
 	</definition>
-	
+
 	<definition name="noticeView" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/notice/noticeView.jsp" />
@@ -287,7 +287,7 @@
 	<definition name="faqList" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqList.jsp" />
 	</definition>
-	
+
 	<definition name="faqView" extends="mainLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/faqView.jsp" />
 	</definition>
@@ -353,10 +353,8 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/movieDate.jsp" />
 	</definition>
-	<!-- <definition name="movieTime" extends="empty">
-		<put-attribute name="body"
-			value="/WEB-INF/views/booking/movieTime.jsp" />
-	</definition> -->
+	<!-- <definition name="movieTime" extends="empty"> <put-attribute name="body" 
+		value="/WEB-INF/views/booking/movieTime.jsp" /> </definition> -->
 	<definition name="seatSelect" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/seatSelect.jsp" />
@@ -584,14 +582,16 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/qna/qnaReply.jsp" />
 	</definition>
-	
+
 	<!-- 관리자 이벤트 -->
 	<definition name="adminEventList" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/admin/event/eventList.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/event/eventList.jsp" />
 	</definition>
 
 	<definition name="adminEventView" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/views/admin/event/eventView.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/event/eventView.jsp" />
 	</definition>
 
 	<definition name="adminEventInsertForm" extends="admin">
@@ -618,8 +618,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/event/eventDelete.jsp" />
 	</definition>
-	
-	
+	<!-- 관리자 상영관 시간표 -->
+	<definition name="adminTTList" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/timetable/adminTTList.jsp" />
+	</definition>
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">
 		<put-attribute name="body"
