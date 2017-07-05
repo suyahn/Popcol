@@ -122,7 +122,7 @@ public class MovieDaoImpl implements MovieDao {
 	@Override
 	public List<Movie> movieList() {
 		
-		return sst.selectList("moviens.movieList");
+		return sst.selectList("moviens.movieTTList");
 	}
 
 	

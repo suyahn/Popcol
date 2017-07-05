@@ -812,9 +812,9 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminTTInsert") // 관리자 상영시간표 입력
-	public String adminTTInsert(RunningtimeTable rt,String pageNum, Model model) {
+	public String adminTTInsert(RunningtimeTable runningtimeTable,String pageNum, Model model) {
 
-		int result = tts.adminTTInsert(rt);
+		int result = tts.adminTTInsert(runningtimeTable);
 			
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
