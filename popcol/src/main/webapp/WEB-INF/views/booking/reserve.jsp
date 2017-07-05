@@ -53,7 +53,9 @@
 						<c:forEach var="movie" items="${movieList}">
 							<tr>
 								<td onclick="movieSelect(${movie.mid})" style="cursor: pointer;"
-									id="movie_${movie.mid}" class="moviemid">${movie.mtitle}</td>
+									id="movie_${movie.mid}" class="moviemid">
+									<img alt="${ movie.mgrade }" src="icon/${ movie.mgrade }.png" width="20" height="20">
+									${movie.mtitle}</td>
 							</tr>
 						</c:forEach>
 					</table>

@@ -8,4 +8,7 @@
 		<result property="lid" column="lid" />
 		<result property="tseat" column="tseat" />
 	</resultMap>
+	<!-- <select id="theaterList" resultMap="theaterResult">select List면map
+	 select tid, tname
+	</select> -->
 </mapper>
