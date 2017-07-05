@@ -33,7 +33,13 @@
 		<!-- items의 locationList는 컨트롤의 리퀘스트 맵핑의 locationList와 연결 -->
 			<tr>
 				<td id="${date.rtid}" class="datertid" style="cursor: pointer;">
-					 <fmt:formatDate value="${date.rtdate}" pattern="MM월 dd일"/> ${ date.rttime } (${ date.tname })
+					 <fmt:formatDate value="${date.rtdate}" pattern="MM월 dd일 E요일"/> ${ date.rttime } (${ date.tname })
+					 <c:if test="${ date.timezone == 'weekday_morning' || date.timezone == 'weekend_morning' }">
+					 	<img alt="morning" src="icon/morning.png" width="20px" height="20px" title="조조">
+					 </c:if>
+					 <c:if test="${ date.timezone == 'weekday_night' || date.timezone == 'weekend_night' }">
+					 	<img alt="night" src="icon/night.png" width="20px" height="20px" title="심야">
+					 </c:if>
 				</td>
 			</tr>
 		</c:forEach>

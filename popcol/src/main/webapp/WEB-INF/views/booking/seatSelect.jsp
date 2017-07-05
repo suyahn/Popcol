@@ -182,10 +182,30 @@
 	<h2 style="font-weight: bold;" align="center">빠른 영화 예매</h2>
 	<div class="container" style="margin-top: 2%; margin-left: 5%; border: 1px solid black; border-spacing: 5px;">
 		<div>
-			<table style="display: inline; width: 500px; margin-left: 200px; border-spacing: 10px; border-collapse: separate;">
+			<table style="display: inline; width: 500px; margin-left: 100px; border-spacing: 10px; border-collapse: separate;">
 				<tr></tr>
 				<tr style="margin-top: 300px;">
-					<th title="9000원 입니다." >대인</th>
+					<td>
+						<c:forEach var="priceInfo" items="${ priceList }">
+							<c:if test="${ priceInfo.human == 'adult' }">
+								<c:set var="adultPrice" value="${ priceInfo.price }"></c:set>
+							</c:if>
+							<c:if test="${ priceInfo.human == 'youth' }">
+								<c:set var="youthPrice" value="${ priceInfo.price }"></c:set>
+							</c:if>
+							<c:if test="${ priceInfo.human == 'special' }">
+								<c:set var="specialPrice" value="${ priceInfo.price }"></c:set>
+							</c:if>
+						</c:forEach>
+						<button title="대인 : ${ adultPrice }원
+소인 : ${ youthPrice }원
+우대 : ${ specialPrice }원" class="btn btn-sm btn-default" style="color: #0C0732;">
+							가격 정보 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+						</button>
+					</td>
+					<th>
+						대인
+					</th>
 					<td>
 						<select onchange="totalPerson()" id="adult">
 							<c:forEach begin="0" end="6" var="person">
@@ -235,7 +255,14 @@
 				</tr>
 				<tr>
 					<td style="width: 70px; font-weight: bold;">시간</td>
-					<td style="width: 70px;">${rt.rttime}</td>
+					<td style="width: 70px;">${rt.rttime}
+					 <c:if test="${ rt.timezone == 'weekday_morning' || rt.timezone == 'weekend_morning' }">
+					 	<img alt="morning" src="icon/morning.png" width="15px" height="15px" title="조조">
+					 </c:if>
+					 <c:if test="${ rt.timezone == 'weekday_night' || rt.timezone == 'weekend_night' }">
+					 	<img alt="night" src="icon/night.png" width="15px" height="15px" title="심야">
+					 </c:if>
+					</td>
 					<td style="width: 70px; font-weight: bold;">상영시간</td>
 					<td style="width: 70px;">${movie.mrunningTime}분</td>
 					<td style="width: 70px; font-weight: bold;">가격</td>

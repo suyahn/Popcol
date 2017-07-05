@@ -159,7 +159,14 @@
 								<td>
 									<br>
 									<font size="2">${st.tname}</font><br>
-									<font size="4" class="fontBold">${st.rttime}</font><br>
+									<font size="4" class="fontBold">${st.rttime}</font>
+									<c:if test="${ st.timezone == 'weekday_morning' || st.timezone == 'weekend_morning' }">
+					 				<img alt="morning" src="icon/morning.png" width="15px" height="15px" title="조조">
+					 				</c:if>
+					 				<c:if test="${ st.timezone == 'weekday_night' || st.timezone == 'weekend_night' }">
+					 				<img alt="night" src="icon/night.png" width="15px" height="15px" title="심야">
+					 				</c:if>
+									<br>
 									<c:set var="count" value="0"></c:set>
 									<c:forEach var="seatsCount" items="${ bookedSeatCountList }">
 										<c:if test="${ seatsCount.rtid == st.rtid }">
