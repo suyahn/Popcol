@@ -12,10 +12,16 @@ import popcol.model.Theater;
 public class TheaterServiceImpl implements TheaterService {
 	@Autowired
 	private TheaterDao td;
+
 	@Override
 	public List<Theater> theaterLocation() {
 		
 		return td.theaterLocation();
+
+	
+	public List<Theater> theaterList() {
+		return td.theaterList();
+
 	}
 
 }

@@ -18,6 +18,10 @@ public interface LocationService {
 
 	/* 도은 */
 	List<Location> selectPointLocation();
+	/*혜진*/
+	List<Location> locationList();
+
+	Location selectLocation(int lid);
 
 	
 

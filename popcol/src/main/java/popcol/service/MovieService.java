@@ -28,4 +28,5 @@ public interface MovieService {
 	/* 마이페이지 */
 	Movie selectMovieForReview(int mid);
 	
+	
 }

@@ -13,9 +13,14 @@ public class TheaterDaoImpl implements TheaterDao {
 	@Autowired
 	private SqlSessionTemplate sst;
 
+
 	@Override
 	public List<Theater> theaterLocation() {
 		
 		return sst.selectList("theaterns.theaterLocation");
+
+	public List<Theater> theaterList() {
+		return sst.selectList("theaterns.theaterList");//theaterns의 id가 theaterList인 selectList를 불러라
+
 	}
 }

@@ -49,4 +49,14 @@ public class LocationDaoImpl implements LocationDao {
 		return sst.selectList("locationns.selectPointLocation");
 	}
 
+	/*혜진*/
+	public List<Location> locationList() {
+		return sst.selectList("locationns.locationList");
+	}
+
+	@Override
+	public Location selectLocation(int lid) {
+		return sst.selectOne("locationns.selectLocation", lid);
+	}
+
 }

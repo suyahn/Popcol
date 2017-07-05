@@ -49,4 +49,14 @@ public class LocationServiceImpl implements LocationService {
 		return ld.selectPointLocation();
 	}
 
+	/*혜진*/
+	public List<Location> locationList() {
+		return ld.locationList();
+	}
+
+	@Override
+	public Location selectLocation(int lid) {
+		return ld.selectLocation(lid);
+	}
+
 }

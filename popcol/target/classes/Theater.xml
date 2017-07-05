@@ -9,9 +9,15 @@
 		<result property="tseat" column="tseat" />
 		<result property="lname" column="lname"/>
 	</resultMap>
+
 	<select id="theaterLocation" resultType="theater">
 		select t.*, l.lname from
 		location l, theater t where l.lid = t.lid
 	</select>
 	
+
+	<!-- <select id="theaterList" resultMap="theaterResult">select List면map
+	 select tid, tname
+	</select> -->
+
 </mapper>

@@ -6,6 +6,9 @@ import popcol.model.Theater;
 
 public interface TheaterService {
 
+
 	List<Theater> theaterLocation();
+
+	List<Theater> theaterList();
 
 }

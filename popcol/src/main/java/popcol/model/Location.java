@@ -6,8 +6,8 @@ public class Location {
 	private String lname;
 	private String laddress;
 	private String lphone;
-	private int lat;// 위도
-	private int lon;// 경도
+	private double lat;// 위도
+	private double lon;// 경도
 	private int mid;
 
 	public int getLid() {
@@ -42,19 +42,19 @@ public class Location {
 		this.lphone = lphone;
 	}
 
-	public int getLat() {
+	public double getLat() {
 		return lat;
 	}
 
-	public void setLat(int lat) {
+	public void setLat(double lat) {
 		this.lat = lat;
 	}
 
-	public int getLon() {
+	public double getLon() {
 		return lon;
 	}
 
-	public void setLon(int lon) {
+	public void setLon(double lon) {
 		this.lon = lon;
 	}
 
