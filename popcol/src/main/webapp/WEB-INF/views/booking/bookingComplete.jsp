@@ -15,7 +15,11 @@
 				<td><h1
 						style="font-style:bold; font-size:60px; color: #cd1726; text-align: center; vertical-align: center;">
 						"예매가 완료 되었습니다."</h1></td>
-			<tr>
+			</tr>
+			<tr align="center">
+				<td colspan="2"><button onclick="location.href='mypage_reservation.do'" class="btn btn-primary" style="background-color: #cd1726; border-color: #cd1726;">예매내역</button>
+			</td>	
+			</tr>
 		</table>
 	</div>
 </body>

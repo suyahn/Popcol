@@ -1,5 +1,6 @@
 package popcol.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,10 @@ public class RunningtimeTableServiceImpl implements RunningtimeTableService {
 	public int getTotal2(RunningtimeTable runningtimeTable) {
 
 		return rtd.getTotal2(runningtimeTable);
+	}
+	/*혜진*/
+	@Override
+	public List<RunningtimeTable> showtimesList(int lid, Date date) {
+		return rtd.showtimesList(lid, date);
 	}
 }

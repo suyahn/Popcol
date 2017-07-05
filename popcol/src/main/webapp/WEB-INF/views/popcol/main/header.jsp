@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../header.jsp"%>
+<%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,7 +114,11 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="reservation.do" class="head">빠른 예매</a></li>
-							<li><a href="${ path }/gathering/lala.jsp" class="head">상영 시간표</a></li>
+							<c:set var="today" value="<%=new Date()%>" /><!-- date는 오늘 날짜를 받는 것을 의미 -->
+							<fmt:formatDate type="date" value="${today}" pattern="yyyy/MM/dd" var="date_today"/>
+							<li><a href="show-times.do?lid=1&date=${date_today}" class="head">상영 시간표</a></li>
+							<!-- lid=1으로 해놓은 이유는 강남이 선택된 것으로 처음에 보일라고
+								date가 today인 이유는 오늘 날짜가 처음에 보일라고-->
 						</ul>
 					</li>
 					

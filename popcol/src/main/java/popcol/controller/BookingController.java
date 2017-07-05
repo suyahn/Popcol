@@ -1,10 +1,12 @@
 package popcol.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +19,11 @@ import popcol.model.Price;
 import popcol.model.RunningtimeTable;
 import popcol.service.BookingService;
 import popcol.service.CustomerService;
+import popcol.service.LocationService;
 import popcol.service.MovieService;
 import popcol.service.PointService;
 import popcol.service.PriceService;
+import popcol.service.RunningtimeTableService;
 
 @Controller
 public class BookingController {
@@ -33,6 +37,10 @@ public class BookingController {
 	private PriceService prices;
 	@Autowired
 	private PointService ps;
+	@Autowired
+	private LocationService ls;
+	@Autowired
+	private RunningtimeTableService rts;
 
 	@RequestMapping("reservation")
 	public String reserve(Model model) {
@@ -140,15 +148,6 @@ public class BookingController {
 			booking.setBseat(sit[cnt]);
 			cnt++;
 			
-			/*if(ticketnum < 10){
-				ticketnumber = String.format("%04d", ticketnum); 
-			}else if(ticketnum < 100){
-				ticketnumber = String.format("%03d", ticketnum); 
-			}else if(ticketnum < 1000){
-				ticketnumber = String.format("%02d", ticketnum); 
-			}else{
-				ticketnumber = String.format("%01d", ticketnum); 
-			}*/
 			ticketnumber = String.format("%04d", ticketnum);
 			
 			booking.setTicketnumber(ticketnumber);
@@ -239,5 +238,17 @@ public class BookingController {
 		
 		return "bookingComplete";
 	}
+	@RequestMapping("show-times")
+	public String showTimes(Model model,int lid,@DateTimeFormat(pattern="yyyy/MM/dd") Date date){
+		
+		List<Location> locationList = ls.locationList();
+		List<RunningtimeTable> showtimesList = rts.showtimesList(lid,date);
+		model.addAttribute("locationList",locationList);
+		model.addAttribute("lid",lid);
+		model.addAttribute("date",date);
+		model.addAttribute("showtimesList",showtimesList);
+		return "show-times";
+	}
+
 }
 
