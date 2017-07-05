@@ -87,7 +87,9 @@
 									</font><br><br><br>
 									<font size="2px">
 									관람극장&nbsp;&nbsp;Popcorn&amp;Cola&nbsp;${booking.lname }&nbsp;&nbsp;
-											<a href="#" style="color: black !important;">[극장정보]</a><br>
+											<jsp:useBean id="now" class="java.util.Date" />
+											<fmt:formatDate value="${now }" var="date" pattern="yyyy/MM/dd"/>
+											<a href="show-times.do?lid=${booking.lid }&date=${date }" style="color: black !important;">[극장정보]</a><br>
 									관람일시&nbsp;&nbsp;<font color="#cd1726">${booking.theDate }&nbsp;(${booking.theDay })&nbsp;${booking.theTime }</font><br>
 									상영관&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${booking.tname }<br>
 									관람인원&nbsp;

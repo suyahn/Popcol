@@ -7,6 +7,7 @@ public class MypageBooking {
 	private String moriginaltitle;
 	private String murlPoster;
 	private int mid;
+	private int lid;
 	private String lname;
 	private String tname;
 	private Date rtdate;
@@ -50,6 +51,14 @@ public class MypageBooking {
 
 	public void setMid(int mid) {
 		this.mid = mid;
+	}
+
+	public int getLid() {
+		return lid;
+	}
+
+	public void setLid(int lid) {
+		this.lid = lid;
 	}
 
 	public String getLname() {
