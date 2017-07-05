@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import popcol.dao.RunningtimeTableDao;
+import popcol.model.Movie;
 import popcol.model.RunningtimeTable;
 
 @Service
@@ -40,5 +41,9 @@ public class RunningtimeTableServiceImpl implements RunningtimeTableService {
 	@Override
 	public List<RunningtimeTable> showtimesList(int lid, Date date) {
 		return rtd.showtimesList(lid, date);
+	}
+	@Override
+	public List<Movie> movieList(int lid, Date date) {
+		return rtd.movieList(lid, date);
 	}
 }

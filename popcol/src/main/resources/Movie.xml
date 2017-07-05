@@ -124,6 +124,10 @@
 		where mdel = 'n' and m.mid = rt.mid and rt.rtdate >= sysdate order by mtitle
 		<!-- select * from movie where mdel='n' order by mtitle --> 
 	</select>
+	<select id="movieList" parameterType="hashMap" resultMap="movieResult">
+		select distinct m.* from movie m, runningtimetable rt 
+		where mdel = 'n' and m.mid = rt.mid and rt.lid = #{lid} and to_char(rt.rtdate,'yyyy/mm/dd') = #{date}
+	</select>
 	
 	<!-- 도은 -->
 	<!-- 메인에 영화 랜덤 -->

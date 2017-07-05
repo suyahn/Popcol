@@ -36,7 +36,7 @@
 	<select id="runningtimeTableList" resultMap="runningtimetableResult">
 		select * from runningtimetable
 	</select>
-	<select id="showtimesList" resultMap="runningtimetableResult">
+	<select id="showtimesList" parameterType="hashMap" resultMap="runningtimetableResult">
 		select rt.*, to_char(rt.rtdate, 'hh24:mi') rttime, m.mtitle, m.mrunningtime, m.mgrade, t.tname
 		from runningtimetable rt, movie m, theater t
 		where rt.lid= #{lid} and to_char(rt.rtdate,'yyyy/mm/dd') = #{date} and rt.mid=m.mid and t.tid=rt.tid 
