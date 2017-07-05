@@ -40,4 +40,10 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		return sst.selectOne("runningtimetablens.getTotal2", runningtimeTable);
 	}
 
+	@Override
+	public int adminTTInsert(RunningtimeTable runningtimeTable) {
+
+		return sst.insert("runningtimetablens.adminTTinsert", runningtimeTable);
+	}
+
 }

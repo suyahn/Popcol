@@ -35,4 +35,9 @@ public class RunningtimeTableServiceImpl implements RunningtimeTableService {
 
 		return rtd.getTotal2(runningtimeTable);
 	}
+	@Override
+	public int adminTTInsert(RunningtimeTable runningtimeTable) {
+		
+		return rtd.adminTTInsert(runningtimeTable);
+	}
 }

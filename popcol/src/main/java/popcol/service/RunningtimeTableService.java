@@ -12,4 +12,6 @@ public interface RunningtimeTableService {
 	int getTotal1();
 
 	int getTotal2(RunningtimeTable runningtimeTable);
+	
+	int adminTTInsert(RunningtimeTable runningtimeTable);
 }

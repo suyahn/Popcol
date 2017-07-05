@@ -10,14 +10,14 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("영화가 입력되었습니다");
-			location.href = "adminList.do"
+			alert("상영시간표가 입력되었습니다");
+			location.href = "adminTTList.do"
 		</script>
 	</c:if>
 	
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("회원가입 실패! 다시 시도해주세요.");
+			alert("다시 입력해주세요");
 			history.go(-1);
 		</script>
 	</c:if>

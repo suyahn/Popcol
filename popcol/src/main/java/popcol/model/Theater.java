@@ -5,9 +5,18 @@ public class Theater {
 	private String tname;
 	private int lid;//영화관 아이디
 	private String tseat;
+	private String lname;//영화관 이름
 
 	public int getTid() {
 		return tid;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
 	}
 
 	public void setTid(int tid) {

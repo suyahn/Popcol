@@ -12,34 +12,41 @@
 		<result property="tname" column="tname" />
 		<result property="lname" column="lname" />
 	</resultMap>
-	
-<!-- <select id="bookingRTList" resultMap="runningtimetableResult"
+
+	<!-- <select id="bookingRTList" resultMap="runningtimetableResult" parameterType="hashMap"> 
+		select distinct to_date (to_char(rtdate,'rr/mm/dd'),'rr/mm/dd') rtdate from 
+		runningtimetable where mid=#{mid} and lid=#{lid} group by rtdate</select> -->
+	<select id="bookingRttList" resultMap="runningtimetableResult"
 		parameterType="hashMap">
-		  select distinct to_date (to_char(rtdate,'rr/mm/dd'),'rr/mm/dd') rtdate 
-		from runningtimetable where mid=#{mid} and lid=#{lid} group by rtdate</select> -->
-	<select id="bookingRttList" resultMap="runningtimetableResult" parameterType="hashMap">
-		<!-- select rtid, rtdate, to_char(rtdate,'HH24:mi') rttime from
-		runningtimetable where rtid = #{rtid} -->
-		select rt.*, to_char(rtdate, 'HH24"시" MI"분"') rttime, tname from runningtimetable rt, theater t 
-    	where mid = #{mid} and rt.lid = #{lid} and t.tid = rt.tid and rtdate >= sysdate
+		<!-- select rtid, rtdate, to_char(rtdate,'HH24:mi') rttime from runningtimetable 
+			where rtid = #{rtid} -->
+		select rt.*, to_char(rtdate, 'HH24"시" MI"분"') rttime, tname from
+		runningtimetable rt, theater t
+		where mid = #{mid} and rt.lid = #{lid} and t.tid = rt.tid and rtdate >=
+		sysdate
 	</select>
 	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
-	    select rt.*, to_char(rtdate, 'HH24:MI') rttime, m.mtitle, l.lname, t.tname 
-	    from movie m, location l, runningtimetable rt, theater t
-	    where  rt.lid = l.lid and rt.mid=m.mid and rt.tid = t.tid
-	    and rtdate = (select rtdate from runningtimetable
+		select rt.*, to_char(rtdate, 'HH24:MI') rttime, m.mtitle, l.lname,
+		t.tname
+		from movie m, location l, runningtimetable rt, theater t
+		where rt.lid = l.lid and rt.mid=m.mid and rt.tid = t.tid
+		and rtdate = (select rtdate from runningtimetable
 		where rtid = #{rtid})
 	</select>
 	<select id="runningtimeTableList" resultMap="runningtimetableResult">
-		select * from runningtimetable
+		select * from
+		runningtimetable
 	</select>
-	
+
 	<!-- 규랑 -->
 	<!-- 관리자 상영관 리스트 -->
-	<select id="adminTTList" resultType="runningtimetable" parameterType="hashMap">
-		select * from 
-		(select rownum rn, a.* from (select rtid, lid, tid,mid,rtdate,timezone from runningtimetable order by rtid desc )a)
-		where rn between #{startRow} and #{endRow}
+	<select id="adminTTList" resultType="runningtimetable"
+		parameterType="hashMap">
+		select * from
+		(select rownum rn, a.* from (select rtid, lid, tid,mid,rtdate,timezone from
+		runningtimetable order by rtid desc )a)
+		where rn between #{startRow}
+		and #{endRow}
 	</select>
 
 	<!-- 페이지 처리 -->
@@ -49,8 +56,17 @@
 	</select>
 	<!-- 상영관별 페이징 -->
 	<select id="getTotal2" resultType="int" parameterType="int">
-		select count(*) from
+		select
+		count(*) from
 		runningtimetable where lid =#{lid}
 	</select>
+
+	<insert id="adminTTInsert" parameterType="runningtimetable">
+		<selectKey keyProperty="rtid" resultType="Integer" order="BEFORE">
+			SELECT NVL(MAX(rtid),0) + 1 FROM runningtimetable
+		</selectKey>
+		insert into runningtimetable values
+		(#{rtid},#{lid},#{tid},#{mid}#{rtdate},#{timezone})
+	</insert>
 
 </mapper>
