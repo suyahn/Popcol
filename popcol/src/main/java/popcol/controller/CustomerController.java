@@ -46,6 +46,7 @@ public class CustomerController {
 		
 		List<Event> eventList = es.selectEventListForHome();
 		model.addAttribute("eventList", eventList);
+		model.addAttribute("eventSize", (int)(eventList.size()/2));
 		 
 		return "home";
 	}
