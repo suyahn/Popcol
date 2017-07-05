@@ -14,6 +14,7 @@
 		<result property="mtitle" column="mtitle"/>
 		<result property="mrunningtime" column="mrunningtime"/>
 		<result property="mgrade" column="mgrade"/>
+		<result property="seats" column="seats"/>
 	</resultMap>
 	
 <!-- <select id="bookingRTList" resultMap="runningtimetableResult"
@@ -42,6 +43,12 @@
 		where rt.lid= #{lid} and to_char(rt.rtdate,'yyyy/mm/dd') = #{date} and rt.mid=m.mid and t.tid=rt.tid 
 		order by rttime
 	</select>
+	<select id="bookedSeatCountList" parameterType="hashMap" resultMap="runningtimetableResult">
+		select rt.rtid, count(b.bseat) seats from runningtimetable rt, booking b 
+		where rt.rtid = b.rtid and rt.lid= #{lid} and to_char(rt.rtdate,'yyyy/mm/dd') = #{date}
+		group by rt.rtid order by rtid
+	</select>
+	
 	<!-- 규랑 -->
 	<!-- 관리자 상영관 리스트 -->
 	<select id="adminTTList" resultType="runningtimetable" parameterType="hashMap">

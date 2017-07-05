@@ -15,6 +15,7 @@ public class RunningtimeTable {
 	private String tname;
 	private String mrunningtime;
 	private String mgrade;
+	private int seats;
 
 	public String getMrunningtime() {
 		return mrunningtime;
@@ -87,5 +88,11 @@ public class RunningtimeTable {
 	}
 	public void setTimezone(String timezone) {
 		this.timezone = timezone;
+	}
+	public int getSeats() {
+		return seats;
+	}
+	public void setSeats(int seats) {
+		this.seats = seats;
 	}
 }

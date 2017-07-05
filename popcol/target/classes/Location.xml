@@ -50,6 +50,10 @@
 	<select id="locationList" resultMap="locationResult">
 		select * from location order by lid
 	</select>
+	<select id="selectLocation" parameterType="int" resultType="location"> <!-- selectOne이니까 resultMap 아니고 resultType -->
+		select * from location where lid = #{lid}
+	</select>
+	
 	<!-- 도은 -->
 	<select id="selectPointLocation" resultMap="locationResult">
 		select * from location

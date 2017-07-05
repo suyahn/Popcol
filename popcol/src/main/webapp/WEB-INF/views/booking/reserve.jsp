@@ -6,8 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-</style>
 <script type="text/javascript">
 	function movieSelect(mid) {
 		var sendData = 'mid='+ mid;
@@ -40,7 +38,7 @@
 </head>
 <body>
 	<div class="container">
-		<h2 style="color: #cd1726" align="center">빠른 영화 예매</h2>
+		<h2 style="font-weight: bold;" align="center">빠른 영화 예매</h2>
 		<table class="table table-bordered" style="width: 100%;">
 			<tr>
 				<th>영화</th>

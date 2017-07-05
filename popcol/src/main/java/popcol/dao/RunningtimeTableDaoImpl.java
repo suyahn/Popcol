@@ -56,4 +56,12 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		hm.put("date", date);
 		return sst.selectList("moviens.movieList", hm);
 	}
+
+	@Override
+	public List<RunningtimeTable> bookedSeatCountList(int lid, Date date) {
+		HashMap<String,Object> hm = new HashMap<String, Object>();
+		hm.put("lid", lid); 
+		hm.put("date", date);
+		return sst.selectList("runningtimetablens.bookedSeatCountList", hm);
+	}
 }

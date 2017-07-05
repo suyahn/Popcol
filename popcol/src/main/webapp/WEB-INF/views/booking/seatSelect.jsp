@@ -25,6 +25,7 @@
 			for(var i in alreadySelectedSeat) {//i는 alreadySelectedSeat에서 있는 좌석을 배열로 받는 것
 				if(id == alreadySelectedSeat[i]) {
 					$('#' + id).css("background-color", "rgb(128,128,128)");
+					$('#' + id).html("X");
 				}
 			}
 		});
@@ -178,7 +179,7 @@
 </script>
 </head>
 <body>
-	<h2 style="color: #cd1726" align="center">빠른 영화 예매</h2>
+	<h2 style="font-weight: bold;" align="center">빠른 영화 예매</h2>
 	<div class="container" style="margin-top: 2%; margin-left: 5%; border: 1px solid black; border-spacing: 5px;">
 		<div>
 			<table style="display: inline; width: 500px; margin-left: 200px; border-spacing: 10px; border-collapse: separate;">
@@ -290,6 +291,20 @@
 				</c:forTokens>
 			</table>
 		</div>
+		<br>
+		<div align="center">
+			<table>
+				<tr>
+					<td style="background-color: #cd1726; width: 20px; height: 20px;"></td>
+					<td>&nbsp;선택 가능&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td style="background-color: #0C0732; width: 20px; height: 20px;"></td>
+					<td>&nbsp;선택한 좌석&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td style="background-color: #808080; width: 20px; height: 20px; color: white; text-align: center;">X</td>
+					<td>&nbsp;선택 불가능&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+			</table>
+		</div>
 	</div>
+	<br>
 </body>
 </html>
