@@ -133,5 +133,4 @@ public class MovieDaoImpl implements MovieDao {
 		return sst.selectOne("moviens.selectMovieForReview", mid);
 	}
 
-	
 }

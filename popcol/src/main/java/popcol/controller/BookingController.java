@@ -239,10 +239,12 @@ public class BookingController {
 		return "bookingComplete";
 	}
 	@RequestMapping("show-times")
-	public String showTimes(Model model,int lid,@DateTimeFormat(pattern="yyyy/MM/dd") Date date){
-		
+	public String showTimes(Model model,int lid,@DateTimeFormat(pattern="yyyy/MM/dd") Date date) {
+		List<Movie> movieList = rts.movieList(lid, date);
 		List<Location> locationList = ls.locationList();
 		List<RunningtimeTable> showtimesList = rts.showtimesList(lid,date);
+		
+		model.addAttribute("movieList", movieList);
 		model.addAttribute("locationList",locationList);
 		model.addAttribute("lid",lid);
 		model.addAttribute("date",date);
