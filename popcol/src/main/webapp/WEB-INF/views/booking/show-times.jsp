@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=E_U6Q5fuO9GhdWs01Siv"></script>
 <title>Insert title here</title>
 <style type="text/css">
 	.td_location_date {
@@ -18,6 +19,34 @@
 	
 	.fontBold {
 		font-weight: bold;
+	}
+	
+	#locationPic {
+		width:40%; 
+		height:400px; 
+		display: inline; 
+		float: left; 
+		background-image: url('location/location${ loc.lid }.jpg');
+		background-size: 100% 100%;
+	}
+	
+	#locationInfo {
+		background-color: black; 
+		width:100%; 
+		height: 25%; 
+		opacity: 0.7; 
+		margin-top: 300px;
+		color: white;
+		font-weight: bold;
+		padding-left: 20px;
+		padding-top: 10px;
+	}
+	
+	#map {
+		width:60%; 
+		height:400px;
+		display: inline;
+		float: right;
 	}
 </style>
 </head>
@@ -39,37 +68,65 @@
 					<c:forEach var="location" items="${locationList}">
 						<td class="td_location_date">
 							<button onclick="location.href='show-times.do?lid=${ location.lid }&date=${date_today}'"
-								class="btn btn-default fontBold" <c:if test="${location.lid==lid}">style="color: #cd1726;"</c:if>
+								class="btn btn-default fontBold" <c:if test="${location.lid==loc.lid}">style="color: #cd1726;"</c:if>
 								style="border-color: white;">
 								${location.lname}
 							</button>
 						</td>
 					</c:forEach>
 			</table>
+			
+			<div id="locationPic" class="borderStyle">
+				<div id="locationInfo">
+					${ loc.lname }<br>
+					${ loc.laddress }<br>
+					${ loc.lphone }
+				</div>
+			</div>
+			
+			<div id="map" class="borderStyle"></div>
+			<script>
+				var mapOptions = {
+					center : new naver.maps.LatLng(${loc.lat}, ${loc.lon}),
+					zoom : 12,
+					minZoom: 9
+				};
+
+				var map = new naver.maps.Map('map', mapOptions);
+				
+				var lname = "Popcorn&Cola ${loc.lname}";
+
+				var marker = new naver.maps.Marker({
+				    position: new naver.maps.LatLng(${loc.lat}, ${loc.lon}),
+				    map: map,
+				    title: lname
+				});
+			</script>
 		</div>
 		
-		<br>
 		
-		<h4 class="fontBold">날짜</h4>
+		<h6>&nbsp;</h6>
+		<hr>
+		<h4 class="fontBold" style="margin-top: 50px;">날짜</h4>
 		<div class="borderStyle">
 			<table>
 				<tr>
 					<td class="td_location_date">
-						<button onclick="location.href='show-times.do?lid=${ lid }&date=${date_today}'" class="btn btn-default fontBold"
+						<button onclick="location.href='show-times.do?lid=${ loc.lid }&date=${date_today}'" class="btn btn-default fontBold"
 							<c:if test="${date==date_today}">style="color: #cd1726;"</c:if>
 							style="border-color: white;">
 							<fmt:formatDate type="date" value="${today}" pattern="MM/dd" />
 						</button>
 					</td>
 					<td class="td_location_date">
-						<button onclick="location.href='show-times.do?lid=${ lid }&date=${date_tomorrow}'" class="btn btn-default fontBold"
+						<button onclick="location.href='show-times.do?lid=${ loc.lid }&date=${date_tomorrow}'" class="btn btn-default fontBold"
 							<c:if test="${date_tomorrow==date}">style="color: #cd1726;"</c:if>
 							style="border-color: white;">
 							<fmt:formatDate type="date" value="${tomorrow}" pattern="MM/dd" />
 						</button>
 					</td>
 					<td class="td_location_date">
-						<button onclick="location.href='show-times.do?lid=${ lid }&date=${date_thedayaftertomorrow}'" class="btn btn-default fontBold"
+						<button onclick="location.href='show-times.do?lid=${ loc.lid }&date=${date_thedayaftertomorrow}'" class="btn btn-default fontBold"
 							<c:if test="${date_thedayaftertomorrow==date}">style="color: #cd1726;"</c:if>
 							style="border-color: white;">
 							<fmt:formatDate type="date" value="${thedayaftertomorrow}" pattern="MM/dd" />
@@ -97,13 +154,22 @@
 						</td>
 					</tr>
 					<tr>
-						<c:forEach var="st" items="${showtimesList}">
-							<c:if test="${movie.mtitle==st.mtitle}">
+						<c:forEach var="st" items="${showtimesList}">			
+								<c:if test="${movie.mid==st.mid}">
 								<td>
 									<br>
 									<font size="2">${st.tname}</font><br>
 									<font size="4" class="fontBold">${st.rttime}</font><br>
-									<font size="2">~ 석 / 200석</font>
+									<c:set var="count" value="0"></c:set>
+									<c:forEach var="seatsCount" items="${ bookedSeatCountList }">
+										<c:if test="${ seatsCount.rtid == st.rtid }">
+											<font size="2">${ 200 - seatsCount.seats }석 / 200석</font>
+											<c:set var="count" value="${ count + 1 }"></c:set>
+										</c:if>
+									</c:forEach>
+									<c:if test="${ count == 0 }">
+										<font size="2">200석 / 200석</font>
+									</c:if>
 								</td>
 							</c:if>
 						</c:forEach>
@@ -116,14 +182,15 @@
 				</c:forEach>
 			</c:if>
 			<c:if test="${empty movieList}">
-				<tr>
-					<td align="center">
-						<h4 class="fontBold">상영 정보가 없습니다.</h4>
+				<tr align="center">
+					<td>
+						<h4 class="fontBold" style="margin-left: 500px; margin-bottom: 10px;">상영 정보가 없습니다.</h4>
+						<br>
 					</td>
 				</tr>	
 			</c:if>
 		</table>
-		
+		<hr>
 	</div>
 </body>
 </html>

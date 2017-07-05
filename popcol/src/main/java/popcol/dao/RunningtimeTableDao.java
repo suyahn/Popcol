@@ -18,4 +18,5 @@ public interface RunningtimeTableDao {
 	/*혜진*/
 	List<RunningtimeTable> showtimesList(int lid, Date date);
 	List<Movie> movieList(int lid, Date date);
+	List<RunningtimeTable> bookedSeatCountList(int lid, Date date);
 }

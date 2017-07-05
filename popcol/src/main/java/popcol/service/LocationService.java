@@ -21,6 +21,8 @@ public interface LocationService {
 	/*혜진*/
 	List<Location> locationList();
 
+	Location selectLocation(int lid);
+
 	
 
 }

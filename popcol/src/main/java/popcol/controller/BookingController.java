@@ -242,13 +242,17 @@ public class BookingController {
 	public String showTimes(Model model,int lid,@DateTimeFormat(pattern="yyyy/MM/dd") Date date) {
 		List<Movie> movieList = rts.movieList(lid, date);
 		List<Location> locationList = ls.locationList();
+		Location loc = ls.selectLocation(lid);
 		List<RunningtimeTable> showtimesList = rts.showtimesList(lid,date);
+		List<RunningtimeTable> bookedSeatCountList = rts.bookedSeatCountList(lid, date);
 		
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("locationList",locationList);
-		model.addAttribute("lid",lid);
+		model.addAttribute("loc", loc);
 		model.addAttribute("date",date);
 		model.addAttribute("showtimesList",showtimesList);
+		model.addAttribute("bookedSeatCountList", bookedSeatCountList);
+		
 		return "show-times";
 	}
 

@@ -46,4 +46,8 @@ public class RunningtimeTableServiceImpl implements RunningtimeTableService {
 	public List<Movie> movieList(int lid, Date date) {
 		return rtd.movieList(lid, date);
 	}
+	@Override
+	public List<RunningtimeTable> bookedSeatCountList(int lid, Date date) {
+		return rtd.bookedSeatCountList(lid, date);
+	}
 }
