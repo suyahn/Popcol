@@ -37,11 +37,16 @@ public class RunningtimeTableServiceImpl implements RunningtimeTableService {
 
 		return rtd.getTotal2(runningtimeTable);
 	}
-
 	@Override
 	public int adminTTInsert(RunningtimeTable runningtimeTable) {
 		
 		return rtd.adminTTInsert(runningtimeTable);
+	}
+
+	/*@Override
+	public int adminTTInsert(RunningtimeTable runningtimeTable) {
+		
+		return rtd.adminTTInsert(runningtimeTable);*/
 
 	/*혜진*/
 	@Override
@@ -57,4 +62,5 @@ public class RunningtimeTableServiceImpl implements RunningtimeTableService {
 		return rtd.bookedSeatCountList(lid, date);
 
 	}
+	
 }
