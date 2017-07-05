@@ -11,12 +11,12 @@
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("수정 성공");
-			location.href = "adminList.do?pageNum=${pageNum}";
+			location.href = "adminTTList.do?pageNum=${pageNum}";
 		</script>
 	</c:if>
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("수정 다시하세요");
+			alert("다시 수정하세요");
 			history.go(-1);
 		</script>
 	</c:if>

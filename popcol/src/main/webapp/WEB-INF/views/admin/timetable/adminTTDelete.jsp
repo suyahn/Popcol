@@ -11,7 +11,7 @@
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("삭제 성공");
-			location.href = "adminList.do?pageNum=${pageNum}";
+			location.href = "adminTTList.do?pageNum=${pageNum}";
 		</script>
 	</c:if>
 	<c:if test="${result <= 0 }">

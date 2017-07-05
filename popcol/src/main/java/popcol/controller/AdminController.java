@@ -24,6 +24,9 @@ import popcol.service.NoticeService;
 import popcol.service.PagingPgm;
 import popcol.service.QnaService;
 import popcol.service.RunningtimeTableService;
+import popcol.service.TheaterService;
+import popcol.dao.LocationDao;
+import popcol.dao.TheaterDao;
 import popcol.model.Customer;
 import popcol.model.Event;
 import popcol.model.Faq;
@@ -32,6 +35,7 @@ import popcol.model.Movie;
 import popcol.model.Notice;
 import popcol.model.Qna;
 import popcol.model.RunningtimeTable;
+import popcol.model.Theater;
 
 @Controller
 public class AdminController {
@@ -52,6 +56,8 @@ public class AdminController {
 	private EventService es;
 	@Autowired
 	private RunningtimeTableService tts;
+	@Autowired
+	private TheaterService ts;
 
 	/* 로그인 */
 	@RequestMapping("adminLoginForm")
@@ -786,10 +792,82 @@ public class AdminController {
 		model.addAttribute("no", no);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("pp", pp);
-		
-		/* model.addAttribute("keyword", runningtimeTable.getKeyword()); */
 
 		return "adminTTList";
+	}
+
+	@RequestMapping("adminTTInsertForm") // 관리자 상영시간표 입력 페이지
+	public String adminTTInsertForm(String pageNum, Model model) {
+		List<Location> locationList = ls.adminLocationList();
+		List<Movie> movieList = ms.movieList();
+		List<Theater> theaterLocation = ts.theaterLocation();
+		
+		model.addAttribute("theaterLocation", theaterLocation);
+		model.addAttribute("movieList", movieList);
+		model.addAttribute("locationList", locationList);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "adminTTInsertForm";
+
+	}
+
+	@RequestMapping("adminTTInsert") // 관리자 상영시간표 입력
+	public String adminTTInsert(RunningtimeTable rt,String pageNum, Model model) {
+
+		int result = tts.adminTTInsert(rt);
+			
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+
+		/*
+		System.out.println("rtid :"+ rt.getRtid());
+		System.out.println("mid :"+ rt.getMid());
+		System.out.println("lid :"+ rt.getLid());
+		System.out.println("rtdate :"+ rt.getRtdate());
+		System.out.println("timezone :"+ rt.getTimezone());
+		System.out.println("tid :"+ rt.getTid());*/
+		return "adminTTInsert";
+
+	}
+
+	@RequestMapping("adminTTView") // 관리자 상영시간표 상세 보기
+	public String adminTTView(int mid, Model model, String pageNum) {
+		Movie movie = ms.adminSelect(mid);
+
+		model.addAttribute("movie", movie);
+		model.addAttribute("pageNum", pageNum);
+		return "adminTTView";
+
+	}
+
+	@RequestMapping("adminTTUpdateForm") // 관리자 상영시간표 수정폼
+	public String adminTTUpdateForm(int mid, Model model, String pageNum) {
+		Movie movie = ms.adminSelect(mid);
+
+		model.addAttribute("movie", movie);
+		model.addAttribute("pageNum", pageNum);
+		return "adminTTUpdateForm";
+
+	}
+
+	@RequestMapping("adminTTUpdate") // 관리자 상영시간표 수정
+	public String adminTTUpdate(Model model, Movie movie, String pageNum) {
+		int result = ms.adminUpdate(movie);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		return "adminTTUpdate";
+
+	}
+
+	@RequestMapping("adminTTDelete") // 관리자 상영시간표 삭제
+	public String adminTTDelete(int mid, Model model, String pageNum) {
+		int result = ms.adminDelete(mid);
+
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		return "adminTTDelete";
+
 	}
 
 }

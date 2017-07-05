@@ -42,6 +42,14 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		return sst.selectOne("runningtimetablens.getTotal2", runningtimeTable);
 	}
 
+
+	@Override
+	public int adminTTInsert(RunningtimeTable runningtimeTable) {
+
+		return sst.insert("runningtimetablens.adminTTinsert", runningtimeTable);
+	}
+
+
 	/*혜진*/
 	public List<RunningtimeTable> showtimesList(int lid, Date date) {
 		HashMap<String,Object> hm = new HashMap<String, Object>();
@@ -64,4 +72,5 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		hm.put("date", date);
 		return sst.selectList("runningtimetablens.bookedSeatCountList", hm);
 	}
+
 }
