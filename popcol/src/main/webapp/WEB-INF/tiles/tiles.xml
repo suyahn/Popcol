@@ -371,6 +371,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/bookingComplete.jsp" />
 	</definition>
+	<definition name="show-times" extends="mainLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/booking/show-times.jsp" />
+	</definition>
 
 	<!-- 규랑 -->
 	<definition name="admin" template="/WEB-INF/views/admin/layout.jsp">

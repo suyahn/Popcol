@@ -184,7 +184,7 @@
 			<table style="display: inline; width: 500px; margin-left: 200px; border-spacing: 10px; border-collapse: separate;">
 				<tr></tr>
 				<tr style="margin-top: 300px;">
-					<th>대인</th>
+					<th title="9000원 입니다." >대인</th>
 					<td>
 						<select onchange="totalPerson()" id="adult">
 							<c:forEach begin="0" end="6" var="person">
@@ -192,7 +192,7 @@
 							</c:forEach>
 						</select>
 					</td>
-					<th>소인</th>
+					<th title="원 입니다.">소인</th>
 					<td>
 						<select onchange="totalPerson()" id="youth">
 							<c:forEach begin="0" end="6" var="person">
@@ -200,7 +200,7 @@
 							</c:forEach>
 						</select>
 					</td>
-					<th>우대</th>
+					<th title="9000원 입니다.">우대</th>
 					<td>
 						<select onchange="totalPerson()" id="special">
 							<c:forEach begin="0" end="6" var="person">

@@ -11,6 +11,9 @@
 		<result property="timezone" column="timezone" />
 		<result property="tname" column="tname" />
 		<result property="lname" column="lname" />
+		<result property="mtitle" column="mtitle"/>
+		<result property="mrunningtime" column="mrunningtime"/>
+		<result property="mgrade" column="mgrade"/>
 	</resultMap>
 	
 <!-- <select id="bookingRTList" resultMap="runningtimetableResult"
@@ -33,7 +36,12 @@
 	<select id="runningtimeTableList" resultMap="runningtimetableResult">
 		select * from runningtimetable
 	</select>
-	
+	<select id="showtimesList" resultMap="runningtimetableResult">
+		select rt.*, to_char(rt.rtdate, 'hh24:mi') rttime, m.mtitle, m.mrunningtime, m.mgrade, t.tname
+		from runningtimetable rt, movie m, theater t
+		where rt.lid= #{lid} and to_char(rt.rtdate,'yyyy/mm/dd') = #{date} and rt.mid=m.mid and t.tid=rt.tid 
+		order by rttime
+	</select>
 	<!-- 규랑 -->
 	<!-- 관리자 상영관 리스트 -->
 	<select id="adminTTList" resultType="runningtimetable" parameterType="hashMap">

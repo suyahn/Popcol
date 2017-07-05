@@ -13,12 +13,12 @@
 <style type="text/css">
 
 .head {
-	color: #cd1726 !important;
+	color: #cd1726!important;
 }
 
 .head:hover {
 	background-color: #fdeaeb !important;
-	color : #fcba2e !important;
+	color : #fcba2e!important;
 }
 </style>
 

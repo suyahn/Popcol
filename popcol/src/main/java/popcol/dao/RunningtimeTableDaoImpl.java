@@ -1,5 +1,6 @@
 package popcol.dao;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,4 +41,10 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		return sst.selectOne("runningtimetablens.getTotal2", runningtimeTable);
 	}
 
+	/*혜진*/
+	public List<RunningtimeTable> showtimesList(int lid, Date date) {
+		HashMap<String,Object> hm = new HashMap<String, Object>();
+		hm.put("lid", lid); hm.put("date", date);
+		return sst.selectList("runningtimetablens.showtimesList",hm);
+	}
 }
