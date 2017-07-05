@@ -19,6 +19,7 @@ public interface MovieService {
 	Movie adminSelect(int mid);
 	int adminUpdate(Movie movie);
 	int adminDelete(int mid);
+	List<Movie> movieList();
 	
 	/* 도은 */
 	/* 메인 */

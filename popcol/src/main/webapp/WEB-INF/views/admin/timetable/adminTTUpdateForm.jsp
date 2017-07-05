@@ -1,90 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../popcol/header.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin UpdateForm</title>
+<style type="text/css">
+.red-active {
+	color: black;
+	text-decoration: none;
+}
+
+.red-active:hover {
+	color: #CD1726;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.pagination>li>a {
+	color: #cd1726 !important;
+}
+
+.pagination>li>a:hover {
+	color: #fcba2e !important;
+}
+
+.pagination>li.active>a {
+	background: #cd1726;
+	border-color: #cd1726;
+	color: white !important;
+}
+
+.pagination>li.active>a:hover {
+	background: #fcba2e;
+	border-color: #fcba2e;
+	color: white !important;
+}
+</style>
 </head>
 <body>
 	<div class="container" align="center">
-		<h2 class="text-primary">영화 수정</h2>
-		<form action="adminUpdate.do" method="post">
-			<input type="hidden" name="mid" value="${movie.mid}"> 
+		<h1 align="left" style="font-weight: bold;">
+			<img src="location/logo.png" width="250" height="70"> <a
+				href='adminTTUpdate.do' class="red-active">상영시간표 수정</a>
+		</h1>
+		<form action="adminTTUpdate.do" method="post">
 			<input type="hidden" name="pageNum" value="${pageNum}"> 
-		<table class="table table-bordered">
-			<tr>
-				<td>아이디</td>
-				<td>${movie.mid}</td>
-			</tr>
-			<tr>
-				<td>제목</td>
-				<td><input type="text" name="mtitle" required="required"
-					value="${movie.mtitle}"></td>
-			</tr>
-			<tr>
-				<td>원제</td>
-				<td><input type="text" name="moriginaltitle"
-					required="required" value="${movie.moriginaltitle}"></td>
-			</tr>
-			<tr>
-				<td>감독</td>
-				<td><input type="text" name="mdirector" required="required"
-					value="${movie.mdirector}"></td>
-			</tr>
-			<tr>
-				<td>배우</td>
-				<td><input type="text" name="mactor" required="required"
-					value="${movie.mactor}"></td>
-			</tr>
-			<tr>
-				<td>줄거리</td>
-				<td><pre>
-						<textarea rows="5" cols="30" name="mcontent" required="required">${movie.mcontent}
-						</textarea>
-					</pre></td>
-			</tr>
-			<tr>
-				<td>개봉일</td>
-				<td><input type="date" name="mreleaseDate" required="required"
-					value="${movie.mreleaseDate}"></td>
-			</tr>
-			<tr>
-				<td>러닝타임</td>
-				<td><input type="text" name="mrunningTime" required="required"
-					value="${movie.mrunningTime}"></td>
-			</tr>
-			<tr>
-				<td>예고편</td>
-				<td><input type="text" name="murlPreview" required="required"
-					value="${movie.murlPreview}"></td>
-			</tr>
-			<tr>
-				<td>포스터</td>
-				<td><input type="text" name="murlPoster" required="required"
-					value="${movie.murlPoster}"></td>
-			</tr>
-			<tr>
-				<td>상영등급</td>
-				<td><input type="text" name="mgrade" required="required"
-					value="${movie.mgrade}"></td>
-			</tr>
-			<tr>
-				<td>국가</td>
-				<td><input type="text" name="mnation" required="required"
-					value="${movie.mnation}"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit" value="확인"></td>
-			</tr>
+		<table class="table table-striped">
+				<tr>
+					<td width="200" height="70"
+						style="font-weight: bold; padding-top: 25px;">영화관</td>
+					<td style="padding-top: 25px"><select name=lid size="1"	required="required">
+							<c:forEach var="location" items="${locationList }">
+								<option value="${location.lid }" id="lid">${location.lname }</option>
+							</c:forEach>
+					</select></td>
+					<td width="200" style="font-weight: bold; padding-top: 25px;">상영관</td>
+					
+					<td width="150" style="padding-top: 25px">
+						1 관  <input type="radio" value="${runningtimeTable.tid }" id=""></td>
+					<td style="padding-top: 25px">
+						2 관 <input type="radio" value="${runningtimeTable.tid }"></td>
+				</tr>
+				<tr>
+					<td width="200" height="70"
+						style="font-weight: bold; padding-top: 25px;">영화</td>
+					<td style="padding-top: 25px"><select name=mid size="1"
+						required="required">
+							<c:forEach var="movie" items="${movieList }">
+								<option value="${movie.mid }">${movie.mtitle }</option>
+							</c:forEach>
+					</select></td>
+					<td width="200" style="font-weight: bold; padding-top: 25px;">상영시작시간</td>
+					<td colspan="2" style="padding-top: 15px"><input
+						type="datetime-local" name="rtdate" required="required"></td>
+				</tr>
+				<tr>
+					<td width="200" height="70"
+						style="font-weight: bold; padding-top: 25px;">시간대 분류</td>
+					<td style="padding-top: 25px"><select name=timeZone size="1"
+						required="required">
+							<option value="weekday_morning">평일 (조조)</option>
+							<option value="weekday_day">평일</option>
+							<option value="weekday_night">평일 (심야)</option>
+							<option value="weekend_morning">주말 (조조)</option>
+							<option value="weekend_day">주말</option>
+							<option value="weekend_night">주말 (심야)</option>
+					</select></td>
+					<td colspan="4" align="right" style="padding-top: 25px"><input
+						type="submit" value="확인"></td>
+				</tr>
+			
 		</table>
 		</form>
-	<%-- 	<a href="adminList.do?pageNum=${pageNum}" class="btn btn-info">목록</a>
-		<a href="adminUpdateForm.do?num=${board.num}&pageNum=${pageNum}"
-			class="btn btn-info">수정</a> <a
-			href="adminDeleteForm.do?num=${board.num}&pageNum=${pageNum}"
-			class="btn btn-info">삭제</a> --%>
+	
 
 	</div>
 </body>

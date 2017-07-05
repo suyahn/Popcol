@@ -118,6 +118,12 @@ public class MovieDaoImpl implements MovieDao {
 		
 		return sst.update("moviens.adminDelete",mid);
 	}
+	/*상영시간표 입력시*/
+	@Override
+	public List<Movie> movieList() {
+		
+		return sst.selectList("moviens.movieTTList");
+	}
 
 	
 	/* 도은 */
@@ -132,5 +138,10 @@ public class MovieDaoImpl implements MovieDao {
 		
 		return sst.selectOne("moviens.selectMovieForReview", mid);
 	}
+
+
+	
+
+	
 
 }

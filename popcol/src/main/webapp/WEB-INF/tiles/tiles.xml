@@ -627,6 +627,30 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/timetable/adminTTList.jsp" />
 	</definition>
+	<definition name="adminTTInsert" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/timetable/adminTTInsert.jsp" />
+	</definition>
+	<definition name="adminTTInsertForm" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/timetable/adminTTInsertForm.jsp" />
+	</definition>
+	<definition name="adminTTUpdate" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/timetable/adminTTUpdate.jsp" />
+	</definition>
+	<definition name="adminTTUpdateForm" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/timetable/adminTTUpdateForm.jsp" />
+	</definition>
+	<definition name="adminTTView" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/timetable/adminTTView.jsp" />
+	</definition>
+	<definition name="adminTTDelete" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/timetable/adminTTDelete.jsp" />
+	</definition>
 	<!-- 관리자 로그인 -->
 	<definition name="adminLoginForm" extends="admin">
 		<put-attribute name="body"

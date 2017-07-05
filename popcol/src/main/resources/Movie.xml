@@ -64,6 +64,9 @@
 		update movie set mdel ='y' where mid =#{mid}
 		
 	</update>
+	<select id="movieTTList" resultType="movie">
+		select * from movie where mdel = 'n'
+	</select>
 	
 	
 	<!-- 수연 -->

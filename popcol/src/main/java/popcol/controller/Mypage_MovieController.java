@@ -1,5 +1,6 @@
 package popcol.controller;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -76,8 +77,14 @@ public class Mypage_MovieController {
 		//List<List<Point>> pointList = new ArrayList<List<Point>>();
 		//HashSet<String> ticketnumber = new HashSet<String>();
 		List<Point> pointList = new ArrayList<Point>();
-
+		if(myBookingList.size() != 0) {
 		for (MypageBooking mb : myBookingList) {
+			/*System.out.println("rtdateww : " + mb.getTheDate());
+			String rtdate1 = df6.format(mb.getRtdate());
+			System.out.println("rtdate1 : " + rtdate1);
+			Date  rtdate2 = (Date) df6.parse(rtdate1);
+			System.out.println("rtdate2 : " + rtdate2);
+			c.setTime(rtdate2);*/
 			c.setTime(mb.getRtdate());
 			int dayNum = c.get(Calendar.DAY_OF_WEEK);
 			String theDay = "";
@@ -110,7 +117,7 @@ public class Mypage_MovieController {
 			
 			// 포인트를 위한 티켓넘버
 			// ticketnumber.add(mb.getTicketnumber());
-		}
+		}}
 		
 		// 포인트 리스트
 		/*Iterator<String> itr = ticketnumber.iterator();

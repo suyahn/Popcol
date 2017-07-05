@@ -20,6 +20,7 @@ public interface MovieDao {
 	Movie adminSelect(int mid);
 	int adminUpdate(Movie movie);
 	int adminDelete(int mid);
+	List<Movie> movieList();
 	
 	/* 도은 */
 	/* 메인 */
@@ -27,5 +28,6 @@ public interface MovieDao {
 	
 	/* 마이페이지 */
 	Movie selectMovieForReview(int mid);
+	
 	
 }

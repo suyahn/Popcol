@@ -15,6 +15,13 @@ public class TheaterServiceImpl implements TheaterService {
 	
 	public List<Theater> theaterList() {
 		return td.theaterList();
+
+	}
+
+	@Override
+	public List<Theater> theaterLocation() {
+		
+		return td.theaterLocation();
 	}
 
 }

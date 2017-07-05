@@ -68,6 +68,12 @@ public class MovieServiceImpl implements MovieService {
 		
 		return md.adminDelete(mid);
 	}
+	/*상영관시간표 입력시*/
+	@Override
+	public List<Movie> movieList() {
+		
+		return md.movieList();
+	}
 	
 	/* 도은 */
 	/* 메인 */
@@ -81,5 +87,6 @@ public class MovieServiceImpl implements MovieService {
 		
 		return md.selectMovieForReview(mid);
 	}
+	
 	
 }
