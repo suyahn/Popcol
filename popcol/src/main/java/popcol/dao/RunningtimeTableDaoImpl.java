@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import popcol.model.Movie;
 import popcol.model.RunningtimeTable;
 
 @Repository
@@ -46,5 +47,13 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		HashMap<String,Object> hm = new HashMap<String, Object>();
 		hm.put("lid", lid); hm.put("date", date);
 		return sst.selectList("runningtimetablens.showtimesList",hm);
+	}
+
+	@Override
+	public List<Movie> movieList(int lid, Date date) {
+		HashMap<String,Object> hm = new HashMap<String, Object>();
+		hm.put("lid", lid); 
+		hm.put("date", date);
+		return sst.selectList("moviens.movieList", hm);
 	}
 }
