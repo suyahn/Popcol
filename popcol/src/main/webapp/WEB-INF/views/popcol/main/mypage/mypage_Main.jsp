@@ -53,7 +53,10 @@
 									</font><br><br><br><br>
 									<font size="2px">
 									Popcorn&amp;Cola&nbsp;${booking.lname }&nbsp;${booking.tname }&nbsp;&nbsp;
-											<a href="#" style="color: black !important;">[극장정보]</a><br>
+											
+											<jsp:useBean id="now" class="java.util.Date" />
+											<fmt:formatDate value="${now }" var="date" pattern="yyyy/MM/dd"/>
+											<a href="show-times.do?lid=${booking.lid }&date=${date }" style="color: black !important;">[극장정보]</a><br>
 									${booking.theDate }&nbsp;(${booking.theDay })&nbsp;${booking.theTime }</font>
 								</td>
 							
