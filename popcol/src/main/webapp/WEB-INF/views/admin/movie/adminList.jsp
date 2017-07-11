@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin</title>
 <style type="text/css">
+th {
+	text-align: center;
+}
 .red-active {
 	color: black;
 	text-decoration: none;
@@ -40,15 +43,14 @@
 </style>
 </head>
 <body>
-	<div class="container" align="center">
+	<div class="container" align="center" style="width: 800px;">
 		<h2>
 			<img src="location/logo.png" width="250" height="70"> 영화 리스트
 		</h2>
 		<table class="table table-hover">
 			<tr>
 				<th>No</th>
-				<th>제목</th>
-				<th>원제</th>
+				<th width="50%">제목</th>
 				<th>감독</th>
 				<th>국가</th>
 			</tr>
@@ -58,35 +60,24 @@
 					<td colspan="5">데이터가 없습니다</td>
 				</tr>
 			</c:if>
-			<%
-				String id = (String) session.getAttribute("id");
-				if (id != null) { /* 아이디가 있을때 */
-			%>
+			
 			<c:if test="${not empty adminList }">
 				<c:set var="no" value="${no }"></c:set>
 				<c:forEach var="movie" items="${adminList}">
 					<tr>
-						<td>${no}</td>
-						<td><a
-							href="adminView.do?mid=${movie.mid}&pageNum=${pp.currentPage}"
-							class="btn btn-default">${movie.mtitle}</a></td>
-						<td>${movie.moriginaltitle }</td>
-						<td>${movie.mdirector }</td>
-						<td>${movie.mnation }</td>
+						<td style="text-align: center;">${no}</td>
+						<td>
+							<a href="adminView.do?mid=${movie.mid}&pageNum=${pp.currentPage}" class="btn btn-link red-active">
+							${movie.mtitle}(${movie.moriginaltitle })
+							</a>
+						</td>
+						<td style="text-align: center;">${movie.mdirector }</td>
+						<td style="text-align: center;">${movie.mnation }</td>
 						<c:set value="${no-1 }" var="no" />
 					</tr>
 				</c:forEach>
 			</c:if>
-
-			<%
-				} else {
-			%>
-			<script type="text/javascript">
-				location.href = "adminLoginForm.do"
-			</script>
-			<%
-				}
-			%>
+			
 		</table>
 		<div align="right">
 			<button type="button" class="btn btn-info btn-sm"

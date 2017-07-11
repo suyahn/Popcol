@@ -8,8 +8,8 @@
 <title>Insert Movie</title>
 </head>
 <body>
-	<div class="container" align="center">
-		<h2 class="text-primary">영화관 입력</h2>
+	<div class="container" align="center" style="width: 800px;">
+		<h2 class="text-primary" style="color: #cd1726;">영화관 입력</h2>
 		<form action="adminLocationInsert.do" method="post">
 			<table class="table table-striped">
 				<tr>
@@ -33,8 +33,11 @@
 					<td><input type="text" name="lon" required="required"></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="확인"></td>
-				</tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="확인" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">
+						<input type="button" value="이전" class="btn btn-default btn-sm" onclick="history.go(-1)">
+					</td>
+ 				</tr>
 			</table>
 		</form>
 	</div>

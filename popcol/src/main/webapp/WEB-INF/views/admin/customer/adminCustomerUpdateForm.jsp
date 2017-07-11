@@ -8,7 +8,7 @@
 <title>Admin UpdateForm</title>
 </head>
 <body>
-	<div class="container" align="center">
+	<div class="container" align="center" style="width: 800px;">
 		<h2>
 			<img src="location/logo.png" width="250" height="70">고객정보 수정
 		</h2>
@@ -22,8 +22,7 @@
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="cname" required="required"
-						value="${customer.cname}"></td>
+					<td><input type="text" name="cname" required="required" value="${customer.cname}"></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
@@ -46,7 +45,10 @@
 					<td>${customer.cbirthday}</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="확인"></td>
+					<td colspan="2" align="center">
+						<input type="submit" value="확인" class="btn btn-info btn-sm" style="display: inline; border-color: #cd1726; background-color: #cd1726;">
+						<input type="button" value="이전" class="btn btn-default btn-sm" onclick="history.go(-1)">
+					</td>
 				</tr>
 			</table>
 		</form>

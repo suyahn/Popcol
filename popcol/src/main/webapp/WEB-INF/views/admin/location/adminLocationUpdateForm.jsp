@@ -8,7 +8,7 @@
 <title>Admin UpdateForm</title>
 </head>
 <body>
-	<div class="container" align="center">
+	<div class="container" align="center" style="width: 800px;">
 		<h2>
 			<img src="location/logo.png" width="250" height="70"> 영화관 수정
 		</h2>
@@ -46,7 +46,10 @@
 						size="30" value="${location.lon}"></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="확인"></td>
+					<td colspan="2" align="center">
+						<input type="submit" value="확인" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">
+						<input type="button" value="이전" class="btn btn-default btn-sm" onclick="history.go(-1)">
+					</td>
 				</tr>
 			</table>
 		</form>

@@ -8,7 +8,7 @@
 <title>Admin View</title>
 </head>
 <body>
-	<div class="container" align="center">
+	<div class="container" align="center" style="width: 800px;">
 		<h2>
 			<img src="location/logo.png" width="250" height="70"> 고객 정보
 		</h2>
@@ -42,15 +42,14 @@
 				<td>${customer.cbirthday}</td>
 			</tr>
 		</table>
-		<a href="adminCustomerList.do?" class="btn btn-info"
-			style="display: inline; border-color: navy; background-color: navy;">목록</a>
+		<a href="adminCustomerList.do?" class="btn btn-default" style="display: inline;">목록</a>
 		<a
 			href="adminCustomerUpdateForm.do?cid=${customer.cid}&pageNum=${pageNum}"
 			class="btn btn-info"
-			style="display: inline; border-color: navy; background-color: navy;">수정</a>
+			style="display: inline; border-color: #cd1726; background-color: #cd1726;">회원이름변경</a>
 		<a href="adminCustomerDelete.do?cid=${customer.cid}&pageNum=${pageNum}"
 			class="btn btn-info"
-			style="display: inline; border-color: navy; background-color: navy;">삭제</a>
+			style="display: inline; border-color: #cd1726; background-color: #cd1726;">회원강제탈퇴</a>
 	</div>
 </body>
 </html>
