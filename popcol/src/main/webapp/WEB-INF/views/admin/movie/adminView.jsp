@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<td>줄거리</td>
-				<td>><pre style="white-space: none; height: 200px;">${movie.mcontent}</pre></td>
+				<td><pre style="white-space: none; height: 200px;">${movie.mcontent}</pre></td>
 			</tr>
 			<tr>
 				<td>개봉일</td>
