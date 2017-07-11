@@ -46,7 +46,7 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 	@Override
 	public int adminTTInsert(RunningtimeTable runningtimeTable) {
 
-		return sst.insert("runningtimetablens.adminTTinsert", runningtimeTable);
+		return sst.insert("runningtimetablens.adminTTInsert", runningtimeTable);
 	}
 
 

@@ -16,7 +16,9 @@ public class RunningtimeTable {
 	private String mrunningtime;
 	private String mgrade;
 	private int seats;
-
+	private String rtdateString;
+	
+	
 	public String getMrunningtime() {
 		return mrunningtime;
 	}
@@ -94,5 +96,11 @@ public class RunningtimeTable {
 	}
 	public void setSeats(int seats) {
 		this.seats = seats;
+	}
+	public String getRtdateString() {
+		return rtdateString;
+	}
+	public void setRtdateString(String rtdateString) {
+		this.rtdateString = rtdateString;
 	}
 }

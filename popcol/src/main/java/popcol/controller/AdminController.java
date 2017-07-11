@@ -776,7 +776,7 @@ public class AdminController {
 		/* 전체보기 */
 		if (test == null || test.equals("") || test.equals("0")) {
 			total = tts.getTotal1();
-		} else { /*상영관별 보기 */
+		} else { /* 상영관별 보기 */
 			total = tts.getTotal2(runningtimeTable);
 		}
 		int currentPage = Integer.parseInt(pageNum);
@@ -802,31 +802,31 @@ public class AdminController {
 		List<Location> locationList = ls.adminLocationList();
 		List<Movie> movieList = ms.movieList();
 		List<Theater> theaterLocation = ts.theaterLocation();
-		
+
 		model.addAttribute("theaterLocation", theaterLocation);
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("locationList", locationList);
 		model.addAttribute("pageNum", pageNum);
-		
+
 		return "adminTTInsertForm";
 
 	}
 
 	@RequestMapping("adminTTInsert") // 관리자 상영시간표 입력
-	public String adminTTInsert(RunningtimeTable runningtimeTable,String pageNum, Model model) {
-
+	public String adminTTInsert(RunningtimeTable runningtimeTable, String pageNum, Model model) {
+		runningtimeTable.setRtdateString(runningtimeTable.getRtdateString().replace("T", " "));
 		int result = tts.adminTTInsert(runningtimeTable);
-			
+
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 
 		/*
-		System.out.println("rtid :"+ rt.getRtid());
-		System.out.println("mid :"+ rt.getMid());
-		System.out.println("lid :"+ rt.getLid());
-		System.out.println("rtdate :"+ rt.getRtdate());
-		System.out.println("timezone :"+ rt.getTimezone());
-		System.out.println("tid :"+ rt.getTid());*/
+		 * System.out.println("rtid :"+ rt.getRtid());
+		 * System.out.println("mid :"+ rt.getMid()); System.out.println("lid :"+
+		 * rt.getLid()); System.out.println("rtdate :"+ rt.getRtdate());
+		 * System.out.println("timezone :"+ rt.getTimezone());
+		 * System.out.println("tid :"+ rt.getTid());
+		 */
 		return "adminTTInsert";
 
 	}
@@ -870,22 +870,22 @@ public class AdminController {
 		return "adminTTDelete";
 
 	}
-	/*@RequestMapping("adminTTList")
-	public String showTimes(Model model,int lid,@DateTimeFormat(pattern="yyyy/MM/dd") Date date) {
-		List<Movie> movieList = tts.movieList(lid, date);
-		List<Location> locationList = ls.locationList();
-		Location loc = ls.selectLocation(lid);
-		List<RunningtimeTable> showtimesList = tts.showtimesList(lid,date);
-		List<RunningtimeTable> bookedSeatCountList = tts.bookedSeatCountList(lid, date);
-		
-		model.addAttribute("movieList", movieList);
-		model.addAttribute("locationList",locationList);
-		model.addAttribute("loc", loc);
-		model.addAttribute("date",date);
-		model.addAttribute("showtimesList",showtimesList);
-		model.addAttribute("bookedSeatCountList", bookedSeatCountList);
-		
-		return "adminTTList";
-	}*/
+	/*
+	 * @RequestMapping("adminTTList") public String showTimes(Model model,int
+	 * lid,@DateTimeFormat(pattern="yyyy/MM/dd") Date date) { List<Movie>
+	 * movieList = tts.movieList(lid, date); List<Location> locationList =
+	 * ls.locationList(); Location loc = ls.selectLocation(lid);
+	 * List<RunningtimeTable> showtimesList = tts.showtimesList(lid,date);
+	 * List<RunningtimeTable> bookedSeatCountList = tts.bookedSeatCountList(lid,
+	 * date);
+	 * 
+	 * model.addAttribute("movieList", movieList);
+	 * model.addAttribute("locationList",locationList);
+	 * model.addAttribute("loc", loc); model.addAttribute("date",date);
+	 * model.addAttribute("showtimesList",showtimesList);
+	 * model.addAttribute("bookedSeatCountList", bookedSeatCountList);
+	 * 
+	 * return "adminTTList"; }
+	 */
 
 }
