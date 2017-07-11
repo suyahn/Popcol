@@ -85,7 +85,7 @@
 			SELECT NVL(MAX(rtid),0) + 1 FROM runningtimetable
 		</selectKey>
 		insert into runningtimetable values
-		(#{rtid},#{lid},#{tid},#{mid}#{rtdate},#{timezone})
+		(#{rtid},#{mid}#{rtdate},#{timezone})
 	</insert>
 
 </mapper>

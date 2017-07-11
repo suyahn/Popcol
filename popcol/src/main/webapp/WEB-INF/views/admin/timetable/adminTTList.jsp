@@ -52,13 +52,13 @@
 					<option value="0">전체보기</option>
 					<c:forEach var="runningtimetable" items="locationList">
 
-						<option value="${runningtimetable.rtid }" selected="selected">${runningtimetable.lname }</option>
+						<option value="${runningtimetable.lid }" selected="selected">${runningtimetable.lname }</option>
 					</c:forEach>
 					<option value="location"
 						<c:if test="${ search eq 'fquestion' }">selected="selected"</c:if>>${runningtimetable.tname }</option>
 				</select> --%>
 				
-				<%-- <input type="text" name="keyword" value="${ keyword }"> --%>
+				<input type="text" name="keyword" value="${ keyword }">
 				
 				<button type="submit" class="btn btn-default">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
