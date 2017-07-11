@@ -8,7 +8,7 @@
 <title>Admin View</title>
 </head>
 <body>
-	<div class="container" align="center" style="width: 800px;">
+	<div class="container" align="center">
 		<h2>
 			<img src="location/logo.png" width="250" height="70"> 고객 정보
 		</h2>

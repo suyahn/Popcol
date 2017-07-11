@@ -8,7 +8,7 @@
 <title>Insert Movie</title>
 </head>
 <body>
-	<div class="container" align="center" style="width: 800px;">
+	<div class="container" align="center">
 		<h2 class="text-primary" style="color: #cd1726;">영화 입력</h2>
 		<form action="adminInsert.do" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="pageNum" value="${pageNum}">

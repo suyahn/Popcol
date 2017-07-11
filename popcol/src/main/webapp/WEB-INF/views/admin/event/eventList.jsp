@@ -43,7 +43,7 @@ th, td {
 </style>
 </head>
 <body>
-	<div class="container" style="width: 800px;">
+	<div class="container">
 		<h2 style="font-weight: bold;">
 			<img src="location/logo.png" width="250" height="70">이벤트
 		</h2>

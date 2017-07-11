@@ -13,7 +13,7 @@
 </script> -->
 </head>
 <body>
-	<div class="container" align="center" style="width: 800px;">
+	<div class="container" align="center">
 		<h2 style="font-weight: bold;" >영화 상세정보</h2>
 		<table class="table table-bordered">
 			<tr>

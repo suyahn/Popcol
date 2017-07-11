@@ -8,7 +8,7 @@
 <title>Insert Movie</title>
 </head>
 <body>
-	<div class="container" align="center" style="width: 800px;">
+	<div class="container" align="center">
 		<h2 class="text-primary" style="color: #cd1726;">영화관 입력</h2>
 		<form action="adminLocationInsert.do" method="post">
 			<table class="table table-striped">
