@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <style type="text/css">
+th, td {
+ text-align: center;
+}
 .red-active {
 	color: black;
 	text-decoration: none;
@@ -40,11 +43,10 @@
 </style>
 </head>
 <body>
-	<div class="container" style="width: 70%">
-		<h1 align="left" style="font-weight: bold;">
-			<img src="location/logo.png" width="250" height="70"> 
-			<a href='adminEventList.do' class="red-active">이벤트</a>
-		</h1>
+	<div class="container" style="width: 800px;">
+		<h2 style="font-weight: bold;">
+			<img src="location/logo.png" width="250" height="70">이벤트
+		</h2>
 		<hr>
 
 		<div align="right">
@@ -74,10 +76,7 @@
 			<c:if test="${ empty eventList }">
 				<h2 style="font-weight: bold;">현재 해당되는 이벤트가 없습니다.</h2>
 			</c:if>
-			<%
-				String id = (String) session.getAttribute("id");
-				if (id != null) { /* 아이디가 있을때 */
-			%>
+			
 			<c:if test="${not empty eventList }">
 				<c:set var="no" value="${no }"></c:set>
 				<c:forEach var="event" items="${eventList}">
@@ -85,7 +84,7 @@
 						<td>${no}</td>
 						<td><a
 							href="adminEventView.do?eid=${event.eid}&pageNum=${pp.currentPage}"
-							class="btn btn-default">${event.esubject}</a></td>
+							class="red-active">${event.esubject}</a></td>
 						<td>${event.estartingdate }~ ${event.eclosingdate }</td>
 
 
@@ -93,16 +92,6 @@
 					</tr>
 				</c:forEach>
 			</c:if>
-
-			<%
-				} else {
-			%>
-			<script type="text/javascript">
-				location.href = "adminLoginForm.do"
-			</script>
-			<%
-				}
-			%>
 		</table>
 
 		<%-- <c:if test="${ not empty eventList }">

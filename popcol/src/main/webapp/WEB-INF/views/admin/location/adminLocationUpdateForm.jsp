@@ -48,7 +48,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" value="확인" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">
-						<input type="button" value="취소" class="btn btn-default btn-sm" onclick="history.go(-1)">
+						<input type="button" value="이전" class="btn btn-default btn-sm" onclick="history.go(-1)">
 					</td>
 				</tr>
 			</table>
