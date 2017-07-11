@@ -67,7 +67,7 @@
 			</tr>
 		</table>
 			
-		<a href="adminList.do?pageNum=${pageNum}" class="btn btn-info" style="display: inline; border-color: #CD1726; background-color: #CD1726;">목록</a>
+		<a href="adminList.do?pageNum=${pageNum}" class="btn btn-default" style="display: inline;">목록</a>
 		<a href="adminUpdateForm.do?mid=${movie.mid}&pageNum=${pageNum}"
 			class="btn btn-info"style="display: inline; border-color: #CD1726; background-color: #CD1726;">수정</a> 
 		<a href="adminDelete.do?mid=${movie.mid}&pageNum=${pageNum}"
