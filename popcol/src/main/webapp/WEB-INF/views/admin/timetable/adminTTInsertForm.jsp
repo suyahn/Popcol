@@ -67,12 +67,11 @@
 				<tr>
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">영화관</td>
-					<td style="padding-top: 25px" width="400"><select name=lid size="1"
-						required="required">
+					<td style="padding-top: 25px" width="400"><%-- <select name=lid size="1">
 							<c:forEach var="theaterLocation" items="${theaterLocation }">
 								<option value="${theaterLocation.tid }">${theaterLocation.lname } (${theaterLocation.tname})</option>
 							</c:forEach>
-					</select></td>
+					</select></td> --%>
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">영화</td>
 					<td style="padding-top: 25px"><select name=mid size="1"
