@@ -1,5 +1,6 @@
 package popcol.controller;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
@@ -135,7 +136,25 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminInsert") // 관리자 영화 입력
-	public String adminInsert(Model model, Movie movie, String pageNum) {
+	public String adminInsert(Model model, Movie movie, String pageNum, String mreleaseDateString,
+			@RequestParam("murlPosterName") MultipartFile mf, HttpSession session) throws IOException {
+			
+		String fileName = "";
+
+		if (mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
+			fileName = mf.getOriginalFilename();
+
+			String path = session.getServletContext().getRealPath("/poster");
+			FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
+			fos.write(mf.getBytes());
+			fos.close();
+		}
+		
+		String murlPoster = fileName.substring(0, fileName.length()-3);
+
+		movie.setMurlPoster(murlPoster.substring(0, murlPoster.length()-1));
+		movie.setMreleaseDate(Date.valueOf(mreleaseDateString));
+		
 		int result = ms.adminInsert(movie);
 
 		model.addAttribute("result", result);
@@ -165,7 +184,26 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminUpdate") // 관리자 영화 수정
-	public String adminUpdate(Model model, Movie movie, String pageNum) {
+	public String adminUpdate(Model model, Movie movie, String pageNum, String mreleaseDateString,
+		@RequestParam("murlPosterName") MultipartFile mf, HttpSession session) throws IOException {
+
+		String fileName = "";
+
+		if (mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
+			fileName = mf.getOriginalFilename();
+
+			String path = session.getServletContext().getRealPath("/poster");
+			FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
+			fos.write(mf.getBytes());
+			fos.close();
+
+			String murlPoster = fileName.substring(0, fileName.length()-3);
+			movie.setMurlPoster(murlPoster.substring(0, murlPoster.length()-1));
+		}
+
+		/* String을 sql.Date로 타입변경 */
+		movie.setMreleaseDate(Date.valueOf(mreleaseDateString));
+		
 		int result = ms.adminUpdate(movie);
 
 		model.addAttribute("result", result);
