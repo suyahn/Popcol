@@ -100,7 +100,7 @@ public class CustomerController {
 	@RequestMapping("logout")
 	public String logout(HttpServletRequest request, HttpSession session) {
 		session = request.getSession();
-		session.invalidate();
+		session.removeAttribute("id");
 
 		return "redirect:home.do";
 	}

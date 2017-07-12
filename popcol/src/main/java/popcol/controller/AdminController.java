@@ -82,7 +82,7 @@ public class AdminController {
 		model.addAttribute("masterid", masterid);
 		if (result > 0) {
 
-			session.setAttribute("id", customer.getCid());
+			session.setAttribute("master", customer.getCid());
 
 		}
 
@@ -96,7 +96,7 @@ public class AdminController {
 	@RequestMapping("adminLogout")
 	public String adminLogout(HttpServletRequest request, HttpSession session) {
 		session = request.getSession();
-		session.invalidate();
+		session.removeAttribute("master");
 
 		return "redirect:adminLoginForm.do";
 	}
@@ -573,7 +573,7 @@ public class AdminController {
 
 	@RequestMapping("adminQnaInsertForm")
 	public String qnaInsertForm(String pageNum, HttpSession session, Model model) {
-		String cid = (String) session.getAttribute("id");
+		String cid = (String) session.getAttribute("master");
 		String cname = cs.getCustomerName(cid);
 
 		model.addAttribute("cid", cid);
@@ -599,7 +599,7 @@ public class AdminController {
 	@RequestMapping("adminQnaView")
 	public String qnaView(int qid, String pageNum, HttpSession session, Model model) {
 		Qna qna = qs.select(qid);
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("master");
 
 		model.addAttribute("qna", qna);
 		model.addAttribute("pageNum", pageNum);
@@ -644,7 +644,7 @@ public class AdminController {
 	public String qnaReply(int qid, Model model, HttpSession session) {
 		Qna qna = qs.select(qid);
 
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("master");
 
 		model.addAttribute("qnaReply", qna);
 		model.addAttribute("id", id);

@@ -11,10 +11,6 @@
 <body>
 	<div class="container" align="center">
 		<form action="adminLogin.do" method="post">
-			<%
-				String id = (String) session.getAttribute("id");
-				if (id == null) { 
-			%>
 			<table>
 				<tr>
 					<th colspan="2"><br> <input type="text" name="cid"
@@ -47,9 +43,6 @@
 				</tr>
 
 			</table>
-			<%
-				}
-			%>
 
 			<c:if test="${ not empty result }">
 				<span class="err"> 아이디나 비밀번호를 확인해주세요.<br>

@@ -30,9 +30,9 @@ public class MasterLoginCheck implements HandlerInterceptor {
 		HttpSession session;
 		
 		session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("master");
 
-		if(id != null && id.equals("master")) {
+		/*if(id != null && id.equals("master")) {
 			
 			return true;
 			
@@ -47,6 +47,12 @@ public class MasterLoginCheck implements HandlerInterceptor {
 			
 			return false;
 			
+		}*/
+		
+		if (id == null) {
+			response.sendRedirect("adminLoginForm.do");
+
+			return false;
 		}
 		
 		return true;
