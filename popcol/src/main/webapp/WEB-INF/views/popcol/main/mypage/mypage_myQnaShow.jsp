@@ -42,7 +42,7 @@
 </script>
 </head>
 <body>
-	<div id="pointPage" style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; 
+	<div id="pointPage" style="width: 944px; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; 
 											margin: auto; background-image: URL(${path}/images/ticket.png); ">
 	</div>
 

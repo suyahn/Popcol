@@ -28,7 +28,7 @@
 </script>
 </head>
 <body>
-	<div id="pointPage" style="width: 70%; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; 
+	<div id="pointPage" style="width: 944px; margin-right: 50px; margin-left: 50px; margin-bottom: 30px !important; 
 											margin: auto; background-image: URL(${path}/images/ticket.png); ">
 	</div>
 
@@ -105,16 +105,20 @@
 									</c:if>
 									
 									<c:if test="${not empty pointList }">
+									<c:set var="pointCount" value="0" />
+									
 									<c:forEach var="point" items="${pointList }">
 										<c:if test="${point.bid == booking.bid }">
 											실결제금액&nbsp;&nbsp;${sum - point.ppoint}원<br>
 											포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${point.ppoint }원
-										</c:if>
-										
-										<c:if test="${point.bid != booking.bid }">
-											<br>실결제금액&nbsp;&nbsp;${sum }원<br><br>
+											
+											<c:set var="pointCount" value="${pointCount + 1 }" />
 										</c:if>
 									</c:forEach>
+									
+									<c:if test="${pointCount == 0 }">
+										<br>실결제금액&nbsp;&nbsp;${sum }원<br><br>
+									</c:if>
 									</c:if>
 									</font>
 								</td>

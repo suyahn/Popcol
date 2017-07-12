@@ -14,6 +14,7 @@
 			$.post('receivePoint.do', function(result) {
 				if(result == 1) {
 					alert("생일축하 10000 포인트 지급 완료~ 즐거운 하루되세요.");
+					window.location.reload();
 					
 				} else if(result == 0) {
 					alert("다시 시도해주세요.");
