@@ -69,7 +69,6 @@
 			<mapping path="/adminNoticeList.do"/>
 			<mapping path="/adminFaqList.do"/>
 			<mapping path="/adminQnaList.do"/>
-			
 			<beans:ref bean="lc3" />
 		</interceptor>
 		

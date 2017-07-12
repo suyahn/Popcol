@@ -76,10 +76,6 @@
 					<th colspan="2" style="text-align: center;">데이터가 없습니다.</th>
 				</tr>
 			</c:if>
-			<%
-				String id = (String) session.getAttribute("id");
-				if (id != null) { /* 아이디가 있을때 */
-			%>
 			<c:if test="${ not empty adminTTList }">
 				<c:set var="no1" value="${ no }"></c:set>
 				<c:forEach var="runningtimetable" items="${ adminTTList }">
@@ -95,15 +91,6 @@
 					<c:set var="no1" value="${ no1 - 1 }"></c:set>
 				</c:forEach>
 			</c:if>
-			<%
-				} else {
-			%>
-			<script type="text/javascript">
-				location.href = "adminLoginForm.do"
-			</script>
-			<%
-				}
-			%>
 		</table>
 
 		<div align="right">

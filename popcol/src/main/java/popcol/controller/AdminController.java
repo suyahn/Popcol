@@ -64,7 +64,7 @@ public class AdminController {
 	/* 로그인 */
 	@RequestMapping("adminLoginForm")
 	public String adminLoginForm() {
-
+		
 		return "adminLoginForm";
 	}
 
@@ -124,6 +124,7 @@ public class AdminController {
 		model.addAttribute("adminList", adminList);
 		model.addAttribute("no", no);
 		model.addAttribute("pp", pp);
+		
 		return "adminList";
 	}
 
@@ -312,6 +313,7 @@ public class AdminController {
 		model.addAttribute("adminCustomerList", adminCustomerList);
 		model.addAttribute("no", no);
 		model.addAttribute("pp", pp);
+		
 		return "adminCustomerList";
 
 	}
@@ -567,7 +569,7 @@ public class AdminController {
 		model.addAttribute("no", no);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("pp", pp);
-
+		
 		return "adminQnaList";
 	}
 
