@@ -50,6 +50,7 @@
 		<a href="adminCustomerDelete.do?cid=${customer.cid}&pageNum=${pageNum}"
 			class="btn btn-info"
 			style="display: inline; border-color: #cd1726; background-color: #cd1726;">회원강제탈퇴</a>
+		<hr>
 	</div>
 </body>
 </html>

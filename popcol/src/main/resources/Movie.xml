@@ -68,6 +68,12 @@
 		select * from movie where mdel = 'n'
 	</select>
 	
+	<!-- 관리자 상영시간표 보기 -->
+	<select id="adminSelectedDateMovieList" parameterType="hashMap" resultMap="movieResult">
+		select distinct m.* from movie m, runningtimetable rt 
+		where mdel = 'n' and m.mid = rt.mid and rt.lid = #{lid} and to_char(rt.rtdate,'yyyy-mm-dd') = #{date}
+	</select>
+	
 	
 	<!-- 수연 -->
 	<!-- 영화 리스트 -->

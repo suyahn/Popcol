@@ -31,17 +31,6 @@
 					</td>
 				</tr>
 
-				<tr>
-					<td align="center"><br>
-						<button type="button" class="btn btn-link"
-							onclick="location.href='findIdPasswordForm.do'">Forgot?</button>
-					</td>
-
-					<td align="center"><br>
-						<button type="button" class="btn btn-link"
-							onclick="location.href='joinmain.do'">Sign up</button></td>
-				</tr>
-
 			</table>
 
 			<c:if test="${ not empty result }">

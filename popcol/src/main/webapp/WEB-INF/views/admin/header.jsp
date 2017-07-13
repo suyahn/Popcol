@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../popcol/header.jsp"%>
+<%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +66,9 @@
 				<ul class="nav navbar-nav">
 					<li class=""><a href="adminList.do">영화관리</a></li>
 					<li class=""><a href="adminLocationList.do">극장관리</a></li>
-					<li class=""><a href="adminTTList.do">상영시간표</a></li>
+					<c:set var="today" value="<%=new Date()%>" />
+					<fmt:formatDate type="date" value="${today}" pattern="yyyy-MM-dd" var="date_today"/>
+					<li><a href="adminTTList.do?lid=1&dateStr=${ date_today }">상영시간표</a></li>
 					<li class=""><a href="adminCustomerList.do">회원관리</a></li>
 					<li class=""><a href="adminEventList.do">이벤트관리</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"

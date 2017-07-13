@@ -73,6 +73,7 @@
 		</table>
 		<br>
 		<!-- <div id="list"></div> -->
+		<hr>
 	</div>
 </body>
 </html>

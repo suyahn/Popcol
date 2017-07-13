@@ -554,16 +554,6 @@
 			value="/WEB-INF/views/admin/qna/qnaList.jsp" />
 	</definition>
 
-	<definition name="adminQnaInsertForm" extends="admin">
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/qna/qnaInsertForm.jsp" />
-	</definition>
-
-	<definition name="adminQnaInsert" extends="admin">
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/qna/qnaInsert.jsp" />
-	</definition>
-
 	<definition name="adminQnaView" extends="admin">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/qna/qnaView.jsp" />

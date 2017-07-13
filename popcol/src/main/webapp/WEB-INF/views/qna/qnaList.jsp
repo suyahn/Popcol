@@ -37,6 +37,10 @@
 	border-color: #fcba2e;
 	color: white !important;
 }
+
+th {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -59,19 +63,18 @@
 				<c:set var="no1" value="${ no }"></c:set>
 				<c:forEach var="qna" items="${ list }">
 					<tr>
-						<td>${ no1 }</td>
+						<td style="text-align: center;">${ no1 }</td>
 						<td>
 							<c:if test="${ id == qna.cid or id == 'master'}">
-								<a href="qnaView.do?qid=${ qna.qid }&pageNum=${ pageNum }" 
-								class="red-active">${ qna.qsubject }</a>
+								<a href="qnaView.do?qid=${ qna.qid }&pageNum=${ pageNum }" class="red-active">${ qna.qsubject }</a>
 							</c:if>
 							<c:if test="${ id != qna.cid and id != 'master'}">
 								<span class="glyphicon glyphicon-lock" aria-hidden="true" style="color: gray;" title="글 작성자만 볼 수 있습니다."></span>
-								${ qna.qsubject }
+								질문입니다.
 							</c:if>
 						</td>
-						<td>${ qna.cname }</td>
-						<td width="20%">
+						<td style="text-align: center;">${ qna.cname }</td>
+						<td width="20%" style="text-align: center;">
 							<fmt:parseDate value="${ qna.qdate }" var="qdate" pattern="yyyy-MM-dd"/>
 							<fmt:formatDate value="${ qdate }" pattern="yyyy.MM.dd"/>
 						</td>
@@ -83,7 +86,7 @@
 		
 		<div align="right">
 			<button type="button" class="btn btn-primary" onclick="location.href='qnaInsertForm.do?pageNum=${ pageNum }'"
-				style="border-color: #CD1726; background-color: #CD1726;">글 작성</button>
+				style="border-color: #CD1726; background-color: #CD1726;">질문 작성</button>
 			<div align="center">
 				<nav aria-label="Page navigation">
 					<ul class="pagination">
