@@ -6,6 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+li>a {
+	color: #cd1726;
+}
+
+li>a:hover {
+	color: #fcba2e;
+}
+
+li.active>a {
+	color: black;
+}
+</style>
 </head>
 <body>
 <div class="container" align="center">
@@ -19,8 +32,8 @@
 	       	<br>
 	       	<br>
 	       	
-	       	<h4 class="text-primary">아이디 찾기</h4>
-			<h6 class="text-primary">아이디가 기억나지 않으세요? 가입 시 사용하신 개인정보로 아이디를 찾으실 수 있습니다.</h6>
+	       	<h4 style="font-weight: bold;">아이디 찾기</h4>
+			<h6 style="font-weight: bold;">아이디가 기억나지 않으세요? 가입 시 사용하신 개인정보로 아이디를 찾으실 수 있습니다.</h6>
 			
 			<br>
 			<br>
@@ -66,8 +79,8 @@
 	       	<br>
 	       	<br>
 	       	
-	       	<h4 class="text-primary">비밀번호 찾기</h4>
-			<h6 class="text-primary">비밀번호가 기억나지 않으세요? 간단한 인증을 통해 비밀번호를 재설정하실 수 있습니다. </h6>
+	       	<h4 style="font-weight: bold;">비밀번호 찾기</h4>
+			<h6 style="font-weight: bold;">비밀번호가 기억나지 않으세요? 간단한 인증을 통해 비밀번호를 재설정하실 수 있습니다. </h6>
 			
 			<br>
 			<br>

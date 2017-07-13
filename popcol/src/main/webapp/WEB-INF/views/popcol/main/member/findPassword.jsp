@@ -7,6 +7,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+li>a {
+	color: #cd1726;
+}
+
+li>a:hover {
+	color: #fcba2e;
+}
+
+li.active>a {
+	color: black;
+}
+</style>
 <script type="text/javascript">
 	$(function() {
 		$('#password1').blur(function() {
@@ -74,8 +87,8 @@
 	       	<br>
 	       	<br>
 	       	
-	       	<h4 class="text-primary">아이디 찾기</h4>
-			<h6 class="text-primary">아이디가 기억나지 않으세요? 가입 시 사용하신 개인정보로 아이디를 찾으실 수 있습니다.</h6>
+	       	<h4 style="font-weight: bold;">아이디 찾기</h4>
+			<h6 style="font-weight: bold;">아이디가 기억나지 않으세요? 가입 시 사용하신 개인정보로 아이디를 찾으실 수 있습니다.</h6>
 			
 			<br>
 			<br>
@@ -122,8 +135,8 @@
 	       	<br>
 	       	
 	       	<c:if test="${result > 0 }">
-		       	<h4 class="text-primary">비밀번호 재설정 </h4>
-				<h6 class="text-primary">${customer.cname }님의 비밀번호를 변경합니다.</h6>
+		       	<h4 style="font-weight: bold;">비밀번호 재설정 </h4>
+				<h6 style="font-weight: bold;">${customer.cname }님의 비밀번호를 변경합니다.</h6>
 				
 				<br>
 				
@@ -132,7 +145,7 @@
 					<table>
 						<tr>
 							<td>
-								<h6 class="text-primary" style="color: red;">비밀번호는 4 ~ 20자리의 영문 대 소문자, 숫자, 특수문자를 사용해주세요.</h6>
+								<h6 style="color: red; font-weight: bold;">비밀번호는 4 ~ 20자리의 영문 대 소문자, 숫자, 특수문자를 사용해주세요.</h6>
 							</td>
 						</tr>
 					
@@ -170,13 +183,13 @@
 	       	</c:if>
 	       	
 	       	<c:if test="${result <= 0 }">
-		       	<h4 class="text-primary">비밀번호 찾기</h4>
-				<h6 class="text-primary">비밀번호가 기억나지 않으세요? 간단한 인증을 통해 비밀번호를 재설정하실 수 있습니다. </h6>
+		       	<h4 style="font-weight: bold;">비밀번호 찾기</h4>
+				<h6 style="font-weight: bold;">비밀번호가 기억나지 않으세요? 간단한 인증을 통해 비밀번호를 재설정하실 수 있습니다. </h6>
 				
 				<br>
 				<br>
 				
-		         <h2 class="text-primary">죄송합니다. 입력하신 정보와 일치하는 고객정보가 없습니다.</h2>
+		         <h2 style="font-weight: bold;">죄송합니다. 입력하신 정보와 일치하는 고객정보가 없습니다.</h2>
 				
 				<br>
 				<br>

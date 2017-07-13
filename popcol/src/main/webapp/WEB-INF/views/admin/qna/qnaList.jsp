@@ -63,14 +63,9 @@
 				<c:forEach var="qna" items="${ list }">
 					<tr>
 						<td>${ no1 }</td>
-						<td><c:if test="${ id == qna.cid or id == 'master'}">
-								<a href="adminQnaView.do?qid=${ qna.qid }&pageNum=${ pageNum }"
-									class="red-active">${ qna.qsubject }</a>
-							</c:if> <c:if test="${ id != qna.cid and id != 'master'}">
-								<span class="glyphicon glyphicon-lock" aria-hidden="true"
-									style="color: gray;" title="글 작성자만 볼 수 있습니다."></span>
-								${ qna.qsubject }
-							</c:if></td>
+						<td>
+							<a href="adminQnaView.do?qid=${ qna.qid }&pageNum=${ pageNum }" class="red-active">${ qna.qsubject }</a>
+						</td>
 						<td>${ qna.cname }</td>
 						<td width="20%"><fmt:parseDate value="${ qna.qdate }"
 								var="qdate" pattern="yyyy-MM-dd" /> <fmt:formatDate

@@ -9,8 +9,8 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<h2 class="text-primary">회원가입을 원하시나요?</h2>
-		<h6 class="text-primary">회원가입 전 회원가입 여부를 확인하겠습니다.</h6>
+		<h2 style="font-weight: bold;">회원가입을 원하시나요?</h2>
+		<h6 style="font-weight: bold;">회원가입 전 회원가입 여부를 확인하겠습니다.</h6>
 		
 		<br>
 		<br>

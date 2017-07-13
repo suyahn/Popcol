@@ -28,11 +28,11 @@
 				
 				<tr>
 					<td align="center">
-						<br><button type="button" class="btn btn-link" onclick="location.href='findForm.do'">Forgot?</button>
+						<br><button type="button" class="btn btn-link" onclick="location.href='findForm.do'" style="color: #cd1726;">Forgot?</button>
 					</td>
 					
 					<td align="center">
-						<br><button type="button" class="btn btn-link" onclick="location.href='joinmain.do'">Sign up</button>
+						<br><button type="button" class="btn btn-link" onclick="location.href='joinmain.do'" style="color: #cd1726;">Sign up</button>
 					</td>
 				</tr>
 				

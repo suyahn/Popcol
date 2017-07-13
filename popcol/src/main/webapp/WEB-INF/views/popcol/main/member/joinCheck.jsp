@@ -10,8 +10,8 @@
 <body>
 	<c:if test="${result > 0 }">
 		<div class="container" align="center" style="width: 500px;">
-			<h2 class="text-primary">가입된 정보가 있습니다.</h2>
-			<h6 class="text-primary">${customer.cname }회원님께서는 이미 저희 페이지에 가입하셨습니다.</h6>
+			<h2 style="font-weight: bold;">가입된 정보가 있습니다.</h2>
+			<h6 style="font-weight: bold;">${customer.cname }회원님께서는 이미 저희 페이지에 가입하셨습니다.</h6>
 			
 			<br>
 			<br>

@@ -582,7 +582,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/qna/qnaDelete.jsp" />
 	</definition>
-	<definition name="adminQnaReply" extends="admin">
+	<definition name="adminQnaReply" extends="empty">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/qna/qnaReply.jsp" />
 	</definition>
