@@ -571,7 +571,7 @@ public class AdminController {
 		return "adminQnaList";
 	}
 
-	@RequestMapping("adminQnaInsertForm")
+	/*@RequestMapping("adminQnaInsertForm")
 	public String qnaInsertForm(String pageNum, HttpSession session, Model model) {
 		String cid = (String) session.getAttribute("master");
 		String cname = cs.getCustomerName(cid);
@@ -594,7 +594,7 @@ public class AdminController {
 		model.addAttribute("qid", qna.getQid());
 
 		return "adminQnaInsert";
-	}
+	}*/
 
 	@RequestMapping("adminQnaView")
 	public String qnaView(int qid, String pageNum, HttpSession session, Model model) {
