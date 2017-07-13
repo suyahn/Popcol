@@ -82,13 +82,29 @@
 		between #{startRow}
 		and #{endRow}
 	</select>
-	<!-- 상영시간표 업데이트 폼 -->
-	<select id="adminTTSelect" parameterType="int" resultMap="runningtimetableResult">
-		select rt.*, to_char(rt.rtdate, 'hh24:mi') rttime, m.mtitle, m.mrunningtime, m.mgrade, t.tname, l.lname
-		from runningtimetable rt, movie m, theater t, location l
-		where rt.rtid= #{rtid} and rt.mid=m.mid and t.tid=rt.tid and rt.lid = l.lid
+	<!-- 상영시간표 업데이트 폼 / 상세보기 -->
+	<select id="adminTTSelect" parameterType="int"
+		resultMap="runningtimetableResult">
+		select rt.*, to_char(rt.rtdate, 'hh24:mi') rttime, m.mtitle,
+		m.mrunningtime, m.mgrade, t.tname, l.lname
+		from runningtimetable rt,
+		movie m, theater t, location l
+		where rt.rtid= #{rtid} and rt.mid=m.mid
+		and t.tid=rt.tid and rt.lid = l.lid
 
 	</select>
+
+	<update id="adminTTUpdate" parameterType="runningtimetable">
+		update runningtimetable
+		set lid=#{lid}, tid=#{tid}, mid =#{mid},
+		rtdate=to_date(#{rtdateString},'yyyy-mm-dd hh24:mi'),
+		timezone=#{timezone}
+		where rtid=#{rtid}
+	</update>
+	<delete id="adminTTDelete" parameterType="int">
+		delete runningtimetable
+		where rtid=#{rtid}
+	</delete>
 
 	<!-- 페이지 처리 -->
 	<select id="getTotal1" resultType="int">
