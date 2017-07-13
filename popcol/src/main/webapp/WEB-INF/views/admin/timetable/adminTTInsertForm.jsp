@@ -111,6 +111,7 @@
 					<td colspan="4" align="right" style="padding-top: 25px"><input
 						type="submit" value="확인" class="btn btn-info btn-sm"
 						style="background-color: #cd1726; border-color: #cd1726;">
+						<input type="button" value="이전" class="btn btn-default btn-sm" onclick="history.go(-1)">
 					</td>
 				</tr>
 			</table>
