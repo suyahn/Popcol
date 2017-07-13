@@ -850,12 +850,21 @@ public class AdminController {
 
 	@RequestMapping("adminTTInsert") // 관리자 상영시간표 입력
 	public String adminTTInsert(RunningtimeTable runningtimeTable, String pageNum, Model model, String ltid) {
+		
 		runningtimeTable.setRtdateString(runningtimeTable.getRtdateString().replace("T", " "));
 
 		String[] array = ltid.split(":");
 		runningtimeTable.setLid(Integer.parseInt(array[0]));
 		runningtimeTable.setTid(Integer.parseInt(array[1]));
-
+		
+		
+		System.out.println("rtid:"+runningtimeTable.getRtid());
+		System.out.println("lid:"+runningtimeTable.getLid());
+		System.out.println("mid:"+runningtimeTable.getMid());
+		System.out.println("timezone:"+runningtimeTable.getTimezone());
+		System.out.println("rtdate:"+runningtimeTable.getRtdate());
+		System.out.println("tid:"+runningtimeTable.getTid());
+		
 		int result = tts.adminTTInsert(runningtimeTable);
 
 		model.addAttribute("result", result);
@@ -894,12 +903,20 @@ public class AdminController {
 	@RequestMapping("adminTTUpdate") // 관리자 상영시간표 수정
 	public String adminTTUpdate(Model model, Movie movie, String pageNum, RunningtimeTable runningtimeTable,
 			String ltid) {
+		/* String을 sql.Date로 타입변경 */
 		runningtimeTable.setRtdateString(runningtimeTable.getRtdateString().replace("T", " "));
-
+		/*lid 와 tid를 잘라서 넣기*/
 		String[] array = ltid.split(":");
 		runningtimeTable.setLid(Integer.parseInt(array[0]));
 		runningtimeTable.setTid(Integer.parseInt(array[1]));
 
+		System.out.println("rtid:"+runningtimeTable.getRtid());
+		System.out.println("lid:"+runningtimeTable.getLid());
+		System.out.println("mid:"+runningtimeTable.getMid());
+		System.out.println("timezone:"+runningtimeTable.getTimezone());
+		System.out.println("rtdate:"+runningtimeTable.getRtdate());
+		System.out.println("tid:"+runningtimeTable.getTid());
+		
 		int result = tts.adminTTUpdate(runningtimeTable);
 
 		/* int result = ms.adminUpdate(movie); */
@@ -911,8 +928,8 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminTTDelete") // 관리자 상영시간표 삭제
-	public String adminTTDelete(int mid, Model model, String pageNum) {
-		int result = ms.adminDelete(mid);
+	public String adminTTDelete(int rtid, Model model, String pageNum) {
+		int result = tts.adminTTDelete(rtid);
 
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);

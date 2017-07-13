@@ -70,6 +70,7 @@ $(function() {
 		</h1>
 		<form action="adminTTUpdate.do" method="post" name="frm" onsubmit="return chk()">
 			<input type="hidden" name="pageNum" value="${pageNum}">
+			<input type="hidden" name="rtid" value="${showtimesList2.rtid}"> 
 			<table class="table table-striped">
 				<tr>
 					<td width="200" height="70"
@@ -77,11 +78,11 @@ $(function() {
 					<td style="padding-top: 25px" width="400">
 					<select name=ltid size="1">
 							<c:forEach var="theaterLocation" items="${theaterLocation }">
-								 <c:if test="${ theaterLocation.tid  == showtimesList2.tid }">
+							<c:if test="${ theaterLocation.tid  == showtimesList2.tid }">
 								<option value="${theaterLocation.lid }:${theaterLocation.tid}" selected="selected">${theaterLocation.lname } (${theaterLocation.tname})</option>
 							</c:if>
 							<c:if test="${ theaterLocation.tid  != showtimesList2.tid }">
-							<option value="${theaterLocation.lid }:${theaterLocation.tid}" >${theaterLocation.lname } (${theaterLocation.tname})</option>
+								<option value="${theaterLocation.lid }:${theaterLocation.tid}" >${theaterLocation.lname } (${theaterLocation.tname})</option>
 							</c:if>
 							</c:forEach>
 					</select>

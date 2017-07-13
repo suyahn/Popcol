@@ -16,17 +16,19 @@ public interface RunningtimeTableDao {
 	
 	/*상영시간표 업데이트*/
 	int adminTTUpdate(RunningtimeTable runningtimeTable);
+	
 	int getTotal1();
-
 	int getTotal2(RunningtimeTable runningtimeTable);
 
-
 	int adminTTInsert(RunningtimeTable runningtimeTable);
+	int adminTTDelete(int rtid);
 
 	/*혜진*/
 	List<RunningtimeTable> showtimesList(int lid, Date date);
 	List<Movie> movieList(int lid, Date date);
 	List<RunningtimeTable> bookedSeatCountList(int lid, Date date);
+
+	
 
 	
 

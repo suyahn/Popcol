@@ -93,12 +93,18 @@
 		and t.tid=rt.tid and rt.lid = l.lid
 
 	</select>
+
 	<update id="adminTTUpdate" parameterType="runningtimetable">
 		update runningtimetable
-			set lid=#{lid}, tid=#{tid}, mid =#{mid},
-			rtdate=#{rtdate},timezone=#{timezone}
+		set lid=#{lid}, tid=#{tid}, mid =#{mid},
+		rtdate=to_date(#{rtdateString},'yyyy-mm-dd hh24:mi'),
+		timezone=#{timezone}
 		where rtid=#{rtid}
 	</update>
+	<delete id="adminTTDelete" parameterType="int">
+		delete runningtimetable
+		where rtid=#{rtid}
+	</delete>
 
 	<!-- 페이지 처리 -->
 	<select id="getTotal1" resultType="int">

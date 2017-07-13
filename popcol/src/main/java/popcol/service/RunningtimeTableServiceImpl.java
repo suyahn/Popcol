@@ -59,6 +59,11 @@ public class RunningtimeTableServiceImpl implements RunningtimeTableService {
 		
 		return rtd.adminTTInsert(runningtimeTable);
 	}
+	@Override
+	public int adminTTDelete(int rtid) {
+		
+		return rtd.adminTTDelete(rtid);
+	}
 
 	/*@Override
 	public int adminTTInsert(RunningtimeTable runningtimeTable) {
@@ -79,6 +84,7 @@ public class RunningtimeTableServiceImpl implements RunningtimeTableService {
 		return rtd.bookedSeatCountList(lid, date);
 
 	}
+	
 	
 	
 	

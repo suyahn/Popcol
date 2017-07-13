@@ -29,18 +29,19 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		hm.put("endRow", endRow);
 		return sst.selectList("runningtimetablens.adminTTList", hm);
 	}
+
 	@Override
 	public RunningtimeTable adminTTSelect(int rtid) {
-		
+
 		return sst.selectOne("runningtimetablens.adminTTSelect", rtid);
 	}
-	/*상영시간표 업데이트*/
+
+	/* 상영시간표 업데이트 */
 	@Override
 	public int adminTTUpdate(RunningtimeTable runningtimeTable) {
-		
-		return sst.update("runningtimetablens.adminTTUpdate",runningtimeTable);
+
+		return sst.update("runningtimetablens.adminTTUpdate", runningtimeTable);
 	}
-	
 
 	@Override
 	public int getTotal1() {
@@ -58,6 +59,12 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 	public int adminTTInsert(RunningtimeTable runningtimeTable) {
 
 		return sst.insert("runningtimetablens.adminTTInsert", runningtimeTable);
+	}
+
+	@Override
+	public int adminTTDelete(int rtid) {
+
+		return sst.delete("runningtimetablens.adminTTDelete", rtid);
 	}
 
 	/* 혜진 */
@@ -84,6 +91,4 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		return sst.selectList("runningtimetablens.bookedSeatCountList", hm);
 	}
 
-	
-	
 }
