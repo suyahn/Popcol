@@ -13,7 +13,8 @@ public interface RunningtimeTableService {
 	/*RunningtimeTable adminTTSelect(int rtid);*/
 	/*상영시간표 상세보기*/
 	RunningtimeTable adminTTSelect(int rtid);
-	
+	/*상영시간표 업데이트*/
+	int adminTTUpdate(RunningtimeTable runningtimeTable);
 	
 	int getTotal1();
 
@@ -26,6 +27,7 @@ public interface RunningtimeTableService {
 	List<RunningtimeTable> showtimesList(int lid, Date date);
 	List<Movie> movieList(int lid, Date date);
 	List<RunningtimeTable> bookedSeatCountList(int lid, Date date);
+	
 	
 	
 	

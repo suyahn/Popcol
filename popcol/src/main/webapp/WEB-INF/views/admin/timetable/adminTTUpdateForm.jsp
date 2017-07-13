@@ -38,6 +38,11 @@
 	color: white !important;
 }
 </style>
+<script type="text/javascript">
+$(function() {
+	document.getElementById("rtdateString").value ="${showtimesList2.rtdate}T${showtimesList2.rttime}";
+})
+</script>
 <!-- <script type="text/javascript">
 	function chk() {
 		var lid = frm.lid.value;
@@ -69,9 +74,15 @@
 				<tr>
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">영화관</td>
-					<td style="padding-top: 25px" width="400"><select name=ltid size="1">
-							<c:forEach var="showtimesList2" items="${showtimesList2 }">
-								<option value="${showtimesList2.lid }:${showtimesList2.tid}">${showtimesList2.lname } (${showtimesList2.tname})</option>
+					<td style="padding-top: 25px" width="400">
+					<select name=ltid size="1">
+							<c:forEach var="theaterLocation" items="${theaterLocation }">
+								 <c:if test="${ theaterLocation.tid  == showtimesList2.tid }">
+								<option value="${theaterLocation.lid }:${theaterLocation.tid}" selected="selected">${theaterLocation.lname } (${theaterLocation.tname})</option>
+							</c:if>
+							<c:if test="${ theaterLocation.tid  != showtimesList2.tid }">
+							<option value="${theaterLocation.lid }:${theaterLocation.tid}" >${theaterLocation.lname } (${theaterLocation.tname})</option>
+							</c:if>
 							</c:forEach>
 					</select>
 					
@@ -80,27 +91,32 @@
 						style="font-weight: bold; padding-top: 25px;">영화</td>
 					<td style="padding-top: 25px"><select name=mid size="1"
 						required="required">
-							<c:forEach var="showtimesList2" items="${showtimesList2 }">
-								<option value="${showtimesList2.mid }" >${showtimesList2.mtitle }</option>
+							<c:forEach var="movie" items="${movieList }">
+								<c:if test="${ movie.mid  == showtimesList2.mid }">
+									<option value="${movie.mid }" selected="selected">${movie.mtitle }</option>
+								</c:if>
+								<c:if test="${ movie.mid  != showtimesList2.mid }">
+									<option value="${movie.mid }" >${movie.mtitle }</option>
+								</c:if>
 							</c:forEach>
 					</select></td>
 				</tr>
 				<tr>
 					<td width="200" style="font-weight: bold; padding-top: 25px;">상영시작시간</td>
 					<td style="padding-top: 15px">
-					<input type="datetime-local" name="rtdateString" required="required">
+					<input type="datetime-local" name="rtdateString" required="required" id="rtdateString">
 					</td>
 					
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">시간대 분류</td>
 					<td style="padding-top: 25px"><select name=timezone size="1"
 						required="required">
-							<option value="weekday_morning">평일 (조조)</option>
-							<option value="weekday_day">평일</option>
-							<option value="weekday_night">평일 (심야)</option>
-							<option value="weekend_morning">주말 (조조)</option>
-							<option value="weekend_day">주말</option>
-							<option value="weekend_night">주말 (심야)</option>
+							<option value="weekday_morning" <c:if test="${showtimesList2.timezone eq 'weekday_morning'}">selected</c:if>>평일 (조조)</option>
+							<option value="weekday_day" <c:if test="${showtimesList2.timezone eq 'weekday_day'}">selected</c:if>>평일</option>
+							<option value="weekday_night"  <c:if test="${showtimesList2.timezone eq 'weekday_night'}">selected</c:if>>평일 (심야)</option>
+							<option value="weekend_morning"  <c:if test="${showtimesList2.timezone eq 'weekend_morning'}">selected</c:if>>주말 (조조)</option>
+							<option value="weekend_day"  <c:if test="${showtimesList2.timezone eq 'weekend_day'}">selected</c:if>>주말</option>
+							<option value="weekend_night"  <c:if test="${showtimesList2.timezone eq 'weekend_night'}">selected</c:if>>주말 (심야)</option>
 					</select></td>
 				</tr>
 				<tr>

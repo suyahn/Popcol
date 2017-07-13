@@ -34,6 +34,12 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		
 		return sst.selectOne("runningtimetablens.adminTTSelect", rtid);
 	}
+	/*상영시간표 업데이트*/
+	@Override
+	public int adminTTUpdate(RunningtimeTable runningtimeTable) {
+		
+		return sst.update("runningtimetablens.adminTTUpdate",runningtimeTable);
+	}
 	
 
 	@Override
