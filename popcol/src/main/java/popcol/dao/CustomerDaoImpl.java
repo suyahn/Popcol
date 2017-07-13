@@ -152,4 +152,10 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		return sst.update("customerns.adminCustomerUpdate", customer);
 	}
+
+	@Override
+	public int adminCustomerDelete(String cid) {
+		
+		return sst.update("customerns.adminCustomerDelete", cid);
+	}
 }

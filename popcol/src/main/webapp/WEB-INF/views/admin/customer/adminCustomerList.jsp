@@ -53,6 +53,7 @@ th, td {
 				<th>아이디</th>
 				<th>이름</th>
 				<th>연락처</th>
+				<th>탈퇴여부</th>
 			</tr>
 
 			<c:if test="${empty adminCustomerList}">
@@ -70,7 +71,7 @@ th, td {
 							class="red-active">${customer.cid}</a></td>
 						<td>${customer.cname }</td>
 						<td>${customer.cphone }</td>
-						
+						<td><c:if test="${customer.cdel eq 'y' }">탈퇴 회원</c:if></td>
 						<c:set value="${no-1 }" var="no" />
 					</tr>
 				</c:forEach>

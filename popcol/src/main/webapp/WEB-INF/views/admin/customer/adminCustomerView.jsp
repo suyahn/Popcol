@@ -6,6 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin View</title>
+<script type="text/javascript">
+	function deleteChk(cid, pageNum) {
+		
+		if(confirm("정말로 삭제하시겠습니까?") == false) {
+			return false;
+		}
+		location.href="adminCustomerDelete.do?cid=" + cid + "&pageNum=" + pageNum;
+	}
+</script>
 </head>
 <body>
 	<div class="container" align="center">
@@ -43,13 +52,15 @@
 			</tr>
 		</table>
 		<a href="adminCustomerList.do?" class="btn btn-default" style="display: inline;">목록</a>
+		<c:if test="${customer.cdel eq 'n' }">
 		<a
 			href="adminCustomerUpdateForm.do?cid=${customer.cid}&pageNum=${pageNum}"
 			class="btn btn-info"
 			style="display: inline; border-color: #cd1726; background-color: #cd1726;">회원이름변경</a>
-		<a href="adminCustomerDelete.do?cid=${customer.cid}&pageNum=${pageNum}"
-			class="btn btn-info"
+		<a onclick="deleteChk('${ customer.cid }', ${ pageNum })" class="btn btn-info"
 			style="display: inline; border-color: #cd1726; background-color: #cd1726;">회원강제탈퇴</a>
+			</c:if>
+		
 		<hr>
 	</div>
 </body>

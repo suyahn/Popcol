@@ -474,6 +474,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/customer/adminCustomerUpdate.jsp" />
 	</definition>
+	<definition name="adminCustomerDelete" extends="admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/customer/adminCustomerDelete.jsp" />
+	</definition>
 
 	<!-- 관리자 notice -->
 

@@ -130,4 +130,10 @@ public class CustomerServiceImpl implements CustomerService {
 
 		return cd.adminCustomerUpdate(customer);
 	}
+
+	@Override
+	public int adminCustomerdelete(String cid) {
+		
+		return cd.adminCustomerDelete(cid);
+	}
 }

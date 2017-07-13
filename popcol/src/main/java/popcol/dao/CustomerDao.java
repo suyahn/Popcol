@@ -58,5 +58,7 @@ public interface CustomerDao {
 
 	int adminCustomerUpdate(Customer customer);
 
+	int adminCustomerDelete(String cid);
+
 
 }

@@ -353,6 +353,16 @@ public class AdminController {
 		return "adminCustomerUpdate";
 
 	}
+	@RequestMapping("adminCustomerDelete")
+	public String adminCustomerDelete(String cid, String pageNum, Model model) {
+		int result = cs.adminCustomerdelete(cid);
+
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("result", result);
+
+		return "adminCustomerDelete";
+	}
+
 
 	/* 관리자 notice */
 	@RequestMapping("adminNoticeList")

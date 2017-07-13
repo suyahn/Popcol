@@ -112,15 +112,15 @@
 	<!-- 페이지 처리 -->
 	<select id="getTotal" resultType="int">
 		select count(*) from customer
-		where cdel != 'y' and cid != 'master'
+		where cid != 'master'
 	</select>
 	<!-- 관리자페이지 고객리스트 -->
 	<select id="adminCustomerList" resultType="customer"
 		parameterType="hashMap">
 		select * from(select rownum rn, a.* from
 		(select cid,
-		cname, cphone from customer
-		where cdel !='y' and cid != 'master' order
+		cname, cphone, cdel from customer
+		where cid != 'master' order
 		by creg_date desc)a)
 		where
 		rn between #{startRow} and #{endRow}
@@ -132,6 +132,9 @@
 	</select>
 	<update id="adminCustomerUpdate" parameterType="customer">
 		update customer set cname = #{cname} where cid = #{cid}
+	</update>
+	<update id="adminCustomerDelete" parameterType="string">
+		update customer set cdel = 'y' where cid = #{cid}
 	</update>
 
 </mapper>
