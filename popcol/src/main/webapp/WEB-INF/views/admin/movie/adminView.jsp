@@ -13,7 +13,7 @@
 </script> -->
 <script type="text/javascript">
 	function deleteChk(mid, pageNum) {
-		if(confirm("정말로 삭제하시겠습니까?") == false) {
+		if(confirm("정말로 내리시겠습니까?") == false) {
 			return false;
 		}
 		location.href="adminDelete.do?mid=" + mid + "&pageNum=" + pageNum;

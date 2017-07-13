@@ -8,10 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<fmt:formatDate type="date" value="${date}" pattern="yyyy-MM-dd" var="date"/>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("상영시간표가 입력되었습니다");
-			location.href = "adminTTList.do"
+			location.href = "adminTTView.do?rtid=${rtid}&dateStr=${date}"
 		</script>
 	</c:if>
 	

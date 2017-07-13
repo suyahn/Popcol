@@ -82,6 +82,11 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		return sst.delete("runningtimetablens.adminTTDelete", rtid);
 	}
 
+	@Override
+	public int getMaxRtid() {
+		return sst.selectOne("runningtimetablens.getMaxRtid");
+	}
+	
 	/* 혜진 */
 	public List<RunningtimeTable> showtimesList(int lid, Date date) {
 		HashMap<String, Object> hm = new HashMap<String, Object>();

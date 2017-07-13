@@ -65,7 +65,6 @@
 		</h1>
 		<form action="adminTTInsert.do" method="post" name="frm"
 			onsubmit="return chk()">
-			<input type="hidden" name="pageNum" value="${pageNum}">
 			<table class="table table-striped">
 				<tr>
 					<td width="200" height="70"
