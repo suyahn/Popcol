@@ -3,12 +3,15 @@ package popcol.controller;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -120,6 +123,7 @@ public class AdminController {
 
 		/* List<Movie> adminList = ms.adminList(); */
 		model.addAttribute("adminList", adminList);
+		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("no", no);
 		model.addAttribute("pp", pp);
 
@@ -804,34 +808,20 @@ public class AdminController {
 
 	/* 관리자 상영시간표 리스트 */
 	@RequestMapping("adminTTList")
-	public String adminTTList(String pageNum, RunningtimeTable runningtimeTable, Model model,
-			HttpServletRequest request) {
-		final int ROW_PER_PAGE = 10;
-		String test = request.getParameter("lid");
-		int total = 0;
-		if (pageNum == null || pageNum.equals(""))
-			pageNum = "1";
-		/* 전체보기 */
-		if (test == null || test.equals("") || test.equals("0")) {
-			total = tts.getTotal1();
-		} else { /* 상영관별 보기 */
-			total = tts.getTotal2(runningtimeTable);
-		}
-		int currentPage = Integer.parseInt(pageNum);
-
-		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
-		int endRow = startRow + ROW_PER_PAGE - 1;
-		PagingPgm pp = new PagingPgm(total, ROW_PER_PAGE, currentPage);
-		List<RunningtimeTable> adminTTList = tts.adminTTList(startRow, endRow);
-		List<Location> locationList = ls.adminLocationList();
-		int no = total - startRow + 1;
-
-		model.addAttribute("adminTTList", adminTTList);
-		model.addAttribute("locationList", locationList);
-		model.addAttribute("no", no);
-		model.addAttribute("pageNum", pageNum);
-		model.addAttribute("pp", pp);
-
+	public String adminTTList(Model model, int lid, String dateStr) throws ParseException {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date = transFormat.parse(dateStr);
+		
+		List<Movie> movieList = tts.adminSelectedDateMovieList(lid, date);
+		List<Location> locationList = ls.locationList();
+		List<RunningtimeTable> showtimesList = tts.adminTTList(lid, date);
+		
+		model.addAttribute("lid", lid);
+		model.addAttribute("movieList", movieList);
+		model.addAttribute("locationList",locationList);
+		model.addAttribute("date",date);
+		model.addAttribute("showtimesList",showtimesList);
+		
 		return "adminTTList";
 	}
 
