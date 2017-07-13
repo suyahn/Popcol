@@ -29,6 +29,12 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		hm.put("endRow", endRow);
 		return sst.selectList("runningtimetablens.adminTTList", hm);
 	}
+	@Override
+	public RunningtimeTable adminTTSelect(int rtid) {
+		
+		return sst.selectOne("runningtimetablens.adminTTSelect", rtid);
+	}
+	
 
 	@Override
 	public int getTotal1() {
@@ -42,35 +48,36 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		return sst.selectOne("runningtimetablens.getTotal2", runningtimeTable);
 	}
 
-
 	@Override
 	public int adminTTInsert(RunningtimeTable runningtimeTable) {
 
 		return sst.insert("runningtimetablens.adminTTInsert", runningtimeTable);
 	}
 
-
-	/*혜진*/
+	/* 혜진 */
 	public List<RunningtimeTable> showtimesList(int lid, Date date) {
-		HashMap<String,Object> hm = new HashMap<String, Object>();
-		hm.put("lid", lid); hm.put("date", date);
-		return sst.selectList("runningtimetablens.showtimesList",hm);
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("lid", lid);
+		hm.put("date", date);
+		return sst.selectList("runningtimetablens.showtimesList", hm);
 	}
 
 	@Override
 	public List<Movie> movieList(int lid, Date date) {
-		HashMap<String,Object> hm = new HashMap<String, Object>();
-		hm.put("lid", lid); 
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("lid", lid);
 		hm.put("date", date);
 		return sst.selectList("moviens.movieList", hm);
 	}
 
 	@Override
 	public List<RunningtimeTable> bookedSeatCountList(int lid, Date date) {
-		HashMap<String,Object> hm = new HashMap<String, Object>();
-		hm.put("lid", lid); 
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("lid", lid);
 		hm.put("date", date);
 		return sst.selectList("runningtimetablens.bookedSeatCountList", hm);
 	}
 
+	
+	
 }

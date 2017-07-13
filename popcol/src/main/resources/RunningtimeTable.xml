@@ -11,11 +11,11 @@
 		<result property="timezone" column="timezone" />
 		<result property="tname" column="tname" />
 		<result property="lname" column="lname" />
-		<result property="mtitle" column="mtitle"/>
-		<result property="mrunningtime" column="mrunningtime"/>
-		<result property="mgrade" column="mgrade"/>
-		<result property="seats" column="seats"/>
-		
+		<result property="mtitle" column="mtitle" />
+		<result property="mrunningtime" column="mrunningtime" />
+		<result property="mgrade" column="mgrade" />
+		<result property="seats" column="seats" />
+
 	</resultMap>
 
 	<!-- <select id="bookingRTList" resultMap="runningtimetableResult" parameterType="hashMap"> 
@@ -27,15 +27,18 @@
 			where rtid = #{rtid} -->
 		select rt.*, to_char(rtdate, 'HH24"시" MI"분"') rttime, tname from
 		runningtimetable rt, theater t
-		where mid = #{mid} and rt.lid = #{lid} and t.tid = rt.tid and rtdate >=
+		where mid = #{mid} and rt.lid = #{lid}
+		and t.tid = rt.tid and rtdate >=
 		sysdate
 	</select>
 	<select id="bookingrtList" parameterType="int" resultType="runningtimetable">
 		select rt.*, to_char(rtdate, 'HH24:MI') rttime, m.mtitle, l.lname,
 		t.tname
 		from movie m, location l, runningtimetable rt, theater t
-		where rt.lid = l.lid and rt.mid=m.mid and rt.tid = t.tid
-		and rtdate = (select rtdate from runningtimetable
+		where
+		rt.lid = l.lid and rt.mid=m.mid and rt.tid = t.tid
+		and rtdate = (select
+		rtdate from runningtimetable
 		where rtid = #{rtid})
 	</select>
 	<select id="runningtimeTableList" resultMap="runningtimetableResult">
@@ -45,28 +48,46 @@
 
 
 
-	<select id="showtimesList" parameterType="hashMap" resultMap="runningtimetableResult">
-		select rt.*, to_char(rt.rtdate, 'hh24:mi') rttime, m.mtitle, m.mrunningtime, m.mgrade, t.tname
-		from runningtimetable rt, movie m, theater t
-		where rt.lid= #{lid} and to_char(rt.rtdate,'yyyy/mm/dd') = #{date} and rt.mid=m.mid and t.tid=rt.tid 
+	<select id="showtimesList" parameterType="hashMap"
+		resultMap="runningtimetableResult">
+		select rt.*, to_char(rt.rtdate, 'hh24:mi') rttime, m.mtitle,
+		m.mrunningtime, m.mgrade, t.tname
+		from runningtimetable rt, movie m,
+		theater t
+		where rt.lid= #{lid} and to_char(rt.rtdate,'yyyy/mm/dd') =
+		#{date} and rt.mid=m.mid and t.tid=rt.tid
 		order by rttime
 	</select>
-	<select id="bookedSeatCountList" parameterType="hashMap" resultMap="runningtimetableResult">
-		select rt.rtid, count(b.bseat) seats from runningtimetable rt, booking b 
-		where rt.rtid = b.rtid and rt.lid= #{lid} and to_char(rt.rtdate,'yyyy/mm/dd') = #{date}
-		group by rt.rtid order by rtid
+	<select id="bookedSeatCountList" parameterType="hashMap"
+		resultMap="runningtimetableResult">
+		select rt.rtid, count(b.bseat) seats from runningtimetable
+		rt, booking b
+		where rt.rtid = b.rtid and rt.lid= #{lid} and
+		to_char(rt.rtdate,'yyyy/mm/dd') = #{date}
+		group by rt.rtid order by
+		rtid
 	</select>
-	
+
 
 	<!-- 규랑 -->
-	<!-- 관리자 상영관 리스트 -->
+	<!-- 관리자 상영시간표 리스트 -->
 	<select id="adminTTList" resultType="runningtimetable"
 		parameterType="hashMap">
 		select * from
-		(select rownum rn, a.* from (select rtid, lid, tid,mid,rtdate,timezone from
-		runningtimetable order by rtid desc )a)
-		where rn between #{startRow}
+		(select rownum rn, a.* from (select rtid,
+		r.lid, tid,mid,rtdate,timezone, l.lname from
+		runningtimetable r,
+		location l where r.lid = l.lid order by rtdate desc )a)
+		where rn
+		between #{startRow}
 		and #{endRow}
+	</select>
+	<!-- 상영시간표 업데이트 폼 -->
+	<select id="adminTTSelect" parameterType="int" resultMap="runningtimetableResult">
+		select rt.*, to_char(rt.rtdate, 'hh24:mi') rttime, m.mtitle, m.mrunningtime, m.mgrade, t.tname, l.lname
+		from runningtimetable rt, movie m, theater t, location l
+		where rt.rtid= #{rtid} and rt.mid=m.mid and t.tid=rt.tid and rt.lid = l.lid
+
 	</select>
 
 	<!-- 페이지 처리 -->
@@ -82,11 +103,14 @@
 	</select>
 
 	<insert id="adminTTInsert" parameterType="runningtimetable">
-		insert into runningtimetable values
-		((SELECT NVL(MAX(rtid),0) + 1 FROM runningtimetable), #{lid}, #{tid},
-		#{mid}, to_date(#{rtdateString}, 'yyyy-mm-dd hh24:mi'),#{timezone})
+		insert into
+		runningtimetable values
+		((SELECT NVL(MAX(rtid),0) + 1 FROM
+		runningtimetable), #{lid}, #{tid},
+		#{mid}, to_date(#{rtdateString},
+		'yyyy-mm-dd hh24:mi'),#{timezone})
 	</insert>
-	
-	
+
+
 
 </mapper>
