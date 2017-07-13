@@ -38,15 +38,23 @@
 	color: white !important;
 }
 </style>
-
+<fmt:formatDate type="date" value="${date}" pattern="yyyy-MM-dd" var="date"/>
+<script type="text/javascript">
+	function deleteChk(rtid, lid, date) {
+		if(confirm("정말로 삭제하시겠습니까?") == false) {
+			return false;
+		}
+		location.href="adminTTDelete.do?rtid=" + rtid + "&lid=" + lid + "&dateStr=" + date;
+	}
+</script>
 </head>
 <body>
 	<div class="container" align="center">
 		<h1 align="left" style="font-weight: bold;">
 			<img src="location/logo.png" width="250" height="70"> <a
-				href='adminTTList.do' class="red-active">상영시간표</a>
+				href='adminTTList.do?lid=${ showtimesList2.lid }&dateStr=${ date }' class="red-active">상영시간표</a>
 		</h1>
-		<table class="table table-striped">
+		<table class="table">
 			<tr>
 				<td width="200" height="70"
 					style="font-weight: bold; padding-top: 25px;">영화관</td>
@@ -69,13 +77,12 @@
 					type="submit" value="확인"></td>
 			</tr> -->
 		</table>
-
-		<a href="adminTTList.do?pageNum=${pageNum}" class="btn btn-info"
+		<a href="adminTTList.do?lid=${showtimesList2.lid}&dateStr=${date}" class="btn btn-info"
 			style="display: inline; border-color: #CD1726; background-color: #CD1726;">목록</a>
-		<a href="adminTTUpdateForm.do?rtid=${showtimesList2.rtid}&pageNum=${pageNum}"
+		<a href="adminTTUpdateForm.do?rtid=${showtimesList2.rtid}&dateStr=${date}"
 			class="btn btn-info"
 			style="display: inline; border-color: #CD1726; background-color: #CD1726;">수정</a>
-		<a href="adminTTDelete.do?rtid=${showtimesList2.rtid}&pageNum=${pageNum}"
+		<a onclick="deleteChk(${showtimesList2.rtid}, ${showtimesList2.lid}, '${date}')"
 			class="btn btn-info"
 			style="display: inline; border-color: #CD1726; background-color: #CD1726;">삭제</a>
 		<br> <br>

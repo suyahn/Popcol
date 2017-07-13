@@ -378,7 +378,7 @@
 
 	<!-- 규랑 -->
 	<definition name="admin" template="/WEB-INF/views/admin/layout.jsp">
-		<put-attribute name="title" value="PopCol" />
+		<put-attribute name="title" value="Popcorn&amp;Cola 관리자페이지" />
 		<put-attribute name="header" value="/WEB-INF/views/admin/header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/admin/footer.jsp" />

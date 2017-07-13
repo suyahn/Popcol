@@ -836,20 +836,19 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminTTInsertForm") // 관리자 상영시간표 입력 페이지
-	public String adminTTInsertForm(String pageNum, Model model) {
+	public String adminTTInsertForm(Model model) {
 		List<Movie> movieList = ms.movieList();
 		List<Theater> theaterLocation = ts.theaterLocation();
 
 		model.addAttribute("theaterLocation", theaterLocation);
 		model.addAttribute("movieList", movieList);
-		model.addAttribute("pageNum", pageNum);
 
 		return "adminTTInsertForm";
 
 	}
 
 	@RequestMapping("adminTTInsert") // 관리자 상영시간표 입력
-	public String adminTTInsert(RunningtimeTable runningtimeTable, String pageNum, Model model, String ltid) {
+	public String adminTTInsert(RunningtimeTable runningtimeTable, Model model, String ltid) throws ParseException {
 		
 		runningtimeTable.setRtdateString(runningtimeTable.getRtdateString().replace("T", " "));
 
@@ -857,36 +856,40 @@ public class AdminController {
 		runningtimeTable.setLid(Integer.parseInt(array[0]));
 		runningtimeTable.setTid(Integer.parseInt(array[1]));
 		
-		
-		System.out.println("rtid:"+runningtimeTable.getRtid());
-		System.out.println("lid:"+runningtimeTable.getLid());
-		System.out.println("mid:"+runningtimeTable.getMid());
-		System.out.println("timezone:"+runningtimeTable.getTimezone());
-		System.out.println("rtdate:"+runningtimeTable.getRtdate());
-		System.out.println("tid:"+runningtimeTable.getTid());
-		
+		int rtid = tts.getMaxRtid();
 		int result = tts.adminTTInsert(runningtimeTable);
 
+		String dateStr = runningtimeTable.getRtdateString().substring(0, 10);
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date = transFormat.parse(dateStr);
+		
 		model.addAttribute("result", result);
-		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("rtid", rtid);
+		model.addAttribute("date", date);
 
 		return "adminTTInsert";
 
 	}
 
 	@RequestMapping("adminTTView") // 관리자 상영시간표 상세 보기
-	public String adminTTView(int rtid, Model model, String pageNum) {
+	public String adminTTView(int rtid, String dateStr, Model model) throws ParseException {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date = transFormat.parse(dateStr);
+		
 		RunningtimeTable showtimesList2 = tts.adminTTSelect(rtid);
 
 		model.addAttribute("showtimesList2", showtimesList2);
-		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("date",date);
 
 		return "adminTTView";
 
 	}
 
 	@RequestMapping("adminTTUpdateForm") // 관리자 상영시간표 수정폼
-	public String adminTTUpdateForm(int rtid, Model model, String pageNum) {
+	public String adminTTUpdateForm(int rtid, String dateStr, Model model) throws ParseException {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date = transFormat.parse(dateStr);
+		
 		List<Movie> movieList = ms.movieList();
 		List<Theater> theaterLocation = ts.theaterLocation();
 		RunningtimeTable showtimesList2 = tts.adminTTSelect(rtid);
@@ -894,45 +897,42 @@ public class AdminController {
 		model.addAttribute("movieList", movieList);
 
 		model.addAttribute("showtimesList2", showtimesList2);
-		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("date", date);
 
 		return "adminTTUpdateForm";
 
 	}
 
 	@RequestMapping("adminTTUpdate") // 관리자 상영시간표 수정
-	public String adminTTUpdate(Model model, Movie movie, String pageNum, RunningtimeTable runningtimeTable,
-			String ltid) {
-		/* String을 sql.Date로 타입변경 */
+	public String adminTTUpdate(Model model, Movie movie, RunningtimeTable runningtimeTable,
+			String ltid) throws ParseException {
 		runningtimeTable.setRtdateString(runningtimeTable.getRtdateString().replace("T", " "));
 		/*lid 와 tid를 잘라서 넣기*/
 		String[] array = ltid.split(":");
 		runningtimeTable.setLid(Integer.parseInt(array[0]));
 		runningtimeTable.setTid(Integer.parseInt(array[1]));
-
-		System.out.println("rtid:"+runningtimeTable.getRtid());
-		System.out.println("lid:"+runningtimeTable.getLid());
-		System.out.println("mid:"+runningtimeTable.getMid());
-		System.out.println("timezone:"+runningtimeTable.getTimezone());
-		System.out.println("rtdate:"+runningtimeTable.getRtdate());
-		System.out.println("tid:"+runningtimeTable.getTid());
 		
 		int result = tts.adminTTUpdate(runningtimeTable);
 
 		/* int result = ms.adminUpdate(movie); */
-
+		String dateStr = runningtimeTable.getRtdateString().substring(0, 10);
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date = transFormat.parse(dateStr);
+		
 		model.addAttribute("result", result);
-		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("date", date);
+		model.addAttribute("lid", runningtimeTable.getLid());
 		return "adminTTUpdate";
 
 	}
 
 	@RequestMapping("adminTTDelete") // 관리자 상영시간표 삭제
-	public String adminTTDelete(int rtid, Model model, String pageNum) {
+	public String adminTTDelete(int rtid,int lid, String dateStr, Model model) {
 		int result = tts.adminTTDelete(rtid);
 
 		model.addAttribute("result", result);
-		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("lid", lid);
+		model.addAttribute("dateStr", dateStr);
 		return "adminTTDelete";
 
 	}

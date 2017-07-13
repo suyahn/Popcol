@@ -8,10 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<fmt:formatDate type="date" value="${date}" pattern="yyyy-MM-dd" var="date"/>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("삭제 성공");
-			location.href = "adminTTList.do?pageNum=${pageNum}";
+			location.href = "adminTTList.do?lid=${lid}&dateStr=${dateStr}";
 		</script>
 	</c:if>
 	<c:if test="${result <= 0 }">
