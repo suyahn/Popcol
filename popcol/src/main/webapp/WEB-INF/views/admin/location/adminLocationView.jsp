@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin View</title>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=E_U6Q5fuO9GhdWs01Siv"></script>
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=E_U6Q5fuO9GhdWs01Siv"></script>
 <!-- <script type="text/javascript">
 	$(function() {
 		$('#list').load('adminLocationList.do?');
@@ -32,9 +33,10 @@
 				<td>${location.lphone}</td>
 			</tr>
 		</table>
-		
+
 		<div style="width: 600px;" align="center">
-			<div id="map" class="borderStyle" style="height:400px; border: 1px solid lightgray;"></div>
+			<div id="map" class="borderStyle"
+				style="height: 400px; border: 1px solid lightgray;"></div>
 			<script>
 				var mapOptions = {
 					center : new naver.maps.LatLng(${location.lat}, ${location.lon}),
@@ -53,16 +55,23 @@
 				});
 			</script>
 		</div>
-		
+
 		<br>
-		
-		<a href="adminLocationList.do?" class="btn btn-info"
-			style="display: inline; border-color: #CD1726; background-color: #CD1726;">목록</a>
-		<a href="adminLocationUpdateForm.do?lid=${location.lid}"
-			class="btn btn-info"
-			style="display: inline; border-color: #CD1726; background-color: #CD1726;">수정</a>
-		<a href="adminLocationDelete.do?lid=${location.lid}" class="btn btn-info"
-			style="display: inline; border-color: #CD1726; background-color: #CD1726;">삭제</a>
+		<table>
+			<tr>
+			<td>
+				<a href="adminLocationList.do?" class="btn btn-info"
+					style="display: inline; border-color: #CD1726; background-color: #CD1726;">목록</a>
+				<a href="adminLocationUpdateForm.do?lid=${location.lid}"
+					class="btn btn-info"
+					style="display: inline; border-color: #CD1726; background-color: #CD1726;">수정</a>
+				<a href="adminLocationDelete.do?lid=${location.lid}"
+					class="btn btn-info"
+					style="display: inline; border-color: #CD1726; background-color: #CD1726;">삭제</a>
+			<td>
+			</tr>
+		</table>
+		<br>
 		<!-- <div id="list"></div> -->
 	</div>
 </body>

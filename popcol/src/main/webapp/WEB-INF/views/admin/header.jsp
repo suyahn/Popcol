@@ -40,25 +40,19 @@
 							로그인</button>
 					</li>
 				</c:if>
-				<%
-					String id = (String) session.getAttribute("id");
-					if (id != null ) { /* 아이디가 있을때 */
-				%>
+
 				<c:if test="${not empty id }">
-					<li>${id }님환영합니다.
-						<!-- <button onclick="location.href='mypage.do'"
+					<li>${id }님환영합니다. <!-- <button onclick="location.href='mypage.do'"
 							class="btn btn-info btn-sm"
 							style="display: inline; border-color: navy; background-color: navy;">
 							마이페이지</button> -->
 						<button onclick="location.href='adminLogout.do'"
 							class="btn btn-info btn-sm"
-							style="display: inline;border-color: #cd1726; background-color: #cd1726;">
+							style="display: inline; border-color: #cd1726; background-color: #cd1726;">
 							로그아웃</button>
 					</li>
 				</c:if>
-				<%
-					}
-				%>
+
 			</ul>
 		</div>
 	</nav>

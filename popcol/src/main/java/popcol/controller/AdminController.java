@@ -1,6 +1,5 @@
 package popcol.controller;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -138,7 +136,7 @@ public class AdminController {
 	@RequestMapping("adminInsert") // 관리자 영화 입력
 	public String adminInsert(Model model, Movie movie, String pageNum, String mreleaseDateString,
 			@RequestParam("murlPosterName") MultipartFile mf, HttpSession session) throws IOException {
-			
+
 		String fileName = "";
 
 		if (mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
@@ -149,12 +147,12 @@ public class AdminController {
 			fos.write(mf.getBytes());
 			fos.close();
 		}
-		
-		String murlPoster = fileName.substring(0, fileName.length()-3);
 
-		movie.setMurlPoster(murlPoster.substring(0, murlPoster.length()-1));
+		String murlPoster = fileName.substring(0, fileName.length() - 3);
+
+		movie.setMurlPoster(murlPoster.substring(0, murlPoster.length() - 1));
 		movie.setMreleaseDate(Date.valueOf(mreleaseDateString));
-		
+
 		int result = ms.adminInsert(movie);
 
 		model.addAttribute("result", result);
@@ -185,7 +183,7 @@ public class AdminController {
 
 	@RequestMapping("adminUpdate") // 관리자 영화 수정
 	public String adminUpdate(Model model, Movie movie, String pageNum, String mreleaseDateString,
-		@RequestParam("murlPosterName") MultipartFile mf, HttpSession session) throws IOException {
+			@RequestParam("murlPosterName") MultipartFile mf, HttpSession session) throws IOException {
 
 		String fileName = "";
 
@@ -197,13 +195,13 @@ public class AdminController {
 			fos.write(mf.getBytes());
 			fos.close();
 
-			String murlPoster = fileName.substring(0, fileName.length()-3);
-			movie.setMurlPoster(murlPoster.substring(0, murlPoster.length()-1));
+			String murlPoster = fileName.substring(0, fileName.length() - 3);
+			movie.setMurlPoster(murlPoster.substring(0, murlPoster.length() - 1));
 		}
 
 		/* String을 sql.Date로 타입변경 */
 		movie.setMreleaseDate(Date.valueOf(mreleaseDateString));
-		
+
 		int result = ms.adminUpdate(movie);
 
 		model.addAttribute("result", result);
@@ -837,13 +835,11 @@ public class AdminController {
 
 	@RequestMapping("adminTTInsertForm") // 관리자 상영시간표 입력 페이지
 	public String adminTTInsertForm(String pageNum, Model model) {
-		List<Location> locationList = ls.adminLocationList();
 		List<Movie> movieList = ms.movieList();
 		List<Theater> theaterLocation = ts.theaterLocation();
 
 		model.addAttribute("theaterLocation", theaterLocation);
 		model.addAttribute("movieList", movieList);
-		model.addAttribute("locationList", locationList);
 		model.addAttribute("pageNum", pageNum);
 
 		return "adminTTInsertForm";
@@ -851,47 +847,61 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminTTInsert") // 관리자 상영시간표 입력
-	public String adminTTInsert(RunningtimeTable runningtimeTable, String pageNum, Model model) {
+	public String adminTTInsert(RunningtimeTable runningtimeTable, String pageNum, Model model, String ltid) {
 		runningtimeTable.setRtdateString(runningtimeTable.getRtdateString().replace("T", " "));
+		
+		String[] array = ltid.split(":");
+		runningtimeTable.setLid(Integer.parseInt(array[0]));
+		runningtimeTable.setTid(Integer.parseInt(array[1]));
+		
 		int result = tts.adminTTInsert(runningtimeTable);
 
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 
-		/*
-		 * System.out.println("rtid :"+ rt.getRtid());
-		 * System.out.println("mid :"+ rt.getMid()); System.out.println("lid :"+
-		 * rt.getLid()); System.out.println("rtdate :"+ rt.getRtdate());
-		 * System.out.println("timezone :"+ rt.getTimezone());
-		 * System.out.println("tid :"+ rt.getTid());
-		 */
 		return "adminTTInsert";
 
 	}
 
 	@RequestMapping("adminTTView") // 관리자 상영시간표 상세 보기
-	public String adminTTView(int mid, Model model, String pageNum) {
-		Movie movie = ms.adminSelect(mid);
-
-		model.addAttribute("movie", movie);
+	public String adminTTView(int rtid, Model model, String pageNum) {
+		RunningtimeTable showtimesList2 = tts.adminTTSelect(rtid);
+		
+		model.addAttribute("showtimesList2", showtimesList2);
 		model.addAttribute("pageNum", pageNum);
+		
 		return "adminTTView";
 
 	}
 
 	@RequestMapping("adminTTUpdateForm") // 관리자 상영시간표 수정폼
-	public String adminTTUpdateForm(int mid, Model model, String pageNum) {
-		Movie movie = ms.adminSelect(mid);
+	public String adminTTUpdateForm(int rtid, Model model, String pageNum) {
+		List<Movie> movieList = ms.movieList();
+		List<Theater> theaterLocation = ts.theaterLocation();
 
-		model.addAttribute("movie", movie);
+		model.addAttribute("theaterLocation", theaterLocation);
+		model.addAttribute("movieList", movieList);
+		
+		/*RunningtimeTable showtimesList2 = tts.adminTTSelect(rtid);*/
+		/*model.addAttribute("showtimesList2",showtimesList2);*/
 		model.addAttribute("pageNum", pageNum);
+		
 		return "adminTTUpdateForm";
 
 	}
 
 	@RequestMapping("adminTTUpdate") // 관리자 상영시간표 수정
-	public String adminTTUpdate(Model model, Movie movie, String pageNum) {
-		int result = ms.adminUpdate(movie);
+	public String adminTTUpdate(Model model, Movie movie, String pageNum, RunningtimeTable runningtimeTable, String ltid) {
+		runningtimeTable.setRtdateString(runningtimeTable.getRtdateString().replace("T", " "));
+		
+		String[] array = ltid.split(":");
+		runningtimeTable.setLid(Integer.parseInt(array[0]));
+		runningtimeTable.setTid(Integer.parseInt(array[1]));
+		
+		int result = tts.adminTTInsert(runningtimeTable);
+		
+		
+		/*int result = ms.adminUpdate(movie);*/
 
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
