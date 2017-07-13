@@ -25,12 +25,16 @@ public interface RunningtimeTableDao {
 
 	int adminTTInsert(RunningtimeTable runningtimeTable);
 	int adminTTDelete(int rtid);
+	
+	int getMaxRtid();
+
 
 	/*혜진*/
 	List<RunningtimeTable> showtimesList(int lid, Date date);
 	List<Movie> movieList(int lid, Date date);
 	List<RunningtimeTable> bookedSeatCountList(int lid, Date date);
 
+	
 	
 	
 

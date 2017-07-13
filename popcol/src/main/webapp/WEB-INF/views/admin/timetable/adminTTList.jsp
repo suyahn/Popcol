@@ -65,9 +65,14 @@
 				</button>
 			</form>
 		</div>
+		<div align="right">
+			<button type="button" class="btn btn-info btn-sm"
+				style="display: inline; border-color: #cd1726; background-color: #cd1726;"
+				onclick="location.href='adminTTInsertForm.do'">
+				상영시간표 입력</button>
+		</div>
 		
 		<div style="clear: both;">
-			<br>
 			<hr>
 			<h4 class="fontBold" style="margin-top: 50px;">영화</h4>
 			<c:set var="sizeSt" value="0"></c:set>
@@ -88,7 +93,7 @@
 						<tr>
 							<c:forEach var="st" items="${showtimesList}">			
 									<c:if test="${movie.mid==st.mid}">
-									<td width="100" onclick="location.href='adminTTView.do?rtid=${st.rtid}'" id="showTimesTd">
+									<td width="100" onclick="location.href='adminTTView.do?rtid=${st.rtid}&dateStr=${ date }'" id="showTimesTd">
 										<font size="2">${st.tname}</font><br>
 										<font size="4" class="fontBold">${st.rttime}</font>
 										<c:if test="${ st.timezone == 'weekday_morning' || st.timezone == 'weekend_morning' }">

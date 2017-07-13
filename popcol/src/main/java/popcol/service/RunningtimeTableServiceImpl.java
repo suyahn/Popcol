@@ -79,6 +79,11 @@ public class RunningtimeTableServiceImpl implements RunningtimeTableService {
 	public int adminTTInsert(RunningtimeTable runningtimeTable) {
 		
 		return rtd.adminTTInsert(runningtimeTable);*/
+	
+	@Override
+	public int getMaxRtid() {
+		return rtd.getMaxRtid();
+	}
 
 	/*혜진*/
 	@Override

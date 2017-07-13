@@ -92,6 +92,10 @@
 		and t.tid=rt.tid and rt.lid = l.lid
 
 	</select>
+	
+	<select id="getMaxRtid" resultType="int">
+		select nvl(max(rtid), 0) + 1 from runningtimetable
+	</select>
 
 	<update id="adminTTUpdate" parameterType="runningtimetable">
 		update runningtimetable

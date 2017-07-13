@@ -66,12 +66,11 @@ $(function() {
 	<div class="container" align="center">
 		<h1 align="left" style="font-weight: bold;">
 			<img src="location/logo.png" width="250" height="70"> <a
-				href='adminTTList.do' class="red-active">상영시간표</a>
+				href='adminTTList.do?lid=${ showtimesList2.lid }&dateStr=${ date }' class="red-active">상영시간표</a>
 		</h1>
 		<form action="adminTTUpdate.do" method="post" name="frm" onsubmit="return chk()">
-			<input type="hidden" name="pageNum" value="${pageNum}">
 			<input type="hidden" name="rtid" value="${showtimesList2.rtid}"> 
-			<table class="table table-striped">
+			<table class="table">
 				<tr>
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">영화관</td>

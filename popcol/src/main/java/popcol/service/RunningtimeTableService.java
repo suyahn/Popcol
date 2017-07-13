@@ -24,6 +24,9 @@ public interface RunningtimeTableService {
 	
 	int adminTTInsert(RunningtimeTable runningtimeTable);
 	int adminTTDelete(int rtid);
+	
+	int getMaxRtid();
+	
 
 	/*혜진*/
 	List<RunningtimeTable> showtimesList(int lid, Date date);

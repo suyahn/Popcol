@@ -11,7 +11,8 @@
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("상영시간표가 수정되었습니다");
-			location.href = "adminTTList.do?pageNum=${pageNum}";
+			<fmt:formatDate type="date" value="${date}" pattern="yyyy-MM-dd" var="date"/>
+			location.href = "adminTTList.do?lid=${ lid }&dateStr=${ date }";
 		</script>
 	</c:if>
 	<c:if test="${result <= 0 }">
