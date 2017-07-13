@@ -122,6 +122,7 @@ public class AdminController {
 
 		/* List<Movie> adminList = ms.adminList(); */
 		model.addAttribute("adminList", adminList);
+		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("no", no);
 		model.addAttribute("pp", pp);
 		

@@ -11,6 +11,14 @@
 		$('#list').load('adminList.do?pageNum=${pageNum}');
 	});
 </script> -->
+<script type="text/javascript">
+	function deleteChk(mid, pageNum) {
+		if(confirm("정말로 삭제하시겠습니까?") == false) {
+			return false;
+		}
+		location.href="adminDelete.do?mid=" + mid + "&pageNum=" + pageNum;
+	}
+</script>
 </head>
 <body>
 	<div class="container" align="center">
@@ -70,7 +78,7 @@
 		<a href="adminList.do?pageNum=${pageNum}" class="btn btn-default" style="display: inline;">목록</a>
 		<a href="adminUpdateForm.do?mid=${movie.mid}&pageNum=${pageNum}"
 			class="btn btn-info"style="display: inline; border-color: #CD1726; background-color: #CD1726;">수정</a> 
-		<a href="adminDelete.do?mid=${movie.mid}&pageNum=${pageNum}"
+		<a onclick="deleteChk(${ movie.mid }, ${ pageNum })"
 			class="btn btn-info"style="display: inline; border-color: #CD1726; background-color: #CD1726;">영화내리기</a>
 		<br><br>
 		<!-- <div id="list"></div> -->

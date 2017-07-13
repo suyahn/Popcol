@@ -64,6 +64,7 @@
 		<a href="adminLocationDelete.do?lid=${location.lid}" class="btn btn-info"
 			style="display: inline; border-color: #CD1726; background-color: #CD1726;">삭제</a>
 		<!-- <div id="list"></div> -->
+		<hr>
 	</div>
 </body>
 </html>
