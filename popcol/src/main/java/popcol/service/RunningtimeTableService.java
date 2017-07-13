@@ -13,7 +13,8 @@ public interface RunningtimeTableService {
 	/*RunningtimeTable adminTTSelect(int rtid);*/
 	/*상영시간표 상세보기*/
 	RunningtimeTable adminTTSelect(int rtid);
-	
+	List<Movie> adminSelectedDateMovieList(int lid, Date date);
+	List<RunningtimeTable> adminTTList(int lid, Date date);
 	
 	int getTotal1();
 

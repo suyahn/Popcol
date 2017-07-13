@@ -34,6 +34,22 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		
 		return sst.selectOne("runningtimetablens.adminTTSelect", rtid);
 	}
+	@Override
+	public List<Movie> adminSelectedDateMovieList(int lid, Date date) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("lid", lid);
+		hm.put("date", date);
+		return sst.selectList("moviens.adminSelectedDateMovieList", hm);
+	}
+
+	@Override
+	public List<RunningtimeTable> adminTTList(int lid, Date date) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("lid", lid);
+		hm.put("date", date);
+		return sst.selectList("runningtimetablens.adminTTList", hm);
+	}
+
 	
 
 	@Override
@@ -78,6 +94,7 @@ public class RunningtimeTableDaoImpl implements RunningtimeTableDao {
 		return sst.selectList("runningtimetablens.bookedSeatCountList", hm);
 	}
 
+	
 	
 	
 }

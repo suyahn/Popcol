@@ -71,16 +71,15 @@
 
 	<!-- 규랑 -->
 	<!-- 관리자 상영시간표 리스트 -->
-	<select id="adminTTList" resultType="runningtimetable"
-		parameterType="hashMap">
-		select * from
-		(select rownum rn, a.* from (select rtid,
-		r.lid, tid,mid,rtdate,timezone, l.lname from
-		runningtimetable r,
-		location l where r.lid = l.lid order by rtdate desc )a)
-		where rn
-		between #{startRow}
-		and #{endRow}
+	<select id="adminTTList" parameterType="hashMap"
+		resultMap="runningtimetableResult">
+		select rt.*, to_char(rt.rtdate, 'hh24:mi') rttime, m.mtitle,
+		m.mrunningtime, m.mgrade, t.tname
+		from runningtimetable rt, movie m,
+		theater t
+		where rt.lid= #{lid} and to_char(rt.rtdate,'yyyy-mm-dd') =
+		#{date} and rt.mid=m.mid and t.tid=rt.tid
+		order by rttime
 	</select>
 	<!-- 상영시간표 업데이트 폼 -->
 	<select id="adminTTSelect" parameterType="int" resultMap="runningtimetableResult">
