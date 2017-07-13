@@ -156,7 +156,7 @@
 					<tr>
 						<c:forEach var="st" items="${showtimesList}">			
 								<c:if test="${movie.mid==st.mid}">
-								<td>
+								<td width="100">
 									<br>
 									<font size="2">${st.tname}</font><br>
 									<font size="4" class="fontBold">${st.rttime}</font>

@@ -40,7 +40,7 @@
 							로그인</button>
 					</li>
 				</c:if>
-				
+
 				<c:if test="${not empty master }">
 					<li>${master }님 환영합니다.
 						<!-- <button onclick="location.href='mypage.do'"
@@ -49,10 +49,11 @@
 							마이페이지</button> -->
 						<button onclick="location.href='adminLogout.do'"
 							class="btn btn-info btn-sm"
-							style="display: inline;border-color: #cd1726; background-color: #cd1726;">
+							style="display: inline; border-color: #cd1726; background-color: #cd1726;">
 							로그아웃</button>
 					</li>
 				</c:if>
+
 			</ul>
 		</div>
 	</nav>

@@ -11,7 +11,9 @@ public interface RunningtimeTableDao {
 
 	/*규랑*/
 	List<RunningtimeTable> adminTTList(int startRow, int endRow);
-
+	RunningtimeTable adminTTSelect(int rtid);
+	
+	
 	int getTotal1();
 
 	int getTotal2(RunningtimeTable runningtimeTable);
@@ -23,5 +25,11 @@ public interface RunningtimeTableDao {
 	List<RunningtimeTable> showtimesList(int lid, Date date);
 	List<Movie> movieList(int lid, Date date);
 	List<RunningtimeTable> bookedSeatCountList(int lid, Date date);
+
+	
+
+	
+
+	
 
 }

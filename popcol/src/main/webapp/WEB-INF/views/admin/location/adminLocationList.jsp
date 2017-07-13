@@ -13,6 +13,7 @@
 			<img src="location/logo.png" width="250" height="70"> 영화관
 		</h2>
 		<div class="well">
+
 			<c:set var="num" value="1"></c:set>
 			<c:forEach var="location" items="${ locationList }">
 				<div class="media">
@@ -47,6 +48,7 @@
 					onclick="location.href='adminLocationInsertForm.do'">
 					영화관 입력</button>
 			</div>
+
 		</div>
 	</div>
 </body>

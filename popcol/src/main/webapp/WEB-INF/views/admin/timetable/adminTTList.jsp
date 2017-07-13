@@ -42,7 +42,8 @@
 <body>
 	<div class="container" align="center" style="width: 70%">
 		<h1 align="left" style="font-weight: bold;">
-			<a href='adminTTList.do' class="red-active">상영시간표</a>
+			<img src="location/logo.png" width="250" height="70"> <a
+				href='adminTTList.do' class="red-active">상영시간표</a>
 		</h1>
 		<hr>
 		<div align="right">
@@ -76,6 +77,7 @@
 					<th colspan="2" style="text-align: center;">데이터가 없습니다.</th>
 				</tr>
 			</c:if>
+
 			<c:if test="${ not empty adminTTList }">
 				<c:set var="no1" value="${ no }"></c:set>
 				<c:forEach var="runningtimetable" items="${ adminTTList }">
@@ -91,6 +93,7 @@
 					<c:set var="no1" value="${ no1 - 1 }"></c:set>
 				</c:forEach>
 			</c:if>
+
 		</table>
 
 		<div align="right">
