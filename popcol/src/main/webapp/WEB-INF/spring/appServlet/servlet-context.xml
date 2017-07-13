@@ -57,6 +57,18 @@
 		
 		<interceptor>
 			<mapping path="/loginForm.do"/>
+			
+			<mapping path="/findForm.do"/>
+			<mapping path="/findId.do"/>
+			<mapping path="/findPassword_changePassword.do"/>
+			<mapping path="/findPassword.do"/>
+			<mapping path="/findPasswordForm.do"/>
+			
+			<mapping path="/join.do"/>
+			<mapping path="/joinCheck.do"/>
+			<mapping path="/joinCheckForm.do"/>
+			<mapping path="/joinForm.do"/>
+			<mapping path="/joinmain.do"/>
 			<beans:ref bean="lc2" />
 		</interceptor>
 		
