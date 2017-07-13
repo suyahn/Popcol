@@ -24,6 +24,12 @@
 			
 			<table class="table"  style="width: 60%">
 				<tr>
+					<th>제목</th>
+					<td>
+						<input type="text" name="qsubject" required="required" maxlength="30" size="65%" value="${qna.qsubject }">
+					</td>
+				</tr>
+				<tr>
 					<th>작성자</th>
 					<td>
 						<input type="hidden" name="cid" value="${ qna.cid }">

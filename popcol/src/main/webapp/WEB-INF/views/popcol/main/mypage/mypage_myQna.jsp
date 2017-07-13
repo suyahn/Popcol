@@ -83,14 +83,15 @@ td, th {
 				<br>
 				
 				<form name="frm" onsubmit=" return deleteChk()">
-				<input type="submit" class="btn btn-default btn-sm" value="선택삭제" style="float: right;">
+				
+				<input type="submit" class="btn btn-default btn-sm" value="선택삭제" style="float: right;" <c:if test="${empty qnalist }">disabled</c:if>>
 				
 				<br>
 				<br>
 				
 				<table class="table table-hover">
 					<tr>
-						<th><input type="checkbox" id="cb_all"></th>
+						<th><input type="checkbox" id="cb_all" <c:if test="${empty qnalist }">disabled</c:if>></th>
 						<th width="10%">번호</th>
 						<th>상태</th>
 						<th>제목</th>
