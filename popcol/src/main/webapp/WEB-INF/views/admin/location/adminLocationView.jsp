@@ -15,7 +15,7 @@
 </script> -->
 </head>
 <body>
-	<div class="container" align="center" style="width: 800px;">
+	<div class="container" align="center">
 		<h2 style="font-weight: bold;">
 			<img src="location/logo.png" width="250" height="70"> 영화관
 		</h2>

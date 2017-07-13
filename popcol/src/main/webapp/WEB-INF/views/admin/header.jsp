@@ -32,7 +32,7 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right" style="margin: 10px;">
 
-				<c:if test="${empty id }">
+				<c:if test="${empty master }">
 					<li>
 						<button class="btn btn-info btn-sm"
 							onclick="location.href='adminLoginForm.do'"
@@ -41,8 +41,9 @@
 					</li>
 				</c:if>
 
-				<c:if test="${not empty id }">
-					<li>${id }님환영합니다. <!-- <button onclick="location.href='mypage.do'"
+				<c:if test="${not empty master }">
+					<li>${master }님 환영합니다.
+						<!-- <button onclick="location.href='mypage.do'"
 							class="btn btn-info btn-sm"
 							style="display: inline; border-color: navy; background-color: navy;">
 							마이페이지</button> -->

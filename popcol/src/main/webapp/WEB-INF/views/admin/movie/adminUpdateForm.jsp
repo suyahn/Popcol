@@ -8,7 +8,7 @@
 <title>Admin UpdateForm</title>
 </head>
 <body>
-	<div class="container" align="center" style="width: 800px;">
+	<div class="container" align="center">
 		<h2 class="text-primary" style="color: #cd1726;">영화 수정</h2>
 		<form action="adminUpdate.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="mid" value="${movie.mid}"> 

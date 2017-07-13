@@ -47,7 +47,7 @@
 	</select>
 	
 	<select id="selectUsePointList" parameterType="string" resultMap="pointResult">
-		select * from point where cid = #{cid} and psort = '사용'
+		select * from point where cid = #{cid} and psort = '사용' order by bid desc
 	</select>
 	 
 	<insert id="giveJoinPoint" parameterType="point">

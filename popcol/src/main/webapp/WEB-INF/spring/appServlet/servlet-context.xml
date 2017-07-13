@@ -63,13 +63,12 @@
 		<interceptor>
 			<mapping path="/adminList.do"/>
 			<mapping path="/adminLocationList.do"/>
-			<mapping path="/sangyoungsiganpyo.do"/>
+			<mapping path="/adminTTList.do"/>
 			<mapping path="/adminCustomerList.do"/>
 			<mapping path="/adminEventList.do"/>
 			<mapping path="/adminNoticeList.do"/>
 			<mapping path="/adminFaqList.do"/>
 			<mapping path="/adminQnaList.do"/>
-			
 			<beans:ref bean="lc3" />
 		</interceptor>
 		

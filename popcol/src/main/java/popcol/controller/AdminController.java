@@ -62,7 +62,7 @@ public class AdminController {
 	/* 로그인 */
 	@RequestMapping("adminLoginForm")
 	public String adminLoginForm() {
-
+		
 		return "adminLoginForm";
 	}
 
@@ -80,7 +80,7 @@ public class AdminController {
 		model.addAttribute("masterid", masterid);
 		if (result > 0) {
 
-			session.setAttribute("id", customer.getCid());
+			session.setAttribute("master", customer.getCid());
 
 		}
 
@@ -94,7 +94,7 @@ public class AdminController {
 	@RequestMapping("adminLogout")
 	public String adminLogout(HttpServletRequest request, HttpSession session) {
 		session = request.getSession();
-		session.invalidate();
+		session.removeAttribute("master");
 
 		return "redirect:adminLoginForm.do";
 	}
@@ -122,6 +122,7 @@ public class AdminController {
 		model.addAttribute("adminList", adminList);
 		model.addAttribute("no", no);
 		model.addAttribute("pp", pp);
+		
 		return "adminList";
 	}
 
@@ -310,6 +311,7 @@ public class AdminController {
 		model.addAttribute("adminCustomerList", adminCustomerList);
 		model.addAttribute("no", no);
 		model.addAttribute("pp", pp);
+		
 		return "adminCustomerList";
 
 	}
@@ -565,13 +567,13 @@ public class AdminController {
 		model.addAttribute("no", no);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("pp", pp);
-
+		
 		return "adminQnaList";
 	}
 
 	@RequestMapping("adminQnaInsertForm")
 	public String qnaInsertForm(String pageNum, HttpSession session, Model model) {
-		String cid = (String) session.getAttribute("id");
+		String cid = (String) session.getAttribute("master");
 		String cname = cs.getCustomerName(cid);
 
 		model.addAttribute("cid", cid);
@@ -597,7 +599,7 @@ public class AdminController {
 	@RequestMapping("adminQnaView")
 	public String qnaView(int qid, String pageNum, HttpSession session, Model model) {
 		Qna qna = qs.select(qid);
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("master");
 
 		model.addAttribute("qna", qna);
 		model.addAttribute("pageNum", pageNum);
@@ -642,7 +644,7 @@ public class AdminController {
 	public String qnaReply(int qid, Model model, HttpSession session) {
 		Qna qna = qs.select(qid);
 
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("master");
 
 		model.addAttribute("qnaReply", qna);
 		model.addAttribute("id", id);
