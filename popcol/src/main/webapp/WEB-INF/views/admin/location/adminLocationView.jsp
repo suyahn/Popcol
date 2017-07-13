@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin View</title>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=E_U6Q5fuO9GhdWs01Siv"></script>
 <!-- <script type="text/javascript">
 	$(function() {
 		$('#list').load('adminLocationList.do?');
@@ -19,10 +20,6 @@
 		</h2>
 		<table class="table table-bordered">
 			<tr>
-				<td>아이디</td>
-				<td>${ location.lid }</td>
-			</tr>
-			<tr>
 				<td>이름</td>
 				<td>${location.lname}</td>
 			</tr>
@@ -34,15 +31,31 @@
 				<td>연락처</td>
 				<td>${location.lphone}</td>
 			</tr>
-			<tr>
-				<td>위도</td>
-				<td>${location.lat}</td>
-			</tr>
-			<tr>
-				<td>경도</td>
-				<td>${location.lon}</td>
-			</tr>
 		</table>
+		
+		<div style="width: 600px;" align="center">
+			<div id="map" class="borderStyle" style="height:400px; border: 1px solid lightgray;"></div>
+			<script>
+				var mapOptions = {
+					center : new naver.maps.LatLng(${location.lat}, ${location.lon}),
+					zoom : 12,
+					minZoom: 9
+				};
+
+				var map = new naver.maps.Map('map', mapOptions);
+				
+				var lname = "Popcorn&Cola ${location.lname}";
+
+				var marker = new naver.maps.Marker({
+				    position: new naver.maps.LatLng(${location.lat}, ${location.lon}),
+				    map: map,
+				    title: lname
+				});
+			</script>
+		</div>
+		
+		<br>
+		
 		<a href="adminLocationList.do?" class="btn btn-info"
 			style="display: inline; border-color: #CD1726; background-color: #CD1726;">목록</a>
 		<a href="adminLocationUpdateForm.do?lid=${location.lid}"

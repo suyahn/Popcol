@@ -38,10 +38,12 @@
 	color: white !important;
 }
 </style>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function chk() {
 		var lid = frm.lid.value;
 		alert(lid);
+		var tid = frm.tid.value;
+		alert(tid);
 		var mid = frm.mid.value;
 		alert(mid);
 		var rtdate = frm.rtdate.value;
@@ -53,7 +55,7 @@
 		
 		return true;
 	}
-</script>
+</script> -->
 </head>
 <body>
 	<div class="container" align="center">
@@ -67,12 +69,17 @@
 				<tr>
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">영화관</td>
-					<td style="padding-top: 25px" width="400"><select name=lid size="1"
-						required="required">
+					<td style="padding-top: 25px" width="400"><select name=lid size="1">
 							<c:forEach var="theaterLocation" items="${theaterLocation }">
-								<option value="${theaterLocation.tid }">${theaterLocation.lname } (${theaterLocation.tname})</option>
+								<option value="${theaterLocation.lid }">${theaterLocation.lname }</option>
 							</c:forEach>
-					</select></td>
+					</select>
+					<select name=tid size="1">
+							<c:forEach var="theaterLocation" items="${theaterLocation }">
+								<option value="${theaterLocation.tid }">${theaterLocation.tname }(${theaterLocation.lname})</option>
+							</c:forEach>
+					</select>
+					</td>
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">영화</td>
 					<td style="padding-top: 25px"><select name=mid size="1"
@@ -85,7 +92,8 @@
 				<tr>
 					<td width="200" style="font-weight: bold; padding-top: 25px;">상영시작시간</td>
 					<td style="padding-top: 15px">
-					<input type="datetime-local" name="rtdate" required="required"></td>
+					<input type="datetime-local" name="rtdateString" required="required">
+					</td>
 					
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">시간대 분류</td>

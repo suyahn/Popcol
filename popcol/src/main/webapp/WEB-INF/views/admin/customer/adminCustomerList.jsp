@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../popcol/header.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin</title>
 <style type="text/css">
+th, td {
+	text-align: center;
+}
 .red-active {
 	color: black;
 	text-decoration: none;
@@ -57,10 +60,6 @@
 					<td colspan="5">데이터가 없습니다</td>
 				</tr>
 			</c:if>
-			<%
-				String id = (String) session.getAttribute("id");
-				if (id != null) { /* 아이디가 있을때 */
-			%>
 			<c:if test="${not empty adminCustomerList }">
 				<c:set var="no" value="${no }"></c:set>
 				<c:forEach var="customer" items="${adminCustomerList}">
@@ -68,7 +67,7 @@
 						<td>${no}</td>
 						<td><a
 							href="adminCustomerView.do?cid=${customer.cid}&pageNum=${pp.currentPage}"
-							class="btn btn-default">${customer.cid}</a></td>
+							class="red-active">${customer.cid}</a></td>
 						<td>${customer.cname }</td>
 						<td>${customer.cphone }</td>
 						
@@ -76,23 +75,14 @@
 					</tr>
 				</c:forEach>
 			</c:if>
-
-			<%
-				} else {
-			%>
-			<script type="text/javascript">
-				location.href = "adminLoginForm.do"
-			</script>
-			<%
-				}
-			%>
-		</table>
+			</table>
 		<%-- <div align="left">
 			<button type="button" class="btn btn-info btn-sm"
 				style="display: inline; border-color: navy; background-color: navy;"
 				onclick="location.href='adminInsertForm.do?pageNum=${ pageNum }'">
 				영화입력</button>
 		</div> --%>
+		
 		<ul class="pagination">
 			<c:if test="${pp.startPage > pp.PAGE_PER_BLOCK }">
 				<li><a href="adminCustomerList.do?pageNum=${pp.startPage - 1}">이전</a></li>

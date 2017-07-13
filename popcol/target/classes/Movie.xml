@@ -136,7 +136,10 @@
 	<!-- 메인에 영화 랜덤 -->
 	<select id="selectRunningMovieRandom" resultType="movie">
 		<![CDATA[
-			select * from (select * from movie where mdel != 'y' and mreleaseDate <= sysdate order by DBMS_RANDOM.RANDOM) where rownum = 1
+			select * from 
+			(select distinct m.* from movie m, runningtimetable rt 
+			where mdel = 'n' and m.mid = rt.mid and mreleaseDate <= sysdate order by DBMS_RANDOM.RANDOM) 
+			where rownum = 1
 		]]>
     </select>
 	

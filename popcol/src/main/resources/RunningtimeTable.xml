@@ -15,6 +15,7 @@
 		<result property="mrunningtime" column="mrunningtime"/>
 		<result property="mgrade" column="mgrade"/>
 		<result property="seats" column="seats"/>
+		
 	</resultMap>
 
 	<!-- <select id="bookingRTList" resultMap="runningtimetableResult" parameterType="hashMap"> 
@@ -81,11 +82,11 @@
 	</select>
 
 	<insert id="adminTTInsert" parameterType="runningtimetable">
-		<selectKey keyProperty="rtid" resultType="Integer" order="BEFORE">
-			SELECT NVL(MAX(rtid),0) + 1 FROM runningtimetable
-		</selectKey>
 		insert into runningtimetable values
-		(#{rtid},#{lid},#{tid},#{mid}#{rtdate},#{timezone})
+		((SELECT NVL(MAX(rtid),0) + 1 FROM runningtimetable), #{lid}, #{tid},
+		#{mid}, to_date(#{rtdateString}, 'yyyy-mm-dd hh24:mi'),#{timezone})
 	</insert>
+	
+	
 
 </mapper>

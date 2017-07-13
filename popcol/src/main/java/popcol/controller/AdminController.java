@@ -1,5 +1,6 @@
 package popcol.controller;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,7 +64,7 @@ public class AdminController {
 	/* 로그인 */
 	@RequestMapping("adminLoginForm")
 	public String adminLoginForm() {
-
+		
 		return "adminLoginForm";
 	}
 
@@ -80,7 +82,7 @@ public class AdminController {
 		model.addAttribute("masterid", masterid);
 		if (result > 0) {
 
-			session.setAttribute("id", customer.getCid());
+			session.setAttribute("master", customer.getCid());
 
 		}
 
@@ -94,7 +96,7 @@ public class AdminController {
 	@RequestMapping("adminLogout")
 	public String adminLogout(HttpServletRequest request, HttpSession session) {
 		session = request.getSession();
-		session.invalidate();
+		session.removeAttribute("master");
 
 		return "redirect:adminLoginForm.do";
 	}
@@ -122,6 +124,7 @@ public class AdminController {
 		model.addAttribute("adminList", adminList);
 		model.addAttribute("no", no);
 		model.addAttribute("pp", pp);
+		
 		return "adminList";
 	}
 
@@ -134,7 +137,25 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminInsert") // 관리자 영화 입력
-	public String adminInsert(Model model, Movie movie, String pageNum) {
+	public String adminInsert(Model model, Movie movie, String pageNum, String mreleaseDateString,
+			@RequestParam("murlPosterName") MultipartFile mf, HttpSession session) throws IOException {
+			
+		String fileName = "";
+
+		if (mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
+			fileName = mf.getOriginalFilename();
+
+			String path = session.getServletContext().getRealPath("/poster");
+			FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
+			fos.write(mf.getBytes());
+			fos.close();
+		}
+		
+		String murlPoster = fileName.substring(0, fileName.length()-3);
+
+		movie.setMurlPoster(murlPoster.substring(0, murlPoster.length()-1));
+		movie.setMreleaseDate(Date.valueOf(mreleaseDateString));
+		
 		int result = ms.adminInsert(movie);
 
 		model.addAttribute("result", result);
@@ -164,7 +185,26 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminUpdate") // 관리자 영화 수정
-	public String adminUpdate(Model model, Movie movie, String pageNum) {
+	public String adminUpdate(Model model, Movie movie, String pageNum, String mreleaseDateString,
+		@RequestParam("murlPosterName") MultipartFile mf, HttpSession session) throws IOException {
+
+		String fileName = "";
+
+		if (mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {
+			fileName = mf.getOriginalFilename();
+
+			String path = session.getServletContext().getRealPath("/poster");
+			FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
+			fos.write(mf.getBytes());
+			fos.close();
+
+			String murlPoster = fileName.substring(0, fileName.length()-3);
+			movie.setMurlPoster(murlPoster.substring(0, murlPoster.length()-1));
+		}
+
+		/* String을 sql.Date로 타입변경 */
+		movie.setMreleaseDate(Date.valueOf(mreleaseDateString));
+		
 		int result = ms.adminUpdate(movie);
 
 		model.addAttribute("result", result);
@@ -273,6 +313,7 @@ public class AdminController {
 		model.addAttribute("adminCustomerList", adminCustomerList);
 		model.addAttribute("no", no);
 		model.addAttribute("pp", pp);
+		
 		return "adminCustomerList";
 
 	}
@@ -528,13 +569,13 @@ public class AdminController {
 		model.addAttribute("no", no);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("pp", pp);
-
+		
 		return "adminQnaList";
 	}
 
 	@RequestMapping("adminQnaInsertForm")
 	public String qnaInsertForm(String pageNum, HttpSession session, Model model) {
-		String cid = (String) session.getAttribute("id");
+		String cid = (String) session.getAttribute("master");
 		String cname = cs.getCustomerName(cid);
 
 		model.addAttribute("cid", cid);
@@ -560,7 +601,7 @@ public class AdminController {
 	@RequestMapping("adminQnaView")
 	public String qnaView(int qid, String pageNum, HttpSession session, Model model) {
 		Qna qna = qs.select(qid);
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("master");
 
 		model.addAttribute("qna", qna);
 		model.addAttribute("pageNum", pageNum);
@@ -605,7 +646,7 @@ public class AdminController {
 	public String qnaReply(int qid, Model model, HttpSession session) {
 		Qna qna = qs.select(qid);
 
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("master");
 
 		model.addAttribute("qnaReply", qna);
 		model.addAttribute("id", id);
@@ -775,7 +816,7 @@ public class AdminController {
 		/* 전체보기 */
 		if (test == null || test.equals("") || test.equals("0")) {
 			total = tts.getTotal1();
-		} else {/* 상영관별 보기 */
+		} else { /* 상영관별 보기 */
 			total = tts.getTotal2(runningtimeTable);
 		}
 		int currentPage = Integer.parseInt(pageNum);
@@ -801,31 +842,31 @@ public class AdminController {
 		List<Location> locationList = ls.adminLocationList();
 		List<Movie> movieList = ms.movieList();
 		List<Theater> theaterLocation = ts.theaterLocation();
-		
+
 		model.addAttribute("theaterLocation", theaterLocation);
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("locationList", locationList);
 		model.addAttribute("pageNum", pageNum);
-		
+
 		return "adminTTInsertForm";
 
 	}
 
 	@RequestMapping("adminTTInsert") // 관리자 상영시간표 입력
-	public String adminTTInsert(RunningtimeTable runningtimeTable,String pageNum, Model model) {
-
+	public String adminTTInsert(RunningtimeTable runningtimeTable, String pageNum, Model model) {
+		runningtimeTable.setRtdateString(runningtimeTable.getRtdateString().replace("T", " "));
 		int result = tts.adminTTInsert(runningtimeTable);
-			
+
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 
 		/*
-		System.out.println("rtid :"+ rt.getRtid());
-		System.out.println("mid :"+ rt.getMid());
-		System.out.println("lid :"+ rt.getLid());
-		System.out.println("rtdate :"+ rt.getRtdate());
-		System.out.println("timezone :"+ rt.getTimezone());
-		System.out.println("tid :"+ rt.getTid());*/
+		 * System.out.println("rtid :"+ rt.getRtid());
+		 * System.out.println("mid :"+ rt.getMid()); System.out.println("lid :"+
+		 * rt.getLid()); System.out.println("rtdate :"+ rt.getRtdate());
+		 * System.out.println("timezone :"+ rt.getTimezone());
+		 * System.out.println("tid :"+ rt.getTid());
+		 */
 		return "adminTTInsert";
 
 	}
@@ -869,5 +910,22 @@ public class AdminController {
 		return "adminTTDelete";
 
 	}
+	/*
+	 * @RequestMapping("adminTTList") public String showTimes(Model model,int
+	 * lid,@DateTimeFormat(pattern="yyyy/MM/dd") Date date) { List<Movie>
+	 * movieList = tts.movieList(lid, date); List<Location> locationList =
+	 * ls.locationList(); Location loc = ls.selectLocation(lid);
+	 * List<RunningtimeTable> showtimesList = tts.showtimesList(lid,date);
+	 * List<RunningtimeTable> bookedSeatCountList = tts.bookedSeatCountList(lid,
+	 * date);
+	 * 
+	 * model.addAttribute("movieList", movieList);
+	 * model.addAttribute("locationList",locationList);
+	 * model.addAttribute("loc", loc); model.addAttribute("date",date);
+	 * model.addAttribute("showtimesList",showtimesList);
+	 * model.addAttribute("bookedSeatCountList", bookedSeatCountList);
+	 * 
+	 * return "adminTTList"; }
+	 */
 
 }

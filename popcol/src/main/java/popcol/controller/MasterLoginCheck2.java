@@ -30,18 +30,13 @@ public class MasterLoginCheck2 implements HandlerInterceptor {
 		HttpSession session;
 
 		session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("master");
 
-		if (id != null && id.equals("master")) {
+		if (id != null) {
 			response.sendRedirect("adminList.do");
 
 			return false;
-		} else if (id != null && id != "master") {
-			session.invalidate();
-			response.sendRedirect("adminLoginForm.do");
-			
-			return false;
-		}
+		} 
 		
 		return true;
 	}

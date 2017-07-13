@@ -52,13 +52,13 @@
 					<option value="0">전체보기</option>
 					<c:forEach var="runningtimetable" items="locationList">
 
-						<option value="${runningtimetable.rtid }" selected="selected">${runningtimetable.lname }</option>
+						<option value="${runningtimetable.lid }" selected="selected">${runningtimetable.lname }</option>
 					</c:forEach>
 					<option value="location"
 						<c:if test="${ search eq 'fquestion' }">selected="selected"</c:if>>${runningtimetable.tname }</option>
 				</select> --%>
 				
-				<%-- <input type="text" name="keyword" value="${ keyword }"> --%>
+				<input type="text" name="keyword" value="${ keyword }">
 				
 				<button type="submit" class="btn btn-default">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -76,10 +76,6 @@
 					<th colspan="2" style="text-align: center;">데이터가 없습니다.</th>
 				</tr>
 			</c:if>
-			<%
-				String id = (String) session.getAttribute("id");
-				if (id != null) { /* 아이디가 있을때 */
-			%>
 			<c:if test="${ not empty adminTTList }">
 				<c:set var="no1" value="${ no }"></c:set>
 				<c:forEach var="runningtimetable" items="${ adminTTList }">
@@ -95,15 +91,6 @@
 					<c:set var="no1" value="${ no1 - 1 }"></c:set>
 				</c:forEach>
 			</c:if>
-			<%
-				} else {
-			%>
-			<script type="text/javascript">
-				location.href = "adminLoginForm.do"
-			</script>
-			<%
-				}
-			%>
 		</table>
 
 		<div align="right">

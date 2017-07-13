@@ -17,10 +17,6 @@
 		<h2 style="font-weight: bold;" >영화 상세정보</h2>
 		<table class="table table-bordered">
 			<tr>
-				<td>아이디</td>
-				<td>${movie.mid}</td>
-			</tr>
-			<tr>
 				<td>제목</td>
 				<td>${movie.mtitle}</td>
 			</tr>
@@ -38,7 +34,7 @@
 			</tr>
 			<tr>
 				<td>줄거리</td>
-				<td><pre>${movie.mcontent}</pre></td>
+				<td><pre style="white-space: none; height: 200px;">${movie.mcontent}</pre></td>
 			</tr>
 			<tr>
 				<td>개봉일</td>
@@ -54,11 +50,16 @@
 			</tr>
 			<tr>
 				<td>포스터</td>
-				<td>${movie.murlPoster}</td>
+				<td><img alt="${movie.mtitle }" src="${path }/poster/${movie.murlPoster }.jpg" width="100px;"></td>
 			</tr>
 			<tr>
 				<td>상영등급</td>
-				<td>${movie.mgrade}</td>
+				<td>
+					<c:if test="${movie.mgrade == 'all' }">전체이용가</c:if>
+					<c:if test="${movie.mgrade == '12' }">12세이용가</c:if>
+					<c:if test="${movie.mgrade == '15' }">15세이용가</c:if>
+					<c:if test="${movie.mgrade == '19' }">청소년관람불가</c:if>
+				</td>
 			</tr>
 			<tr>
 				<td>국가</td>
@@ -66,11 +67,11 @@
 			</tr>
 		</table>
 			
-		<a href="adminList.do?pageNum=${pageNum}" class="btn btn-info" style="display: inline; border-color: #CD1726; background-color: #CD1726;">목록</a>
+		<a href="adminList.do?pageNum=${pageNum}" class="btn btn-default" style="display: inline;">목록</a>
 		<a href="adminUpdateForm.do?mid=${movie.mid}&pageNum=${pageNum}"
 			class="btn btn-info"style="display: inline; border-color: #CD1726; background-color: #CD1726;">수정</a> 
 		<a href="adminDelete.do?mid=${movie.mid}&pageNum=${pageNum}"
-			class="btn btn-info"style="display: inline; border-color: #CD1726; background-color: #CD1726;">삭제</a>
+			class="btn btn-info"style="display: inline; border-color: #CD1726; background-color: #CD1726;">영화내리기</a>
 		<br><br>
 		<!-- <div id="list"></div> -->
 	</div>
