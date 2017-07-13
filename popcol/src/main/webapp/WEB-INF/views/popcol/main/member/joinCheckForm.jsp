@@ -9,8 +9,8 @@
 </head>
 <body>
 	<div class="container" align="center" style="width: 500px;">
-		<h2 class="text-primary">회원가입여부확인</h2>
-		<h6 class="text-primary">회원가입여부확인을 위해 다음의 정보를 입력해주세요.</h6>
+		<h2 style="font-weight: bold;">회원가입여부확인</h2>
+		<h6 style="font-weight: bold;">회원가입여부확인을 위해 다음의 정보를 입력해주세요.</h6>
 		
 		<br>
 		<br>
@@ -43,7 +43,7 @@
 				
 				<tr>
 					<td>
-						<div class="form-group">
+						<div class="form-group" align="center">
 							<input type="submit" value="가입여부확인" class="btn btn-info btn-sm" style="border-color: #cd1726; background-color: #cd1726;">
 							<input type="button" onclick="location.href='home.do'" class="btn btn-default btn-sm" value="취소" >
 						</div>

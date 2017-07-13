@@ -15,7 +15,7 @@
 	}
 	
 	$(function() {
-		$('#replyDiv').load('qnaReply.do?qid=${qna.qid}');
+		$('#replyDiv').load('adminQnaReply.do?qid=${qna.qid}');
 	});
 </script>
 </head>

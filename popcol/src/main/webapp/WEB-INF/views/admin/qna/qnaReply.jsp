@@ -74,27 +74,20 @@
 	<c:if test="${ empty qnaReply.qreplycontent }">
 		<hr>
 		<div align="center" style="width: 70%;">
-			<c:if test="${ id != 'master' }">
-				<h4 style="font-weight: bold;" align="left">답변이 아직 작성되지 않았습니다.</h4>
-				<br>
-			</c:if>
-			<c:if test="${ id == 'master' }">
-				<h4 style="font-weight: bold;" align="left">답변</h4>
-				<form name="replyFrom" id="replyFrom">
-					<input type="hidden" name="qid" value="${qnaReply.qid}">
-					<table style="border-spacing: 5px; border-collapse: separate;">
-						<tr>
-							<td>
-								<textarea rows="10" cols="70" name="qreplycontent" required="required" style="resize:none;" maxlength="165"></textarea>
-							</td>
-							<td>
-								<input type="button" value="확인" id="replyInsert" class="btn btn-primary"
-									style="border-color: #CD1726; background-color: #CD1726;">
-							</td>
-						</tr>
-					</table> 
-				</form>
-			</c:if>
+			<h4 style="font-weight: bold;" align="left">답변</h4>
+			<form name="replyFrom" id="replyFrom">
+				<input type="hidden" name="qid" value="${qnaReply.qid}">
+				<table style="border-spacing: 5px; border-collapse: separate;">
+					<tr>
+						<td>
+							<textarea rows="10" cols="70" name="qreplycontent" required="required" style="resize:none;" maxlength="165"></textarea>
+						</td>
+						<td>
+							<input type="button" value="확인" id="replyInsert" class="btn btn-primary" style="border-color: #CD1726; background-color: #CD1726;">
+						</td>
+					</tr>
+				</table> 
+			</form>
 		</div>
 	</c:if>
 
@@ -108,10 +101,8 @@
 				</tr>
 				<tr>
 					<td id="btn_${qnaReply.qid}" align="right">
-						<c:if test="${ id == 'master' }">
-							<input type="button" value="수정" class="btn btn-link edit1 red-active" id="${ qnaReply.qid }">
-							<input type="button" value="삭제" onclick="del(${ qnaReply.qid })" class="btn btn-link red-active">
-						</c:if>
+						<input type="button" value="수정" class="btn btn-link edit1 red-active" id="${ qnaReply.qid }">
+						<input type="button" value="삭제" onclick="del(${ qnaReply.qid })" class="btn btn-link red-active">
 					</td>
 				</tr>
 			</table>
