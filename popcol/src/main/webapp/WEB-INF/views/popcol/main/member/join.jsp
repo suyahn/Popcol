@@ -10,8 +10,8 @@
 <body>
 	<c:if test="${result > 0 }">
 		<div class="container" align="center">
-			<h2 class="text-primary">회원가입되셨습니다.</h2>
-			<h6 class="text-primary">저희 popcol의 회원이 되신 것을 진심으로 축하합니다.</h6>
+			<h2 style="font-weight: bold;">회원가입되셨습니다.</h2>
+			<h6 style="font-weight: bold;">저희 popcol의 회원이 되신 것을 진심으로 축하합니다.</h6>
 			
 			<br>
 			<br>

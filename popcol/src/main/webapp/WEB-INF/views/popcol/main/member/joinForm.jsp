@@ -120,7 +120,7 @@
 </head>
 <body>
 	<div class="container" align="center" style="width: 600px;">
-		<h2 class="text-primary">회원가입</h2>
+		<h2 style="font-weight: bold;"">회원가입</h2>
 		
 		<br>
 		<br>

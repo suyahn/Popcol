@@ -37,6 +37,10 @@
 	border-color: #fcba2e;
 	color: white !important;
 }
+
+th {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -62,17 +66,12 @@
 				<c:set var="no1" value="${ no }"></c:set>
 				<c:forEach var="qna" items="${ list }">
 					<tr>
-						<td>${ no1 }</td>
-						<td><c:if test="${ id == qna.cid or id == 'master'}">
-								<a href="adminQnaView.do?qid=${ qna.qid }&pageNum=${ pageNum }"
-									class="red-active">${ qna.qsubject }</a>
-							</c:if> <c:if test="${ id != qna.cid and id != 'master'}">
-								<span class="glyphicon glyphicon-lock" aria-hidden="true"
-									style="color: gray;" title="글 작성자만 볼 수 있습니다."></span>
-								${ qna.qsubject }
-							</c:if></td>
-						<td>${ qna.cname }</td>
-						<td width="20%"><fmt:parseDate value="${ qna.qdate }"
+						<td style="text-align: center;">${ no1 }</td>
+						<td>
+							<a href="adminQnaView.do?qid=${ qna.qid }&pageNum=${ pageNum }" class="red-active">${ qna.qsubject }</a>
+						</td>
+						<td style="text-align: center;">${ qna.cname }</td>
+						<td width="20%" style="text-align: center;"><fmt:parseDate value="${ qna.qdate }"
 								var="qdate" pattern="yyyy-MM-dd" /> <fmt:formatDate
 								value="${ qdate }" pattern="yyyy.MM.dd" /></td>
 					</tr>
@@ -80,36 +79,29 @@
 				</c:forEach>
 			</c:if>
 		</table>
+		
+		<div align="center">
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<c:if test="${ pp.startPage > pp.PAGE_PER_BLOCK }">
+						<li><a href="adminQnaList.do?pageNum=${ pp.startPage - 1 }"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:if>
 
-		<div align="right">
-			<button type="button" class="btn btn-primary"
-				onclick="location.href='adminQnaInsertForm.do?pageNum=${ pageNum }'"
-				style="border-color: #CD1726; background-color: #CD1726;">글
-				작성</button>
+					<c:forEach var="i" begin="${ pp.startPage }" end="${ pp.endPage }">
+						<li <c:if test="${ pp.currentPage == i }">class="active"</c:if>><a
+							href="adminQnaList.do?pageNum=${ i }">${ i }</a>
+					</c:forEach>
 
-			<div align="center">
-				<nav aria-label="Page navigation">
-					<ul class="pagination">
-						<c:if test="${ pp.startPage > pp.PAGE_PER_BLOCK }">
-							<li><a href="adminQnaList.do?pageNum=${ pp.startPage - 1 }"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							</a></li>
-						</c:if>
-
-						<c:forEach var="i" begin="${ pp.startPage }" end="${ pp.endPage }">
-							<li <c:if test="${ pp.currentPage == i }">class="active"</c:if>><a
-								href="adminQnaList.do?pageNum=${ i }">${ i }</a>
-						</c:forEach>
-
-						<c:if test="${ pp.endPage < pp.totPage }">
-							<li><a
-								href="adminQnaList.do?pageNum=${ pp.startPage + pp.PAGE_PER_BLOCK }"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-							</a></li>
-						</c:if>
-					</ul>
-				</nav>
-			</div>
+					<c:if test="${ pp.endPage < pp.totPage }">
+						<li><a
+							href="adminQnaList.do?pageNum=${ pp.startPage + pp.PAGE_PER_BLOCK }"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:if>
+				</ul>
+			</nav>
 		</div>
 	</div>
 </body>

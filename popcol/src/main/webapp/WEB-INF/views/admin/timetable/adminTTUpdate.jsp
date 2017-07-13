@@ -10,7 +10,7 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("수정 성공");
+			alert("상영시간표가 수정되었습니다");
 			location.href = "adminTTList.do?pageNum=${pageNum}";
 		</script>
 	</c:if>

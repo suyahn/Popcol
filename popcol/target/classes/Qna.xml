@@ -37,11 +37,11 @@
 	</select>
 	
 	<insert id="insert" parameterType="qna">
-		insert into qna values (#{qid}, '질문입니다.', #{qcontent}, null, sysdate, #{cid}, 'n')
+		insert into qna values (#{qid}, #{qsubject}, #{qcontent}, null, sysdate, #{cid}, 'n')
 	</insert>
 	
 	<update id="update" parameterType="qna">
-		update qna set qcontent = #{qcontent} where qid = #{qid}
+		update qna set qsubject = #{qsubject}, qcontent = #{qcontent} where qid = #{qid}
 	</update>
 	
 	<update id="delete" parameterType="int">

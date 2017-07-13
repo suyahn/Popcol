@@ -63,38 +63,38 @@
 			<img src="location/logo.png" width="250" height="70"> <a
 				href='adminTTList.do' class="red-active">상영시간표</a>
 		</h1>
-		<form action="adminTTInsert.do" method="post" name="frm" onsubmit="return chk()">
+		<form action="adminTTInsert.do" method="post" name="frm"
+			onsubmit="return chk()">
 			<input type="hidden" name="pageNum" value="${pageNum}">
 			<table class="table table-striped">
 				<tr>
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">영화관</td>
-					<td style="padding-top: 25px" width="400"><select name=ltid size="1">
+					<td style="padding-top: 25px" width="400"><select name=ltid
+						size="1">
 							<c:forEach var="theaterLocation" items="${theaterLocation }">
-								<option value="${theaterLocation.lid }:${theaterLocation.tid}">${theaterLocation.lname } (${theaterLocation.tname})</option>
+								<option value="${theaterLocation.lid }:${theaterLocation.tid}">${theaterLocation.lname }
+									(${theaterLocation.tname})</option>
 							</c:forEach>
-					</select>
-					<%-- <select name=tid size="1">
+					</select> <%-- <select name=tid size="1">
 							<c:forEach var="theaterLocation" items="${theaterLocation }">
 								<option value="${theaterLocation.tid }">${theaterLocation.tname }(${theaterLocation.lname})</option>
 							</c:forEach>
-					</select> --%>
-					</td>
+					</select> --%></td>
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">영화</td>
 					<td style="padding-top: 25px"><select name=mid size="1"
 						required="required">
 							<c:forEach var="movie" items="${movieList }">
-								<option value="${movie.mid }" >${movie.mtitle }</option>
+								<option value="${movie.mid }">${movie.mtitle }</option>
 							</c:forEach>
 					</select></td>
 				</tr>
 				<tr>
 					<td width="200" style="font-weight: bold; padding-top: 25px;">상영시작시간</td>
-					<td style="padding-top: 15px">
-					<input type="datetime-local" name="rtdateString" required="required">
-					</td>
-					
+					<td style="padding-top: 15px"><input type="datetime-local"
+						name="rtdateString" required="required"></td>
+
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">시간대 분류</td>
 					<td style="padding-top: 25px"><select name=timezone size="1"
@@ -109,7 +109,9 @@
 				</tr>
 				<tr>
 					<td colspan="4" align="right" style="padding-top: 25px"><input
-						type="submit" value="확인"></td>
+						type="submit" value="확인" class="btn btn-info btn-sm"
+						style="background-color: #cd1726; border-color: #cd1726;">
+					</td>
 				</tr>
 			</table>
 		</form>
