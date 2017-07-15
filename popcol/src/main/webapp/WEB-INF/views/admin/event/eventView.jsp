@@ -8,10 +8,18 @@
 <title></title>
 <script type="text/javascript">
 	function deleteChk(eid, pageNum) {
-		if(confirm("정말로 삭제하시겠습니까?") == false) {
-			return false;
-		}
-		location.href='adminEventDelete.do?eid=' + eid + '&pageNum=' + pageNum;
+		swal({
+			  title: "이벤트를 삭제하시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네, 삭제합니다!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			location.href='adminEventDelete.do?eid=' + eid + '&pageNum=' + pageNum;
+		});
 	}
 </script>
 </head>

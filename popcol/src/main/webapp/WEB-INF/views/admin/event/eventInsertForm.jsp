@@ -8,9 +8,18 @@
 <title></title>
 <script type="text/javascript">
 	function insertChk() {
-		if(confirm("이벤트를 등록하시겠습니까?") == false) {
-			return false;
-		}
+		swal({
+			  title: "이벤트를 등록하시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			$('#eventInsertForm').submit();
+		});
 	}
 </script>
 </head>
@@ -18,7 +27,7 @@
 	<div class="container" align="center">
 		<h1>이벤트 작성</h1>
 		
-		<form action="adminEventInsert.do" method="post" enctype="multipart/form-data" onsubmit="return insertChk()">
+		<form action="adminEventInsert.do" method="post" enctype="multipart/form-data" id="eventInsertForm">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			
 			<table class="table"  style="width: 60%">
@@ -54,7 +63,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
+						<input type="button" onclick="insertChk()" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;" onclick="insertChk()">
 						<button type="button" class="btn btn-default" onclick="location.href='adminEventList.do?pageNum=${ pageNum }'">이전</button>
 					</td>
 				</tr>

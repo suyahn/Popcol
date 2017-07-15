@@ -8,11 +8,18 @@
 <title>Admin View</title>
 <script type="text/javascript">
 	function deleteChk(cid, pageNum) {
-		
-		if(confirm("정말로 삭제하시겠습니까?") == false) {
-			return false;
-		}
-		location.href="adminCustomerDelete.do?cid=" + cid + "&pageNum=" + pageNum;
+		swal({
+			  title: "이 회원을 탈퇴시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			  location.href="adminCustomerDelete.do?cid=" + cid + "&pageNum=" + pageNum;
+		});
 	}
 </script>
 </head>

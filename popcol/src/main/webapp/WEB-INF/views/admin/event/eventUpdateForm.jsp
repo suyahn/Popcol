@@ -8,9 +8,18 @@
 <title></title>
 <script type="text/javascript">
 	function updateChk() {
-		if(confirm("이벤트를 수정하시겠습니까?") == false) {
-			return false;
-		}
+		swal({
+			  title: "이벤트를 수정하시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네, 수정합니다!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			$('#eventUpdateForm').submit();
+		});
 	}
 </script>
 </head>
@@ -18,7 +27,7 @@
 	<div class="container" align="center">
 		<h1>이벤트 수정</h1>
 		
-		<form action="adminEventUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return updateChk()">
+		<form action="adminEventUpdate.do" method="post" enctype="multipart/form-data" id="eventUpdateForm">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			<input type="hidden" name="eid" value="${ event.eid }">
 			<input type="hidden" name="epicture" value="${ event.epicture }">
@@ -56,7 +65,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
+						<input type="button" onclick="updateChk()" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
 						<button type="button" class="btn btn-default" onclick="location.href='adminEventView.do?eid=${ event.eid }&pageNum=${ pageNum }'">이전</button>
 					</td>
 				</tr>

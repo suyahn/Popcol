@@ -23,7 +23,7 @@
 <body>
 	<div class="container" align="center">
 		<h2 style="font-weight: bold;" >영화 상세정보</h2>
-		<table class="table table-bordered">
+		<table class="table table-bordered" style="width: 80%;">
 			<tr>
 				<td>제목</td>
 				<td>${movie.mtitle}</td>
@@ -42,7 +42,7 @@
 			</tr>
 			<tr>
 				<td>줄거리</td>
-				<td><pre style="white-space: none; height: 200px;">${movie.mcontent}</pre></td>
+				<td><pre style="white-space: pre-wrap; height: 200px;">${movie.mcontent}</pre></td>
 			</tr>
 			<tr>
 				<td>개봉일</td>

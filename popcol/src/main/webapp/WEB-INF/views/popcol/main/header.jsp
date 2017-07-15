@@ -2,26 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../header.jsp"%>
 <%@ page import="java.util.Date" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>메인</title>
-<script type="text/javascript">
-	$(function() {
-		$('ul.nav li.dropdown').hover(
-				function() {
-					$(this).find('.dropdown-menu').stop(true, true).delay(200)
-							.fadeIn(500);
-				},
-				function() {
-					$(this).find('.dropdown-menu').stop(true, true).delay(200)
-							.fadeOut(500);
-				});
-	});
-</script>
-</head>
-<body> 
+<header>
 	<nav class="navbar" style="margin-top: 10px;">
 		<div class="navbar-header">
 	    	<a class="" href="home.do"><img alt="logo" src="${ path }/images/popcol logo.png" width="200px" style="margin-top: -10px; margin-bottom: -10px;"></a>
@@ -91,8 +72,8 @@
 			</ul>
 		</div>
 	</nav>
-
-
+	
+	
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -141,5 +122,17 @@
 			</div>
 		</div>
 	</nav>
-</body>
-</html>
+</header>
+<script type="text/javascript">
+	$(function() {
+		$('ul.nav li.dropdown').hover(
+				function() {
+					$(this).find('.dropdown-menu').stop(true, true).delay(200)
+							.fadeIn(500);
+				},
+				function() {
+					$(this).find('.dropdown-menu').stop(true, true).delay(200)
+							.fadeOut(500);
+				});
+	});
+</script>

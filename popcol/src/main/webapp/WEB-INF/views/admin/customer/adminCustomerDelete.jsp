@@ -10,14 +10,22 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("회원 삭제되었습니다");
-			location.href = "adminCustomerList.do?";
+			swal({
+				title: "탈퇴 성공!", 
+				type: "success"
+			}).then(function() {
+				location.href = "adminCustomerList.do?";
+			});
 		</script>
 	</c:if>
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("삭제실패");
-			history.go(-1);
+			swal({
+				title: "탈퇴 실패!", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>

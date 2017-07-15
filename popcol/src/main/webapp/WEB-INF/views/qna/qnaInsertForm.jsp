@@ -7,18 +7,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <script type="text/javascript">
-	function insertChk() {
-		if(confirm("글을 등록하시겠습니까?") == false) {
-			return false;
-		}
-	}
+	$(function() {
+		$('#qnaFormSubmitBtn').click(function() {
+			swal({
+				  title: "글을 등록하시겠습니까?",
+				  type: "question",
+				  showCancelButton: true,
+				  confirmButtonColor: "#CD1726",
+				  confirmButtonText: "네, 등록합니다!",
+				  cancelButtonText: "아니요.",
+				  closeOnConfirm: true,
+				  closeOnCancel: true
+				}).then(function() {
+					$('#qnaForm').submit();
+				});
+		});
+	});
 </script>
 </head>
 <body>
 	<div class="container" align="center">
 		<h1>1:1 문의 작성</h1>
 		
-		<form action="qnaInsert.do" method="post" onsubmit="return insertChk()">
+		<form action="qnaInsert.do" method="post" id="qnaForm">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			
 			<table class="table"  style="width: 60%">
@@ -43,7 +54,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
+						<input type="button" id="qnaFormSubmitBtn" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
 						<button type="button" class="btn btn-default" onclick="location.href='qnaList.do?pageNum=${ pageNum }'">이전</button>
 					</td>
 				</tr>

@@ -10,13 +10,22 @@
 <body>
 	<c:if test="${ result > 0 }">
 		<script type="text/javascript">
-			location.href = "adminFaqView.do?fid=${ fid }&pageNum=${ pageNum }";
+			swal({
+				title: "수정 성공!", 
+				type: "success"
+			}).then(function() {
+				location.href = "adminFaqView.do?fid=${ fid }&pageNum=${ pageNum }";	
+			});
 		</script>
 	</c:if>
 	<c:if test="${ result <= 0 }">
 		<script type="text/javascript">
-			alert("수정 실패");
-			history.go(-1);
+			swal({
+				title: "수정 실패!", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>
