@@ -11,14 +11,22 @@
 	<fmt:formatDate type="date" value="${date}" pattern="yyyy-MM-dd" var="date"/>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("삭제 성공");
-			location.href = "adminTTList.do?lid=${lid}&dateStr=${dateStr}";
+			swal({
+				title: "삭제했습니다.", 
+				type: "success"
+			}).then(function() {
+				location.href = "adminTTList.do?lid=${lid}&dateStr=${dateStr}";
+			});
 		</script>
 	</c:if>
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("삭제실패");
-			history.go(-1);
+			swal({
+				title: "다시 시도해주세요.", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>

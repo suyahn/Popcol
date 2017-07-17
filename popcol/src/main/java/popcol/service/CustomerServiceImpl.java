@@ -136,4 +136,9 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return cd.adminCustomerDelete(cid);
 	}
+
+	@Override
+	public List<Customer> selectCustomerList() {
+		return cd.selectCustomerList();
+	}
 }

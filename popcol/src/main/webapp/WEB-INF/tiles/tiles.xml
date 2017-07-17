@@ -563,19 +563,11 @@
 			value="/WEB-INF/views/admin/qna/qnaView.jsp" />
 	</definition>
 
-	<definition name="adminQnaUpdateForm" extends="admin">
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/qna/qnaUpdateForm.jsp" />
-	</definition>
-
-	<definition name="adminQnaUpdate" extends="admin">
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/qna/qnaUpdate.jsp" />
-	</definition>
 	<definition name="adminQnaDelete" extends="admin">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/qna/qnaDelete.jsp" />
 	</definition>
+	
 	<definition name="adminQnaReply" extends="empty">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/qna/qnaReply.jsp" />

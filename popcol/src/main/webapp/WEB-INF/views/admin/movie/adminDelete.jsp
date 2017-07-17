@@ -10,15 +10,23 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("영화를 내렸습니다.");
-			location.href = "adminList.do?pageNum=${pageNum}";
+			swal({
+				title: "영화를 내렸습니다.", 
+				type: "success"
+			}).then(function() {
+				location.href = "adminList.do?pageNum=${pageNum}";
+			});
 		</script>
 	</c:if>
 	
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("다시 시도해주세요.");
-			history.go(-1);
+			swal({
+				title: "다시 시도해주세요.", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>

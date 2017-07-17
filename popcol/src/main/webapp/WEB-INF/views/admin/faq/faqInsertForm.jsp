@@ -13,7 +13,7 @@
 			  type: "question",
 			  showCancelButton: true,
 			  confirmButtonColor: "#CD1726",
-			  confirmButtonText: "네, 등록합니다!",
+			  confirmButtonText: "네!",
 			  cancelButtonText: "아니요.",
 			  closeOnConfirm: true,
 			  closeOnCancel: true

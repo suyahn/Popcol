@@ -11,15 +11,23 @@
 	<fmt:formatDate type="date" value="${date}" pattern="yyyy-MM-dd" var="date"/>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("상영시간표가 입력되었습니다");
-			location.href = "adminTTView.do?rtid=${rtid}&dateStr=${date}"
+			swal({
+				title: "상영시간표가 입력되었습니다.", 
+				type: "success"
+			}).then(function() {
+				location.href = "adminTTView.do?rtid=${rtid}&dateStr=${date}"
+			});
 		</script>
 	</c:if>
 	
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("다시 입력해주세요");
-			history.go(-1);
+			swal({
+				title: "다시 시도해주세요.", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>

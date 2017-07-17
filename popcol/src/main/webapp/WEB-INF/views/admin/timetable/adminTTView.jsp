@@ -41,10 +41,18 @@
 <fmt:formatDate type="date" value="${date}" pattern="yyyy-MM-dd" var="date"/>
 <script type="text/javascript">
 	function deleteChk(rtid, lid, date) {
-		if(confirm("정말로 삭제하시겠습니까?") == false) {
-			return false;
-		}
-		location.href="adminTTDelete.do?rtid=" + rtid + "&lid=" + lid + "&dateStr=" + date;
+		swal({
+			title: "삭제하시겠습니까?",
+			type: "question",
+			showCancelButton: true,
+			confirmButtonColor: "#CD1726",
+			confirmButtonText: "네!",
+			cancelButtonText: "아니요.",
+			closeOnConfirm: true,
+			closeOnCancel: true
+		}).then(function() {
+			location.href="adminTTDelete.do?rtid=" + rtid + "&lid=" + lid + "&dateStr=" + date;
+		});
 	}
 </script>
 </head>

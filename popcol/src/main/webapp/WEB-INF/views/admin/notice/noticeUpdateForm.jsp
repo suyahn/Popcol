@@ -8,9 +8,18 @@
 <title></title>
 <script type="text/javascript">
 	function updateChk() {
-		if(confirm("글을 수정하시겠습니까?") == false) {
-			return false;
-		}
+		swal({
+			  title: "글을 수정하시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			$('#noticeUpdateForm').submit();
+		});
 	}
 </script>
 </head>
@@ -18,7 +27,7 @@
 	<div class="container" align="center">
 		<h1>공지사항 수정</h1>
 		
-		<form action="adminNoticeUpdate.do" method="post" onsubmit="return updateChk()">
+		<form action="adminNoticeUpdate.do" method="post" id="noticeUpdateForm">
 			<input type="hidden" name="pageNum" value="${ pageNum }">
 			<input type="hidden" name="nid" value="${ notice.nid }">
 			
@@ -37,7 +46,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
+						<input type="button" onclick="updateChk()" class="btn btn-primary" value="완료" style="border-color: #CD1726; background-color: #CD1726;">
 						<button type="button" class="btn btn-default" onclick="location.href='adminNoticeView.do?nid=${ notice.nid }&pageNum=${ pageNum }'">이전</button>
 					</td>
 				</tr>

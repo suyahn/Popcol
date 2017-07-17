@@ -60,5 +60,7 @@ public interface CustomerDao {
 
 	int adminCustomerDelete(String cid);
 
+	List<Customer> selectCustomerList();
+
 
 }

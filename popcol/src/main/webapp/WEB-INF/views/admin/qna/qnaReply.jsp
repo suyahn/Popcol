@@ -13,20 +13,30 @@
 <script type="text/javascript">
 	$(function() {
 		$('#replyInsert').click(function() {
-			if(!replyFrom.qreplycontent.value) {
-				alert('답변 입력을 입력하세요.');
-				replyFrom.qreplycontent.focus();
+			if(!replyForm.qreplycontent.value) {
+				swal({
+					title: "답변을 입력하세요.", 
+					type: "error"
+				});
+				replyForm.qreplycontent.focus();
 				return false;
 			}
 			
-			if(confirm("답변을 등록하시겠습니까?") == false) {
-				return false;
-			}
-			
-			var fromData = $('#replyFrom').serialize();
-			$.post('qnaReplyInsert.do', fromData, function(data) {
-				$('#replyDiv').html(data);
-				replyFrom.qreplycontent.value = "";
+			swal({
+				  title: "답변을 등록하시겠습니까?",
+				  type: "question",
+				  showCancelButton: true,
+				  confirmButtonColor: "#CD1726",
+				  confirmButtonText: "네!",
+				  cancelButtonText: "아니요.",
+				  closeOnConfirm: true,
+				  closeOnCancel: true
+			}).then(function() {
+				var FormData = $('#replyForm').serialize();
+				$.post('adminQnaReplyInsert.do', FormData, function(data) {
+					$('#replyDiv').html(data);
+					replyForm.qreplycontent.value = "";
+				});
 			});
 		});
 		
@@ -43,29 +53,44 @@
 	});
 	
 	function cancelEdit() {
-		$('#replyDiv').load('qnaReply.do?qid=${qnaReply.qid}');
+		$('#replyDiv').load('adminQnaReply.do?qid=${qnaReply.qid}');
 	}
 	
 	function up(id) {
-		if(confirm("정말로 답변을 수정하시겠습니까?") == false) {
-			return false;
-		}
-		var qreplycontent = $('#updateText_' + id).val();
-		var formData = "qid=" + id + "&qreplycontent=" + qreplycontent;
-		
-		$.post("qnaReplyInsert.do", formData, function(data) {
-			$('#replyDiv').html(data);
+		swal({
+			title: "답변을 수정하시겠습니까?",
+			type: "question",
+			showCancelButton: true,
+			confirmButtonColor: "#CD1726",
+			confirmButtonText: "네!",
+			cancelButtonText: "아니요.",
+			closeOnConfirm: true,
+			closeOnCancel: true
+		}).then(function() {
+			var qreplycontent = $('#updateText_' + id).val();
+			var FormData = "qid=" + id + "&qreplycontent=" + qreplycontent;
+			
+			$.post("adminQnaReplyInsert.do", FormData, function(data) {
+				$('#replyDiv').html(data);
+			});
 		});
 	}
 	
 	function del(qid) {
-		if(confirm("정말로 답변을 삭제하시겠습니까?") == false) {
-			return false;
-		}
-		
-		var formData = "qid=" + qid;
-		$.post("qnaReplyDelete.do", formData, function(data) {
-			$('#replyDiv').html(data);
+		swal({
+			title: " 답변을 삭제하시겠습니까?",
+			type: "question",
+			showCancelButton: true,
+			confirmButtonColor: "#CD1726",
+			confirmButtonText: "네!",
+			cancelButtonText: "아니요.",
+			closeOnConfirm: true,
+			closeOnCancel: true
+		}).then(function() {
+			var FormData = "qid=" + qid;
+			$.post("adminQnaReplyDelete.do", FormData, function(data) {
+				$('#replyDiv').html(data);
+			});
 		});
 	}
 </script>
@@ -75,7 +100,7 @@
 		<hr>
 		<div align="center" style="width: 70%;">
 			<h4 style="font-weight: bold;" align="left">답변</h4>
-			<form name="replyFrom" id="replyFrom">
+			<form name="replyForm" id="replyForm">
 				<input type="hidden" name="qid" value="${qnaReply.qid}">
 				<table style="border-spacing: 5px; border-collapse: separate;">
 					<tr>

@@ -137,4 +137,7 @@
 		update customer set cdel = 'y' where cid = #{cid}
 	</update>
 
+	<select id="selectCustomerList" resultMap="customerResult">
+		select * from customer
+	</select>
 </mapper>

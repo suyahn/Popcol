@@ -9,18 +9,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+.err {
+	color: red;
+	font-size: 15px;
+}
+</style>
 <script type="text/javascript">
 	$(function() {
 		$('#pointPage').load("pointPage.do");
 	});
 	
-	function ChkPassword() {
+	/* function ChkPassword() {
 		if (frm.chkPassword.value != frm.password.value) {
 			alert("비밀번호가 틀렸습니다.");
 			
 			return false;
 		}
-	}
+	} */
 </script>
 </head>
 <body>
@@ -43,8 +49,8 @@
 				<br>
 				<br>
 				
-				<form action="mypage_myInfoModifyForm.do" onsubmit="return ChkPassword()" name="frm">
-				<input type="hidden" value="${customer.cpassword }" id="chkPassword">
+				<form action="mypage_myInfoModifyPasswordChk.do" name="frm" method="post">
+				<%-- <input type="hidden" value="${customer.cpassword }" id="chkPassword"> --%>
 					<table>
 						
 						<tr>
@@ -60,7 +66,15 @@
 								<div class="form-group" id="passwordCheck"></div>
 							</td>
 						</tr>
-						
+						<tr>
+							<td>
+								<c:if test="${ not empty result }">
+									<span class="err">
+										비밀번호를 확인해주세요.<br>
+									</span>
+								</c:if>
+							</td>
+						</tr>
 						<tr>
 							<th>		
 								<br>	

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import popcol.controller.CustomerController;
 import popcol.model.Customer;
 import popcol.model.Point;
 
@@ -27,12 +28,19 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		String insertPassword = customer.getCpassword();
 		String dbPassword = sst.selectOne("customerns.loginCheck", customer);
+		String encInsertPassword = "";
+		
+		try {
+			encInsertPassword = CustomerController.getEncPassword(insertPassword);
+		} catch (Exception e) {
+			System.out.println("패스워드 암호화 에러 : " + e.getMessage());
+		}
 
 		if (dbPassword == null) {
 			// 입력한 id가 존재하지 않음
 			result = -1;
 
-		} else if (insertPassword.equals(dbPassword)) {
+		} else if (encInsertPassword.equals(dbPassword)) {
 			// 비밀번호가 일치
 			result = 1;
 
@@ -157,5 +165,10 @@ public class CustomerDaoImpl implements CustomerDao {
 	public int adminCustomerDelete(String cid) {
 		
 		return sst.update("customerns.adminCustomerDelete", cid);
+	}
+
+	@Override
+	public List<Customer> selectCustomerList() {
+		return sst.selectList("customerns.selectCustomerList");
 	}
 }

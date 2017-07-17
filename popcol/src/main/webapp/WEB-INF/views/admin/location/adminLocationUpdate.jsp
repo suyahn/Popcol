@@ -10,14 +10,22 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("수정 되었습니다");
-			location.href = "adminLocationList.do";
+			swal({
+				title: "영화관을 수정했습니다.", 
+				type: "success"
+			}).then(function() {
+				location.href = "adminLocationList.do";
+			});
 		</script>
 	</c:if>
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("다시 수정하세요");
-			history.go(-1);
+			swal({
+				title: "다시 시도해주세요.", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>

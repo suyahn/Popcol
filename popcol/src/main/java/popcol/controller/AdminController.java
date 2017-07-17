@@ -585,31 +585,6 @@ public class AdminController {
 		return "adminQnaList";
 	}
 
-	/*@RequestMapping("adminQnaInsertForm")
-	public String qnaInsertForm(String pageNum, HttpSession session, Model model) {
-		String cid = (String) session.getAttribute("master");
-		String cname = cs.getCustomerName(cid);
-
-		model.addAttribute("cid", cid);
-		model.addAttribute("cname", cname);
-		model.addAttribute("pageNum", pageNum);
-
-		return "adminQnaInsertForm";
-	}
-
-	@RequestMapping("adminQnaInsert")
-	public String qnaInsert(Qna qna, String pageNum, Model model) {
-		int number = qs.getMaxNum();
-		qna.setQid(number);
-		int result = qs.insert(qna);
-
-		model.addAttribute("result", result);
-		model.addAttribute("pageNum", pageNum);
-		model.addAttribute("qid", qna.getQid());
-
-		return "adminQnaInsert";
-	}*/
-
 	@RequestMapping("adminQnaView")
 	public String qnaView(int qid, String pageNum, HttpSession session, Model model) {
 		Qna qna = qs.select(qid);
@@ -620,27 +595,6 @@ public class AdminController {
 		model.addAttribute("id", id);
 
 		return "adminQnaView";
-	}
-
-	@RequestMapping("adminQnaUpdateForm")
-	public String qnaUpdateForm(int qid, String pageNum, Model model) {
-		Qna qna = qs.select(qid);
-
-		model.addAttribute("qna", qna);
-		model.addAttribute("pageNum", pageNum);
-
-		return "adminQnaUpdateForm";
-	}
-
-	@RequestMapping("adminQnaUpdate")
-	public String noticeUpdate(Qna qna, String pageNum, Model model) {
-		int result = qs.update(qna);
-
-		model.addAttribute("result", result);
-		model.addAttribute("pageNum", pageNum);
-		model.addAttribute("qid", qna.getQid());
-
-		return "adminQnaUpdate";
 	}
 
 	@RequestMapping("adminQnaDelete")
@@ -665,16 +619,18 @@ public class AdminController {
 
 		return "adminQnaReply";
 	}
-
-	/*
-	 * @RequestMapping("adminQnaReplyInsert") public String qnaReplyInsert(Qna
-	 * qna) { qs.insertReply(qna); return "redirect:adminQnaReply.do?qid=" +
-	 * qna.getQid(); }
-	 * 
-	 * @RequestMapping("adminQnaReplyDelete") public String qnaReplyDelete(int
-	 * qid) { qs.deleteReply(qid); return "redirect:adminQnaReply.do?qid=" +
-	 * qid; }
-	 */
+	
+	@RequestMapping("adminQnaReplyInsert")
+	public String qnaReplyInsert(Qna qna) {
+		qs.insertReply(qna);
+		return "redirect:adminQnaReply.do?qid=" + qna.getQid();
+	}
+	
+	@RequestMapping("adminQnaReplyDelete")
+	public String qnaReplyDelete(int qid) {
+		qs.deleteReply(qid);
+		return "redirect:adminQnaReply.do?qid=" + qid;
+	}
 
 	@RequestMapping("adminEventList")
 	public String eventList(String pageNum, Event event, Model model) {

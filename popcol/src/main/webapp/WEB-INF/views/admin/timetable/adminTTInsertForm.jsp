@@ -65,7 +65,7 @@
 		</h1>
 		<form action="adminTTInsert.do" method="post" name="frm"
 			onsubmit="return chk()">
-			<table class="table table-striped">
+			<table class="table">
 				<tr>
 					<td width="200" height="70"
 						style="font-weight: bold; padding-top: 25px;">영화관</td>

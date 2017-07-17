@@ -10,14 +10,23 @@
 <body>
 	<c:if test="${ result > 0 }">
 		<script type="text/javascript">
-			location.href = "adminNoticeView.do?nid=${ nid }&pageNum=${ pageNum }";
+			swal({
+				title: "공지사항을 등록했습니다.", 
+				type: "success"
+			}).then(function() {
+				location.href = "adminNoticeView.do?nid=${ nid }&pageNum=${ pageNum }";
+			});
 		</script>
 	</c:if>
 	
 	<c:if test="${ result <= 0 }">
 		<script type="text/javascript">
-			alert("등록 실패");
-			history.go(-1);
+			swal({
+				title: "다시 시도해주세요.", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>

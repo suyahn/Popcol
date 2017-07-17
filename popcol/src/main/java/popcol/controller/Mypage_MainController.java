@@ -188,15 +188,23 @@ public class Mypage_MainController {
 	
 	// 회원 정보 수정
 	@RequestMapping("mypage_myInfoModifyintro")
-	public String mypage_Modifyintro(Model model, HttpSession session, HttpServletRequest request) {
-		session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		// 회원정보 수정 전 비밀번호 체크를 위한 것
-		Customer customer = cs.getSessionCustomerInfo(id);
-
-		model.addAttribute("customer", customer);
-
+	public String mypage_Modifyintro() {
 		return "mypage_myInfoModifyintro";
+	}
+	
+	@RequestMapping("mypage_myInfoModifyPasswordChk")
+	public String mypage_myInfoModifyPasswordChk(Customer customer, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		customer.setCid(id);
+		int result = cs.loginCheck(customer);
+		
+		if(result <= 0) {
+			model.addAttribute("result", result);
+			return "mypage_myInfoModifyintro";
+		} else {
+			return "mypage_myInfoModifyForm";
+		}
 	}
 
 	@RequestMapping("mypage_myInfoModifyForm")
@@ -212,6 +220,12 @@ public class Mypage_MainController {
 
 	@RequestMapping("mypage_myInfoModify")
 	public String mypage_myInfoModify(Customer customer, Model model) {
+		try {
+			customer.setCpassword(CustomerController.getEncPassword(customer.getCpassword()));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 		int result = cs.updateCustomerInfo(customer);
 
 		model.addAttribute("result", result);

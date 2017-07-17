@@ -13,10 +13,18 @@
 </script> -->
 <script type="text/javascript">
 	function deleteChk(mid, pageNum) {
-		if(confirm("정말로 내리시겠습니까?") == false) {
-			return false;
-		}
-		location.href="adminDelete.do?mid=" + mid + "&pageNum=" + pageNum;
+		swal({
+			  title: "이 영화를 내리시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			location.href="adminDelete.do?mid=" + mid + "&pageNum=" + pageNum;
+		});
 	}
 </script>
 </head>

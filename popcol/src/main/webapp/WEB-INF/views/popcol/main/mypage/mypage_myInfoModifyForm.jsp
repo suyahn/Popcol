@@ -85,7 +85,7 @@
 				<br>
 				<br>
 				
-				<form action="mypage_myInfoModify.do">
+				<form action="mypage_myInfoModify.do" method="post">
 					<table>
 						<tr>
 							<th width="20%">

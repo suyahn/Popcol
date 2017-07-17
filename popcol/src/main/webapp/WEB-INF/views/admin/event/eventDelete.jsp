@@ -11,7 +11,7 @@
 	<c:if test="${ result > 0 }">
 		<script type="text/javascript">
 			swal({
-				title: "삭제 성공!", 
+				title: "이벤트를 삭제했습니다.", 
 				type: "success"
 			}).then(function() {
 				location.href = "adminEventList.do?pageNum=${ pageNum }";
@@ -21,7 +21,7 @@
 	<c:if test="${ result <= 0 }">
 		<script type="text/javascript">
 			swal({
-				title: "삭제 실패!", 
+				title: "다시 시도해주세요.", 
 				type: "error"
 			}).then(function() {
 				history.go(-1);

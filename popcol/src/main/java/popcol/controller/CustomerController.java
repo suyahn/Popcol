@@ -1,5 +1,6 @@
 package popcol.controller;
 
+import java.security.MessageDigest;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -30,6 +31,38 @@ public class CustomerController {
 	private PointService ps;
 	@Autowired
 	private EventService es;
+	
+	/*@RequestMapping("test")
+	public String test() throws Exception {
+		List<Customer> customerList = cs.selectCustomerList();
+		
+		for(Customer c : customerList) {
+			String password = c.getCpassword();
+			String encPassword = getEncPassword(password);
+			
+			c.setCpassword(encPassword);
+			int result = cs.updateFindPassword(c);
+		}
+		
+		return "home";
+	}*/
+	
+	/*비밀번호 암호화*/
+	public static String getEncPassword(String password) throws Exception {
+		StringBuffer sbuf = new StringBuffer();
+
+		MessageDigest mDigest = MessageDigest.getInstance("MD5");
+		mDigest.update(password.getBytes());
+
+		byte[] msgStr = mDigest.digest();
+
+		for (int i = 0; i < msgStr.length; i++) {
+			String tmpEncTxt = Integer.toHexString((int) msgStr[i] & 0x00ff);
+			sbuf.append(tmpEncTxt);
+		}
+
+		return sbuf.toString();
+	}
 
 	@RequestMapping("home")
 	public String home(Model model, HttpSession session) {
@@ -160,6 +193,14 @@ public class CustomerController {
 	@RequestMapping("join")
 	public String join(Customer customer, String cbirthdaystring, Model model) {
 		customer.setCbirthday(Date.valueOf(cbirthdaystring));
+		
+		/*패스워드 암호화*/
+		try {
+			customer.setCpassword(getEncPassword(customer.getCpassword()));
+		} catch (Exception e) {
+			System.out.println("암호 암호화 에러 : " + e.getMessage());
+		}
+		
 		int result = cs.insertCustomer(customer);
 		
 		if (result > 0) {
@@ -222,6 +263,12 @@ public class CustomerController {
 
 	@RequestMapping("findPassword_changePassword")
 	public String findPassword_changePassword(Customer customer, Model model) {
+		try {
+			customer.setCpassword(getEncPassword(customer.getCpassword()));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 		int result = cs.updateFindPassword(customer);
 
 		model.addAttribute("result", result);

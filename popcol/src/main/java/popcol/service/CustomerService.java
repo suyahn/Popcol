@@ -58,4 +58,6 @@ public interface CustomerService {
 	int adminCustomerUpdate(Customer customer);
 
 	int adminCustomerdelete(String cid);
+
+	List<Customer> selectCustomerList();
 }

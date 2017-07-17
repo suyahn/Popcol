@@ -10,15 +10,23 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("영화가 입력되었습니다");
-			location.href = "adminList.do"
+			swal({
+				title: "영화가 등록되었습니다", 
+				type: "success"
+			}).then(function() {
+				location.href = "adminList.do"
+			});
 		</script>
 	</c:if>
 	
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("회원가입 실패! 다시 시도해주세요.");
-			history.go(-1);
+			swal({
+				title: "다시 시도해주세요.", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>
