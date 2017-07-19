@@ -3,7 +3,6 @@ package popcol.service;
 import java.util.List;
 
 import popcol.model.Customer;
-import popcol.model.Point;
 
 public interface CustomerService {
 

@@ -58,12 +58,18 @@ td, th {
 	});
 	
 	function deleteChk() {
-		var chk = confirm("정말로 삭제하시겠습니까?");
-		
-		if (chk) {
-			frm.action = "mypage_myQnaDelete.do";
-			frm.submit();
-		}
+		swal({
+			  title: "정말로 삭제하시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			$('#qnaListForm').submit();
+		});
 	}
 </script>
 </head>
@@ -82,18 +88,18 @@ td, th {
 				<br>
 				<br>
 				
-				<form name="frm" onsubmit=" return deleteChk()">
-				
-				<input type="submit" class="btn btn-default btn-sm" value="선택삭제" style="float: right;" <c:if test="${empty qnalist }">disabled</c:if>>
+				<form name="frm" id="qnaListForm" action="mypage_myQnaDelete.do">
+				<input type="hidden" value="${pageNum}" name="pageNum">
+				<input type="button" onclick="deleteChk()" class="btn btn-default btn-sm" value="선택삭제" style="float: right;" <c:if test="${empty qnalist }">disabled</c:if>>
 				
 				<br>
 				<br>
 				
 				<table class="table table-hover">
 					<tr>
-						<th><input type="checkbox" id="cb_all" <c:if test="${empty qnalist }">disabled</c:if>></th>
+						<th width="5%"><input type="checkbox" id="cb_all" <c:if test="${empty qnalist }">disabled</c:if>></th>
 						<th width="10%">번호</th>
-						<th>상태</th>
+						<th width="20%">상태</th>
 						<th>제목</th>
 						<th>등록일</th>
 					</tr>

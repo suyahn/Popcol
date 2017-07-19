@@ -6,14 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-<script type="text/javascript">
-    function deleteChk(fid, pageNum) {
-        if(confirm("정말로 삭제하시겠습니까?") == false) {
-            return false;
-        }
-        location.href='faqDelete.do?fid=' + fid + '&pageNum=' + pageNum;
-    }
-</script>
 </head>
 <body>
     <div class="container" align="center" style="width: 70%">

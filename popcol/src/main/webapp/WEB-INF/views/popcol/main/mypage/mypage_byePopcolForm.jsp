@@ -14,12 +14,30 @@
 		$('#pointPage').load("pointPage.do");
 	});
 	
-	function ChkPassword() {
+	/* function ChkPassword() {
 		if (frm.chkPassword.value != frm.password.value) {
-			alert("비밀번호가 틀렸습니다.");
+			swal({
+				title: "비밀번호가 틀렸습니다.", 
+				type: "error"
+			});
 			
 			return false;
 		}
+	} */
+	
+	function byeChk() {
+		swal({
+			  title: "정말로 탈퇴하시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			$('#byePopcolForm').submit();
+		});
 	}
 </script>
 </head>
@@ -42,8 +60,8 @@
 				<br>
 				<br>
 				
-				<form action="mypage_byePopcol.do" onsubmit="return ChkPassword()" name="frm">
-				<input type="hidden" value="${customer.cpassword }" id="chkPassword">
+				<form action="mypage_byePopcolPasswordChk.do" name="frm" method="post" id="byePopcolForm">
+				<%-- <input type="hidden" value="${customer.cpassword }" id="chkPassword"> --%>
 					<table>
 						<tr>
 							<td>						
@@ -66,13 +84,21 @@
 								<div class="form-group" id="passwordCheck"></div>
 							</td>
 						</tr>
-						
+						<tr>
+							<td align="center">
+								<c:if test="${ not empty result }">
+									<span style="font-size: 15px; font-weight: bold; color:#cd1726;">
+										비밀번호를 확인해주세요.<br>
+									</span>
+								</c:if>
+							</td>
+						</tr>
 						<tr>
 							<th>		
 								<br>	
 								<div align="center">			 
 								<div class="form-group" style="display: inline;">
-									<input type="submit" class="btn btn-info btn-sm" value="확인" style="border-color: #cd1726; background-color: #cd1726;">
+									<input type="button" onclick="byeChk()" class="btn btn-info btn-sm" value="확인" style="border-color: #cd1726; background-color: #cd1726;">
 									<input type="button" onclick="location.href='home.do'" class="btn btn-default btn-sm" value="메인" >
 								</div>
 								</div>

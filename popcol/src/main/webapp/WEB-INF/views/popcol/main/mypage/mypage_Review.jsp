@@ -15,10 +15,17 @@
 		
 		$.post('mypage_reviewDelete.do', 'rid=' + rid, function(result) {
 			if(result > 0) {
-				alert("리뷰를 삭제하였습니다.");
-				location.href="mypage_seeMovie.do";
+				swal({
+					title: "리뷰를 삭제하였습니다.", 
+					type: "success"
+				}).then(function() {
+					location.href="mypage_seeMovie.do";
+				});
 			} else if(result <= 0) {
-				alert("다시 시도해주세요.");
+				swal({
+					title: "다시 시도해주세요.", 
+					type: "error"
+				});
 			}
 		}); 
 	} 

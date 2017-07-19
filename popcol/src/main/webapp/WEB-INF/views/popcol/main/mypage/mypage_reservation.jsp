@@ -20,10 +20,17 @@
 			
 			$.post('cancelBooking.do', formData, function(result) {
 				if (result > 0) {
-					alert("예매가 취소되었습니다.");
-					location.href="mypage_reservation.do";
+					swal({
+						title: "예매가 취소되었습니다.", 
+						type: "success"
+					}).then(function() {
+						location.href="mypage_reservation.do";
+					});
 				} else if (result <= 0) {
-					alert("다시 시도해주세요.")
+					swal({
+						title: "다시 시도해주세요.", 
+						type: "error"
+					});
 				}
 			})
 		});

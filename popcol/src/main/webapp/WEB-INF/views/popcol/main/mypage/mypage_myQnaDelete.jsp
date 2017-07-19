@@ -11,23 +11,35 @@
 	<c:if test="${ result > 0 }">
 		<c:if test="${not empty pageNum }">
 			<script type="text/javascript">
-				alert("문의가 삭제되었습니다.");
-				location.href="mypage_myQna.do?pageNum=" + ${pageNum};
+				swal({
+					title: "문의가 삭제되었습니다.", 
+					type: "success"
+				}).then(function() {
+					location.href="mypage_myQna.do?pageNum=" + ${pageNum};
+				});
 			</script>
 		</c:if>
 		
 		<c:if test="${empty pageNum }">
 			<script type="text/javascript">
-				alert("문의가 삭제되었습니다.");
-				location.href="mypage_myQna.do"
+				swal({
+					title: "문의가 삭제되었습니다.", 
+					type: "success"
+				}).then(function() {
+					location.href="mypage_myQna.do"
+				});
 			</script>
 		</c:if>
 	</c:if>
 	
 	<c:if test="${ result <= 0 }">
 		<script type="text/javascript">
-			alert("다시 시도해주세요.");
-			history.go(-1);
+			swal({
+				title: "다시 시도해주세요.", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>

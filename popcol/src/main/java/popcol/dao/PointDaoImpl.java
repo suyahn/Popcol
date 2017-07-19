@@ -1,6 +1,5 @@
 package popcol.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,7 +7,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import popcol.model.Customer;
 import popcol.model.Point;
 
 @Repository

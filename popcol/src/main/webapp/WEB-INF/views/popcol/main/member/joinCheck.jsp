@@ -24,8 +24,12 @@
 	
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("가입된 정보가 없습니다. 회원가입 페이지로 이동합니다.");
-			location.href="joinForm.do";
+			swal({
+				title: "가입된 정보가 없습니다. 회원가입 페이지로 이동합니다.", 
+				type: "info"
+			}).then(function() {
+				location.href="joinForm.do";
+			});
 		</script>
 	</c:if>
 </body>

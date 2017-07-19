@@ -42,8 +42,12 @@
 				
 				<c:if test="${result <= 0 }">
 					<script type="text/javascript">
-						alert("회원 정보 수정을 다시 시도해주세요.");
-						history.go(-1);
+						swal({
+							title: "회원 정보 수정을 다시 시도해주세요.", 
+							type: "error"
+						}).then(function() {
+							history.go(-1);
+						});
 					</script>
 				</c:if>
 			</div>

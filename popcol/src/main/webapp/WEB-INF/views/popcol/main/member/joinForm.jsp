@@ -111,8 +111,10 @@
 		var check = document.getElementById('check').value;
 		
 		if(check == 'N') {
-			alert("아이디 중복검사를 해주세요.");
-			
+			swal({
+				title: "아이디 중복검사를 해주세요.", 
+				type: "error"
+			});
 			return false;
 		}
 	}

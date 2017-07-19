@@ -5,11 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import popcol.model.Customer;
 import popcol.service.CustomerService;
 
 public class MasterLoginCheck implements HandlerInterceptor {

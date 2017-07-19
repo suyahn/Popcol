@@ -148,7 +148,10 @@
 		adult*=1; youth*=1; special*=1;
 		var totalPerson = adult+youth+special;
 		if(adult == 0 && youth == 0 && special == 0) {
-			alert("인원을 선택하세요");
+			swal({
+				title: "인원을 선택하세요.", 
+				type: "error"
+			});
 			return false;
 		}//000으로 되어있으면 결제 페이지로 넘어가지 않음
 		
@@ -163,7 +166,10 @@
 		});
 		
 		if(seatCount != totalPerson) {
-			alert("좌석을 선택하세요");
+			swal({
+				title: "좌석을 선택하세요.", 
+				type: "error"
+			});
 			return false;
 		}else{
 			var price= $('#totalPrice').text();

@@ -131,16 +131,4 @@ public class QnaController {
 		
 		return "qnaReply";
 	}
-	
-	@RequestMapping("qnaReplyInsert")
-	public String qnaReplyInsert(Qna qna) {
-		qs.insertReply(qna);
-		return "redirect:qnaReply.do?qid=" + qna.getQid();
-	}
-	
-	@RequestMapping("qnaReplyDelete")
-	public String qnaReplyDelete(int qid) {
-		qs.deleteReply(qid);
-		return "redirect:qnaReply.do?qid=" + qid;
-	}
 }

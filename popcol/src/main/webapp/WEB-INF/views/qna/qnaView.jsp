@@ -8,10 +8,18 @@
 <title></title>
 <script type="text/javascript">
 	function deleteChk(qid, pageNum) {
-		if(confirm("정말로 삭제하시겠습니까?") == false) {
-			return false;
-		}
-		location.href='qnaDelete.do?qid=' + qid + '&pageNum=' + pageNum;
+		swal({
+			  title: "글을 삭제하시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			location.href='qnaDelete.do?qid=' + qid + '&pageNum=' + pageNum;
+		});
 	}
 	
 	$(function() {

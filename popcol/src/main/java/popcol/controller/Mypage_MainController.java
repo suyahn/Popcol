@@ -1,13 +1,10 @@
 package popcol.controller;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -243,6 +240,25 @@ public class Mypage_MainController {
 		model.addAttribute("customer", customer);
 
 		return "mypage_byePopcolForm";
+	}
+	
+	@RequestMapping("mypage_byePopcolPasswordChk")
+	public String mypage_byePopcolPasswordChk(Customer customer, Model model, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		customer.setCid(id);
+		int result = cs.loginCheck(customer);
+		
+		if(result <= 0) {
+			customer = cs.getSessionCustomerInfo(id);
+
+			model.addAttribute("customer", customer);
+			model.addAttribute("result", result);
+			
+			return "mypage_byePopcolForm";
+		} else {
+			return "redirect:mypage_byePopcol.do";
+		}
 	}
 
 	@RequestMapping("mypage_byePopcol")

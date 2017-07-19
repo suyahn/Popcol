@@ -353,8 +353,6 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/movieDate.jsp" />
 	</definition>
-	<!-- <definition name="movieTime" extends="empty"> <put-attribute name="body" 
-		value="/WEB-INF/views/booking/movieTime.jsp" /> </definition> -->
 	<definition name="seatSelect" extends="mainLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/booking/seatSelect.jsp" />

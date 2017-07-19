@@ -9,12 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style>
-.err {
-	color: red;
-	font-size: 15px;
-}
-</style>
 <script type="text/javascript">
 	$(function() {
 		$('#pointPage').load("pointPage.do");
@@ -67,9 +61,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td align="center">
 								<c:if test="${ not empty result }">
-									<span class="err">
+									<span style="font-size: 15px; font-weight: bold; color:#cd1726;">
 										비밀번호를 확인해주세요.<br>
 									</span>
 								</c:if>

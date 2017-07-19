@@ -122,8 +122,7 @@ margin: 20px;
 		</c:if>
 		</div>
 		
-		<hr>
-		<hr>
+		<br>
 		
 			<img alt="event" src="${path }/images/event.png" width="800px" style="margin-bottom: 30px;">
 		

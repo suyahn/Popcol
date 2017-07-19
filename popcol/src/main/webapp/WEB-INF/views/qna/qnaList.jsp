@@ -65,14 +65,14 @@ th {
 					<tr>
 						<td style="text-align: center;">${ no1 }</td>
 						<td>
+							<c:if test="${empty qna.qreplycontent }">
+								<img alt="wait" src="${path }/images/waitanswer.png" width="70px">&nbsp;&nbsp;
+							</c:if>
+							
+							<c:if test="${not empty qna.qreplycontent }">
+								<img alt="complete" src="${path }/images/completeanswer.png" width="70px">&nbsp;&nbsp;
+							</c:if>
 							<c:if test="${ id == qna.cid or id == 'master'}">
-								<c:if test="${empty qna.qreplycontent }">
-									<img alt="wait" src="${path }/images/waitanswer.png" width="70px">&nbsp;&nbsp;
-								</c:if>
-								
-								<c:if test="${not empty qna.qreplycontent }">
-									<img alt="complete" src="${path }/images/completeanswer.png" width="70px">&nbsp;&nbsp;
-								</c:if>
 								<a href="qnaView.do?qid=${ qna.qid }&pageNum=${ pageNum }" class="red-active">${ qna.qsubject }</a>
 							</c:if>
 							<c:if test="${ id != qna.cid and id != 'master'}">

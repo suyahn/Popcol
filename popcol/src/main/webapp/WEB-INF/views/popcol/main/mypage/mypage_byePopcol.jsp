@@ -10,7 +10,7 @@
 <body>
 	<c:if test="${result > 0 }">
 		<div class="container" align="center" style="width: 600px;">
-				<h2 class="text-primary" align="left">회원 탈퇴</h2>
+				<h2 align="left">회원 탈퇴</h2>
 				
 				<hr>
 				
@@ -25,8 +25,12 @@
 	</c:if>
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("회원 탈퇴를 다시 시도해주세요.");
-			history.go(-1);
+			swal({
+				title: "회원 탈퇴를 다시 시도해주세요.", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if> 
 </body>

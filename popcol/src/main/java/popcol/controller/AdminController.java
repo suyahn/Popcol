@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +27,6 @@ import popcol.service.PagingPgm;
 import popcol.service.QnaService;
 import popcol.service.RunningtimeTableService;
 import popcol.service.TheaterService;
-import popcol.dao.LocationDao;
-import popcol.dao.TheaterDao;
 import popcol.model.Customer;
 import popcol.model.Event;
 import popcol.model.Faq;
@@ -685,12 +682,6 @@ public class AdminController {
 	public String eventInsert(String pageNum, Event event, String estartingdateString, String eclosingdateString,
 			@RequestParam("newEpicture") MultipartFile mf, Model model, HttpSession session)
 			throws IllegalStateException, IOException {
-		/*
-		 * public String eventInsert(String pageNum, String esubject, String
-		 * econtent, String estartingdateString, String eclosingdateString
-		 * , @RequestParam("epicture") MultipartFile mf, Model model,
-		 * HttpSession session) throws IllegalStateException, IOException {
-		 */
 		String fileName = "";
 
 		if (mf.getOriginalFilename() != null && !mf.getOriginalFilename().equals("")) {

@@ -6,14 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-<script type="text/javascript">
-   function deleteChk(nid, pageNum) {
-      if(confirm("정말로 삭제하시겠습니까?") == false) {
-         return false;
-      }
-      location.href='noticeDelete.do?nid=' + nid + '&pageNum=' + pageNum;
-   }
-</script>
 </head>
 <body>
    <div class="container" align="center" style="width: 70%">

@@ -1,13 +1,11 @@
 package popcol.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import popcol.dao.PointDao;
-import popcol.model.Customer;
 import popcol.model.Point;
 
 @Service

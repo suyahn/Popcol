@@ -32,12 +32,18 @@
 	});
 	
 	function deleteChk(qid, pageNum) {
-		if(confirm("정말로 삭제하시겠습니까?") == false) {
-			
-			return false;
-		}
-		
-		location.href='mypage_myQnaDelete.do?qid=' + qid + '&pageNum=' + pageNum;
+		swal({
+			  title: "정말로 삭제하시겠습니까?",
+			  type: "question",
+			  showCancelButton: true,
+			  confirmButtonColor: "#CD1726",
+			  confirmButtonText: "네!",
+			  cancelButtonText: "아니요.",
+			  closeOnConfirm: true,
+			  closeOnCancel: true
+		}).then(function() {
+			location.href='mypage_myQnaDelete.do?qid=' + qid + '&pageNum=' + pageNum;
+		});
 	}
 </script>
 </head>

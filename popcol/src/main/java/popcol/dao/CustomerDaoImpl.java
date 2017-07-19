@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import popcol.controller.CustomerController;
 import popcol.model.Customer;
-import popcol.model.Point;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {

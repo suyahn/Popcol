@@ -15,7 +15,7 @@
 		<br>
 		<br>
 
-		<form action="joinCheck.do">
+		<form action="joinCheck.do" method="post">
 			<table>
 				<tr>
 					<td>

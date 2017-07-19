@@ -19,12 +19,6 @@
 			$('#date').html(data);
 		});
 	}
-/* 	function seatSelect(mid,lid,rtid){
-		var sendData ='mid='+mid + '&lid='+lid +'&rtid='+rtid;
-		$.post("seatSelect.do",sendData,function(data){
-			$('#date').html(data);
-		});
-	} */
 	$(function () {
 		$('.moviemid').click(function(){
 			$('.moviemid').css("background-color","white");

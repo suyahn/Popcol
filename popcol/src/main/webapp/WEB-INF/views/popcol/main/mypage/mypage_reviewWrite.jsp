@@ -10,17 +10,25 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("리뷰가 작성되었습니다.");
-			// 부모 창 새로고침
-			opener.parent.location.reload();
-			window.close();
+			swal({
+				title: "리뷰가 작성되었습니다.", 
+				type: "success"
+			}).then(function() {
+				// 부모 창 새로고침
+				opener.parent.location.reload();
+				window.close();
+			});
 		</script>
 	</c:if>
 	
 	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
-			alert("다시 시도해주세요.");
-			history.go(-1);
+			swal({
+				title: "다시 시도해주세요.", 
+				type: "error"
+			}).then(function() {
+				history.go(-1);
+			});
 		</script>
 	</c:if>
 </body>

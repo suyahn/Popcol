@@ -23,18 +23,30 @@
 					var price = $('#price').val();
 					var dd = parseInt(price) - parseInt(usePoint);
 					var point = parseInt($('#totalPoint').text());
+					
+					if(isNaN(usePoint)) {
+						$(this).val(0);
+						dd = price;
+					}
 					if (usePoint > point) {
-						alert("사용하시려는 포인트가 보유한 포인트를 초과하였습니다.");
-						$(this).val(point);
+						swal({
+							title: "사용하시려는 포인트가 보유한 포인트를 초과하였습니다.", 
+							type: "error"
+						}).then(function() {
+							$(this).val(point);
+						});
 					}
 					if (usePoint > price) {
-						alert("포인트가 예매 금액을 초과하였습니다.");
-						$(this).val(price);//포인트 입력창에 price값이 입력되게끔 해줌
-						dd = 0;
+						swal({
+							title: "포인트가 예매 금액을 초과하였습니다.", 
+							type: "error"
+						}).then(function() {
+							$(this).val(price);//포인트 입력창에 price값이 입력되게끔 해줌
+							dd = 0;
+						});
 					}
 					$('#resultPrice').html(
-							'<font style="font-weight:normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-									+ dd + '원</font>');
+							'<font style="font-weight: normal">' + dd + '원</font>');
 				});
 		$('input[type="radio"]').change(function() {
 			var payWay = $(this).val();//선택된 다른 radio의 value를 받아옴
@@ -46,7 +58,6 @@
 		if(frm.input1.value==""){
 			alert("카드번호를 입력하세요");
 			frm.input1.focus();
-			
 	 		return false;
 	 	}
 		if(frm.input2.value==""){
@@ -110,39 +121,32 @@
 				<div class="panel panel-danger">
 					<div class="panel-heading" role="tab" id="headingOne">
 						<h4 class="panel-title" style="text-align: left;">
-							<a role="button" data-toggle="collapse" data-parent="#accordion"
-								href="#collapseOne" aria-expanded="true"
-								aria-controls="collapseOne"> <span
-								class="glyphicon glyphicon-minus">포인트 결제</span>
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+								aria-controls="collapseOne"> 
+								<span class="glyphicon glyphicon-minus"></span> 포인트 결제
 							</a>
 						</h4>
 					</div>
-					<div id="collapseOne" class="panel-collapse collapse in"
-						role="tabpanel" aria-labelledby="headingOne">
+					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 						<div class="panel-body">
-							<table class="table table- bordered">
+							<table class="table">
 								<tr>
-									<th style="text-align: center; vertical-align: center;">●팝콜
-										포인트</th>
-									<th
-										style="text-align: center; vertical-align: center; font-weight: normal;">
-										현재 보유 포인트:
-										<div id="totalPoint">${point}</div> point
+									<th style="text-align: left; vertical-align: center; padding-left: 50px;">
+										● 팝콜 포인트</th>
+									<th style="text-align: center; vertical-align: center; font-weight: normal;">
+										현재 보유 포인트: <span id="totalPoint">${point}</span> point
 									</th>
-									<th
-										style="text-align: center; vertical-align: center; font-weight: normal;">
-										사용할 포인트: <input type="number" value="0"
-										style="width: 30%;" id="usingpoint" name="point">
+									<th style="text-align: center; vertical-align: center; font-weight: normal;">
+										사용할 포인트: <input type="number" value="0" style="width: 30%;" id="usingpoint" name="point">
 									</th>
 								</tr>
 								<tr></tr>
 								<tr align="right">
-									<th style="text-align: center; vertical-align: center;">●총
-										금액</th>
-									<td id="resultPrice" colspan="2" style="text-align: left;">
-										<font style="font-weight: normal">
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${price }원
-									</font>
+									<th style="text-align: left; vertical-align: center; padding-left: 50px;">
+										● 총 금액
+									</th>
+									<td id="resultPrice" colspan="2" style="text-align: left; padding-left: 48px;">
+										<font style="font-weight: normal">${price}원</font>
 									</td>
 								</tr>
 							</table>
@@ -152,25 +156,26 @@
 				<div class="panel panel-danger">
 					<div class="panel-heading" role="tab" id="headingTwo">
 						<h4 class="panel-title" style="text-align: left;">
-							<a class="collapsed" role="button" data-toggle="collapse"
-								data-parent="#accordion" href="#collapseTwo"
-								aria-expanded="false" aria-controls="collapseTwo"> <span
-								class="glyphicon glyphicon-plus"></span> 최종결제 수단
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+								aria-expanded="false" aria-controls="collapseTwo">
+								<span class="glyphicon glyphicon-plus"></span> 최종결제 수단
 							</a>
 						</h4>
 					</div>
-					<div id="collapseTwo" class="panel-collapse collapse"
-						role="tabpanel" aria-labelledby="headingTwo">
+					<div id="collapseTwo" class="panel-collapse collapse"	role="tabpanel" aria-labelledby="headingTwo">
 						<div class="panel-body">
 							<table class="table table- bordered">
 								<tr>
-									<th style="text-align: center; vertical-align: center;"><input
-										type="radio" name="payway" value="credit" id="credit">
-										<label for="credit">신용카드</label> <input type="radio"
-										name="payway" value="phone" id="phone"> <label
-										for="phone">휴대폰결제</label> <input type="radio" name="payway"
-										value="account" id="account"> <label for="account">계좌
-											이체</label></th>
+									<th style="text-align: center; vertical-align: center;">
+										<input type="radio" name="payway" value="credit" id="credit">
+										<label for="credit">신용카드</label>
+										&nbsp;
+										<input type="radio" name="payway" value="phone" id="phone">
+										<label for="phone">휴대폰결제</label>
+										&nbsp;
+										<input type="radio" name="payway" value="account" id="account">
+										<label for="account">계좌이체</label>
+									</th>
 								</tr>
 							</table>
 							<div class="Pay" id="creditPay">
